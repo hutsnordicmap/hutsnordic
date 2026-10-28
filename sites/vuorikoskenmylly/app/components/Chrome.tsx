@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Menu, MessageCircle, Navigation, Phone } from "lucide-react";
-import { asset, business, HUTS, hutsLinks, live, navOrder, paths, route, tel, ui, type Locale } from "@/app/content";
+import { asset, business, HUTS, live, navOrder, paths, route, tel, ui, type Locale } from "@/app/content";
 
 /** The one line Antti changes most: shown above the header on every page. */
 export function NoticeBar({ locale }: { locale: Locale }) {
@@ -84,7 +84,8 @@ export function StickyBar({ locale }: { locale: Locale }) {
   );
 }
 
-export function Footer({ locale }: { locale: Locale }) {
+/** `map` adds a small Huts.fi location map; pages that already show the big map turn it off. */
+export function Footer({ locale, map = true }: { locale: Locale; map?: boolean }) {
   const t = ui[locale];
   return (
     <footer className="bg-coal pb-24 text-flour/75 md:pb-0">
@@ -119,16 +120,23 @@ export function Footer({ locale }: { locale: Locale }) {
             <li><a href={business.facebook} rel="noopener" className="hover:text-white">Facebook</a></li>
           </ul>
         </div>
-        <div className="text-sm">
-          <p className="label text-flour/50">{t.alsoOn}</p>
-          <ul className="mt-4 space-y-2">
-            {hutsLinks.map((l) => (
-              <li key={l.fi}>
-                <a href={`${HUTS}${l[locale]}`} className="text-rust-light hover:underline">{l.label[locale]}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {map ? (
+          <div className="text-sm">
+            <p className="label text-flour/50">{t.findUs}</p>
+            <iframe
+              src={locale === "fi" ? business.mapEmbed : business.mapEmbed.replace("/suomi/", "/finland/")}
+              title={t.mapTitle}
+              loading="lazy"
+              className="mt-4 block h-44 w-full border-0 bg-coal-soft"
+            />
+            <p className="pt-1.5 text-right text-xs text-flour/50">
+              {t.mapCredit}{" "}
+              <a href={HUTS} className="font-bold text-[#FF6B00]">
+                Huts.fi
+              </a>
+            </p>
+          </div>
+        ) : null}
       </div>
       <div className="border-t border-white/10">
         <p className="mx-auto max-w-7xl px-4 py-4 text-xs text-flour/45 sm:px-6">

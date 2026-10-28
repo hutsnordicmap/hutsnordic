@@ -9,7 +9,6 @@ import { OpenStatus } from "@/app/components/OpenStatus";
 import {
   business,
   contactPage,
-  HUTS,
   home,
   homeAsk,
   homeFaq,
@@ -27,13 +26,13 @@ import {
 
 const other = (locale: Locale): Locale => (locale === "fi" ? "en" : "fi");
 
-function Shell({ locale, otherHref, children }: { locale: Locale; otherHref: string; children: React.ReactNode }) {
+function Shell({ locale, otherHref, map = true, children }: { locale: Locale; otherHref: string; map?: boolean; children: React.ReactNode }) {
   return (
     <>
       <NoticeBar locale={locale} />
       <Header locale={locale} otherHref={otherHref} />
       <main>{children}</main>
-      <Footer locale={locale} />
+      <Footer locale={locale} map={map} />
       <StickyBar locale={locale} />
     </>
   );
@@ -77,7 +76,7 @@ export function HomeView({ locale }: { locale: Locale }) {
   const h = home[locale];
   const t = ui[locale];
   return (
-    <Shell locale={locale} otherHref={paths.home[other(locale)]}>
+    <Shell locale={locale} otherHref={paths.home[other(locale)]} map={false}>
       <JsonLd data={millJsonLd(locale)} />
 
       {/* Hero: black, text left, tall photo right with a second photo laid over it */}
@@ -333,11 +332,6 @@ export function ServiceView({ id, locale }: { id: PageId; locale: Locale }) {
                   <h2 className="font-display text-3xl">{u.name}</h2>
                   <p className="mt-2 font-semibold text-rust">{u.beds}</p>
                   <p className="mt-3 leading-relaxed text-ink/75">{u.text}</p>
-                  {u.hutsPath ? (
-                    <a href={`${HUTS}${u.hutsPath[locale]}`} className="mt-4 inline-block text-sm font-semibold text-[#d9772f] hover:underline">
-                      {u.name} – Huts.fi
-                    </a>
-                  ) : null}
                 </div>
               </article>
             ))}
@@ -428,7 +422,7 @@ export function ContactView({ locale }: { locale: Locale }) {
   const c = contactPage[locale];
   const t = ui[locale];
   return (
-    <Shell locale={locale} otherHref={paths.contact[other(locale)]}>
+    <Shell locale={locale} otherHref={paths.contact[other(locale)]} map={false}>
       <JsonLd data={millJsonLd(locale)} />
       <section className="bg-coal text-flour">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:py-20">
