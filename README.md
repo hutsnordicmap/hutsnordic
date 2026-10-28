@@ -9,4 +9,4 @@ Huts Nordic. For now this site also hosts **client website previews** before the
 - Previews are never indexed: every page has `noindex, nofollow`, `next.config.ts` sends `X-Robots-Tag`
   for `/preview/*`, and `robots.txt` disallows `/preview/`. Nothing links to them.
 
-Current previews: https://hutsnordic.fi/preview/onnelanmokit (Onnelan mökit, Kangasniemi).
+Current previews: https://hutsnordic.fi/preview/onnelanmokit (Onnelan mökit, Kangasniemi), https://hutsnordic.fi/preview/vuorikoskenmylly (Vuorikosken Mylly, Sammatti).

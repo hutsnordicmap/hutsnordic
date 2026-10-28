@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --color-coal: #131210;
+  --color-coal-soft: #1e1c19;
+  --color-flour: #f3eee6;
+  --color-bran: #e7ddcd;
+  --color-rust: #b5532b;
+  --color-rust-light: #e08a5f;
+  --color-ink: #1a1815;
+  --font-sans: var(--font-hanken), system-ui, sans-serif;
+  --font-display: var(--font-bodoni), "Didot", Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-flour);
+  color: var(--color-ink);
+}
+
+/* Small caps label used across the site, echoing the ring text in the VKM logo. */
+.label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
