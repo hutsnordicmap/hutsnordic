@@ -50,12 +50,12 @@ export function HoursList({ locale }: { locale: Locale }) {
 }
 
 /** Huts.fi map of the mill. The visible Huts.fi link sits outside the iframe on purpose. */
-export function MapEmbed({ locale }: { locale: Locale }) {
+export function MapEmbed({ locale, src, title }: { locale: Locale; src?: string; title?: string }) {
   const t = ui[locale];
-  const src = locale === "fi" ? business.mapEmbed : business.mapEmbed.replace("/suomi/", "/finland/");
+  const url = src ?? (locale === "fi" ? business.mapEmbed : business.mapEmbed.replace("/suomi/", "/finland/"));
   return (
     <div>
-      <iframe src={src} title={t.mapTitle} loading="lazy" className="block h-[360px] w-full border-0 bg-bran sm:h-[460px]" allowFullScreen />
+      <iframe src={url} title={title ?? t.mapTitle} loading="lazy" className="block h-[360px] w-full border-0 bg-bran sm:h-[460px]" allowFullScreen />
       <p className="py-2 text-right text-xs opacity-70">
         {t.mapCredit}{" "}
         <a href={HUTS} className="font-bold text-[#FF6B00]">

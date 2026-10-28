@@ -12,6 +12,8 @@ import {
   home,
   homeAsk,
   homeFaq,
+  HUTS,
+  mapPlaces,
   live,
   navOrder,
   pages,
@@ -26,13 +28,13 @@ import {
 
 const other = (locale: Locale): Locale => (locale === "fi" ? "en" : "fi");
 
-function Shell({ locale, otherHref, map = true, children }: { locale: Locale; otherHref: string; map?: boolean; children: React.ReactNode }) {
+function Shell({ locale, otherHref, children }: { locale: Locale; otherHref: string; children: React.ReactNode }) {
   return (
     <>
       <NoticeBar locale={locale} />
       <Header locale={locale} otherHref={otherHref} />
       <main>{children}</main>
-      <Footer locale={locale} map={map} />
+      <Footer locale={locale} />
       <StickyBar locale={locale} />
     </>
   );
@@ -76,7 +78,7 @@ export function HomeView({ locale }: { locale: Locale }) {
   const h = home[locale];
   const t = ui[locale];
   return (
-    <Shell locale={locale} otherHref={paths.home[other(locale)]} map={false}>
+    <Shell locale={locale} otherHref={paths.home[other(locale)]}>
       <JsonLd data={millJsonLd(locale)} />
 
       {/* Hero: black, text left, tall photo right with a second photo laid over it */}
@@ -388,6 +390,15 @@ export function ServiceView({ id, locale }: { id: PageId; locale: Locale }) {
         </div>
       </section>
 
+      {/* Where this part of the mill is: the matching Huts.fi place on the map */}
+      <section className="mx-auto max-w-7xl px-4 pt-20 sm:px-6">
+        <SectionTitle kicker={t.findUs} title={`${t.nav[id]} ${t.onMap}`} />
+        <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_1.5fr]">
+          <GettingHere locale={locale} />
+          <MapEmbed locale={locale} src={`${HUTS}/embed${mapPlaces[id][locale]}?address=1`} title={`${business.name} – ${t.nav[id]}`} />
+        </div>
+      </section>
+
       <section className="mx-auto max-w-4xl px-4 py-20 sm:px-6">
         <SectionTitle title={t.faqTitle} />
         <div className="mt-8">
@@ -422,7 +433,7 @@ export function ContactView({ locale }: { locale: Locale }) {
   const c = contactPage[locale];
   const t = ui[locale];
   return (
-    <Shell locale={locale} otherHref={paths.contact[other(locale)]} map={false}>
+    <Shell locale={locale} otherHref={paths.contact[other(locale)]}>
       <JsonLd data={millJsonLd(locale)} />
       <section className="bg-coal text-flour">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:py-20">

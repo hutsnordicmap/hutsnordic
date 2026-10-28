@@ -84,12 +84,11 @@ export function StickyBar({ locale }: { locale: Locale }) {
   );
 }
 
-/** `map` adds a small Huts.fi location map; pages that already show the big map turn it off. */
-export function Footer({ locale, map = true }: { locale: Locale; map?: boolean }) {
+export function Footer({ locale }: { locale: Locale }) {
   const t = ui[locale];
   return (
     <footer className="bg-coal pb-24 text-flour/75 md:pb-0">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <Logo className="size-24" />
           <p className="mt-4 text-sm leading-relaxed">
@@ -120,23 +119,6 @@ export function Footer({ locale, map = true }: { locale: Locale; map?: boolean }
             <li><a href={business.facebook} rel="noopener" className="hover:text-white">Facebook</a></li>
           </ul>
         </div>
-        {map ? (
-          <div className="text-sm">
-            <p className="label text-flour/50">{t.findUs}</p>
-            <iframe
-              src={locale === "fi" ? business.mapEmbed : business.mapEmbed.replace("/suomi/", "/finland/")}
-              title={t.mapTitle}
-              loading="lazy"
-              className="mt-4 block h-60 w-full border-0 bg-coal-soft"
-            />
-            <p className="pt-1.5 text-right text-xs text-flour/50">
-              {t.mapCredit}{" "}
-              <a href={HUTS} className="font-bold text-[#FF6B00]">
-                Huts.fi
-              </a>
-            </p>
-          </div>
-        ) : null}
       </div>
       <div className="border-t border-white/10">
         <p className="mx-auto max-w-7xl px-4 py-4 text-xs text-flour/45 sm:px-6">

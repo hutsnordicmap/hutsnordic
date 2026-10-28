@@ -161,6 +161,7 @@ export const ui = {
     mapCredit: "Kartta:",
     faqTitle: "Usein kysyttyä",
     findUs: "Löydä perille",
+    onMap: "kartalla",
     madeBy: "Sivut tehnyt ja ylläpitää",
     readMore: "Lue lisää",
     backHome: "Etusivulle",
@@ -191,6 +192,7 @@ export const ui = {
     mapCredit: "Map:",
     faqTitle: "Questions",
     findUs: "Find us",
+    onMap: "on the map",
     madeBy: "Site built and maintained by",
     readMore: "Read more",
     backHome: "Home",
@@ -205,6 +207,16 @@ export const ui = {
 };
 
 export const navOrder: PageId[] = ["kahvila", "putiikki", "galleria", "juhlatila", "majoitus"];
+
+// The Huts.fi place each page shows on its map. Shop and gallery have no place of their own, so they show the whole mill.
+const millOrg = { fi: "/suomi/org/vuorikosken-mylly", en: "/finland/org/vuorikosken-mylly" };
+export const mapPlaces: Record<PageId, Text> = {
+  kahvila: { fi: "/suomi/uusimaa/lohja/erakahvilat/vuorikosken-mylly-kahvio-lohja", en: "/finland/uusimaa/lohja/wilderness-cafes/vuorikosken-mylly-wilderness-cafe-lohja" },
+  putiikki: millOrg,
+  galleria: millOrg,
+  juhlatila: { fi: "/suomi/uusimaa/lohja/kokous-ja-tapahtumatilat/vuorikosken-myllyn-juhlatila-lohja", en: "/finland/uusimaa/lohja/meeting-event-hire/vuorikosken-mylly-event-room-lohja" },
+  majoitus: { fi: "/suomi/uusimaa/lohja/lomamokit/vuorikosken-mylly-lohja", en: "/finland/uusimaa/lohja/holiday-cabins/vuorikosken-mylly-lohja" },
+};
 
 /* ------------------------------- Home ------------------------------- */
 
