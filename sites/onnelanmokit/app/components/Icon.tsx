@@ -1,0 +1,55 @@
+import {
+  Bath,
+  CalendarDays,
+  Check,
+  Coffee,
+  CookingPot,
+  Fan,
+  Fish,
+  Flame,
+  Leaf,
+  Phone,
+  Refrigerator,
+  Sailboat,
+  Snowflake,
+  Sparkles,
+  Star,
+  Sun,
+  Tent,
+  Thermometer,
+  TreePine,
+  Tv,
+  WashingMachine,
+  Waves,
+  type LucideIcon,
+} from "lucide-react";
+
+const icons: Record<string, LucideIcon> = {
+  bath: Bath,
+  calendar: CalendarDays,
+  check: Check,
+  coffee: Coffee,
+  cooking: CookingPot,
+  fan: Fan,
+  fish: Fish,
+  flame: Flame,
+  fridge: Refrigerator,
+  leaf: Leaf,
+  phone: Phone,
+  sailboat: Sailboat,
+  snowflake: Snowflake,
+  sparkles: Sparkles,
+  star: Star,
+  sun: Sun,
+  tent: Tent,
+  thermometer: Thermometer,
+  tree: TreePine,
+  tv: Tv,
+  washer: WashingMachine,
+  waves: Waves,
+};
+
+export function Icon({ name, className = "size-5" }: { name: string; className?: string }) {
+  const C = icons[name] ?? Check;
+  return <C className={className} strokeWidth={1.6} aria-hidden />;
+}

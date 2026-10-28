@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-lake: #173a4a;
+  --color-lake-deep: #0f2833;
+  --color-mist: #e4eef1;
+  --color-paper: #f7f3ec;
+  --color-pine: #b8733d;
+  --color-ink: #1d2427;
+  --font-sans: var(--font-figtree), system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
