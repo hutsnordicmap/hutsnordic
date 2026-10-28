@@ -392,7 +392,7 @@ export function ServiceView({ id, locale }: { id: PageId; locale: Locale }) {
 
       {/* Where this part of the mill is: the matching Huts.fi place on the map */}
       <section className="mx-auto max-w-7xl px-4 pt-20 sm:px-6">
-        <SectionTitle kicker={t.findUs} title={`${t.nav[id]} ${t.onMap}`} />
+        <SectionTitle kicker={t.nav[id]} title={t.findUs} />
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_1.5fr]">
           <GettingHere locale={locale} />
           <MapEmbed locale={locale} src={`${HUTS}/embed${mapPlaces[id][locale]}?address=1`} title={`${business.name} – ${t.nav[id]}`} />
