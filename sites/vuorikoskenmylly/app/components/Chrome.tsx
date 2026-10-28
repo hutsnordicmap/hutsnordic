@@ -127,7 +127,7 @@ export function Footer({ locale, map = true }: { locale: Locale; map?: boolean }
               src={locale === "fi" ? business.mapEmbed : business.mapEmbed.replace("/suomi/", "/finland/")}
               title={t.mapTitle}
               loading="lazy"
-              className="mt-4 block h-44 w-full border-0 bg-coal-soft"
+              className="mt-4 block h-60 w-full border-0 bg-coal-soft"
             />
             <p className="pt-1.5 text-right text-xs text-flour/50">
               {t.mapCredit}{" "}
