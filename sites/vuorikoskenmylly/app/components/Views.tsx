@@ -96,11 +96,11 @@ export function HomeView({ locale }: { locale: Locale }) {
           </div>
           <div className="relative lg:col-span-5">
             <div className="relative aspect-[4/5] w-full overflow-hidden lg:aspect-auto lg:h-full lg:min-h-[620px]">
-              <Image src={photos.porch.src} alt={photos.porch[locale]} fill priority sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
+              <Image src={photos.sign.src} alt={photos.sign[locale]} fill priority sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
             </div>
             <div className="absolute -bottom-8 -left-2 w-[42%] border-[6px] border-coal sm:-left-8 lg:-left-16">
               <div className="relative aspect-[4/5]">
-                <Image src={photos.rapids.src} alt={photos.rapids[locale]} fill sizes="20vw" className="object-cover" />
+                <Image src={photos.buns.src} alt={photos.buns[locale]} fill sizes="20vw" className="object-cover" />
               </div>
             </div>
           </div>
@@ -137,7 +137,7 @@ export function HomeView({ locale }: { locale: Locale }) {
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
         <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-16">
           <div className="relative aspect-[4/5] overflow-hidden">
-            <Image src={photos.cake.src} alt={photos.cake[locale]} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+            <Image src={photos.pies.src} alt={photos.pies[locale]} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
           </div>
           <div>
             <SectionTitle kicker={h.cafeKicker} title={h.cafeTitle} />
@@ -156,7 +156,7 @@ export function HomeView({ locale }: { locale: Locale }) {
         </div>
         <div className="mt-20 grid items-center gap-10 md:grid-cols-2 lg:mt-28 lg:gap-16">
           <div className="md:order-2 relative aspect-square overflow-hidden">
-            <Image src={photos.shop.src} alt={photos.shop[locale]} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+            <Image src={photos.lamps.src} alt={photos.lamps[locale]} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
           </div>
           <div>
             <SectionTitle kicker={h.shopKicker} title={h.shopTitle} />
@@ -173,7 +173,7 @@ export function HomeView({ locale }: { locale: Locale }) {
         <div className="grid md:grid-cols-2">
           {(
             [
-              { id: "juhlatila", photo: photos.breakfast, ...h.splitEvents },
+              { id: "juhlatila", photo: photos.longTable, ...h.splitEvents },
               { id: "majoitus", photo: photos.pond, ...h.splitStay },
             ] as const
           ).map((p) => (
@@ -194,12 +194,42 @@ export function HomeView({ locale }: { locale: Locale }) {
         </div>
       </section>
 
+      {/* Events: what has happened at the mill in past summers */}
+      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-28">
+        <div>
+          <SectionTitle kicker={h.eventsKicker} title={h.eventsTitle} />
+          <p className="mt-6 text-lg leading-relaxed text-ink/80">{h.eventsText}</p>
+          <ul className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
+            {h.events.map((e, i) => (
+              <li key={e} className="flex gap-4 py-3.5">
+                <span className="font-display text-rust">{String(i + 1).padStart(2, "0")}</span>
+                <span>{e}</span>
+              </li>
+            ))}
+          </ul>
+          <a href={business.facebook} rel="noopener" className="mt-6 inline-flex items-center gap-2 font-semibold text-rust hover:underline">
+            Facebook <ArrowUpRight className="size-4" aria-hidden />
+          </a>
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          <div className="relative col-span-2 aspect-[16/10] overflow-hidden">
+            <Image src={photos.partySet.src} alt={photos.partySet[locale]} fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+          </div>
+          <div className="relative aspect-square overflow-hidden">
+            <Image src={photos.yard.src} alt={photos.yard[locale]} fill sizes="(min-width: 1024px) 22vw, 50vw" className="object-cover" />
+          </div>
+          <div className="relative aspect-square overflow-hidden">
+            <Image src={photos.cabinet.src} alt={photos.cabinet[locale]} fill sizes="(min-width: 1024px) 22vw, 50vw" className="object-cover" />
+          </div>
+        </div>
+      </section>
+
       {/* History */}
       <section className="bg-bran">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-28">
           <div className="relative">
-            <div className="relative aspect-[10/7] overflow-hidden">
-              <Image src={photos.wheel.src} alt={photos.wheel[locale]} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+            <div className="relative aspect-[16/9] overflow-hidden">
+              <Image src={photos.aerial.src} alt={photos.aerial[locale]} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <p className="pointer-events-none absolute -bottom-8 right-2 font-display text-[5.5rem] leading-none text-coal sm:text-[8rem]" aria-hidden>
               {business.founded}
@@ -216,6 +246,16 @@ export function HomeView({ locale }: { locale: Locale }) {
               {h.historyLink} <ArrowUpRight className="size-4" aria-hidden />
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* The mill through the seasons */}
+      <section className="bg-coal py-16 text-flour">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <h2 className="font-display text-3xl sm:text-4xl">{h.seasonsTitle}</h2>
+        </div>
+        <div className="mx-auto mt-8 max-w-7xl">
+          <PhotoStrip photos={[photos.spring, photos.summer, photos.rapidsSummer, photos.yard2, photos.autumn, photos.christmas, photos.winter, photos.skis, photos.window]} locale={locale} />
         </div>
       </section>
 

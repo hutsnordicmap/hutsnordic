@@ -1,4 +1,4 @@
-:HL["/preview/vuorikoskenmylly/_next/static/chunks/0k2vxzng26c8s.css","style"]
+:HL["/preview/vuorikoskenmylly/_next/static/chunks/0z8~u4ke5x6ib.css","style"]
 :HL["/preview/vuorikoskenmylly/_next/static/media/34eaf81c50a1ffa9-s.p.09icp9blz_k.o.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/preview/vuorikoskenmylly/_next/static/media/465dc12ee1f7dd51-s.p.16x4xrr21aztv.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/preview/vuorikoskenmylly/_next/static/media/52b5d5098cb87ddd-s.p.13ehjyjdqyy~v.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
@@ -6,4 +6,4 @@
 :HL["/preview/vuorikoskenmylly/_next/static/media/9e400763522556e5-s.p.16zy668-enz0s.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/preview/vuorikoskenmylly/_next/static/media/c47649aa31f9e140-s.p.11uo_35nso9mn.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/preview/vuorikoskenmylly/vkm-logo.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":0,"slots":{"children":{"name":"(en)","param":null,"prefetchHints":16,"slots":{"children":{"name":"en","param":null,"prefetchHints":0,"slots":{"children":{"name":"stay","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"GvcDGwNhEhaCOthuOONjj"}
+0:{"tree":{"name":"","param":null,"prefetchHints":0,"slots":{"children":{"name":"(en)","param":null,"prefetchHints":16,"slots":{"children":{"name":"en","param":null,"prefetchHints":0,"slots":{"children":{"name":"stay","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"5PN9n4PCyRAzoHLfhaukX"}

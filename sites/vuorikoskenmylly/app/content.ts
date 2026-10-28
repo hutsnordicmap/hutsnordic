@@ -43,7 +43,7 @@ export type Photo = { src: string; fi: string; en: string };
 
 export const photos = {
   porch: { src: photo("mylly-kuisti-galleria.jpg"), fi: "Myllyn kuisti kukkineen ja ovi galleriaan", en: "The mill porch with flowers and the door to the gallery" },
-  cake: { src: photo("kahvila-gluteeniton-kakku.jpg"), fi: "Gluteeniton suklaakakku myllyn kahvilassa", en: "Gluten-free chocolate cake in the mill café" },
+  cake: { src: photo("kahvila-gluteeniton-kakku.jpg"), fi: "Suklaakakku myllyn kahvilassa", en: "Chocolate cake in the mill café" },
   shop: { src: photo("sisustusputiikki.jpg"), fi: "Second hand -sisustusputiikki myllyssä", en: "The second-hand interior shop inside the mill" },
   wheel: { src: photo("myllyn-vesiratas.jpg"), fi: "Myllyn vesiratas ja koski", en: "The mill's water wheel and rapids" },
   rapids: { src: photo("vuorikoski-syksylla.jpg"), fi: "Vuorikoski syksyllä", en: "Vuorikoski rapids in autumn" },
@@ -53,6 +53,41 @@ export const photos = {
   lantern: { src: photo("mokki-lyhdyn-valossa.jpg"), fi: "Mökki lyhdyn valossa", en: "A cabin by lantern light" },
   bed: { src: photo("mokki-sanky.jpg"), fi: "Mutterimökin sänky ja led-lyhty", en: "The Mutteri cabin bed and LED lantern" },
   studio: { src: photo("rantayksio-sisalta.jpg"), fi: "Rantayksiö sisältä", en: "Inside the Beach studio" },
+  // From the mill's Facebook page (owner's permission 2026-10-28), picked and captioned from the post texts.
+  sign: { src: photo("mylly-kyltti-vintage-shop.jpg"), fi: "Vuorikosken Myllyn kyltti pihalla: Vintage Shop to–su 11–17", en: "The Vuorikosken Mylly sign in the yard: Vintage Shop Thu–Sun 11–17" },
+  spring: { src: photo("mylly-kevaalla.jpg"), fi: "Vuorikosken mylly keväällä", en: "Vuorikosken Mylly in spring" },
+  yard: { src: photo("myllyn-piha-kesalla.jpg"), fi: "Myllyn piha ja kukat kesällä", en: "The mill yard and flowers in summer" },
+  summer: { src: photo("kesa-vuorikoskella.jpg"), fi: "Kesä Vuorikoskella: terassi, mylly ja koski", en: "Summer at Vuorikoski: terrace, mill and rapids" },
+  autumn: { src: photo("syksy-vuorikoskella.jpg"), fi: "Syksyinen Vuorikoski", en: "Vuorikoski in autumn" },
+  christmas: { src: photo("joulu-myllyn-ovella.jpg"), fi: "Joulun valot myllyn ovella", en: "Christmas lights at the mill door" },
+  winter: { src: photo("mylly-talvella.jpg"), fi: "Mylly talvella", en: "The mill in winter" },
+  skis: { src: photo("sukset-talvella.jpg"), fi: "Vanhat sukset myllyn seinällä", en: "Old skis against the mill wall" },
+  aerial: { src: photo("vanha-ilmakuva.jpg"), fi: "Vanha ilmakuva Vuorikoskelta", en: "An old aerial photo of Vuorikoski" },
+  window: { src: photo("myllyn-ikkuna.jpg"), fi: "Myllyn ikkuna pihalle", en: "A mill window onto the yard" },
+  rapidsSummer: { src: photo("koski-kesalla.jpg"), fi: "Vuorikoski kesällä (kuva: Satu Posti)", en: "Vuorikoski rapids in summer (photo: Satu Posti)" },
+  yard2: { src: photo("piha-kesalla.jpg"), fi: "Pihapiiri kesällä", en: "The farmyard in summer" },
+  buns: { src: photo("puustit.jpg"), fi: "Päivän tuoreet puustit", en: "Fresh cinnamon buns of the day" },
+  pies: { src: photo("herkkupoyta-piiraat.jpg"), fi: "Gluteeniton herkkupöytä: piiraat ja kakut", en: "The gluten-free spread: pies and cakes" },
+  cakes: { src: photo("kakut.jpg"), fi: "Kakkuja myllyn keittiöstä", en: "Cakes from the mill kitchen" },
+  savoury: { src: photo("suolaiset-piiraat.jpg"), fi: "Suolaisia ja makeita herkkuja", en: "Savoury and sweet bakes" },
+  spread: { src: photo("herkkupoyta.jpg"), fi: "Kahvilan herkkupöytä", en: "The café spread" },
+  shelves: { src: photo("putiikki-hyllyt.jpg"), fi: "Putiikin hyllyt ja artesaaniherkut", en: "Shop shelves and artisan treats" },
+  lamps: { src: photo("putiikki-valaisimet.jpg"), fi: "Valaisimia ja kristallia putiikissa", en: "Lamps and crystal in the shop" },
+  pillow: { src: photo("sammatti-tyyny-ja-tuotteet.jpg"), fi: "Sammatti-tyyny ja putiikin tuotteita", en: "The Sammatti cushion and other shop items" },
+  shopEvening: { src: photo("putiikki-iltavalossa.jpg"), fi: "Putiikki iltavalossa", en: "The shop in the evening light" },
+  homeGoods: { src: photo("kesakodin-tuotteet.jpg"), fi: "Pellavaa, tuoksupusseja ja siivoussuihkeita", en: "Linen, scent sachets and cleaning sprays" },
+  soaps: { src: photo("saippuat.jpg"), fi: "Oliiviöljypohjaiset saippuat Ranskasta", en: "Olive oil soaps from France" },
+  knives: { src: photo("kasintehdyt-puukot.jpg"), fi: "Timo Laurilan käsintehdyt puukot", en: "Handmade knives by Timo Laurila" },
+  jars: { src: photo("artesaaniherkut.jpg"), fi: "Vuorikosken artesaaniherkut", en: "Vuorikoski's artisan treats" },
+  cabinet: { src: photo("antiikkikabinetti-joulu.jpg"), fi: "Joulumallisto myllyn antiikkikabinetissa", en: "The Christmas range in the mill's antique room" },
+  galleryRoom: { src: photo("galleria-nayttely.jpg"), fi: "Näyttely myllyn galleriassa", en: "An exhibition in the mill gallery" },
+  galleryArtist: { src: photo("galleria-tiina-kuusisto.jpg"), fi: "Tiina Kuusiston Väri ja muoto -näyttely", en: "Tiina Kuusisto's Colour and Form exhibition" },
+  oldTools: { src: photo("wanhat-vehkeet.jpg"), fi: "Wanhat vehkeet: entisajan käyttöesineitä galleriassa", en: "Old tools: everyday objects of the past in the gallery" },
+  longTable: { src: photo("juhlatila-pitka-poyta.jpg"), fi: "Juhlatilan pitkä pöytä myllyn alasiivessä", en: "The long table in the mill's lower wing" },
+  partySet: { src: photo("juhlatila-katettu.jpg"), fi: "Juhlatila katettuna juhliin", en: "The event room set for a party" },
+  chandelier: { src: photo("juhlatila-kynttilakruunu.jpg"), fi: "Juhlatila ja kynttiläkruunu", en: "The event room and chandelier" },
+  partyFood: { src: photo("juhlatila-ja-sima.jpg"), fi: "Simaa, piirakkaa ja juhlatila", en: "Mead, pies and the event room" },
+  cabinNight: { src: photo("mokki-kynttilanvalossa.jpg"), fi: "Mökki kynttilänvalossa", en: "A cabin by candlelight" },
 } satisfies Record<string, Photo>;
 
 /* ------------------------------------------------------------------ */
@@ -184,20 +219,20 @@ export const home = {
     wordTitle: "mylly",
     wordClass: "subst.",
     word: [
-      { id: "kahvila", title: "Kahvila", text: "Tuoretta kahvia, teetä ja tilalla leivottuja gluteenittomia makeita ja suolaisia herkkuja. Lemmikit ovat tervetulleita." },
+      { id: "kahvila", title: "Kahvila", text: "Tuoretta kahvia, teetä, gluteeniton herkkupöytä ja päivän puustit. Lemmikit ovat tervetulleita." },
       { id: "putiikki", title: "Sisustusputiikki", text: "Second hand -löytöjä itselle tai lahjaksi, tilan omia artesaaniherkkuja, paikallisten kädentaitajien töitä sekä vintage-vaatteita ja koruja." },
       { id: "galleria", title: "Galleria", text: "Kesäisin neljä erilaista taiteentekijää omissa näyttelyissään myllyn galleriassa." },
       { id: "juhlatila", title: "Juhlatila", text: "Pitkä pöytä kokouksille ja pienille perhejuhlille kesäkauden ajan." },
     ] satisfies { id: PageId; title: string; text: string }[],
     cafeKicker: "Myllyn kahvila",
-    cafeTitle: "Kaikki leivonnaiset gluteenittomia",
+    cafeTitle: "Gluteeniton herkkupöytä ja päivän puustit",
     cafeText:
-      "Kahvilassa on tarjolla tuoretta kahvia, teetä ja tilalla leivottuja gluteenittomia makeita ja suolaisia herkkuja. Kuumana kesäpäivänä viilentävät Vuorikosken oma mango-sitrus-jäätee ja icelatte.",
-    cafePills: ["wheat|Gluteeniton leivonta", "dog|Lemmikit tervetulleita", "cup|Oma jäätee ja icelatte"],
+      "Kahvilassa on tarjolla tuoretta kahvia, teetä ja tilalla leivottuja gluteenittomia makeita ja suolaisia herkkuja. Pikkupöydässä odottavat päivän tuoreet puustit. Kuumana kesäpäivänä viilentävät Vuorikosken oma mango-sitrus-jäätee ja icelatte.",
+    cafePills: ["wheat|Gluteeniton herkkupöytä", "chef|Leivottu tilalla", "dog|Lemmikit tervetulleita", "cup|Oma jäätee ja icelatte"],
     shopKicker: "Sisustusputiikki",
     shopTitle: "Persoonallisia löytöjä järkevään hintaan",
     shopText:
-      "Second hand -sisustusputiikki on täynnä löytöjä itselle tai lahjaksi. Tilan omat artesaaniherkut ja paikallisten kädentaitajien taidonnäytteet täydentävät valikoimaa, ja uutuutena ovat valikoidut vintage-vaatteet ja korut.",
+      "Second hand -sisustusputiikki on täynnä löytöjä itselle tai lahjaksi. Valtaosa tavarasta on poimittu lähialueelta, ja jokainen esine tarkastetaan ja puhdistetaan. Tilan omat artesaaniherkut ja paikallisten kädentaitajien taidonnäytteet täydentävät valikoimaa, ja uutuutena ovat valikoidut vintage-vaatteet ja korut.",
     splitTitle: "Muutakin myllyllä",
     splitEvents: { kicker: "Juhlat ja kokoukset", title: "Pitkän pöydän juhlatila", text: "Kokouksiin ja pieniin perhejuhliin kesäkaudella, 50 € tunnilta." },
     splitStay: { kicker: "Yöksi myllylle", title: "Kaksi pientä mökkiä lammen rannalla", text: "Sähköttömät kesämökit, rantasauna ja lautasaamiainen kahvilassa." },
@@ -205,9 +240,21 @@ export const home = {
     historyTitle: "Mylly jauhoi, sahasi ja teki sähköä",
     historyText: [
       "Sammatin maalaisidylliin vuonna 1893 rakennettu mylly jauhoi osuuskuntalaisten viljat, sahasi puutavarat ja tuotti vielä sähköäkin kyläläisten tarpeisiin. Sittemmin yksityisomistukseen siirtynyt tila sai nimekseen Vuorikoski silloisen omistajansa mukaan.",
-      "Tänä päivänä tilalla asuu visuaalisilla aloilla toimiva yrittäjäpariskunta. Alkuperäiseen asuunsa palautettu mylly on avoinna kesäkaudella ja joulun alla adventtiviikonloppuina. Vuonna 2023 myllyn rakentamisesta tuli kuluneeksi 130 vuotta.",
+      "Tänä päivänä tilalla asuu visuaalisilla aloilla toimiva yrittäjäpariskunta. Alkuperäiseen asuunsa palautettu mylly on avoinna kesäkaudella ja joulun alla adventtiviikonloppuina. Vuonna 2023 myllyn rakentamisesta tuli kuluneeksi 130 vuotta, ja kesällä 2026 viisi vuotta siitä, kun kyltti kannettiin tienvarteen ja Vuorikosken nykyinen tarina alkoi.",
     ],
     historyLink: "Lisää Sammatin ja Myllykylän myllyjen historiasta (Kansalliskirjasto)",
+    eventsKicker: "Tapahtumat",
+    eventsTitle: "Kesä täynnä pientä ohjelmaa",
+    eventsText: "Myllyllä on tapahtunut kesäisin kaikenlaista. Seuraavat tapahtumat ilmoitetaan tällä sivulla ja Facebookissa.",
+    events: [
+      "Sunnuntaisoitot pihalla, vapaa pääsy",
+      "Pihakirppikset, joihin voi ilmoittautua myyjäksi",
+      "Christmas in July: joulumallisto ennakkomyynnissä antiikkikabinetissa",
+      "Sima- ja munkkiralli vappuna",
+      "Moonlighters Barbershop Quartetin ilmaiskonsertti",
+      "Löytölän pöytä: aarteita eurolla kappale",
+    ],
+    seasonsTitle: "Mylly vuoden ympäri",
     visitTitle: "Tule käymään",
     ctaTitle: "Nähdään myllyllä",
     ctaText: "Kysy juhlatilasta, majoituksesta tai näyttelypaikasta puhelimella tai WhatsAppilla.",
@@ -222,20 +269,20 @@ export const home = {
     wordTitle: "mylly",
     wordClass: "noun, Finnish for mill",
     word: [
-      { id: "kahvila", title: "Café", text: "Fresh coffee, tea and gluten-free sweet and savoury bakes made on the farm. Pets are welcome." },
+      { id: "kahvila", title: "Café", text: "Fresh coffee, tea, a gluten-free spread of bakes and the day's cinnamon buns. Pets are welcome." },
       { id: "putiikki", title: "Interior shop", text: "Second-hand finds for yourself or as gifts, the farm's own artisan treats, local crafts, and vintage clothing and jewellery." },
       { id: "galleria", title: "Gallery", text: "Every summer, four different artists show their work in the mill gallery." },
       { id: "juhlatila", title: "Event room", text: "A long table for meetings and small family parties in the summer season." },
     ] satisfies { id: PageId; title: string; text: string }[],
     cafeKicker: "The mill café",
-    cafeTitle: "Every bake is gluten-free",
+    cafeTitle: "A gluten-free spread and fresh cinnamon buns",
     cafeText:
-      "The café serves fresh coffee, tea and gluten-free sweet and savoury bakes made on the farm. On hot summer days, Vuorikoski's own mango-citrus iced tea and iced latte cool you down.",
-    cafePills: ["wheat|Gluten-free baking", "dog|Pets welcome", "cup|Own iced tea and iced latte"],
+      "The café serves fresh coffee, tea and gluten-free sweet and savoury bakes made on the farm. A small side table holds the day's fresh cinnamon buns. On hot summer days, Vuorikoski's own mango-citrus iced tea and iced latte cool you down.",
+    cafePills: ["wheat|Gluten-free spread", "chef|Baked on the farm", "dog|Pets welcome", "cup|Own iced tea and iced latte"],
     shopKicker: "Interior shop",
     shopTitle: "One-of-a-kind finds at fair prices",
     shopText:
-      "The second-hand interior shop is full of finds for yourself or as gifts. The farm's own artisan treats and work by local craftspeople complete the range, and new in the shop are selected vintage clothes and jewellery.",
+      "The second-hand interior shop is full of finds for yourself or as gifts. Most pieces are found locally, and every one is checked and cleaned. The farm's own artisan treats and work by local craftspeople complete the range, and new in the shop are selected vintage clothes and jewellery.",
     splitTitle: "More at the mill",
     splitEvents: { kicker: "Parties and meetings", title: "The long-table event room", text: "For meetings and small family parties in the summer season, €50 per hour." },
     splitStay: { kicker: "Stay the night", title: "Two small cabins by the pond", text: "Off-grid summer cabins, a shore sauna and plated breakfast in the café." },
@@ -243,9 +290,21 @@ export const home = {
     historyTitle: "The mill ground grain, sawed timber and made electricity",
     historyText: [
       "Built in 1893 in the Sammatti countryside, the mill ground grain for the cooperative's members, sawed timber and even produced electricity for the village. The farm later passed into private hands and took the name Vuorikoski after its owner at the time.",
-      "Today the farm is home to an entrepreneur couple working in visual fields. Restored to its original look, the mill is open in the summer season and on Advent weekends before Christmas. In 2023 the mill turned 130.",
+      "Today the farm is home to an entrepreneur couple working in visual fields. Restored to its original look, the mill is open in the summer season and on Advent weekends before Christmas. In 2023 the mill turned 130, and summer 2026 marked five years since the sign went up by the road and today's Vuorikoski began.",
     ],
     historyLink: "More on the history of Sammatti and the Myllykylä mills (National Library, in Finnish)",
+    eventsKicker: "Events",
+    eventsTitle: "Summers full of small happenings",
+    eventsText: "The mill has hosted all sorts of things over the summers. Upcoming events are posted on this page and on Facebook.",
+    events: [
+      "Sunday music in the yard, free entry",
+      "Yard flea markets, open to sellers",
+      "Christmas in July: the Christmas range on early sale in the antique room",
+      "Mead and doughnut day on May Day",
+      "A free concert by the Moonlighters Barbershop Quartet",
+      "The Löytölä table: treasures at one euro each",
+    ],
+    seasonsTitle: "The mill through the year",
     visitTitle: "Visit",
     ctaTitle: "See you at the mill",
     ctaText: "Ask about the event room, the cabins or an exhibition slot by phone or WhatsApp.",
@@ -254,7 +313,7 @@ export const home = {
 
 export const homeFaq: Record<Locale, { q: string; a: string }[]> = {
   fi: [
-    { q: "Ovatko kahvilan leivonnaiset gluteenittomia?", a: "Kyllä. Kaikki tilalla leivotut makeat ja suolaiset herkut ovat gluteenittomia." },
+    { q: "Onko kahvilassa gluteenitonta?", a: "On. Herkkupöydän makeat ja suolaiset herkut ovat gluteenittomia ja tilalla leivottuja. Erillisessä pikkupöydässä on lisäksi päivän tuoreita vehnäisiä puusteja." },
     { q: "Saako koiran tuoda kahvilaan?", a: "Saa. Lemmikit ovat tervetulleita kahvilaan. Terassilla on raikasta juomavettä, ja puristekalkkuna-namit tarjoillaan kassalta." },
     { q: "Milloin Vuorikosken Mylly on auki?", a: "Kesäkaudella sekä joulun alla adventtiviikonloppuina. Ajantasaiset aukiolopäivät ovat tämän sivun ylälaidassa ja Aukiolo ja yhteys -sivulla." },
     { q: "Missä mylly on?", a: "Osoitteessa Tavolantie 18, 09220 Sammatti. Sammatti kuuluu Lohjan kaupunkiin Länsi-Uudellamaalla." },
@@ -262,7 +321,7 @@ export const homeFaq: Record<Locale, { q: string; a: string }[]> = {
     { q: "Voiko myllyllä yöpyä?", a: "Voi. Myllylammen rannalla on kaksi pientä sähkötöntä kesämökkiä 1–2 hengelle, ja lisäksi voi varata rantasaunan ja aamiaisen. Kysy vapaita päiviä puhelimella tai WhatsAppilla." },
   ],
   en: [
-    { q: "Are the café's bakes gluten-free?", a: "Yes. All the sweet and savoury bakes made on the farm are gluten-free." },
+    { q: "Is there gluten-free food in the café?", a: "Yes. The sweet and savoury bakes on the main spread are gluten-free and made on the farm. A separate small table also has the day's fresh wheat cinnamon buns." },
     { q: "Can I bring my dog to the café?", a: "Yes. Pets are welcome in the café. There is fresh drinking water on the terrace and pressed turkey treats at the counter." },
     { q: "When is Vuorikosken Mylly open?", a: "In the summer season and on Advent weekends before Christmas. Current opening days are at the top of this page and on the Hours & contact page." },
     { q: "Where is the mill?", a: "At Tavolantie 18, 09220 Sammatti. Sammatti is part of the town of Lohja in West Uusimaa, Finland." },
@@ -299,17 +358,18 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
     fi: {
       title: "Gluteeniton kahvila Sammatissa, Lohja | Vuorikosken Myllyn kahvila",
       description:
-        "Kesäkahvila vanhassa myllyssä Sammatissa, Lohjalla. Kaikki leivonnaiset gluteenittomia ja tilalla leivottuja. Oma mango-sitrus-jäätee, icelatte, koiraystävällinen terassi.",
+        "Kesäkahvila vanhassa myllyssä Sammatissa, Lohjalla. Gluteeniton herkkupöytä tilalla leivottuine makeine ja suolaisine herkkuineen, päivän tuoreet puustit, oma mango-sitrus-jäätee ja koiraystävällinen terassi.",
       kicker: "Myllyn kahvila · Sammatti",
       h1: "Gluteeniton kahvila vanhassa myllyssä",
       lead: "Tuoretta kahvia, teetä ja tilalla leivottuja gluteenittomia makeita ja suolaisia herkkuja perinteisessä myllymiljöössä.",
-      hero: photos.cake,
-      facts: ["wheat|Kaikki leivonnaiset gluteenittomia", "chef|Leivottu tilalla", "cup|Oma mango-sitrus-jäätee ja icelatte", "dog|Lemmikit tervetulleita"],
+      hero: photos.pies,
+      facts: ["wheat|Gluteeniton herkkupöytä", "chef|Leivottu tilalla", "cup|Oma mango-sitrus-jäätee ja icelatte", "dog|Lemmikit tervetulleita"],
       sections: [
         {
           title: "Tilalla leivottua, gluteenitonta",
           text: [
-            "Myllyn kahvilassa kaikki makeat ja suolaiset herkut leivotaan tilalla, ja ne ovat gluteenittomia. Keliaakikon ei tarvitse kysellä erikseen, mitä vitriinistä voi ottaa.",
+            "Myllyn kahvilan herkkupöydän makeat ja suolaiset herkut leivotaan tilalla, ja ne ovat gluteenittomia: piiraita, kakkuja ja suolaista sen seitsemää sorttia. Keliaakikko voi valita herkkupöydästä huoletta.",
+            "Erillisessä pikkupöydässä ovat päivän tuoreet vehnäiset puustit, jotka voi nauttia paikan päällä tai napata mukaan.",
             "Kuumana kesäpäivänä viilentävät Vuorikosken oma mango-sitrus-jäätee ja icelatte.",
           ],
         },
@@ -322,42 +382,43 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
           text: ["Myllyn majoituksessa yöpyvät voivat tilata lautasaamiaisen, joka tarjoillaan kahvilassa sovittuna aikana ja räätälöidään jokaisen ruokavalioon sopivaksi."],
         },
       ],
-      photos: [photos.cake, photos.breakfast, photos.porch, photos.shop],
+      photos: [photos.pies, photos.buns, photos.cakes, photos.savoury, photos.spread, photos.cake, photos.breakfast, photos.summer],
       faq: [
-        { q: "Onko kaikki gluteenitonta?", a: "Kaikki tilalla leivotut makeat ja suolaiset herkut ovat gluteenittomia." },
+        { q: "Onko kaikki gluteenitonta?", a: "Herkkupöydän makeat ja suolaiset herkut ovat gluteenittomia. Päivän puustit ovat vehnäisiä, ja ne ovat erillisessä pikkupöydässä." },
         { q: "Saako koiran tuoda sisälle?", a: "Lemmikit ovat tervetulleita kahvilaan. Terassilla on vettä ja kassalta saa puristekalkkuna-namin." },
         { q: "Milloin kahvila on auki?", a: "Kesäkaudella ja joulun alla adventtiviikonloppuina. Katso ajantasaiset päivät sivun ylälaidasta." },
       ],
-      ask: ["Kesän 2027 aukioloajat", "Esimerkkejä kahvilan tuotteista ja hinnoista (esim. 5–8 herkkua)", "Onko myös maidottomia tai vegaanisia vaihtoehtoja?", "Maksutavat kahvilassa", "Lisää kuvia kahvilasta ja terassilta"],
+      ask: ["Kesän 2027 aukioloajat", "Otatteko kakkutilauksia? (Facebookissa mainittiin lauantain kakkutilaus)", "Esimerkkejä kahvilan tuotteista ja hinnoista (esim. 5–8 herkkua)", "Onko myös maidottomia tai vegaanisia vaihtoehtoja?", "Maksutavat kahvilassa", "Lisää kuvia kahvilasta ja terassilta"],
       cta: "Tule kahville myllylle",
     },
     en: {
       title: "Gluten-free café in Sammatti, Lohja | Vuorikosken Mylly café",
       description:
-        "A summer café in an old water mill in Sammatti, Lohja, Finland. Every bake is gluten-free and made on the farm. Own mango-citrus iced tea, iced latte and a dog-friendly terrace.",
+        "A summer café in an old water mill in Sammatti, Lohja, Finland. A gluten-free spread of sweet and savoury bakes made on the farm, fresh cinnamon buns, own mango-citrus iced tea and a dog-friendly terrace.",
       kicker: "The mill café · Sammatti",
       h1: "A gluten-free café in an old water mill",
       lead: "Fresh coffee, tea and gluten-free sweet and savoury bakes made on the farm, in a traditional mill setting.",
-      hero: photos.cake,
-      facts: ["wheat|Every bake gluten-free", "chef|Baked on the farm", "cup|Own mango-citrus iced tea and iced latte", "dog|Pets welcome"],
+      hero: photos.pies,
+      facts: ["wheat|Gluten-free spread", "chef|Baked on the farm", "cup|Own mango-citrus iced tea and iced latte", "dog|Pets welcome"],
       sections: [
         {
           title: "Baked on the farm, gluten-free",
           text: [
-            "Every sweet and savoury bake in the mill café is made on the farm, and all of them are gluten-free. If you are coeliac, you do not need to ask what you can have.",
+            "The sweet and savoury bakes on the café's main spread are made on the farm and are gluten-free: pies, cakes and savoury bakes of every kind. If you are coeliac, you can choose freely from the spread.",
+            "A separate small table holds the day's fresh wheat cinnamon buns, to enjoy on the spot or take away.",
             "On hot summer days, Vuorikoski's own mango-citrus iced tea and iced latte cool you down.",
           ],
         },
         { title: "Bring the dog", text: ["Pets are welcome in the café too. There is fresh drinking water on the terrace, and pressed turkey treats are handed out at the counter."] },
         { title: "Breakfast for overnight guests", text: ["Guests staying in the mill cabins can order a plated breakfast, served in the café at an agreed time and tailored to each guest's diet."] },
       ],
-      photos: [photos.cake, photos.breakfast, photos.porch, photos.shop],
+      photos: [photos.pies, photos.buns, photos.cakes, photos.savoury, photos.spread, photos.cake, photos.breakfast, photos.summer],
       faq: [
-        { q: "Is everything gluten-free?", a: "All the sweet and savoury bakes made on the farm are gluten-free." },
+        { q: "Is everything gluten-free?", a: "The sweet and savoury bakes on the main spread are gluten-free. The day's cinnamon buns are made with wheat and sit on a separate small table." },
         { q: "Can I bring my dog inside?", a: "Pets are welcome in the café. There is water on the terrace and a turkey treat at the counter." },
         { q: "When is the café open?", a: "In the summer season and on Advent weekends before Christmas. See the current days at the top of the page." },
       ],
-      ask: ["Summer 2027 opening hours", "A few café items and prices", "Dairy-free or vegan options?", "Payment methods in the café", "More photos of the café and terrace"],
+      ask: ["Summer 2027 opening hours", "Do you take cake orders?", "A few café items and prices", "Dairy-free or vegan options?", "Payment methods in the café", "More photos of the café and terrace"],
       cta: "Come for coffee at the mill",
     },
   },
@@ -369,19 +430,26 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       kicker: "Sisustusputiikki · Sammatti",
       h1: "Vintage- ja sisustusputiikki myllyssä",
       lead: "Second hand -sisustusputiikki täynnä persoonallisia löytöjä itselle tai lahjaksi. Kaikki saman katon alta järkevään hintaan.",
-      hero: photos.shop,
+      hero: photos.lamps,
       facts: ["lamp|Second hand -sisustus", "shirt|Vintage-vaatteet ja korut", "jar|Tilan omat artesaaniherkut", "hand|Paikallisten kädentaitajien työt"],
       sections: [
         {
           title: "Löytöjä itselle tai lahjaksi",
           text: [
-            "Myllyn sisustusputiikki on täynnä persoonallisia second hand -löytöjä. Tilan omat artesaaniherkut ja paikallisten kädentaitajien taidonnäytteet täydentävät valikoiman.",
-            "Uutuutena putiikissa ovat valikoidut vintage-vaatteet ja korut.",
+            "Myllyn sisustusputiikki on täynnä persoonallisia second hand -löytöjä. Valtaosa tuotteista on poimittu lähialueelta. Jokainen esine käy läpi kuntotarkastuksen ja perusteellisen puhdistuksen, ja osa saa kokonaan uuden ilmeen tai käyttötarkoituksen.",
+            "Suositut pitsivalaisimet on päivitetty led-tekniikkaan, ja niiden persoonalliset varjostimet on muokattu Vuorikosken omassa pajassa. Uutuutena putiikissa ovat valikoidut vintage-vaatteet ja korut.",
           ],
         },
-        { id: "joulupuoti", title: "Joulupuoti adventtiviikonloppuina", text: ["Joulun alla mylly avautuu joulupuodiksi adventtiviikonloppuina. Ajantasaiset päivät ja kellonajat ovat sivun ylälaidassa."] },
+        {
+          title: "Pientä kotiin ja lahjaksi",
+          text: [
+            "Second hand -löytöjen rinnalla on tilan omia artesaaniherkkuja ja paikallisten kädentaitajien töitä, kuten Timo Laurilan käsintehtyjä puukkoja. Hyllyistä löytyy myös esimerkiksi rouheita pellavaisia Sammatti-tyynyjä, luomulaventeli-tuoksupusseja, raparperin tuoksuisia siivoussuihkeita ja ranskalaisia oliiviöljypohjaisia saippuoita.",
+            "Löytölän pöydässä aarteita on ollut tarjolla eurolla kappale.",
+          ],
+        },
+        { id: "joulupuoti", title: "Joulupuoti adventtiviikonloppuina", text: ["Joulun alla mylly avautuu joulupuodiksi adventtiviikonloppuina. Ajantasaiset päivät ja kellonajat ovat sivun ylälaidassa.", "Heinäkuussa Christmas in July -tapahtumassa koko joulumallisto on ollut ennakkomyynnissä myllyn antiikkikabinetissa."] },
       ],
-      photos: [photos.shop, photos.porch, photos.wheel, photos.cake],
+      photos: [photos.lamps, photos.shelves, photos.pillow, photos.shopEvening, photos.homeGoods, photos.knives, photos.jars, photos.soaps, photos.cabinet, photos.shop],
       faq: [
         { q: "Mitä putiikista löytyy?", a: "Second hand -sisustustavaraa, valikoituja vintage-vaatteita ja koruja, tilan omia artesaaniherkkuja ja paikallisten kädentaitajien töitä." },
         { q: "Onko putiikki auki jouluna?", a: "Joulupuoti on avoinna adventtiviikonloppuina. Katso päivät sivun ylälaidasta." },
@@ -396,19 +464,26 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       kicker: "Interior shop · Sammatti",
       h1: "A vintage and interior shop in the mill",
       lead: "A second-hand interior shop full of one-of-a-kind finds for yourself or as gifts. All under one roof at fair prices.",
-      hero: photos.shop,
+      hero: photos.lamps,
       facts: ["lamp|Second-hand interiors", "shirt|Vintage clothing and jewellery", "jar|The farm's own artisan treats", "hand|Local crafts"],
       sections: [
         {
           title: "Finds for yourself or as gifts",
           text: [
-            "The mill's interior shop is full of one-of-a-kind second-hand finds. The farm's own artisan treats and work by local craftspeople complete the range.",
-            "New in the shop: selected vintage clothes and jewellery.",
+            "The mill's interior shop is full of one-of-a-kind second-hand finds. Most pieces are found locally. Every item is checked and thoroughly cleaned, and some get a whole new look or use.",
+            "The popular lace lamps are updated to LED, with their shades reworked in Vuorikoski's own workshop. New in the shop: selected vintage clothes and jewellery.",
           ],
         },
-        { id: "joulupuoti", title: "Christmas shop on Advent weekends", text: ["Before Christmas the mill opens as a Christmas shop on Advent weekends. Current days and times are at the top of the page."] },
+        {
+          title: "Small things for home and gifts",
+          text: [
+            "Alongside the second-hand finds are the farm's own artisan treats and local crafts, such as handmade knives by Timo Laurila. The shelves also hold things like rough linen Sammatti cushions, organic lavender sachets, rhubarb-scented cleaning sprays and French olive oil soaps.",
+            "The Löytölä table has offered treasures at one euro each.",
+          ],
+        },
+        { id: "joulupuoti", title: "Christmas shop on Advent weekends", text: ["Before Christmas the mill opens as a Christmas shop on Advent weekends. Current days and times are at the top of the page.", "In July, at the Christmas in July event, the whole Christmas range has been on early sale in the mill's antique room."] },
       ],
-      photos: [photos.shop, photos.porch, photos.wheel, photos.cake],
+      photos: [photos.lamps, photos.shelves, photos.pillow, photos.shopEvening, photos.homeGoods, photos.knives, photos.jars, photos.soaps, photos.cabinet, photos.shop],
       faq: [
         { q: "What does the shop sell?", a: "Second-hand interior pieces, selected vintage clothing and jewellery, the farm's own artisan treats and local crafts." },
         { q: "Is the shop open at Christmas?", a: "The Christmas shop is open on Advent weekends. See the days at the top of the page." },
@@ -425,10 +500,17 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       kicker: "Galleria · Sammatti",
       h1: "Kesän taidenäyttelyt myllyn galleriassa",
       lead: "Joka kesä myllyn galleriassa esittäytyy neljä erilaista taiteentekijää. Galleriakesä 2026 on päättynyt, ja kesän 2027 näyttelyjaksot ovat nyt haettavana.",
-      hero: photos.porch,
+      hero: photos.galleryRoom,
       facts: ["frame|Neljä näyttelyä kesässä", "calendar|10 päivän näyttelyjaksot", "euro|Tilavuokra 100 €", "percent|Myyntiprovisio 25 %"],
       sections: [
         { title: "Galleriakesä", text: ["Galleriakesä 2026 on päättynyt. Ensi vuonna esittelemme jälleen neljä erilaista taiteentekijää."] },
+        {
+          id: "naeyttelyt",
+          title: "Galleriassa ovat näyttäneet muun muassa",
+          text: [
+            "Tiina Kuusisto (Väri ja muoto), Nina Haatio (grafiikka), Franco Figari (Valkjärvi, valokuvia), Leo Vuorinen (Katse metsästä, valokuvia) ja Sirkku Salo. Wanhat vehkeet -näyttelyssä esillä oli entisajan käyttöesineitä puusepänverstaasta keittiötöihin ja metsätöistä kelkkamäkeen, osa myytävänä.",
+          ],
+        },
         {
           id: "taiteilijoille",
           title: "Taiteilijoille: hae näyttelypaikkaa kesälle 2027",
@@ -451,13 +533,13 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         ],
         note: "Varausmaksu on sitova, eikä sitä palauteta, vaikka näyttely ei toteutuisi meistä riippumattomista syistä. Tilitykset myynneistä näyttelyjakson päätyttyä tilisiirtona tai käteisellä. Maksu kortilla tai käteisellä.",
       },
-      photos: [photos.porch, photos.wheel, photos.shop],
+      photos: [photos.galleryRoom, photos.galleryArtist, photos.oldTools, photos.porch],
       faq: [
         { q: "Miten näyttelypaikkaa haetaan?", a: "Vapaamuotoisella viestillä ja muutamalla havainnekuvalla sähköpostiin antti.jakola@hotmail.com tai WhatsAppiin 044 016 5047." },
         { q: "Paljonko näyttely maksaa?", a: "Tilavuokra on 100 € kymmeneltä näyttelypäivältä ja myyntiprovisio 25 %." },
         { q: "Pitääkö taiteilijan olla paikalla?", a: "Ei ole pakko, mutta paikalla olo osan näyttelypäivistä on suotavaa." },
       ],
-      ask: ["Kesän 2026 taiteilijat ja kuva jokaisen näyttelystä (arkisto)", "Kesän 2027 näyttelijät, kun ne ovat selvillä", "Kuvia galleriatilasta sisältä", "Hakuaika kesälle 2027 (päättymispäivä)", "Järjestetäänkö kursseja, esim. keramiikkaa?"],
+      ask: ["Vuodet aiemmille näyttelyille ja lupa mainita taiteilijat nimeltä", "Kesän 2026 taiteilijat ja kuva jokaisen näyttelystä (arkisto)", "Kesän 2027 näyttelijät, kun ne ovat selvillä", "Kuvia galleriatilasta sisältä", "Hakuaika kesälle 2027 (päättymispäivä)", "Järjestetäänkö kursseja, esim. keramiikkaa?"],
       cta: "Hae näyttelypaikkaa",
     },
     en: {
@@ -467,10 +549,17 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       kicker: "Gallery · Sammatti",
       h1: "Summer art exhibitions in the mill gallery",
       lead: "Every summer, four different artists show their work in the mill gallery. The 2026 gallery summer is over, and slots for summer 2027 are open for applications.",
-      hero: photos.porch,
+      hero: photos.galleryRoom,
       facts: ["frame|Four shows a summer", "calendar|10-day exhibition periods", "euro|Room hire €100", "percent|25% sales commission"],
       sections: [
         { title: "Gallery summer", text: ["The 2026 gallery summer is over. Next year we will again present four different artists."] },
+        {
+          id: "naeyttelyt",
+          title: "Past exhibitions include",
+          text: [
+            "Tiina Kuusisto (Colour and Form), Nina Haatio (prints), Franco Figari (Valkjärvi, photographs), Leo Vuorinen (A Gaze from the Forest, photographs) and Sirkku Salo. The Old Tools show displayed everyday objects of the past, from the joiner's workshop and the kitchen to forestry and the sledging hill, some of them for sale.",
+          ],
+        },
         {
           id: "taiteilijoille",
           title: "For artists: apply for summer 2027",
@@ -493,7 +582,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         ],
         note: "The deposit is binding and is not refunded if the show does not go ahead for reasons outside our control. Sales are settled after the show by bank transfer or cash. Payment by card or cash.",
       },
-      photos: [photos.porch, photos.wheel, photos.shop],
+      photos: [photos.galleryRoom, photos.galleryArtist, photos.oldTools, photos.porch],
       faq: [
         { q: "How do I apply?", a: "Send a free-form message with a few sample images to antti.jakola@hotmail.com or WhatsApp +358 44 016 5047." },
         { q: "What does a show cost?", a: "Room hire is €100 for ten exhibition days, and the sales commission is 25%." },
@@ -510,18 +599,18 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         "Vuokraa vanhan myllyn juhlatila Sammatista, Lohjalta: pitkä pöytä kokouksiin ja pieniin perhejuhliin kesäkaudella, 50 €/h. Omat tarjoilut, pitopalvelu tai myllyn kahvilan herkut.",
       kicker: "Juhlatila · Sammatti",
       h1: "Pieni juhla- ja kokoustila vanhassa myllyssä",
-      lead: "Juhlatilan pitkä pöytä istuttaa kokoustajat ja pienet perhejuhlat kesäkauden ajan.",
-      hero: photos.breakfast,
+      lead: "Myllyn alasiiven juhlatilan pitkä pöytä istuttaa kokoustajat ja pienet perhejuhlat kesäkauden ajan.",
+      hero: photos.longTable,
       facts: ["table|Pitkä pöytä", "euro|50 € / tunti", "sun|Kesäkaudella", "cup|Kahvikupit ja lautaset 32 hengelle"],
       sections: [
         {
           title: "Tarjoilut niin kuin haluat",
           text: [
-            "Astiat, syötävät ja juotavat voi tuoda itse, käyttää ulkopuolista pitopalvelua tai hyödyntää myllyn kahvilan monipuolista tarjontaa. Kaikki kahvilan leivonnaiset ovat gluteenittomia, joten kaikki vieraat voivat syödä samaa.",
+            "Astiat, syötävät ja juotavat voi tuoda itse, käyttää ulkopuolista pitopalvelua tai hyödyntää myllyn kahvilan monipuolista tarjontaa. Kahvilan herkkupöydän leivonnaiset ovat gluteenittomia.",
             "Kahvikupit, leipälautaset ja lusikat 32 hengelle voi vuokrata meiltä edullisesti.",
           ],
         },
-        { title: "Kokouksiin ja perhejuhliin", text: ["Tila sopii kokouksiin, syntymäpäiville, muistotilaisuuksiin ja muihin pieniin perhejuhliin. Kysy vapaita päiviä puhelimella tai WhatsAppilla."] },
+        { title: "Kokouksiin ja perhejuhliin", text: ["Tila sopii kokouksiin, syntymäpäiville ja muihin pieniin perhejuhliin. Juhlatilassa on vietetty esimerkiksi kaksien 80-vuotisjuhlien yhteiset kestit. Kysy vapaita päiviä puhelimella tai WhatsAppilla."] },
       ],
       prices: {
         title: "Hinnat",
@@ -530,7 +619,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
           { item: "Kahvikupit, leipälautaset ja lusikat (32 hlö)", price: "Kysy" },
         ],
       },
-      photos: [photos.breakfast, photos.porch, photos.cake],
+      photos: [photos.longTable, photos.partySet, photos.chandelier, photos.partyFood, photos.breakfast],
       faq: [
         { q: "Paljonko juhlatila maksaa?", a: "50 € tunnilta kesäkaudella." },
         { q: "Saako omat tarjoilut tuoda?", a: "Saa. Voit tuoda omat astiat ja tarjoilut, käyttää pitopalvelua tai tilata herkut myllyn kahvilasta." },
@@ -544,18 +633,18 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         "Hire the event room in an old water mill in Sammatti, Lohja, Finland: a long table for meetings and small family parties in the summer season, €50 per hour. Bring your own food, use a caterer or order from the mill café.",
       kicker: "Event room · Sammatti",
       h1: "A small party and meeting room in an old mill",
-      lead: "The long table in the event room seats meetings and small family parties in the summer season.",
-      hero: photos.breakfast,
+      lead: "The long table in the event room, in the mill's lower wing, seats meetings and small family parties in the summer season.",
+      hero: photos.longTable,
       facts: ["table|One long table", "euro|€50 per hour", "sun|Summer season", "cup|Cups and plates for 32"],
       sections: [
         {
           title: "Catering your way",
           text: [
-            "Bring your own tableware, food and drinks, use an outside caterer, or order from the mill café. Every bake in the café is gluten-free, so all guests can eat the same.",
+            "Bring your own tableware, food and drinks, use an outside caterer, or order from the mill café. The bakes on the café's main spread are gluten-free.",
             "Coffee cups, side plates and spoons for 32 people can be hired from us at a small cost.",
           ],
         },
-        { title: "Meetings and family occasions", text: ["The room suits meetings, birthdays, memorials and other small family occasions. Ask for free dates by phone or WhatsApp."] },
+        { title: "Meetings and family occasions", text: ["The room suits meetings, birthdays and other small family occasions. It has hosted, for example, a joint party for two 80th birthdays. Ask for free dates by phone or WhatsApp."] },
       ],
       prices: {
         title: "Prices",
@@ -564,7 +653,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
           { item: "Coffee cups, side plates and spoons (32 people)", price: "Ask" },
         ],
       },
-      photos: [photos.breakfast, photos.porch, photos.cake],
+      photos: [photos.longTable, photos.partySet, photos.chandelier, photos.partyFood, photos.breakfast],
       faq: [
         { q: "What does the room cost?", a: "€50 per hour in the summer season." },
         { q: "Can I bring my own food?", a: "Yes. Bring your own, use a caterer or order bakes from the mill café." },
@@ -639,7 +728,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         ],
         note: "Tiedustelut ja varaukset puhelimella tai WhatsAppilla 044 016 5047.",
       },
-      photos: [photos.nutHut, photos.bed, photos.lantern, photos.studio, photos.pond, photos.breakfast],
+      photos: [photos.nutHut, photos.bed, photos.cabinNight, photos.lantern, photos.studio, photos.pond, photos.breakfast, photos.rapidsSummer],
       faq: [
         { q: "Onko mökeissä sähköä?", a: "Ei. Mökit ovat sähköttömiä ja kesälämpimiä. Alueella voi ladata puhelimen ja käytössä on wc." },
         { q: "Mitä majoitus maksaa?", a: "59 € yöltä 1–2 hengelle liinavaatteineen. Lisäpatja 15 €, aamiainen 10 € / hlö ja sauna 7 € / hlö." },
@@ -699,7 +788,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         ],
         note: "Enquiries and bookings by phone or WhatsApp +358 44 016 5047.",
       },
-      photos: [photos.nutHut, photos.bed, photos.lantern, photos.studio, photos.pond, photos.breakfast],
+      photos: [photos.nutHut, photos.bed, photos.cabinNight, photos.lantern, photos.studio, photos.pond, photos.breakfast, photos.rapidsSummer],
       faq: [
         { q: "Do the cabins have electricity?", a: "No. They are off-grid summer cabins. You can charge your phone on site and there is a toilet." },
         { q: "What does a night cost?", a: "€59 a night for 1–2 people with bed linen. Extra mattress €15, breakfast €10 per person and sauna €7 per person." },
@@ -716,19 +805,19 @@ export const contactPage = {
     title: "Aukioloajat ja yhteystiedot | Vuorikosken Mylly, Sammatti, Lohja",
     description: "Vuorikosken Myllyn aukioloajat, osoite (Tavolantie 18, 09220 Sammatti), puhelin, WhatsApp, ajo-ohjeet ja bussiyhteys Lohjalta.",
     h1: "Aukiolo ja yhteystiedot",
-    lead: "Mylly on avoinna kesäkaudella ja joulun alla adventtiviikonloppuina.",
-    ask: ["Y-tunnus ja yrityksen virallinen nimi", "Kesän 2027 aukioloajat", "Pysäköinti: missä autot seisovat?", "Esteettömyys: pääseekö pyörätuolilla kahvilaan ja wc:hen?"],
+    lead: "Mylly on avoinna kesäkaudella ja joulun alla adventtiviikonloppuina. Pihan kyltissä kesän aukioloksi kerrotaan to–su klo 11–17. Pihassa on parkkipaikka.",
+    ask: ["Y-tunnus ja yrityksen virallinen nimi", "Kesän 2027 aukioloajat (pitääkö kyltin to–su 11–17 yhä paikkansa?) ja milloin kevätkausi alkaa (aiemmin pääsiäisenä)", "Esteettömyys: pääseekö pyörätuolilla kahvilaan ja wc:hen?"],
   },
   en: {
     title: "Opening hours and contact | Vuorikosken Mylly, Sammatti, Lohja",
     description: "Vuorikosken Mylly opening hours, address (Tavolantie 18, 09220 Sammatti, Finland), phone, WhatsApp, directions and the bus from Lohja.",
     h1: "Hours and contact",
-    lead: "The mill is open in the summer season and on Advent weekends before Christmas.",
-    ask: ["Business ID and official company name", "Summer 2027 opening hours", "Parking: where do cars go?", "Accessibility: wheelchair access to the café and toilet?"],
+    lead: "The mill is open in the summer season and on Advent weekends before Christmas. The sign in the yard gives summer hours as Thu–Sun 11–17. There is parking in the yard.",
+    ask: ["Business ID and official company name", "Summer 2027 hours (is the Thu–Sun 11–17 sign still right?) and when the spring season starts", "Accessibility: wheelchair access to the café and toilet?"],
   },
 };
 
 export const homeAsk = {
-  fi: ["Kuva teistä kahdesta ja pari lausetta: keitä olette ja miksi mylly (vieraat tulevat mielellään ihmisten luo)", "Google-yritysprofiili ja luvat näyttää sen arviot lähteineen", "Instagram, jos sellainen on", "Kymmeniä kuvia lisää Facebookista: kahvila, putiikki, galleria, lampi ja koski eri vuodenaikoina"],
-  en: ["A photo of the two of you and a couple of sentences about who you are", "Google Business Profile, and OK to show its reviews with the source", "Instagram, if any", "More photos from Facebook: café, shop, gallery, pond and rapids through the seasons"],
+  fi: ["Kuva teistä kahdesta ja pari lausetta: keitä olette ja miksi mylly (vieraat tulevat mielellään ihmisten luo)", "Google-yritysprofiili ja lupa näyttää arvioita lähteineen (Facebookissa on paljon lämpimiä kommentteja)", "Instagram, jos sellainen on", "Alkuperäiset kuvat täysikokoisina (Facebook pienentää niitä) ja tieto, saako Satu Postin kuvaa käyttää", "Kesän 2027 tapahtumat, kun ne ovat selvillä"],
+  en: ["A photo of the two of you and a couple of sentences about who you are", "Google Business Profile, and OK to show reviews with the source", "Instagram, if any", "Original full-size photos, and whether Satu Posti's photo may be used", "Summer 2027 events once known"],
 };

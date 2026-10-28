@@ -1,2 +1,2 @@
-:HL["/preview/vuorikoskenmylly/_next/static/chunks/0k2vxzng26c8s.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"GvcDGwNhEhaCOthuOONjj"}
+:HL["/preview/vuorikoskenmylly/_next/static/chunks/0z8~u4ke5x6ib.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"5PN9n4PCyRAzoHLfhaukX"}
