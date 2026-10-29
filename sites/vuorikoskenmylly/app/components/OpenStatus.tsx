@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { live, paths, ui, type Locale } from "@/app/content";
-import { dayRange, hoursText } from "@/app/hours";
+import { dayRange, hoursText, openOn } from "@/app/hours";
 
 const noop = () => () => {};
 function localToday() {
@@ -21,7 +21,7 @@ export function OpenStatus({ locale, tone = "dark" }: { locale: Locale; tone?: "
   // Today's date only exists in the browser; the static HTML uses the date the content was last updated.
   const today = useSyncExternalStore(noop, localToday, () => "");
   const day = live.openDays.find((d) => d.to >= (today || live.updated)) ?? null;
-  const isToday = day && today && day.from <= today && day.to >= today;
+  const isToday = day && today && openOn(day, today);
   const muted = tone === "dark" ? "text-flour/60" : "text-ink/60";
   return (
     <div>

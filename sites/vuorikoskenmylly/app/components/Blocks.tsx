@@ -36,16 +36,27 @@ export function SectionTitle({ kicker, title, tone = "light" }: { kicker?: strin
 }
 
 export function HoursList({ locale }: { locale: Locale }) {
+  const years = [...new Set(live.openDays.map((d) => d.from.slice(0, 4)))];
   return (
-    <ul className="divide-y divide-current/10 border-y border-current/10">
-      {live.openDays.map((d) => (
-        <li key={d.from} className="flex flex-wrap items-baseline justify-between gap-x-4 py-3">
-          <span className="font-semibold">{dayRange(d, locale)}</span>
-          <span className="text-sm opacity-70">{d.label[locale]}</span>
-          <span className="ml-auto tabular-nums">{hoursText(d, locale)}</span>
-        </li>
+    <div className="space-y-8">
+      {years.map((y) => (
+        <div key={y}>
+          <p className="label opacity-60">{y}</p>
+          <ul className="mt-2 divide-y divide-current/10 border-y border-current/10">
+            {live.openDays
+              .filter((d) => d.from.startsWith(y))
+              .map((d) => (
+                <li key={d.from} className="flex flex-wrap items-baseline justify-between gap-x-4 py-3">
+                  <span className="font-semibold">{dayRange(d, locale)}</span>
+                  <span className="text-sm opacity-70">{d.label[locale]}</span>
+                  <span className="ml-auto tabular-nums">{hoursText(d, locale)}</span>
+                </li>
+              ))}
+          </ul>
+        </div>
       ))}
-    </ul>
+      <p className="text-sm opacity-70">{live.breaks[locale]}</p>
+    </div>
   );
 }
 
@@ -123,7 +134,9 @@ const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
 function openingHours(list: OpenDay[]) {
   return list.map((d) => {
     const out: string[] = [];
-    for (let x = new Date(`${d.from}T12:00:00`); x <= new Date(`${d.to}T12:00:00`); x.setDate(x.getDate() + 1)) out.push(days[x.getDay()]);
+    for (let x = new Date(`${d.from}T12:00:00`); x <= new Date(`${d.to}T12:00:00`) && out.length < 7; x.setDate(x.getDate() + 1)) {
+      if (!d.days || d.days.includes(x.getDay())) out.push(days[x.getDay()]);
+    }
     return { "@type": "OpeningHoursSpecification", dayOfWeek: out, opens: d.open, closes: d.close, validFrom: d.from, validThrough: d.to };
   });
 }
@@ -167,6 +180,17 @@ export function millJsonLd(locale: Locale) {
     sameAs: [business.facebook, ...hutsLinks.map((l) => `${HUTS}${l[locale]}`)],
     openingHoursSpecification: openingHours(live.openDays),
     department: (Object.keys(types) as PageId[]).map((id) => ({ "@id": `${SITE_URL}${paths[id].fi}#${id}` })),
+    event: live.events.map((e) => ({
+      "@type": "Event",
+      name: e.name,
+      description: e.text[locale],
+      startDate: `${e.from}T${e.open}`,
+      endDate: `${e.to}T${e.close}`,
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      location: { "@type": "Place", name: business.name, address },
+      organizer: { "@id": millId },
+    })),
   };
 }
 

@@ -6,6 +6,7 @@ import { Ask, Faq, GettingHere, HoursList, JsonLd, MapEmbed, millJsonLd, Section
 import { PhotoStrip } from "@/app/components/Gallery";
 import { IconText } from "@/app/components/Icon";
 import { OpenStatus } from "@/app/components/OpenStatus";
+import { dayRange, hoursText } from "@/app/hours";
 import {
   business,
   contactPage,
@@ -201,10 +202,15 @@ export function HomeView({ locale }: { locale: Locale }) {
           <SectionTitle kicker={h.eventsKicker} title={h.eventsTitle} />
           <p className="mt-6 text-lg leading-relaxed text-ink/80">{h.eventsText}</p>
           <ul className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
-            {h.events.map((e, i) => (
-              <li key={e} className="flex gap-4 py-3.5">
-                <span className="font-display text-rust">{String(i + 1).padStart(2, "0")}</span>
-                <span>{e}</span>
+            {live.events.map((e) => (
+              <li key={e.from} className="flex gap-4 py-3.5">
+                <span className="w-28 shrink-0 font-display text-rust">{dayRange({ ...e, label: e.text }, locale)}</span>
+                <span>
+                  <span className="font-semibold">{e.name}</span>
+                  <span className="block text-sm text-ink/60">
+                    {e.text[locale]}, {hoursText({ ...e, label: e.text }, locale)}
+                  </span>
+                </span>
               </li>
             ))}
           </ul>

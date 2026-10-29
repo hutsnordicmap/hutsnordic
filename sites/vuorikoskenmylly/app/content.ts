@@ -95,7 +95,13 @@ export const photos = {
 /* Kept apart from the page copy so an editor can swap this one block. */
 /* ------------------------------------------------------------------ */
 
-export type OpenDay = { from: string; to: string; open: string; close: string; label: Text };
+// `days` (0 = Sunday … 6 = Saturday) limits a long range to some weekdays, e.g. summer Thu–Sun.
+export type OpenDay = { from: string; to: string; open: string; close: string; label: Text; days?: number[] };
+export type MillEvent = { from: string; to: string; open: string; close: string; name: string; text: Text };
+
+const d = (from: string, to: string, close: string, fi: string, en: string, days?: number[]): OpenDay => ({
+  from, to, open: "11:00", close, label: { fi, en }, ...(days ? { days } : {}),
+});
 
 export const live = {
   updated: "2026-10-29",
@@ -104,23 +110,56 @@ export const live = {
     fi: "Avoinna pyhäinpäivänä la–su 31.10.–1.11. klo 11–16 · Joulupuoti adventtiviikonloppuina",
     en: "Open on All Saints' weekend, Sat–Sun 31 Oct–1 Nov, 11–16 · Christmas shop on Advent weekends",
   },
+  // Café and vintage shop opening days. Antti's 2027 list, 29.10.2026.
   openDays: [
-    { from: "2026-10-31", to: "2026-11-01", open: "11:00", close: "16:00", label: { fi: "Pyhäinpäivä", en: "All Saints' weekend" } },
-    { from: "2026-11-07", to: "2026-11-08", open: "11:00", close: "16:00", label: { fi: "Isänpäivä", en: "Father's Day weekend" } },
-    { from: "2026-11-28", to: "2026-11-29", open: "11:00", close: "16:00", label: { fi: "Joulupuoti", en: "Christmas shop" } },
-    { from: "2026-12-05", to: "2026-12-06", open: "11:00", close: "16:00", label: { fi: "Joulupuoti", en: "Christmas shop" } },
-    { from: "2026-12-12", to: "2026-12-13", open: "11:00", close: "16:00", label: { fi: "Joulupuoti", en: "Christmas shop" } },
-    { from: "2026-12-19", to: "2026-12-20", open: "11:00", close: "16:00", label: { fi: "Joulupuoti", en: "Christmas shop" } },
+    d("2026-10-31", "2026-11-01", "16:00", "Pyhäinpäivä", "All Saints' weekend"),
+    d("2026-11-07", "2026-11-08", "16:00", "Isänpäivä", "Father's Day weekend"),
+    d("2026-11-28", "2026-11-29", "16:00", "Joulupuoti", "Christmas shop"),
+    d("2026-12-05", "2026-12-06", "16:00", "Joulupuoti", "Christmas shop"),
+    d("2026-12-12", "2026-12-13", "16:00", "Joulupuoti", "Christmas shop"),
+    d("2026-12-19", "2026-12-20", "16:00", "Joulupuoti", "Christmas shop"),
+    d("2027-03-27", "2027-03-29", "17:00", "Pääsiäinen", "Easter"),
+    d("2027-05-01", "2027-05-02", "17:00", "Vappu", "May Day"),
+    d("2027-05-08", "2027-05-09", "17:00", "Äitienpäivä", "Mother's Day"),
+    d("2027-06-05", "2027-06-06", "17:00", "Koulujen päättäjäiset", "End of the school year"),
+    d("2027-06-12", "2027-06-13", "17:00", "Kesäviikonloppu", "Summer weekend"),
+    d("2027-06-17", "2027-08-08", "17:00", "Kesän pitkät viikonloput, ma–ke suljettu", "Summer long weekends, closed Mon–Wed", [4, 5, 6, 0]),
+    d("2027-08-14", "2027-08-15", "17:00", "Kesäviikonloppu", "Summer weekend"),
+    d("2027-08-21", "2027-08-22", "17:00", "Kesäviikonloppu", "Summer weekend"),
+    d("2027-08-28", "2027-08-29", "17:00", "Venetsialaiset, kesäkausi päättyy", "Venetian night, last summer weekend"),
+    d("2027-10-30", "2027-10-31", "16:00", "Pyhäinpäivä", "All Saints' weekend"),
+    d("2027-11-13", "2027-11-14", "16:00", "Isänpäivä", "Father's Day weekend"),
+    d("2027-11-27", "2027-11-28", "16:00", "Joulunavaus, joulupuoti aukeaa", "Christmas opening, the Christmas shop opens"),
+    d("2027-12-04", "2027-12-05", "16:00", "Joulupuoti", "Christmas shop"),
+    d("2027-12-11", "2027-12-12", "16:00", "Joulupuoti", "Christmas shop"),
+    d("2027-12-18", "2027-12-19", "16:00", "Joulupuoti", "Christmas shop"),
   ] satisfies OpenDay[],
+  // Breaks between the opening days, shown under the list.
+  breaks: {
+    fi: "Syystauko 30.8.–29.10.2027 · Talvitauko 20.12.2027–14.4.2028",
+    en: "Autumn break 30 Aug–29 Oct 2027 · Winter break 20 Dec 2027–14 Apr 2028",
+  },
   // Shown when every date above has passed.
   offSeason: {
-    fi: "Mylly on avoinna kesäkaudella ja joulun alla adventtiviikonloppuina. Seuraavat aukiolopäivät päivitetään tänne.",
-    en: "The mill is open in the summer season and on Advent weekends before Christmas. The next opening days will be posted here.",
+    fi: "Mylly on talvitauolla 14.4.2028 asti. Kevään aukiolopäivät päivitetään tänne.",
+    en: "The mill is on its winter break until 14 April 2028. The spring opening days will be posted here.",
   },
   lodgingStatus: {
-    fi: "Kesän 2026 majoituspaikat on loppuunmyyty.",
-    en: "Summer 2026 is fully booked.",
+    fi: "Kesä 2026 on loppuunmyyty. Kesän 2027 varauskalenteri (15.5.–15.8.) avautuu pääsiäisenä 27.3.2027.",
+    en: "Summer 2026 is fully booked. Bookings for summer 2027 (15 May–15 Aug) open at Easter, 27 March 2027.",
   },
+  // Events at the mill in 2027 (Antti, 29.10.2026). Also published as schema.org Events.
+  events: [
+    { from: "2027-03-27", to: "2027-03-29", open: "11:00", close: "17:00", name: "Pääsiäisherkuttelut", text: { fi: "Pääsiäisen herkkuja kahvilassa", en: "Easter treats in the café" } },
+    { from: "2027-05-01", to: "2027-05-02", open: "11:00", close: "17:00", name: "Vuorikosken Simaralli", text: { fi: "Simaa ja munkkeja vappuna", en: "Mead and doughnuts on May Day" } },
+    { from: "2027-05-08", to: "2027-05-09", open: "11:00", close: "17:00", name: "Onnea Äiti", text: { fi: "Äitienpäiväviikonloppu", en: "Mother's Day weekend" } },
+    { from: "2027-06-05", to: "2027-06-06", open: "11:00", close: "17:00", name: "School's out Party", text: { fi: "Koulujen päättäjäisviikonloppu", en: "End-of-school weekend" } },
+    { from: "2027-07-24", to: "2027-07-25", open: "11:00", close: "17:00", name: "Christmas in July", text: { fi: "Joulumallisto ennakkoon keskellä kesää", en: "The Christmas range early, in midsummer" } },
+    { from: "2027-08-28", to: "2027-08-29", open: "11:00", close: "17:00", name: "Vuorikosken Venetsialaiset", text: { fi: "Kesäkauden päätös", en: "The end of the summer season" } },
+    { from: "2027-10-30", to: "2027-10-31", open: "11:00", close: "16:00", name: "Pyhäinpäivä", text: { fi: "Pyhäinpäivän viikonloppu", en: "All Saints' weekend" } },
+    { from: "2027-11-13", to: "2027-11-14", open: "11:00", close: "16:00", name: "Onnea Isä", text: { fi: "Isänpäiväviikonloppu", en: "Father's Day weekend" } },
+    { from: "2027-11-27", to: "2027-11-28", open: "11:00", close: "16:00", name: "Vuorikosken Joulunavaus", text: { fi: "Joulupuoti aukeaa", en: "The Christmas shop opens" } },
+  ] satisfies MillEvent[],
 };
 
 /* ------------------------------------------------------------------ */
@@ -255,16 +294,8 @@ export const home = {
     ],
     historyLink: "Lisää Sammatin ja Myllykylän myllyjen historiasta (Kansalliskirjasto)",
     eventsKicker: "Tapahtumat",
-    eventsTitle: "Kesä täynnä pientä ohjelmaa",
-    eventsText: "Myllyllä on tapahtunut kesäisin kaikenlaista. Seuraavat tapahtumat ilmoitetaan tällä sivulla ja Facebookissa.",
-    events: [
-      "Sunnuntaisoitot pihalla, vapaa pääsy",
-      "Pihakirppikset, joihin voi ilmoittautua myyjäksi",
-      "Christmas in July: joulumallisto ennakkomyynnissä antiikkikabinetissa",
-      "Sima- ja munkkiralli vappuna",
-      "Moonlighters Barbershop Quartetin ilmaiskonsertti",
-      "Löytölän pöytä: aarteita eurolla kappale",
-    ],
+    eventsTitle: "Tapahtumat 2027",
+    eventsText: "Pääsiäisestä joulunavaukseen. Aiempina kesinä pihalla on ollut myös sunnuntaisoittoja, pihakirppiksiä ja Löytölän euron pöytä. Uudet tapahtumat ilmoitetaan tällä sivulla ja Facebookissa.",
     seasonsTitle: "Mylly vuoden ympäri",
     visitTitle: "Tule käymään",
     ctaTitle: "Nähdään myllyllä",
@@ -305,16 +336,8 @@ export const home = {
     ],
     historyLink: "More on the history of Sammatti and the Myllykylä mills (National Library, in Finnish)",
     eventsKicker: "Events",
-    eventsTitle: "Summers full of small happenings",
-    eventsText: "The mill has hosted all sorts of things over the summers. Upcoming events are posted on this page and on Facebook.",
-    events: [
-      "Sunday music in the yard, free entry",
-      "Yard flea markets, open to sellers",
-      "Christmas in July: the Christmas range on early sale in the antique room",
-      "Mead and doughnut day on May Day",
-      "A free concert by the Moonlighters Barbershop Quartet",
-      "The Löytölä table: treasures at one euro each",
-    ],
+    eventsTitle: "Events in 2027",
+    eventsText: "From Easter to the Christmas opening. Past summers have also brought Sunday music in the yard, yard flea markets and the one-euro Löytölä table. New events are posted on this page and on Facebook.",
     seasonsTitle: "The mill through the year",
     visitTitle: "Visit",
     ctaTitle: "See you at the mill",
@@ -326,7 +349,7 @@ export const homeFaq: Record<Locale, { q: string; a: string }[]> = {
   fi: [
     { q: "Onko kahvilassa gluteenitonta?", a: "On. Herkkupöydän makeat ja suolaiset herkut ovat gluteenittomia ja tilalla leivottuja. Erillisessä pikkupöydässä on lisäksi päivän tuoreita vehnäisiä puusteja." },
     { q: "Saako koiran tuoda kahvilaan?", a: "Saa. Lemmikit ovat tervetulleita kahvilaan. Terassilla on raikasta juomavettä, ja puristekalkkuna-namit tarjoillaan kassalta." },
-    { q: "Milloin Vuorikosken Mylly on auki?", a: "Kesäkaudella sekä joulun alla adventtiviikonloppuina. Ajantasaiset aukiolopäivät ovat tämän sivun ylälaidassa ja Aukiolo ja yhteys -sivulla." },
+    { q: "Milloin Vuorikosken Mylly on auki?", a: "Pääsiäisestä elokuun loppuun juhlaviikonloppuina klo 11–17 ja 17.6.–8.8. joka to–su, syksyllä pyhäinpäivänä ja isänpäivänä sekä joulupuotina adventtiviikonloppuina klo 11–16. Kaikki päivät ovat Aukiolo ja yhteys -sivulla." },
     { q: "Missä mylly on?", a: "Osoitteessa Tavolantie 18, 09220 Sammatti. Sammatti kuuluu Lohjan kaupunkiin Länsi-Uudellamaalla." },
     { q: "Pääseekö myllylle bussilla?", a: "Pääsee. Lohjalta kulkee bussi Sammattiin Myllykylän pysäkille, josta on 200 metrin kävely." },
     { q: "Voiko myllyllä yöpyä?", a: "Voi. Myllylammen rannalla on kaksi pientä sähkötöntä kesämökkiä 1–2 hengelle, ja lisäksi voi varata rantasaunan ja aamiaisen. Kysy vapaita päiviä puhelimella tai WhatsAppilla." },
@@ -334,7 +357,7 @@ export const homeFaq: Record<Locale, { q: string; a: string }[]> = {
   en: [
     { q: "Is there gluten-free food in the café?", a: "Yes. The sweet and savoury bakes on the main spread are gluten-free and made on the farm. A separate small table also has the day's fresh wheat cinnamon buns." },
     { q: "Can I bring my dog to the café?", a: "Yes. Pets are welcome in the café. There is fresh drinking water on the terrace and pressed turkey treats at the counter." },
-    { q: "When is Vuorikosken Mylly open?", a: "In the summer season and on Advent weekends before Christmas. Current opening days are at the top of this page and on the Hours & contact page." },
+    { q: "When is Vuorikosken Mylly open?", a: "From Easter to the end of August on holiday weekends 11–17 and every Thu–Sun from 17 June to 8 August, then on All Saints' and Father's Day weekends and as a Christmas shop on Advent weekends, 11–16. All the days are on the Hours & contact page." },
     { q: "Where is the mill?", a: "At Tavolantie 18, 09220 Sammatti. Sammatti is part of the town of Lohja in West Uusimaa, Finland." },
     { q: "Can I get there by bus?", a: "Yes. A bus runs from Lohja to Sammatti, to the Myllykylä stop, which is a 200 metre walk from the mill." },
     { q: "Can I stay overnight?", a: "Yes. There are two small off-grid summer cabins for 1–2 people by the mill pond, and you can add the shore sauna and breakfast. Ask for free dates by phone or WhatsApp." },
@@ -397,9 +420,9 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       faq: [
         { q: "Onko kaikki gluteenitonta?", a: "Herkkupöydän makeat ja suolaiset herkut ovat gluteenittomia. Päivän puustit ovat vehnäisiä, ja ne ovat erillisessä pikkupöydässä." },
         { q: "Saako koiran tuoda sisälle?", a: "Lemmikit ovat tervetulleita kahvilaan. Terassilla on vettä ja kassalta saa puristekalkkuna-namin." },
-        { q: "Milloin kahvila on auki?", a: "Kesäkaudella ja joulun alla adventtiviikonloppuina. Katso ajantasaiset päivät sivun ylälaidasta." },
+        { q: "Milloin kahvila on auki?", a: "Pääsiäisestä elokuun loppuun juhlaviikonloppuina klo 11–17 ja 17.6.–8.8. joka to–su, syksyllä pyhäinpäivänä ja isänpäivänä sekä joulupuotina adventtiviikonloppuina klo 11–16. Kaikki päivät ovat Aukiolo ja yhteys -sivulla." },
       ],
-      ask: ["Kesän 2027 aukioloajat", "Otatteko kakkutilauksia? (Facebookissa mainittiin lauantain kakkutilaus)", "Esimerkkejä kahvilan tuotteista ja hinnoista (esim. 5–8 herkkua)", "Onko myös maidottomia tai vegaanisia vaihtoehtoja?", "Maksutavat kahvilassa", "Lisää kuvia kahvilasta ja terassilta"],
+      ask: ["Otatteko kakkutilauksia? (Facebookissa mainittiin lauantain kakkutilaus)", "Esimerkkejä kahvilan tuotteista ja hinnoista (esim. 5–8 herkkua)", "Onko myös maidottomia tai vegaanisia vaihtoehtoja?", "Maksutavat kahvilassa", "Lisää kuvia kahvilasta ja terassilta"],
       cta: "Tule kahville myllylle",
     },
     en: {
@@ -427,9 +450,9 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       faq: [
         { q: "Is everything gluten-free?", a: "The sweet and savoury bakes on the main spread are gluten-free. The day's cinnamon buns are made with wheat and sit on a separate small table." },
         { q: "Can I bring my dog inside?", a: "Pets are welcome in the café. There is water on the terrace and a turkey treat at the counter." },
-        { q: "When is the café open?", a: "In the summer season and on Advent weekends before Christmas. See the current days at the top of the page." },
+        { q: "When is the café open?", a: "From Easter to the end of August on holiday weekends 11–17 and every Thu–Sun from 17 June to 8 August, then on All Saints' and Father's Day weekends and as a Christmas shop on Advent weekends, 11–16. All the days are on the Hours & contact page." },
       ],
-      ask: ["Summer 2027 opening hours", "Do you take cake orders?", "A few café items and prices", "Dairy-free or vegan options?", "Payment methods in the café", "More photos of the café and terrace"],
+      ask: ["Do you take cake orders?", "A few café items and prices", "Dairy-free or vegan options?", "Payment methods in the café", "More photos of the café and terrace"],
       cta: "Come for coffee at the mill",
     },
   },
@@ -507,26 +530,30 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
     fi: {
       title: "Taidenäyttelyt Sammatissa – myllyn galleria, Lohja | Vuorikosken Mylly",
       description:
-        "Kesän taidenäyttelyt vanhassa myllyssä Sammatissa, Lohjalla. Neljä taiteentekijää joka kesä. Kesän 2027 näyttelyjaksot haettavana: tilavuokra 100 € / 10 päivää, myyntiprovisio 25 %.",
+        "Kesän taidenäyttelyt vanhassa myllyssä Sammatissa, Lohjalla. Galleria auki kesällä to–su. Kesän 2028 näyttelyjaksot haettavana 17.6.–8.8.2027: tilavuokra 100 € / 8 päivää, myyntiprovisio 25 %.",
       kicker: "Galleria · Sammatti",
       h1: "Kesän taidenäyttelyt myllyn galleriassa",
-      lead: "Joka kesä myllyn galleriassa esittäytyy neljä erilaista taiteentekijää. Galleriakesä 2026 on päättynyt, ja kesän 2027 näyttelyjaksot ovat nyt haettavana.",
+      lead: "Joka kesä myllyn galleriassa esittäytyy neljä erilaista taiteentekijää. Kesällä 2027 galleria on auki 17.6.–8.8. torstaista sunnuntaihin klo 11–17.",
       hero: photos.galleryRoom,
       facts: ["frame|Neljä näyttelyä kesässä", "calendar|8 päivän näyttelyjaksot", "euro|Tilavuokra 100 €", "percent|Myyntiprovisio 25 %"],
       sections: [
-        { title: "Galleriakesä", text: ["Galleriakesä 2026 on päättynyt. Ensi vuonna esittelemme jälleen neljä erilaista taiteentekijää."] },
+        { title: "Galleriakesä 2027", text: ["Galleria on auki 17.6.–8.8.2027 to–su klo 11–17, ma–ke suljettu. Kesän 2027 näyttelyjen haku päättyi 9.8.2026, ja lopulliset valinnat tehdään vuodenvaihteessa. Kesän taiteilijat esitellään täällä, kun ne ovat selvillä."] },
         {
           id: "naeyttelyt",
-          title: "Galleriassa ovat näyttäneet muun muassa",
+          title: "Menneet näyttelyt 2023–2026",
           text: [
-            "Tiina Kuusisto (Väri ja muoto), Nina Haatio (grafiikka), Franco Figari (Valkjärvi, valokuvia), Leo Vuorinen (Katse metsästä, valokuvia) ja Sirkku Salo. Wanhat vehkeet -näyttelyssä esillä oli entisajan käyttöesineitä puusepänverstaasta keittiötöihin ja metsätöistä kelkkamäkeen, osa myytävänä.",
+            "2026: Suvi Koivisto-Kanervo, Franco Figari (valokuvia) ja Nina Haatio (grafiikka).",
+            "2025: Sirkku Salo, Mia Nurmi, Heidi Krogerus ja Leo Vuorinen (Katse metsästä, valokuvia).",
+            "2024: Tiina Kuusisto (Väri ja muoto), Ritva Korhonen, Nina Haatio ja Marika Raunio.",
+            "2023: Inga-lill Sundqvist, Terttu Ahola, Nina Haatio ja Mika Törönen.",
+            "Wanhat vehkeet -näyttelyssä esillä oli lisäksi entisajan käyttöesineitä puusepänverstaasta keittiötöihin ja metsätöistä kelkkamäkeen, osa myytävänä.",
           ],
         },
         {
           id: "taiteilijoille",
-          title: "Taiteilijoille: hae näyttelypaikkaa kesälle 2027",
+          title: "Taiteilijoille: hae näyttelypaikkaa kesälle 2028",
           text: [
-            "Näyttelypaikkaa haetaan vapaamuotoisella hakemuksella muutamien havainnekuvien kera. Lähetä viesti sähköpostilla tai WhatsAppilla. Galleristi pidättää oikeuden valikoida edustamansa taiteilijat ja esiteltävät teokset.",
+            "Kesän 2028 näyttelyjaksot ovat haettavissa 17.6.–8.8.2027. Näyttelypaikkaa haetaan vapaamuotoisella hakemuksella muutamien havainnekuvien kera. Lähetä viesti sähköpostilla tai WhatsAppilla. Galleristi pidättää oikeuden valikoida edustamansa taiteilijat ja esiteltävät teokset.",
             "Pystytyspäivät ovat näyttelyä edeltävät maanantai–keskiviikko, ja tarkemmat ajankohdat sovitaan tilannekohtaisesti. Taiteilija pystyttää näyttelynsä itse. Näyttelykohtainen ovikyltti, rautalanka, leikkurit ja muut tarvikkeet sisältyvät tilanvuokraan.",
             "Kaikkien töiden tulee olla myytävissä, ellei toisin sovita etukäteen. Taiteilija toimittaa teoslistan hintoineen pdf-muodossa tai valmiina tulosteina. Teosnumerotarrat ja myytyjen töiden tarratäplät löytyvät paikan päältä. Vieraskirja, käyntikortit ja ansioluettelo ovat toivottavia mutta vapaaehtoisia, samoin paikalla olo osan näyttelypäivistä. Galleristi ei valvo näyttelytilaa jatkuvasti.",
             "Galleristi avaa ja sulkee näyttelytilan päivittäin, huolehtii siisteydestä, mainostaa näyttelyä sosiaalisen median kanavissaan, myy teokset ja ilmoittaa ostajille noutoajat tekstiviestillä. Myös taiteilija saa jakaa tietoa näyttelystä eri alustoilla.",
@@ -546,29 +573,34 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       },
       photos: [photos.galleryRoom, photos.galleryArtist, photos.oldTools, photos.porch],
       faq: [
+        { q: "Milloin näyttelypaikkaa voi hakea?", a: "Kesän 2028 näyttelyihin 17.6.–8.8.2027. Kesän 2027 haku päättyi 9.8.2026." },
         { q: "Miten näyttelypaikkaa haetaan?", a: "Vapaamuotoisella viestillä ja muutamalla havainnekuvalla sähköpostiin antti.jakola@hotmail.com tai WhatsAppiin 044 016 5047." },
         { q: "Paljonko näyttely maksaa?", a: "Tilavuokra on 100 € kahdeksalta näyttelypäivältä ja myyntiprovisio 25 %." },
         { q: "Pitääkö taiteilijan olla paikalla?", a: "Ei ole pakko, mutta paikalla olo osan näyttelypäivistä on suotavaa." },
       ],
-      ask: ["Vuodet aiemmille näyttelyille ja lupa mainita taiteilijat nimeltä", "Kesän 2026 taiteilijat ja kuva jokaisen näyttelystä (arkisto)", "Kesän 2027 näyttelijät, kun ne ovat selvillä", "Kuvia galleriatilasta sisältä", "Hakuaika kesälle 2027 (päättymispäivä)", "Järjestetäänkö kursseja, esim. keramiikkaa?"],
+      ask: ["Kesän 2027 taiteilijat, kun valinnat on tehty vuodenvaihteessa", "Kuva kustakin menneestä näyttelystä, jos löytyy (arkistoon)", "Kuvia galleriatilasta sisältä"],
       cta: "Hae näyttelypaikkaa",
     },
     en: {
       title: "Art exhibitions in Sammatti – the mill gallery, Lohja | Vuorikosken Mylly",
       description:
-        "Summer art exhibitions in an old water mill in Sammatti, Lohja, Finland. Four artists every summer. Exhibition slots for summer 2027 open now: €100 for 8 days, 25% sales commission.",
+        "Summer art exhibitions in an old water mill in Sammatti, Lohja, Finland. Open Thu–Sun in summer. Slots for summer 2028 open 17 June–8 August 2027: €100 for 8 days, 25% sales commission.",
       kicker: "Gallery · Sammatti",
       h1: "Summer art exhibitions in the mill gallery",
-      lead: "Every summer, four different artists show their work in the mill gallery. The 2026 gallery summer is over, and slots for summer 2027 are open for applications.",
+      lead: "Every summer, four different artists show their work in the mill gallery. In summer 2027 the gallery is open from 17 June to 8 August, Thursday to Sunday, 11–17.",
       hero: photos.galleryRoom,
       facts: ["frame|Four shows a summer", "calendar|8-day exhibition periods", "euro|Room hire €100", "percent|25% sales commission"],
       sections: [
-        { title: "Gallery summer", text: ["The 2026 gallery summer is over. Next year we will again present four different artists."] },
+        { title: "Gallery summer 2027", text: ["The gallery is open 17 June–8 August 2027, Thu–Sun 11–17, closed Mon–Wed. Applications for 2027 closed on 9 August 2026, and the final choices are made around the turn of the year. The summer's artists will be presented here once confirmed."] },
         {
           id: "naeyttelyt",
-          title: "Past exhibitions include",
+          title: "Past exhibitions 2023–2026",
           text: [
-            "Tiina Kuusisto (Colour and Form), Nina Haatio (prints), Franco Figari (Valkjärvi, photographs), Leo Vuorinen (A Gaze from the Forest, photographs) and Sirkku Salo. The Old Tools show displayed everyday objects of the past, from the joiner's workshop and the kitchen to forestry and the sledging hill, some of them for sale.",
+            "2026: Suvi Koivisto-Kanervo, Franco Figari (photographs) and Nina Haatio (prints).",
+            "2025: Sirkku Salo, Mia Nurmi, Heidi Krogerus and Leo Vuorinen (A Gaze from the Forest, photographs).",
+            "2024: Tiina Kuusisto (Colour and Form), Ritva Korhonen, Nina Haatio and Marika Raunio.",
+            "2023: Inga-lill Sundqvist, Terttu Ahola, Nina Haatio and Mika Törönen.",
+            "The Old Tools show also displayed everyday objects of the past, from the joiner's workshop and the kitchen to forestry and the sledging hill, some of them for sale.",
           ],
         },
         {
@@ -595,11 +627,12 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       },
       photos: [photos.galleryRoom, photos.galleryArtist, photos.oldTools, photos.porch],
       faq: [
+        { q: "When can I apply?", a: "For summer 2028, from 17 June to 8 August 2027. Applications for 2027 closed on 9 August 2026." },
         { q: "How do I apply?", a: "Send a free-form message with a few sample images to antti.jakola@hotmail.com or WhatsApp +358 44 016 5047." },
         { q: "What does a show cost?", a: "Room hire is €100 for eight exhibition days, and the sales commission is 25%." },
         { q: "Do I need to be there?", a: "It is not required, but being present on some of the days is recommended." },
       ],
-      ask: ["The 2026 artists with a photo of each show (archive)", "The 2027 artists once confirmed", "Photos of the gallery room", "Application deadline for 2027", "Do you run workshops, such as ceramics?"],
+      ask: ["The 2027 artists once chosen around the turn of the year", "A photo of each past show, if you have one (archive)", "Photos of the gallery room"],
       cta: "Apply for an exhibition",
     },
   },
@@ -612,7 +645,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       h1: "Pieni juhla- ja kokoustila vanhassa myllyssä",
       lead: "Myllyn alasiiven juhlatilan pitkä pöytä istuttaa kokoustajat ja pienet perhejuhlat kesäkauden ajan.",
       hero: photos.longTable,
-      facts: ["table|Pitkä pöytä", "euro|50 € / tunti", "sun|Kesäkaudella", "cup|Kahvikupit ja lautaset 32 hengelle"],
+      facts: ["table|Pitkä pöytä", "euro|50 € / tunti", "sun|Varattavissa 15.5.–15.8.", "cup|Kahvikupit ja lautaset 32 hengelle"],
       sections: [
         {
           title: "Tarjoilut niin kuin haluat",
@@ -621,7 +654,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
             "Kahvikupit, leipälautaset ja lusikat 32 hengelle voi vuokrata meiltä edullisesti.",
           ],
         },
-        { title: "Kokouksiin ja perhejuhliin", text: ["Tila sopii kokouksiin, syntymäpäiville ja muihin pieniin perhejuhliin. Juhlatilassa on vietetty esimerkiksi kaksien 80-vuotisjuhlien yhteiset kestit. Kysy vapaita päiviä puhelimella tai WhatsAppilla."] },
+        { title: "Kokouksiin ja perhejuhliin", text: ["Tila sopii kokouksiin, syntymäpäiville ja muihin pieniin perhejuhliin. Juhlatilassa on vietetty esimerkiksi kaksien 80-vuotisjuhlien yhteiset kestit. Tila on varattavissa 15.5.–15.8. sopimuksen mukaan. Kysy vapaita päiviä tekstiviestillä tai WhatsAppilla 044 016 5047."] },
       ],
       prices: {
         title: "Hinnat",
@@ -635,7 +668,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         { q: "Paljonko juhlatila maksaa?", a: "50 € tunnilta kesäkaudella." },
         { q: "Saako omat tarjoilut tuoda?", a: "Saa. Voit tuoda omat astiat ja tarjoilut, käyttää pitopalvelua tai tilata herkut myllyn kahvilasta." },
       ],
-      ask: ["Montako henkeä pöytään mahtuu istumaan", "Astiavuokran hinta", "Onko tilassa käytössä keittiö, jääkaappi tai videotykki", "Onko tila käytössä myös kesäkauden ulkopuolella", "Kuvia tilasta katettuna juhlaan"],
+      ask: ["Montako henkeä pöytään mahtuu istumaan", "Astiavuokran hinta", "Onko tilassa käytössä keittiö, jääkaappi tai videotykki", "Kuvia tilasta katettuna juhlaan"],
       cta: "Kysy vapaita päiviä",
     },
     en: {
@@ -646,7 +679,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       h1: "A small party and meeting room in an old mill",
       lead: "The long table in the event room, in the mill's lower wing, seats meetings and small family parties in the summer season.",
       hero: photos.longTable,
-      facts: ["table|One long table", "euro|€50 per hour", "sun|Summer season", "cup|Cups and plates for 32"],
+      facts: ["table|One long table", "euro|€50 per hour", "sun|Bookable 15 May–15 Aug", "cup|Cups and plates for 32"],
       sections: [
         {
           title: "Catering your way",
@@ -655,7 +688,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
             "Coffee cups, side plates and spoons for 32 people can be hired from us at a small cost.",
           ],
         },
-        { title: "Meetings and family occasions", text: ["The room suits meetings, birthdays and other small family occasions. It has hosted, for example, a joint party for two 80th birthdays. Ask for free dates by phone or WhatsApp."] },
+        { title: "Meetings and family occasions", text: ["The room suits meetings, birthdays and other small family occasions. It has hosted, for example, a joint party for two 80th birthdays. The room can be booked from 15 May to 15 August by arrangement. Ask for free dates by text message or WhatsApp, +358 44 016 5047."] },
       ],
       prices: {
         title: "Prices",
@@ -669,7 +702,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         { q: "What does the room cost?", a: "€50 per hour in the summer season." },
         { q: "Can I bring my own food?", a: "Yes. Bring your own, use a caterer or order bakes from the mill café." },
       ],
-      ask: ["How many people the table seats", "Price of the tableware hire", "Kitchen, fridge or projector available?", "Is the room available outside the summer season?", "Photos of the room set for a party"],
+      ask: ["How many people the table seats", "Price of the tableware hire", "Kitchen, fridge or projector available?", "Photos of the room set for a party"],
       cta: "Ask for free dates",
     },
   },
@@ -716,7 +749,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         {
           id: "rantasauna",
           title: "Rantasauna",
-          text: ["Puusaunan pehmeät löylyt täydentävät yön. Hintaan sisältyvät polttopuut, laudeliinat, pyyhkeet ja pesuaineet. Kantovesi tulee viereisestä lammesta, jossa voi myös kastautua. Saunan voi varata myös ilman majoitusta."],
+          text: ["Puusaunan pehmeät löylyt täydentävät yön. Hintaan sisältyvät polttopuut, laudeliinat, pyyhkeet ja pesuaineet. Kantovesi tulee viereisestä lammesta, jossa voi myös kastautua. Saunan voi varata ympäri vuoden sopimuksen mukaan, myös ilman majoitusta."],
         },
         {
           id: "saapuminen",
@@ -743,9 +776,10 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       faq: [
         { q: "Onko mökeissä sähköä?", a: "Ei. Mökit ovat sähköttömiä ja kesälämpimiä. Alueella voi ladata puhelimen ja käytössä on wc." },
         { q: "Mitä majoitus maksaa?", a: "59 € yöltä 1–2 hengelle liinavaatteineen. Lisäpatja 15 €, aamiainen 10 € / hlö ja sauna 7 € / hlö." },
-        { q: "Miten varaan?", a: "Puhelimella tai WhatsAppilla 044 016 5047." },
+        { q: "Miten varaan?", a: "Tekstiviestillä tai WhatsAppilla 044 016 5047. Mökit ovat varattavissa 15.5.–15.8., ja kesän 2027 varauskalenteri avautuu pääsiäisenä 27.3.2027." },
+        { q: "Voiko rantasaunan varata talvella?", a: "Voi. Rantasauna on varattavissa ympäri vuoden sopimuksen mukaan, myös ilman majoitusta." },
       ],
-      ask: ["Kesän 2027 majoituskausi ja milloin varaukset aukeavat", "Kuva rantasaunasta ja tulipaikasta", "Haluatko varauskalenterin tai varauslomakkeen, vai riittääkö puhelin ja WhatsApp?"],
+      ask: ["Kuva rantasaunasta ja tulipaikasta"],
       cta: "Kysy vapaita öitä",
     },
     en: {
@@ -777,7 +811,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
           ],
         },
         { id: "aamiainen", title: "Plated breakfast", text: ["Breakfast is tailored to each guest's diet and served in the mill café at an agreed time, with coffee or tea. You are also welcome to bring your own food."] },
-        { id: "rantasauna", title: "Shore sauna", text: ["Finish the day with soft wood-fired sauna steam. Firewood, seat covers, towels and toiletries are included. Water is carried from the pond next door, where you can also take a dip. The sauna can be booked without a stay too."] },
+        { id: "rantasauna", title: "Shore sauna", text: ["Finish the day with soft wood-fired sauna steam. Firewood, seat covers, towels and toiletries are included. Water is carried from the pond next door, where you can also take a dip. The sauna can be booked all year round by arrangement, also without a stay."] },
         {
           id: "saapuminen",
           title: "Arrival and terms",
@@ -803,9 +837,10 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       faq: [
         { q: "Do the cabins have electricity?", a: "No. They are off-grid summer cabins. You can charge your phone on site and there is a toilet." },
         { q: "What does a night cost?", a: "€59 a night for 1–2 people with bed linen. Extra mattress €15, breakfast €10 per person and sauna €7 per person." },
-        { q: "How do I book?", a: "By phone or WhatsApp, +358 44 016 5047." },
+        { q: "How do I book?", a: "By text message or WhatsApp, +358 44 016 5047. The cabins can be booked for 15 May–15 August, and bookings for summer 2027 open at Easter, 27 March 2027." },
+        { q: "Can I book the shore sauna in winter?", a: "Yes. The shore sauna can be booked all year round by arrangement, also without a stay." },
       ],
-      ask: ["The 2027 lodging season and when bookings open", "A photo of the shore sauna and the fire place", "Do you want a booking calendar or form, or are phone and WhatsApp enough?"],
+      ask: ["A photo of the shore sauna and the fire place"],
       cta: "Ask for free nights",
     },
   },
@@ -816,19 +851,19 @@ export const contactPage = {
     title: "Aukioloajat ja yhteystiedot | Vuorikosken Mylly, Sammatti, Lohja",
     description: "Vuorikosken Myllyn aukioloajat, osoite (Tavolantie 18, 09220 Sammatti), puhelin, WhatsApp, ajo-ohjeet ja bussiyhteys Lohjalta.",
     h1: "Aukiolo ja yhteystiedot",
-    lead: "Mylly on avoinna kesäkaudella ja joulun alla adventtiviikonloppuina. Pihan kyltissä kesän aukioloksi kerrotaan to–su klo 11–17. Pihassa on parkkipaikka.",
-    ask: ["Y-tunnus ja yrityksen virallinen nimi", "Kesän 2027 aukioloajat (pitääkö kyltin to–su 11–17 yhä paikkansa?) ja milloin kevätkausi alkaa (aiemmin pääsiäisenä)", "Esteettömyys: pääseekö pyörätuolilla kahvilaan ja wc:hen?"],
+    lead: "Kahvila ja vintage-putiikki ovat auki pääsiäisestä elokuun loppuun juhlaviikonloppuina ja 17.6.–8.8. joka to–su klo 11–17, syksyllä pyhäinpäivänä ja isänpäivänä sekä joulupuotina adventtiviikonloppuina klo 11–16. Pihassa on parkkipaikka.",
+    ask: ["Y-tunnus ja yrityksen virallinen nimi", "Esteettömyys: pääseekö pyörätuolilla kahvilaan ja wc:hen?"],
   },
   en: {
     title: "Opening hours and contact | Vuorikosken Mylly, Sammatti, Lohja",
     description: "Vuorikosken Mylly opening hours, address (Tavolantie 18, 09220 Sammatti, Finland), phone, WhatsApp, directions and the bus from Lohja.",
     h1: "Hours and contact",
-    lead: "The mill is open in the summer season and on Advent weekends before Christmas. The sign in the yard gives summer hours as Thu–Sun 11–17. There is parking in the yard.",
-    ask: ["Business ID and official company name", "Summer 2027 hours (is the Thu–Sun 11–17 sign still right?) and when the spring season starts", "Accessibility: wheelchair access to the café and toilet?"],
+    lead: "The café and vintage shop are open from Easter to the end of August on holiday weekends and every Thu–Sun from 17 June to 8 August, 11–17, then on All Saints' and Father's Day weekends and as a Christmas shop on Advent weekends, 11–16. There is parking in the yard.",
+    ask: ["Business ID and official company name", "Accessibility: wheelchair access to the café and toilet?"],
   },
 };
 
 export const homeAsk = {
-  fi: ["Kuva teistä kahdesta ja pari lausetta: keitä olette ja miksi mylly (vieraat tulevat mielellään ihmisten luo)", "Google-yritysprofiili ja lupa näyttää arvioita lähteineen (Facebookissa on paljon lämpimiä kommentteja)", "Instagram, jos sellainen on", "Alkuperäiset kuvat täysikokoisina (Facebook pienentää niitä) ja tieto, saako Satu Postin kuvaa käyttää", "Kesän 2027 tapahtumat, kun ne ovat selvillä"],
-  en: ["A photo of the two of you and a couple of sentences about who you are", "Google Business Profile, and OK to show reviews with the source", "Instagram, if any", "Original full-size photos, and whether Satu Posti's photo may be used", "Summer 2027 events once known"],
+  fi: ["Kuva teistä kahdesta ja pari lausetta: keitä olette ja miksi mylly (vieraat tulevat mielellään ihmisten luo)", "Google-yritysprofiili ja lupa näyttää arvioita lähteineen (Facebookissa on paljon lämpimiä kommentteja)", "Instagram, jos sellainen on", "Alkuperäiset kuvat täysikokoisina (Facebook pienentää niitä) ja tieto, saako Satu Postin kuvaa käyttää"],
+  en: ["A photo of the two of you and a couple of sentences about who you are", "Google Business Profile, and OK to show reviews with the source", "Instagram, if any", "Original full-size photos, and whether Satu Posti's photo may be used"],
 };
