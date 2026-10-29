@@ -187,6 +187,8 @@ export function millJsonLd(locale: Locale) {
     image: `${SITE_URL}/photos/mylly-kuisti-galleria.jpg`,
     telephone: business.phone,
     email: business.email,
+    taxID: business.businessId,
+    vatID: business.vatId,
     foundingDate: String(business.founded),
     address,
     geo: { "@type": "GeoCoordinates", latitude: business.lat, longitude: business.lng },

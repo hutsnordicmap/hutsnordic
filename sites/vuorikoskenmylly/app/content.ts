@@ -27,6 +27,8 @@ export const googleRating = {
 
 export const business = {
   name: "Vuorikosken Mylly",
+  businessId: "1770144-7",
+  vatId: "FI17701447",
   short: "VKM",
   founded: 1893,
   street: "Tavolantie 18",
@@ -712,18 +714,25 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
     fi: {
       title: "Pieni juhlatila ja kokoustila Sammatissa, Lohja | Vuorikosken Mylly",
       description:
-        "Vuokraa vanhan myllyn juhlatila Sammatista, Lohjalta: pitkä pöytä kokouksiin ja pieniin perhejuhliin kesäkaudella, 50 €/h. Omat tarjoilut, pitopalvelu tai myllyn kahvilan herkut.",
+        "Vuokraa vanhan myllyn juhlatila Sammatista, Lohjalta: paikat 25 hengelle pitkässä pöydässä tai noutopöytä ja tanssitilaa, 50 €/h. Omat tarjoilut, pitopalvelu tai myllyn kahvilan herkut.",
       kicker: "Juhlatila · Sammatti",
       h1: "Pieni juhla- ja kokoustila vanhassa myllyssä",
-      lead: "Myllyn alasiiven juhlatilan pitkä pöytä istuttaa kokoustajat ja pienet perhejuhlat kesäkauden ajan.",
+      lead: "Myllyn alasiiven juhlatilassa on paikat 25 hengelle. Kaikki mahtuvat samaan pitkään pöytään, tai pöytä kääntyy noutopöydäksi ja tilaan tulee puutarhatunnelmaa ja tilaa tanssille.",
       hero: photos.longTable,
-      facts: ["table|Pitkä pöytä", "euro|50 € / tunti", "sun|Varattavissa 15.5.–15.8.", "cup|Kahvikupit ja lautaset 32 hengelle"],
+      facts: ["users|25 hengelle", "euro|50 € / tunti", "sun|Varattavissa 15.5.–15.8.", "cup|Kahviastiat 32 hengelle"],
       sections: [
         {
           title: "Tarjoilut niin kuin haluat",
           text: [
             "Astiat, syötävät ja juotavat voi tuoda itse, käyttää ulkopuolista pitopalvelua tai hyödyntää myllyn kahvilan monipuolista tarjontaa. Kahvilan herkkupöydän leivonnaiset ovat gluteenittomia.",
-            "Kahvikupit, leipälautaset ja lusikat 32 hengelle voi vuokrata meiltä edullisesti.",
+            "Kahviastiat 32 hengelle voi vuokrata meiltä 0,50 €/setti (tiskausmaksu). Setti sisältää leipälautasen, asetin, kahvikupin ja kahvilusikan.",
+            "Tilassa on pakastelokerollinen jenkkijääkaappi. Keittiötä tai ruoanlaittomahdollisuutta ei ole, eikä videotykkiä.",
+          ],
+        },
+        {
+          title: "Kaksi tapaa kattaa",
+          text: [
+            "Kaikki 25 vierasta voivat istua yhdessä pitkässä pöydässä. Vaihtoehtoisesti pitkä pöytä kääntyy tilan perälle noutopöydäksi, ja tilaan tuodaan puutarhatunnelmaa keveillä terassituoleilla ja lasipöydillä. Tämä vaihtoehto jättää tilaa myös tanssille.",
           ],
         },
         { title: "Kokouksiin ja perhejuhliin", text: ["Tila sopii kokouksiin, syntymäpäiville ja muihin pieniin perhejuhliin. Juhlatilassa on vietetty esimerkiksi kaksien 80-vuotisjuhlien yhteiset kestit. Tila on varattavissa 15.5.–15.8. sopimuksen mukaan. Kysy vapaita päiviä tekstiviestillä tai WhatsAppilla 044 016 5047. Juhlatila on esteetön, ja sinne pääsee ilman portaita."] },
@@ -732,32 +741,41 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         title: "Hinnat",
         rows: [
           { item: "Juhlatila, kesäkaudella", price: "50 € / h" },
-          { item: "Kahvikupit, leipälautaset ja lusikat (32 hlö)", price: "Kysy" },
+          { item: "Kahviastiat, setti (leipälautanen, asetti, kuppi, lusikka)", price: "0,50 €" },
         ],
       },
       photos: [photos.longTable, photos.partySet, photos.chandelier, photos.partyFood, photos.breakfast],
       faq: [
         { q: "Paljonko juhlatila maksaa?", a: "50 € tunnilta kesäkaudella." },
+        { q: "Montako henkeä tilaan mahtuu?", a: "25 henkeä, kaikki samaan pitkään pöytään. Noutopöytäjärjestelyllä tilaan jää myös tanssitilaa." },
+        { q: "Onko tilassa keittiö?", a: "Ei. Tilassa on pakastelokerollinen jääkaappi ja kahviastiat 32 hengelle, mutta ei keittiötä eikä videotykkiä." },
         { q: "Saako omat tarjoilut tuoda?", a: "Saa. Voit tuoda omat astiat ja tarjoilut, käyttää pitopalvelua tai tilata herkut myllyn kahvilasta." },
       ],
-      ask: ["Montako henkeä pöytään mahtuu istumaan", "Astiavuokran hinta", "Onko tilassa käytössä keittiö, jääkaappi tai videotykki", "Kuvia tilasta katettuna juhlaan"],
+      ask: [],
       cta: "Kysy vapaita päiviä",
     },
     en: {
       title: "Small party and meeting room in Sammatti, Lohja | Vuorikosken Mylly",
       description:
-        "Hire the event room in an old water mill in Sammatti, Lohja, Finland: a long table for meetings and small family parties in the summer season, €50 per hour. Bring your own food, use a caterer or order from the mill café.",
+        "Hire the event room in an old water mill in Sammatti, Lohja, Finland: seats 25 at one long table, or a buffet with room to dance, €50 per hour. Bring your own food, use a caterer or order from the mill café.",
       kicker: "Event room · Sammatti",
       h1: "A small party and meeting room in an old mill",
-      lead: "The long table in the event room, in the mill's lower wing, seats meetings and small family parties in the summer season.",
+      lead: "The event room in the mill's lower wing seats 25. Everyone fits at one long table, or the table becomes a buffet and the room gets a garden feel with space to dance.",
       hero: photos.longTable,
-      facts: ["table|One long table", "euro|€50 per hour", "sun|Bookable 15 May–15 Aug", "cup|Cups and plates for 32"],
+      facts: ["users|Seats 25", "euro|€50 per hour", "sun|Bookable 15 May–15 Aug", "cup|Coffee sets for 32"],
       sections: [
         {
           title: "Catering your way",
           text: [
             "Bring your own tableware, food and drinks, use an outside caterer, or order from the mill café. The bakes on the café's main spread are gluten-free.",
-            "Coffee cups, side plates and spoons for 32 people can be hired from us at a small cost.",
+            "Coffee sets for 32 people can be hired for €0.50 per set (washing-up fee). A set is a side plate, saucer, coffee cup and spoon.",
+            "The room has an American-style fridge with a freezer. There is no kitchen or cooking, and no projector.",
+          ],
+        },
+        {
+          title: "Two ways to set the room",
+          text: [
+            "All 25 guests can sit together at one long table. Or the long table turns into a buffet at the back of the room, and light terrace chairs and glass tables bring in a garden feel. This layout also leaves room for dancing.",
           ],
         },
         { title: "Meetings and family occasions", text: ["The room suits meetings, birthdays and other small family occasions. It has hosted, for example, a joint party for two 80th birthdays. The room can be booked from 15 May to 15 August by arrangement. Ask for free dates by text message or WhatsApp, +358 44 016 5047. The event room is step-free."] },
@@ -766,15 +784,17 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         title: "Prices",
         rows: [
           { item: "Event room, summer season", price: "€50 / h" },
-          { item: "Coffee cups, side plates and spoons (32 people)", price: "Ask" },
+          { item: "Coffee set (side plate, saucer, cup, spoon)", price: "€0.50" },
         ],
       },
       photos: [photos.longTable, photos.partySet, photos.chandelier, photos.partyFood, photos.breakfast],
       faq: [
         { q: "What does the room cost?", a: "€50 per hour in the summer season." },
+        { q: "How many people fit?", a: "25, all at one long table. With a buffet layout there is also room to dance." },
+        { q: "Is there a kitchen?", a: "No. There is a fridge with a freezer and coffee sets for 32, but no kitchen and no projector." },
         { q: "Can I bring my own food?", a: "Yes. Bring your own, use a caterer or order bakes from the mill café." },
       ],
-      ask: ["How many people the table seats", "Price of the tableware hire", "Kitchen, fridge or projector available?", "Photos of the room set for a party"],
+      ask: [],
       cta: "Ask for free dates",
     },
   },
@@ -926,7 +946,7 @@ export const contactPage = {
     lead: "Kahvila ja vintage-putiikki ovat auki pääsiäisestä elokuun loppuun juhlaviikonloppuina ja 17.6.–8.8. joka to–su klo 11–17, syksyllä pyhäinpäivänä ja isänpäivänä sekä joulupuotina adventtiviikonloppuina klo 11–16. Pihassa on parkkitilaa 20 autolle.",
     accessTitle: "Esteettömyys",
     access: "Pihassa on parkkitilaa 20 autolle. Parkkialue, pihakäytävät, ulkoasiakaspaikat ja juhlatila ovat esteettömiä. Myllyyn kuljetaan luiskaa pitkin, ja oviaukossa on matala kynnys. Galleria, wc sekä sauna- ja majoitustilat ovat portaiden takana, joten ne eivät sovellu liikuntarajoitteisille.",
-    ask: ["Y-tunnus ja yrityksen virallinen nimi"],
+    ask: [],
   },
   en: {
     title: "Opening hours and contact | Vuorikosken Mylly, Sammatti, Lohja",
@@ -935,7 +955,7 @@ export const contactPage = {
     lead: "The café and vintage shop are open from Easter to the end of August on holiday weekends and every Thu–Sun from 17 June to 8 August, 11–17, then on All Saints' and Father's Day weekends and as a Christmas shop on Advent weekends, 11–16. The yard has parking for 20 cars.",
     accessTitle: "Accessibility",
     access: "The yard has parking for 20 cars. The parking area, yard paths, outdoor seating and the event room are step-free. A ramp leads into the mill, with a low threshold at the door. The gallery, toilet, sauna and cabins are up or down steps, so they do not suit visitors with limited mobility.",
-    ask: ["Business ID and official company name"],
+    ask: [],
   },
 };
 

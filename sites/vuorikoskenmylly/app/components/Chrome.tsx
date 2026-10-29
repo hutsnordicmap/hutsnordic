@@ -97,6 +97,8 @@ export function Footer({ locale }: { locale: Locale }) {
             {business.street}, {business.postalCode} {business.village}
             <br />
             {business.municipality}, {business.region[locale]}
+            <br />
+            {locale === "fi" ? "Y-tunnus" : "Business ID"} {business.businessId}
           </p>
         </div>
         <nav className="text-sm">
