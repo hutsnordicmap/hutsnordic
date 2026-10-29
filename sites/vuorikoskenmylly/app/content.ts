@@ -960,6 +960,6 @@ export const contactPage = {
 };
 
 export const homeAsk = {
-  fi: ["Kuva teistä kahdesta ja pari lausetta: keitä olette ja miksi mylly (vieraat tulevat mielellään ihmisten luo)", "Instagram- ja TikTok-tilien nimet (lisätään sivujen alalaitaan)", "Alkuperäiset kuvat täysikokoisina (Facebook pienentää niitä) ja tieto, saako Satu Postin kuvaa käyttää"],
-  en: ["A photo of the two of you and a couple of sentences about who you are", "Instagram and TikTok account names (for the footer)", "Original full-size photos, and whether Satu Posti's photo may be used"],
+  fi: ["Kuva teistä kahdesta ja pari lausetta: keitä olette ja miksi mylly (vieraat tulevat mielellään ihmisten luo)", "Instagram- ja TikTok-tilien nimet (lisätään sivujen alalaitaan)", "Isompi kuvasatsi OneDriven kautta, kun ehdit (alkuperäiset täysikokoiset kuvat)"],
+  en: ["A photo of the two of you and a couple of sentences about who you are", "Instagram and TikTok account names (for the footer)", "The bigger photo batch via OneDrive when you have time (original full-size photos)"],
 };
