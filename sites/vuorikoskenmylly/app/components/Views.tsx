@@ -279,7 +279,7 @@ export function HomeView({ locale }: { locale: Locale }) {
           <h2 className="font-display text-3xl sm:text-4xl">{h.seasonsTitle}</h2>
         </div>
         <div className="mx-auto mt-8 max-w-7xl">
-          <PhotoStrip photos={[photos.spring, photos.summer, photos.rapidsSummer, photos.yard2, photos.autumn, photos.christmas, photos.winter, photos.skis, photos.window]} locale={locale} />
+          <PhotoStrip photos={[photos.spring, photos.summer, photos.rapidsSummer, photos.rapidsWindow, photos.winterBridge, photos.yard2, photos.autumn, photos.christmas, photos.winter, photos.skis, photos.window]} locale={locale} />
         </div>
       </section>
 
