@@ -1,6 +1,6 @@
 import { Bus, Car, ClipboardList, Navigation } from "lucide-react";
 import { dayRange, hoursText } from "@/app/hours";
-import { business, HUTS, hutsLinks, isPreview, live, paths, route, SITE_URL, ui, type Locale, type OpenDay, type PageId } from "@/app/content";
+import { business, googleRating, HUTS, hutsLinks, isPreview, live, paths, route, SITE_URL, ui, type Locale, type OpenDay, type PageId } from "@/app/content";
 
 export function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }} />;
@@ -32,6 +32,20 @@ export function SectionTitle({ kicker, title, tone = "light" }: { kicker?: strin
       {kicker ? <p className={`label ${tone === "dark" ? "text-rust-light" : "text-rust"}`}>{kicker}</p> : null}
       <h2 className="mt-3 text-balance font-display text-3xl leading-[1.08] sm:text-4xl lg:text-5xl">{title}</h2>
     </div>
+  );
+}
+
+/** "★ 4.9 on Google · 162 reviews", linked to Google Maps. Plain text: no Review or AggregateRating markup. */
+export function GoogleRating({ locale }: { locale: Locale }) {
+  const g = googleRating;
+  const score = locale === "fi" ? String(g.score).replace(".", ",") : String(g.score);
+  return (
+    <a href={g.url} rel="noopener" className="mt-5 inline-flex items-center gap-2 text-sm text-flour/80 hover:text-flour">
+      <span className="text-[#f5b301]" aria-hidden>★★★★★</span>
+      <span>
+        <strong className="font-semibold text-flour">{score}</strong> {g.text[locale]} · {g.count} {g.reviews[locale]} →
+      </span>
+    </a>
   );
 }
 

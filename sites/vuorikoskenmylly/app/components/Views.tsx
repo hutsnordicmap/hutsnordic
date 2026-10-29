@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, MessageCircle, Navigation, Phone } from "lucide-react";
 import { Footer, Header, NoticeBar, StickyBar } from "@/app/components/Chrome";
-import { Ask, Faq, GettingHere, HoursList, JsonLd, MapEmbed, millJsonLd, SectionTitle, serviceJsonLd } from "@/app/components/Blocks";
+import { Ask, Faq, GettingHere, GoogleRating, HoursList, JsonLd, MapEmbed, millJsonLd, SectionTitle, serviceJsonLd } from "@/app/components/Blocks";
 import { PhotoStrip } from "@/app/components/Gallery";
 import { IconText } from "@/app/components/Icon";
 import { OpenStatus } from "@/app/components/OpenStatus";
@@ -89,6 +89,7 @@ export function HomeView({ locale }: { locale: Locale }) {
             <p className="label text-rust-light">{h.kicker}</p>
             <h1 className="mt-5 text-balance font-display text-[2.7rem] leading-[1.02] sm:text-6xl lg:text-[5.2rem]">{h.h1}</h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-flour/80">{h.lead}</p>
+            <GoogleRating locale={locale} />
             <div className="mt-8">
               <ContactButtons locale={locale} />
             </div>
@@ -313,6 +314,7 @@ export function ServiceView({ id, locale }: { id: PageId; locale: Locale }) {
             <p className="label mt-8 text-rust-light">{p.kicker}</p>
             <h1 className="mt-4 text-balance font-display text-[2.5rem] leading-[1.04] sm:text-6xl">{p.h1}</h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-flour/80">{p.lead}</p>
+            {id === "kahvila" ? <GoogleRating locale={locale} /> : null}
             {id === "majoitus" ? <p className="mt-4 inline-block border border-rust-light/50 px-3 py-1.5 text-sm text-rust-light">{live.lodgingStatus[locale]}</p> : null}
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {p.facts.map((f) => (

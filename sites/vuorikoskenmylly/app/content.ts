@@ -15,6 +15,16 @@ const BASE = process.env.BASE_PATH ?? "";
 export const asset = (path: string) => `${BASE}${path}`;
 const photo = (file: string) => asset(`/photos/${file}`);
 
+/** Google rating, read from Google Maps by Jeff on 2026-10-29. Shown as text with a link only, never as review markup. */
+export const googleRating = {
+  score: 4.9,
+  count: 162,
+  checked: "2026-10-29",
+  url: "https://www.google.com/maps/search/?api=1&query=Vuorikosken+Mylly+Tavolantie+18+Sammatti",
+  text: { fi: "Googlessa", en: "on Google" },
+  reviews: { fi: "arvostelua", en: "reviews" },
+};
+
 export const business = {
   name: "Vuorikosken Mylly",
   short: "VKM",
@@ -930,6 +940,6 @@ export const contactPage = {
 };
 
 export const homeAsk = {
-  fi: ["Kuva teistä kahdesta ja pari lausetta: keitä olette ja miksi mylly (vieraat tulevat mielellään ihmisten luo)", "Saako Google-profiilin arvosanan ja arvostelumäärän (160 arvostelua) näyttää sivuilla lähteineen?", "Instagram- ja TikTok-tilien nimet (lisätään sivujen alalaitaan)", "Alkuperäiset kuvat täysikokoisina (Facebook pienentää niitä) ja tieto, saako Satu Postin kuvaa käyttää"],
-  en: ["A photo of the two of you and a couple of sentences about who you are", "OK to show the Google rating and review count (160 reviews) with the source?", "Instagram and TikTok account names (for the footer)", "Original full-size photos, and whether Satu Posti's photo may be used"],
+  fi: ["Kuva teistä kahdesta ja pari lausetta: keitä olette ja miksi mylly (vieraat tulevat mielellään ihmisten luo)", "Instagram- ja TikTok-tilien nimet (lisätään sivujen alalaitaan)", "Alkuperäiset kuvat täysikokoisina (Facebook pienentää niitä) ja tieto, saako Satu Postin kuvaa käyttää"],
+  en: ["A photo of the two of you and a couple of sentences about who you are", "Instagram and TikTok account names (for the footer)", "Original full-size photos, and whether Satu Posti's photo may be used"],
 };
