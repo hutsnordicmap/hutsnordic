@@ -88,6 +88,7 @@ export const photos = {
   chandelier: { src: photo("juhlatila-kynttilakruunu.jpg"), fi: "Juhlatila ja kynttiläkruunu", en: "The event room and chandelier" },
   partyFood: { src: photo("juhlatila-ja-sima.jpg"), fi: "Simaa, piirakkaa ja juhlatila", en: "Mead, pies and the event room" },
   cabinNight: { src: photo("mokki-kynttilanvalossa.jpg"), fi: "Mökki kynttilänvalossa", en: "A cabin by candlelight" },
+  fireRoom: { src: photo("kahvila-takkahuone.jpg"), fi: "Hirsiseinäinen takkahuone myllyssä", en: "The log-walled fireplace room in the mill" },
 } satisfies Record<string, Photo>;
 
 /* ------------------------------------------------------------------ */
@@ -437,7 +438,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         ],
         note: "Maksu kortilla, käteisellä tai MobilePaylla.",
       },
-      photos: [photos.pies, photos.buns, photos.cakes, photos.savoury, photos.spread, photos.cake, photos.breakfast, photos.summer],
+      photos: [photos.pies, photos.fireRoom, photos.buns, photos.cakes, photos.savoury, photos.spread, photos.cake, photos.breakfast, photos.summer],
       faq: [
         { q: "Onko kaikki gluteenitonta?", a: "Paikan päällä leivotut tuotteet ovat gluteenittomia ja laktoosittomia. Poikkeuksena ovat puustit, jotka tehdään perinteisestä vehnätaikinasta." },
         { q: "Onko vegaanista?", a: "On. Tarjolla on päivittäin vähintään yksi vegaaninen vaihtoehto, esimerkiksi vegaaninen mustikkapiirakka vaniljakastikkeen kera." },
@@ -491,7 +492,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         ],
         note: "Pay by card, cash or MobilePay.",
       },
-      photos: [photos.pies, photos.buns, photos.cakes, photos.savoury, photos.spread, photos.cake, photos.breakfast, photos.summer],
+      photos: [photos.pies, photos.fireRoom, photos.buns, photos.cakes, photos.savoury, photos.spread, photos.cake, photos.breakfast, photos.summer],
       faq: [
         { q: "Is everything gluten-free?", a: "Everything baked here is gluten-free and lactose-free, except the cinnamon buns, which are made from traditional wheat dough." },
         { q: "Is there anything vegan?", a: "Yes. There is at least one vegan option every day, such as vegan blueberry pie with vanilla sauce." },
