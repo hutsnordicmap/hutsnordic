@@ -277,7 +277,7 @@ export const home = {
     cafeKicker: "Myllyn kahvila",
     cafeTitle: "Gluteeniton herkkupöytä ja päivän puustit",
     cafeText:
-      "Kahvilassa on tarjolla tuoretta kahvia, teetä ja tilalla leivottuja gluteenittomia makeita ja suolaisia herkkuja. Pikkupöydässä odottavat päivän tuoreet puustit. Kuumana kesäpäivänä viilentävät Vuorikosken oma mango-sitrus-jäätee ja icelatte.",
+      "Kahvilassa on tarjolla tuoretta kahvia, teetä ja tilalla leivottuja gluteenittomia ja laktoosittomia makeita ja suolaisia herkkuja, päivittäin myös vegaaninen vaihtoehto. Pikkupöydässä odottavat päivän tuoreet vehnäiset puustit. Kuumana kesäpäivänä viilentävät Vuorikosken oma mango-sitrus-jäätee ja icelatte.",
     cafePills: ["wheat|Gluteeniton herkkupöytä", "chef|Leivottu tilalla", "dog|Lemmikit tervetulleita", "cup|Oma jäätee ja icelatte"],
     shopKicker: "Sisustusputiikki",
     shopTitle: "Persoonallisia löytöjä järkevään hintaan",
@@ -319,7 +319,7 @@ export const home = {
     cafeKicker: "The mill café",
     cafeTitle: "A gluten-free spread and fresh cinnamon buns",
     cafeText:
-      "The café serves fresh coffee, tea and gluten-free sweet and savoury bakes made on the farm. A small side table holds the day's fresh cinnamon buns. On hot summer days, Vuorikoski's own mango-citrus iced tea and iced latte cool you down.",
+      "The café serves fresh coffee, tea and gluten-free, lactose-free sweet and savoury bakes made on the farm, with a vegan option every day. A small side table holds the day's fresh wheat cinnamon buns. On hot summer days, Vuorikoski's own mango-citrus iced tea and iced latte cool you down.",
     cafePills: ["wheat|Gluten-free spread", "chef|Baked on the farm", "dog|Pets welcome", "cup|Own iced tea and iced latte"],
     shopKicker: "Interior shop",
     shopTitle: "One-of-a-kind finds at fair prices",
@@ -347,7 +347,7 @@ export const home = {
 
 export const homeFaq: Record<Locale, { q: string; a: string }[]> = {
   fi: [
-    { q: "Onko kahvilassa gluteenitonta?", a: "On. Herkkupöydän makeat ja suolaiset herkut ovat gluteenittomia ja tilalla leivottuja. Erillisessä pikkupöydässä on lisäksi päivän tuoreita vehnäisiä puusteja." },
+    { q: "Onko kahvilassa gluteenitonta?", a: "On. Tilalla leivotut makeat ja suolaiset herkut ovat gluteenittomia ja laktoosittomia, ja päivittäin on vähintään yksi vegaaninen vaihtoehto. Erillisessä pikkupöydässä on lisäksi päivän tuoreita vehnäisiä puusteja." },
     { q: "Saako koiran tuoda kahvilaan?", a: "Saa. Lemmikit ovat tervetulleita kahvilaan. Terassilla on raikasta juomavettä, ja puristekalkkuna-namit tarjoillaan kassalta." },
     { q: "Milloin Vuorikosken Mylly on auki?", a: "Pääsiäisestä elokuun loppuun juhlaviikonloppuina klo 11–17 ja 17.6.–8.8. joka to–su, syksyllä pyhäinpäivänä ja isänpäivänä sekä joulupuotina adventtiviikonloppuina klo 11–16. Kaikki päivät ovat Aukiolo ja yhteys -sivulla." },
     { q: "Missä mylly on?", a: "Osoitteessa Tavolantie 18, 09220 Sammatti. Sammatti kuuluu Lohjan kaupunkiin Länsi-Uudellamaalla." },
@@ -355,7 +355,7 @@ export const homeFaq: Record<Locale, { q: string; a: string }[]> = {
     { q: "Voiko myllyllä yöpyä?", a: "Voi. Myllylammen rannalla on kaksi pientä sähkötöntä kesämökkiä 1–2 hengelle, ja lisäksi voi varata rantasaunan ja aamiaisen. Kysy vapaita päiviä puhelimella tai WhatsAppilla." },
   ],
   en: [
-    { q: "Is there gluten-free food in the café?", a: "Yes. The sweet and savoury bakes on the main spread are gluten-free and made on the farm. A separate small table also has the day's fresh wheat cinnamon buns." },
+    { q: "Is there gluten-free food in the café?", a: "Yes. The sweet and savoury bakes made on the farm are gluten-free and lactose-free, and there is at least one vegan option every day. A separate small table also has the day's fresh wheat cinnamon buns." },
     { q: "Can I bring my dog to the café?", a: "Yes. Pets are welcome in the café. There is fresh drinking water on the terrace and pressed turkey treats at the counter." },
     { q: "When is Vuorikosken Mylly open?", a: "From Easter to the end of August on holiday weekends 11–17 and every Thu–Sun from 17 June to 8 August, then on All Saints' and Father's Day weekends and as a Christmas shop on Advent weekends, 11–16. All the days are on the Hours & contact page." },
     { q: "Where is the mill?", a: "At Tavolantie 18, 09220 Sammatti. Sammatti is part of the town of Lohja in West Uusimaa, Finland." },
@@ -392,20 +392,30 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
     fi: {
       title: "Gluteeniton kahvila Sammatissa, Lohja | Vuorikosken Myllyn kahvila",
       description:
-        "Kesäkahvila vanhassa myllyssä Sammatissa, Lohjalla. Gluteeniton herkkupöytä tilalla leivottuine makeine ja suolaisine herkkuineen, päivän tuoreet puustit, oma mango-sitrus-jäätee ja koiraystävällinen terassi.",
+        "Kahvila vanhassa myllyssä Sammatissa, Lohjalla. Gluteenittomat ja laktoosittomat tilalla leivotut kakut ja piiraat 5,90 €, päivittäin vegaaninen vaihtoehto, puustit, kakkutilaukset ja koskiterassi. Koirat tervetulleita.",
       kicker: "Myllyn kahvila · Sammatti",
       h1: "Gluteeniton kahvila vanhassa myllyssä",
-      lead: "Tuoretta kahvia, teetä ja tilalla leivottuja gluteenittomia makeita ja suolaisia herkkuja perinteisessä myllymiljöössä.",
+      lead: "Tuoretta kahvia, teetä ja tilalla leivottuja gluteenittomia ja laktoosittomia makeita ja suolaisia herkkuja perinteisessä myllymiljöössä. Nauti paikan päällä tai ota mukaan.",
       hero: photos.pies,
-      facts: ["wheat|Gluteeniton herkkupöytä", "chef|Leivottu tilalla", "cup|Oma mango-sitrus-jäätee ja icelatte", "dog|Lemmikit tervetulleita"],
+      facts: ["wheat|Gluteeniton ja laktoositon", "leaf|Päivittäin vegaaninen vaihtoehto", "users|50 asiakaspaikkaa, terassit mukaan lukien", "dog|Lemmikit tervetulleita"],
       sections: [
         {
-          title: "Tilalla leivottua, gluteenitonta",
+          title: "Tilalla leivottua, gluteenitonta ja laktoositonta",
           text: [
-            "Myllyn kahvilan herkkupöydän makeat ja suolaiset herkut leivotaan tilalla, ja ne ovat gluteenittomia: piiraita, kakkuja ja suolaista sen seitsemää sorttia. Keliaakikko voi valita herkkupöydästä huoletta.",
-            "Erillisessä pikkupöydässä ovat päivän tuoreet vehnäiset puustit, jotka voi nauttia paikan päällä tai napata mukaan.",
-            "Kuumana kesäpäivänä viilentävät Vuorikosken oma mango-sitrus-jäätee ja icelatte.",
+            "Paikan päällä leivotut tuotteemme ovat laktoosittomia ja gluteenittomia. Poikkeuksen tekevät puustit, jotka valmistuvat perinteisestä vehnätaikinasta ja odottavat omassa pikkupöydässään.",
+            "Makeista valitset vaikkapa maailman parhaan porkkanakakun, konjakkisuklaan tai vegaanisen mustikkapiirakan vaniljakastikkeen kera. Suolaisia suosikkeja ovat kylmäsavuporo-, sienimestari- ja kolmen juuston piiras.",
+            "Tarjolla on päivittäin vähintään yksi vegaaninen vaihtoehto, joka ei sisällä maitoa, kanamunaa eikä muitakaan eläinperäisiä raaka-aineita. Kysy lisää allergeeneistä henkilökunnalta.",
+            "Palan painikkeeksi kahvi, tee tai kaakao. Kesäkeleillä viilentävät talon oma mango-sitrus-jäätee ja icelatte. Herkut voi nauttia paikan päällä tai ostaa mukaan kotiin.",
           ],
+        },
+        {
+          id: "tilaukset",
+          title: "Tilaa herkut omiin juhliin",
+          text: ["Voit tilata minkä tahansa makean herkun tai suolaisen piiraan kahvilan valikoimista omiin juhliisi. Kokonainen kakku maksaa 39 € ja riittää 12 herkuttelijalle. Tilaustuotteiden toimitusaika on kaksi viikkoa. Tilaa tekstiviestillä tai WhatsAppilla 044 016 5047."],
+        },
+        {
+          title: "Sisällä ja koskiterassilla",
+          text: ["Sisällä on 20 asiakaspaikkaa, ja aurinko- ja koskiterassi mukaan lukien paikkoja on yhteensä 50. Pihassa on parkkitilaa 20 autolle. Myllyyn kuljetaan luiskaa pitkin, ja oviaukossa on matala kynnys."],
         },
         {
           title: "Koira mukaan",
@@ -416,43 +426,81 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
           text: ["Myllyn majoituksessa yöpyvät voivat tilata lautasaamiaisen, joka tarjoillaan kahvilassa sovittuna aikana ja räätälöidään jokaisen ruokavalioon sopivaksi."],
         },
       ],
+      prices: {
+        title: "Hinnat",
+        rows: [
+          { item: "Kakut ja makeat piiraat", price: "5,90 € / pala" },
+          { item: "Suolaiset piiraat", price: "5,90 € / pala" },
+          { item: "Kahvi, tee tai kaakao", price: "2,90 €" },
+          { item: "Oma jäätee tai icelatte", price: "2,40 € / lasi" },
+          { item: "Kokonainen kakku tilauksesta (12 hlö)", price: "39 €" },
+        ],
+        note: "Maksu kortilla, käteisellä tai MobilePaylla.",
+      },
       photos: [photos.pies, photos.buns, photos.cakes, photos.savoury, photos.spread, photos.cake, photos.breakfast, photos.summer],
       faq: [
-        { q: "Onko kaikki gluteenitonta?", a: "Herkkupöydän makeat ja suolaiset herkut ovat gluteenittomia. Päivän puustit ovat vehnäisiä, ja ne ovat erillisessä pikkupöydässä." },
+        { q: "Onko kaikki gluteenitonta?", a: "Paikan päällä leivotut tuotteet ovat gluteenittomia ja laktoosittomia. Poikkeuksena ovat puustit, jotka tehdään perinteisestä vehnätaikinasta." },
+        { q: "Onko vegaanista?", a: "On. Tarjolla on päivittäin vähintään yksi vegaaninen vaihtoehto, esimerkiksi vegaaninen mustikkapiirakka vaniljakastikkeen kera." },
+        { q: "Voiko kakun tilata?", a: "Voi. Minkä tahansa kahvilan makean herkun tai suolaisen piiraan voi tilata omiin juhliin. Kakku maksaa 39 € ja riittää 12 hengelle. Toimitusaika on kaksi viikkoa." },
+        { q: "Miten voi maksaa?", a: "Kortilla, käteisellä tai MobilePaylla." },
         { q: "Saako koiran tuoda sisälle?", a: "Lemmikit ovat tervetulleita kahvilaan. Terassilla on vettä ja kassalta saa puristekalkkuna-namin." },
         { q: "Milloin kahvila on auki?", a: "Pääsiäisestä elokuun loppuun juhlaviikonloppuina klo 11–17 ja 17.6.–8.8. joka to–su, syksyllä pyhäinpäivänä ja isänpäivänä sekä joulupuotina adventtiviikonloppuina klo 11–16. Kaikki päivät ovat Aukiolo ja yhteys -sivulla." },
       ],
-      ask: ["Otatteko kakkutilauksia? (Facebookissa mainittiin lauantain kakkutilaus)", "Esimerkkejä kahvilan tuotteista ja hinnoista (esim. 5–8 herkkua)", "Onko myös maidottomia tai vegaanisia vaihtoehtoja?", "Maksutavat kahvilassa", "Lisää kuvia kahvilasta ja terassilta"],
+      ask: [],
       cta: "Tule kahville myllylle",
     },
     en: {
       title: "Gluten-free café in Sammatti, Lohja | Vuorikosken Mylly café",
       description:
-        "A summer café in an old water mill in Sammatti, Lohja, Finland. A gluten-free spread of sweet and savoury bakes made on the farm, fresh cinnamon buns, own mango-citrus iced tea and a dog-friendly terrace.",
+        "A café in an old water mill in Sammatti, Lohja, Finland. Gluten-free and lactose-free cakes and pies baked on the farm, €5.90 a slice, a vegan option every day, cinnamon buns, cake orders and a riverside terrace. Dogs welcome.",
       kicker: "The mill café · Sammatti",
       h1: "A gluten-free café in an old water mill",
-      lead: "Fresh coffee, tea and gluten-free sweet and savoury bakes made on the farm, in a traditional mill setting.",
+      lead: "Fresh coffee, tea and gluten-free, lactose-free sweet and savoury bakes made on the farm, in a traditional mill setting. Enjoy them here or take them home.",
       hero: photos.pies,
-      facts: ["wheat|Gluten-free spread", "chef|Baked on the farm", "cup|Own mango-citrus iced tea and iced latte", "dog|Pets welcome"],
+      facts: ["wheat|Gluten-free and lactose-free", "leaf|A vegan option every day", "users|50 seats with the terraces", "dog|Pets welcome"],
       sections: [
         {
-          title: "Baked on the farm, gluten-free",
+          title: "Baked on the farm, gluten-free and lactose-free",
           text: [
-            "The sweet and savoury bakes on the café's main spread are made on the farm and are gluten-free: pies, cakes and savoury bakes of every kind. If you are coeliac, you can choose freely from the spread.",
-            "A separate small table holds the day's fresh wheat cinnamon buns, to enjoy on the spot or take away.",
-            "On hot summer days, Vuorikoski's own mango-citrus iced tea and iced latte cool you down.",
+            "Everything baked here is lactose-free and gluten-free. The exception is the cinnamon buns, made from traditional wheat dough, which wait on their own small table.",
+            "On the sweet side, try the world's best carrot cake, cognac chocolate cake or vegan blueberry pie with vanilla sauce. Savoury favourites are the cold-smoked reindeer, mushroom and three-cheese pies.",
+            "There is at least one vegan option every day, with no milk, egg or other animal products. Ask the staff about allergens.",
+            "Have it with coffee, tea or cocoa. On hot days, the house mango-citrus iced tea and iced latte cool you down. Enjoy everything here or take it home.",
           ],
+        },
+        {
+          id: "tilaukset",
+          title: "Order bakes for your party",
+          text: ["You can order any sweet bake or savoury pie from the café's range for your own celebration. A whole cake costs €39 and serves 12. Orders take two weeks. Order by text message or WhatsApp, +358 44 016 5047."],
+        },
+        {
+          title: "Indoors and on the riverside terrace",
+          text: ["There are 20 seats indoors and 50 in all with the sun terrace and the riverside terrace. The yard has parking for 20 cars. A ramp leads into the mill, with a low threshold at the door."],
         },
         { title: "Bring the dog", text: ["Pets are welcome in the café too. There is fresh drinking water on the terrace, and pressed turkey treats are handed out at the counter."] },
         { title: "Breakfast for overnight guests", text: ["Guests staying in the mill cabins can order a plated breakfast, served in the café at an agreed time and tailored to each guest's diet."] },
       ],
+      prices: {
+        title: "Prices",
+        rows: [
+          { item: "Cakes and sweet pies", price: "€5.90 / slice" },
+          { item: "Savoury pies", price: "€5.90 / slice" },
+          { item: "Coffee, tea or cocoa", price: "€2.90" },
+          { item: "House iced tea or iced latte", price: "€2.40 / glass" },
+          { item: "Whole cake to order (serves 12)", price: "€39" },
+        ],
+        note: "Pay by card, cash or MobilePay.",
+      },
       photos: [photos.pies, photos.buns, photos.cakes, photos.savoury, photos.spread, photos.cake, photos.breakfast, photos.summer],
       faq: [
-        { q: "Is everything gluten-free?", a: "The sweet and savoury bakes on the main spread are gluten-free. The day's cinnamon buns are made with wheat and sit on a separate small table." },
+        { q: "Is everything gluten-free?", a: "Everything baked here is gluten-free and lactose-free, except the cinnamon buns, which are made from traditional wheat dough." },
+        { q: "Is there anything vegan?", a: "Yes. There is at least one vegan option every day, such as vegan blueberry pie with vanilla sauce." },
+        { q: "Can I order a cake?", a: "Yes. You can order any sweet bake or savoury pie from the café's range. A cake costs €39 and serves 12. Orders take two weeks." },
+        { q: "How can I pay?", a: "By card, cash or MobilePay." },
         { q: "Can I bring my dog inside?", a: "Pets are welcome in the café. There is water on the terrace and a turkey treat at the counter." },
         { q: "When is the café open?", a: "From Easter to the end of August on holiday weekends 11–17 and every Thu–Sun from 17 June to 8 August, then on All Saints' and Father's Day weekends and as a Christmas shop on Advent weekends, 11–16. All the days are on the Hours & contact page." },
       ],
-      ask: ["Do you take cake orders?", "A few café items and prices", "Dairy-free or vegan options?", "Payment methods in the café", "More photos of the café and terrace"],
+      ask: [],
       cta: "Come for coffee at the mill",
     },
   },
@@ -654,7 +702,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
             "Kahvikupit, leipälautaset ja lusikat 32 hengelle voi vuokrata meiltä edullisesti.",
           ],
         },
-        { title: "Kokouksiin ja perhejuhliin", text: ["Tila sopii kokouksiin, syntymäpäiville ja muihin pieniin perhejuhliin. Juhlatilassa on vietetty esimerkiksi kaksien 80-vuotisjuhlien yhteiset kestit. Tila on varattavissa 15.5.–15.8. sopimuksen mukaan. Kysy vapaita päiviä tekstiviestillä tai WhatsAppilla 044 016 5047."] },
+        { title: "Kokouksiin ja perhejuhliin", text: ["Tila sopii kokouksiin, syntymäpäiville ja muihin pieniin perhejuhliin. Juhlatilassa on vietetty esimerkiksi kaksien 80-vuotisjuhlien yhteiset kestit. Tila on varattavissa 15.5.–15.8. sopimuksen mukaan. Kysy vapaita päiviä tekstiviestillä tai WhatsAppilla 044 016 5047. Juhlatila on esteetön, ja sinne pääsee ilman portaita."] },
       ],
       prices: {
         title: "Hinnat",
@@ -688,7 +736,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
             "Coffee cups, side plates and spoons for 32 people can be hired from us at a small cost.",
           ],
         },
-        { title: "Meetings and family occasions", text: ["The room suits meetings, birthdays and other small family occasions. It has hosted, for example, a joint party for two 80th birthdays. The room can be booked from 15 May to 15 August by arrangement. Ask for free dates by text message or WhatsApp, +358 44 016 5047."] },
+        { title: "Meetings and family occasions", text: ["The room suits meetings, birthdays and other small family occasions. It has hosted, for example, a joint party for two 80th birthdays. The room can be booked from 15 May to 15 August by arrangement. Ask for free dates by text message or WhatsApp, +358 44 016 5047. The event room is step-free."] },
       ],
       prices: {
         title: "Prices",
@@ -851,15 +899,19 @@ export const contactPage = {
     title: "Aukioloajat ja yhteystiedot | Vuorikosken Mylly, Sammatti, Lohja",
     description: "Vuorikosken Myllyn aukioloajat, osoite (Tavolantie 18, 09220 Sammatti), puhelin, WhatsApp, ajo-ohjeet ja bussiyhteys Lohjalta.",
     h1: "Aukiolo ja yhteystiedot",
-    lead: "Kahvila ja vintage-putiikki ovat auki pääsiäisestä elokuun loppuun juhlaviikonloppuina ja 17.6.–8.8. joka to–su klo 11–17, syksyllä pyhäinpäivänä ja isänpäivänä sekä joulupuotina adventtiviikonloppuina klo 11–16. Pihassa on parkkipaikka.",
-    ask: ["Y-tunnus ja yrityksen virallinen nimi", "Esteettömyys: pääseekö pyörätuolilla kahvilaan ja wc:hen?"],
+    lead: "Kahvila ja vintage-putiikki ovat auki pääsiäisestä elokuun loppuun juhlaviikonloppuina ja 17.6.–8.8. joka to–su klo 11–17, syksyllä pyhäinpäivänä ja isänpäivänä sekä joulupuotina adventtiviikonloppuina klo 11–16. Pihassa on parkkitilaa 20 autolle.",
+    accessTitle: "Esteettömyys",
+    access: "Pihassa on parkkitilaa 20 autolle. Parkkialue, pihakäytävät, ulkoasiakaspaikat ja juhlatila ovat esteettömiä. Myllyyn kuljetaan luiskaa pitkin, ja oviaukossa on matala kynnys. Galleria, wc sekä sauna- ja majoitustilat ovat portaiden takana, joten ne eivät sovellu liikuntarajoitteisille.",
+    ask: ["Y-tunnus ja yrityksen virallinen nimi"],
   },
   en: {
     title: "Opening hours and contact | Vuorikosken Mylly, Sammatti, Lohja",
     description: "Vuorikosken Mylly opening hours, address (Tavolantie 18, 09220 Sammatti, Finland), phone, WhatsApp, directions and the bus from Lohja.",
     h1: "Hours and contact",
-    lead: "The café and vintage shop are open from Easter to the end of August on holiday weekends and every Thu–Sun from 17 June to 8 August, 11–17, then on All Saints' and Father's Day weekends and as a Christmas shop on Advent weekends, 11–16. There is parking in the yard.",
-    ask: ["Business ID and official company name", "Accessibility: wheelchair access to the café and toilet?"],
+    lead: "The café and vintage shop are open from Easter to the end of August on holiday weekends and every Thu–Sun from 17 June to 8 August, 11–17, then on All Saints' and Father's Day weekends and as a Christmas shop on Advent weekends, 11–16. The yard has parking for 20 cars.",
+    accessTitle: "Accessibility",
+    access: "The yard has parking for 20 cars. The parking area, yard paths, outdoor seating and the event room are step-free. A ramp leads into the mill, with a low threshold at the door. The gallery, toilet, sauna and cabins are up or down steps, so they do not suit visitors with limited mobility.",
+    ask: ["Business ID and official company name"],
   },
 };
 

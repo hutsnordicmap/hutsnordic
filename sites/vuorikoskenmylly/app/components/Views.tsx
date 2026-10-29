@@ -477,6 +477,10 @@ export function ContactView({ locale }: { locale: Locale }) {
       <section className="mx-auto grid max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_1.5fr]">
         <div className="space-y-10">
           <GettingHere locale={locale} />
+          <div>
+            <p className="label opacity-60">{c.accessTitle}</p>
+            <p className="mt-2 leading-relaxed text-ink/80">{c.access}</p>
+          </div>
           <Ask locale={locale} items={c.ask} />
         </div>
         <MapEmbed locale={locale} />

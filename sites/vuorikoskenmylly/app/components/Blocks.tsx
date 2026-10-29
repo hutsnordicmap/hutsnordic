@@ -207,7 +207,9 @@ export function serviceJsonLd(id: PageId, locale: Locale, name: string, descript
     parentOrganization: { "@id": millId },
   };
   if (id === "kahvila") {
-    node.servesCuisine = ["Gluten-free baking", "Coffee", "Cakes"];
+    node.servesCuisine = ["Gluten-free baking", "Lactose-free baking", "Vegan options", "Coffee", "Cakes"];
+    node.paymentAccepted = "Cash, Credit Card, MobilePay";
+    node.priceRange = "€";
     node.amenityFeature = [{ "@type": "LocationFeatureSpecification", name: "Pets allowed", value: true }];
     node.openingHoursSpecification = openingHours(live.openDays);
   }
