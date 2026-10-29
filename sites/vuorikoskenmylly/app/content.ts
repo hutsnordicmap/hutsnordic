@@ -89,6 +89,7 @@ export const photos = {
   partyFood: { src: photo("juhlatila-ja-sima.jpg"), fi: "Simaa, piirakkaa ja juhlatila", en: "Mead, pies and the event room" },
   cabinNight: { src: photo("mokki-kynttilanvalossa.jpg"), fi: "Mökki kynttilänvalossa", en: "A cabin by candlelight" },
   fireRoom: { src: photo("kahvila-takkahuone.jpg"), fi: "Hirsiseinäinen takkahuone myllyssä", en: "The log-walled fireplace room in the mill" },
+  cafeRoom: { src: photo("kahvila-sisatila.jpg"), fi: "Myllyn kahvilan sisätila: antiikkituoleja, lamppuja ja lankkuseinät", en: "Inside the mill café: antique chairs, lamps and plank walls" },
 } satisfies Record<string, Photo>;
 
 /* ------------------------------------------------------------------ */
@@ -397,7 +398,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       kicker: "Myllyn kahvila · Sammatti",
       h1: "Gluteeniton kahvila vanhassa myllyssä",
       lead: "Tuoretta kahvia, teetä ja tilalla leivottuja gluteenittomia ja laktoosittomia makeita ja suolaisia herkkuja perinteisessä myllymiljöössä. Nauti paikan päällä tai ota mukaan.",
-      hero: photos.pies,
+      hero: photos.cafeRoom,
       facts: ["wheat|Gluteeniton ja laktoositon", "leaf|Päivittäin vegaaninen vaihtoehto", "users|50 asiakaspaikkaa, terassit mukaan lukien", "dog|Lemmikit tervetulleita"],
       sections: [
         {
@@ -438,7 +439,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         ],
         note: "Maksu kortilla, käteisellä tai MobilePaylla.",
       },
-      photos: [photos.pies, photos.fireRoom, photos.buns, photos.cakes, photos.savoury, photos.spread, photos.cake, photos.breakfast, photos.summer],
+      photos: [photos.cafeRoom, photos.pies, photos.fireRoom, photos.buns, photos.cakes, photos.savoury, photos.spread, photos.cake, photos.breakfast, photos.summer],
       faq: [
         { q: "Onko kaikki gluteenitonta?", a: "Paikan päällä leivotut tuotteet ovat gluteenittomia ja laktoosittomia. Poikkeuksena ovat puustit, jotka tehdään perinteisestä vehnätaikinasta." },
         { q: "Onko vegaanista?", a: "On. Tarjolla on päivittäin vähintään yksi vegaaninen vaihtoehto, esimerkiksi vegaaninen mustikkapiirakka vaniljakastikkeen kera." },
@@ -457,7 +458,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       kicker: "The mill café · Sammatti",
       h1: "A gluten-free café in an old water mill",
       lead: "Fresh coffee, tea and gluten-free, lactose-free sweet and savoury bakes made on the farm, in a traditional mill setting. Enjoy them here or take them home.",
-      hero: photos.pies,
+      hero: photos.cafeRoom,
       facts: ["wheat|Gluten-free and lactose-free", "leaf|A vegan option every day", "users|50 seats with the terraces", "dog|Pets welcome"],
       sections: [
         {
@@ -492,7 +493,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
         ],
         note: "Pay by card, cash or MobilePay.",
       },
-      photos: [photos.pies, photos.fireRoom, photos.buns, photos.cakes, photos.savoury, photos.spread, photos.cake, photos.breakfast, photos.summer],
+      photos: [photos.cafeRoom, photos.pies, photos.fireRoom, photos.buns, photos.cakes, photos.savoury, photos.spread, photos.cake, photos.breakfast, photos.summer],
       faq: [
         { q: "Is everything gluten-free?", a: "Everything baked here is gluten-free and lactose-free, except the cinnamon buns, which are made from traditional wheat dough." },
         { q: "Is there anything vegan?", a: "Yes. There is at least one vegan option every day, such as vegan blueberry pie with vanilla sauce." },
