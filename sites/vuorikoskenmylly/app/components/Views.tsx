@@ -257,6 +257,22 @@ export function HomeView({ locale }: { locale: Locale }) {
         </div>
       </section>
 
+      {/* The people behind the mill, in Antti's own words */}
+      <section className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_1.4fr] lg:gap-16 lg:py-28">
+        <div className="relative mx-auto aspect-[3/4] w-full max-w-md overflow-hidden">
+          <Image src={photos.makers.src} alt={photos.makers[locale]} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
+        </div>
+        <div>
+          <SectionTitle kicker={h.makersKicker} title={h.makersTitle} />
+          {h.makersText.map((p) => (
+            <p key={p.slice(0, 20)} className="mt-5 text-lg leading-relaxed text-ink/80">
+              {p}
+            </p>
+          ))}
+          <p className="mt-6 font-display text-2xl text-rust">{h.makersSign}</p>
+        </div>
+      </section>
+
       {/* The mill through the seasons */}
       <section className="bg-coal py-16 text-flour">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">

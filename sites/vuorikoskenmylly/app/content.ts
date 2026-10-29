@@ -103,6 +103,7 @@ export const photos = {
   cabinNight: { src: photo("mokki-kynttilanvalossa.jpg"), fi: "Mökki kynttilänvalossa", en: "A cabin by candlelight" },
   fireRoom: { src: photo("kahvila-takkahuone.jpg"), fi: "Hirsiseinäinen takkahuone myllyssä", en: "The log-walled fireplace room in the mill" },
   cafeRoom: { src: photo("kahvila-sisatila.jpg"), fi: "Myllyn kahvilan sisätila: antiikkituoleja, lamppuja ja lankkuseinät", en: "Inside the mill café: antique chairs, lamps and plank walls" },
+  makers: { src: photo("antti-ja-juha.jpg"), fi: "Antti ja Juha", en: "Antti and Juha" },
   glogi: { src: photo("glogi.jpg"), fi: "Vuorikosken oma glögi", en: "Vuorikoski's own glögi" },
   sammattiPillows: { src: photo("sammatti-tyynyt.jpg"), fi: "Sammatti-tyynyt, Vuorikosken omaa tuotantoa", en: "Sammatti cushions, made by Vuorikoski" },
   ownJams: { src: photo("omat-hillot.jpg"), fi: "Vuorikosken omat hillot", en: "Vuorikoski's own jams" },
@@ -312,6 +313,14 @@ export const home = {
       "Tänä päivänä tilalla asuu visuaalisilla aloilla toimiva yrittäjäpariskunta. Alkuperäiseen asuunsa palautettu mylly on avoinna kesäkaudella ja joulun alla adventtiviikonloppuina. Vuonna 2023 myllyn rakentamisesta tuli kuluneeksi 130 vuotta, ja kesällä 2026 viisi vuotta siitä, kun kyltti kannettiin tienvarteen ja Vuorikosken nykyinen tarina alkoi.",
     ],
     historyLink: "Lisää Sammatin ja Myllykylän myllyjen historiasta (Kansalliskirjasto)",
+    makersKicker: "Tekijät",
+    makersTitle: "Tekijöiden tarina myllyn takana",
+    makersText: [
+      "Mitä tapahtuu, kun kaksi tekeväistä maalaiskollia sijoitetaan liian pitkäksi aikaa ahtaisiin kerrostalo-olosuhteisiin? Se saattaa herättää hallitsemattoman remontointi- ja maanmuokkausvimman, joka sopivan kohteen kohdalle osuessa roihahtaa kuin elovalkea. Niin he saapuivat Sammatin Myllykylään luonnon valtaamalle tontille, jonka perukalta löytyi romuvarastoksi päätynyt myllyrakennus. Joo, me otetaan tämä!",
+      "Pari vuotta myöhemmin ryteikkö oli muuttunut puutarhaksi ja rakennukset kunnostettu arvoiseensa asuun. Mitäs me täällä kaksin istutaan, mitä jos avataan paikka kyläläisille? Laitetaan varastoihin kertyneet puhdetyöt myyntiin pihanavettaan ja avataan ovet museomyllyyn. Kello löi yksitoista ja ensimmäiset asiakkaat tulivat ja sitten seuraavat ja sitten seuraavat, eikä se virta koskaan loppunutkaan.",
+      "Nyt viisi vuotta myöhemmin Vuorikosken Mylly on vakiinnuttanut paikkansa paikallisten ja kesämökkiläisten yhteisenä olohuoneena, joka nykyisellään tavoittaa tuhansia kävijöitä vuosittain. Meille ovat kaikki tervetulleita!",
+    ],
+    makersSign: "Antti, Juha ja naapurin likat",
     eventsKicker: "Tapahtumat",
     eventsTitle: "Tapahtumat 2027",
     eventsText: "Pääsiäisestä joulunavaukseen. Aiempina kesinä pihalla on ollut myös sunnuntaisoittoja, pihakirppiksiä ja Löytölän euron pöytä. Uudet tapahtumat ilmoitetaan tällä sivulla ja Facebookissa.",
@@ -354,6 +363,14 @@ export const home = {
       "Today the farm is home to an entrepreneur couple working in visual fields. Restored to its original look, the mill is open in the summer season and on Advent weekends before Christmas. In 2023 the mill turned 130, and summer 2026 marked five years since the sign went up by the road and today's Vuorikoski began.",
     ],
     historyLink: "More on the history of Sammatti and the Myllykylä mills (National Library, in Finnish)",
+    makersKicker: "The makers",
+    makersTitle: "The story of the makers behind the mill",
+    makersText: [
+      "What happens when two hands-on country boys are kept too long in a cramped city flat? It can spark an unstoppable urge to renovate and dig, which flares up like a bonfire once the right place comes along. That is how they arrived in Myllykylä, Sammatti, at an overgrown plot with an old mill at the far end that had ended up as a junk store. Yes, we'll take it!",
+      "A couple of years later the thicket had become a garden and the buildings were restored to the look they deserve. Why are we sitting here on our own? What if we opened the place to the villagers? Let's put the handiwork piling up in the sheds on sale in the yard barn and open the doors of the museum mill. The clock struck eleven, the first customers came, then the next and the next, and the flow never stopped.",
+      "Now, five years later, Vuorikosken Mylly has become a shared living room for locals and summer cottagers, welcoming thousands of visitors every year. Everyone is welcome here!",
+    ],
+    makersSign: "Antti, Juha and the neighbour's girls",
     eventsKicker: "Events",
     eventsTitle: "Events in 2027",
     eventsText: "From Easter to the Christmas opening. Past summers have also brought Sunday music in the yard, yard flea markets and the one-euro Löytölä table. New events are posted on this page and on Facebook.",
@@ -961,6 +978,6 @@ export const contactPage = {
 };
 
 export const homeAsk = {
-  fi: ["Kuva teistä kahdesta ja pari lausetta: keitä olette ja miksi mylly (vieraat tulevat mielellään ihmisten luo)", "TikTok-tilin nimi (Instagram on jo sivujen alalaidassa)", "Isompi kuvasatsi OneDriven kautta, kun ehdit (alkuperäiset täysikokoiset kuvat)"],
-  en: ["A photo of the two of you and a couple of sentences about who you are", "TikTok account name (Instagram is already in the footer)", "The bigger photo batch via OneDrive when you have time (original full-size photos)"],
+  fi: ["TikTok-tilin nimi (Instagram on jo sivujen alalaidassa)", "Isompi kuvasatsi OneDriven kautta, kun ehdit (alkuperäiset täysikokoiset kuvat)"],
+  en: ["TikTok account name (Instagram is already in the footer)", "The bigger photo batch via OneDrive when you have time (original full-size photos)"],
 };
