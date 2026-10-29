@@ -6,4 +6,4 @@
 :HL["/preview/vuorikoskenmylly/_next/static/media/9e400763522556e5-s.p.16zy668-enz0s.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/preview/vuorikoskenmylly/_next/static/media/c47649aa31f9e140-s.p.11uo_35nso9mn.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/preview/vuorikoskenmylly/vkm-logo.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":0,"slots":{"children":{"name":"(fi)","param":null,"prefetchHints":16,"slots":{"children":{"name":"majoitus","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"QCc4OaQBZOsxLNLBJ81Ht"}
+0:{"tree":{"name":"","param":null,"prefetchHints":0,"slots":{"children":{"name":"(fi)","param":null,"prefetchHints":16,"slots":{"children":{"name":"majoitus","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"SaVzvo3oDNv2bZtp-G6rg"}

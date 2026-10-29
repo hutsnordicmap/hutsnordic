@@ -90,6 +90,10 @@ export const photos = {
   cabinNight: { src: photo("mokki-kynttilanvalossa.jpg"), fi: "Mökki kynttilänvalossa", en: "A cabin by candlelight" },
   fireRoom: { src: photo("kahvila-takkahuone.jpg"), fi: "Hirsiseinäinen takkahuone myllyssä", en: "The log-walled fireplace room in the mill" },
   cafeRoom: { src: photo("kahvila-sisatila.jpg"), fi: "Myllyn kahvilan sisätila: antiikkituoleja, lamppuja ja lankkuseinät", en: "Inside the mill café: antique chairs, lamps and plank walls" },
+  glogi: { src: photo("glogi.jpg"), fi: "Vuorikosken oma glögi", en: "Vuorikoski's own glögi" },
+  sammattiPillows: { src: photo("sammatti-tyynyt.jpg"), fi: "Sammatti-tyynyt, Vuorikosken omaa tuotantoa", en: "Sammatti cushions, made by Vuorikoski" },
+  ownJams: { src: photo("omat-hillot.jpg"), fi: "Vuorikosken omat hillot", en: "Vuorikoski's own jams" },
+  shopShelves: { src: photo("putiikki-hyllyt.jpg"), fi: "Tuoksuvia kodintuotteita ja hillopurkkeja putiikin hyllyillä", en: "Scented home products and jars on the shop shelves" },
 } satisfies Record<string, Photo>;
 
 /* ------------------------------------------------------------------ */
@@ -284,7 +288,7 @@ export const home = {
     shopKicker: "Sisustusputiikki",
     shopTitle: "Persoonallisia löytöjä järkevään hintaan",
     shopText:
-      "Second hand -sisustusputiikki on täynnä löytöjä itselle tai lahjaksi. Valtaosa tavarasta on poimittu lähialueelta, ja jokainen esine tarkastetaan ja puhdistetaan. Tilan omat artesaaniherkut ja paikallisten kädentaitajien taidonnäytteet täydentävät valikoimaa, ja valikoidut vintage-vaatteet täydentävät valikoimaa.",
+      "Second hand -sisustusputiikki on täynnä löytöjä itselle tai lahjaksi. Jokainen esine puhdistetaan huolellisesti ja kunnostetaan tarpeen mukaan, ja valaisimet saavat käsintehdyt varjostimet. Vuorikosken omat hillot, glögit ja Sammatti-tekstiilit, lähialueen artesaanien työt ja vintage-vaatteet täydentävät valikoimaa.",
     splitTitle: "Muutakin myllyllä",
     splitEvents: { kicker: "Juhlat ja kokoukset", title: "Pitkän pöydän juhlatila", text: "Kokouksiin ja pieniin perhejuhliin kesäkaudella, 50 € tunnilta." },
     splitStay: { kicker: "Yöksi myllylle", title: "Kaksi pientä mökkiä lammen rannalla", text: "Sähköttömät kesämökit, rantasauna ja lautasaamiainen kahvilassa." },
@@ -326,7 +330,7 @@ export const home = {
     shopKicker: "Interior shop",
     shopTitle: "One-of-a-kind finds at fair prices",
     shopText:
-      "The second-hand interior shop is full of finds for yourself or as gifts. Most pieces are found locally, and every one is checked and cleaned. The farm's own artisan treats and work by local craftspeople complete the range, and selected vintage clothing completes the range.",
+      "The second-hand interior shop is full of finds for yourself or as gifts. Every piece is carefully cleaned and restored where needed, and lamps get handmade shades. Vuorikoski's own jams, glögi and Sammatti textiles, work by local artisans and vintage clothing complete the range.",
     splitTitle: "More at the mill",
     splitEvents: { kicker: "Parties and meetings", title: "The long-table event room", text: "For meetings and small family parties in the summer season, €50 per hour." },
     splitStay: { kicker: "Stay the night", title: "Two small cabins by the pond", text: "Off-grid summer cabins, a shore sauna and plated breakfast in the café." },
@@ -510,69 +514,77 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
     fi: {
       title: "Vintage- ja sisustusputiikki Sammatissa, Lohja | Vuorikosken Mylly",
       description:
-        "Second hand -sisustusputiikki vanhassa myllyssä Sammatissa, Lohjalla: persoonallisia löytöjä, vintage-vaatteita, tilan omia artesaaniherkkuja ja paikallista käsityötä. Joulupuoti adventtiviikonloppuina.",
+        "Second hand -sisustusputiikki vanhassa myllyssä Sammatissa, Lohjalla: kunnostettuja löytöjä, käsintehdyin varjostimin tehtyjä valaisimia, vintage-vaatteita, Vuorikosken omia hilloja, glögiä ja Sammatti-tekstiilejä. Joulupuoti adventtiviikonloppuina.",
       kicker: "Sisustusputiikki · Sammatti",
       h1: "Vintage- ja sisustusputiikki myllyssä",
       lead: "Second hand -sisustusputiikki täynnä persoonallisia löytöjä itselle tai lahjaksi. Kaikki saman katon alta järkevään hintaan.",
       hero: photos.lamps,
-      facts: ["lamp|Second hand -sisustus", "shirt|Vintage-vaatteet", "jar|Tilan omat artesaaniherkut", "hand|Paikallisten kädentaitajien työt"],
+      facts: ["lamp|Valaisimet käsintehdyin varjostimin", "shirt|Vintage-vaatteet", "jar|Omat hillot, säilykkeet ja glögit", "hand|Lähialueen artesaanien työt"],
       sections: [
         {
           title: "Löytöjä itselle tai lahjaksi",
           text: [
-            "Myllyn sisustusputiikki on täynnä persoonallisia second hand -löytöjä. Valtaosa tuotteista on poimittu lähialueelta. Jokainen esine käy läpi kuntotarkastuksen ja perusteellisen puhdistuksen, ja osa saa kokonaan uuden ilmeen tai käyttötarkoituksen.",
-            "Suositut pitsivalaisimet on päivitetty led-tekniikkaan, ja niiden persoonalliset varjostimet on muokattu Vuorikosken omassa pajassa. Valikoimaa täydentävät valikoidut vintage-vaatteet.",
+            "Myllyn putiikin valikoima koostuu tarkoin valituista second hand -sisustustavaroista, jotka puhdistetaan huolellisesti ja kunnostetaan tarpeen mukaan. Välillä pintaan tarvitaan uutta väriä, toisinaan materiaalista muokataan jotain täysin uutta.",
+            "Sisustusvalaisimet käsintehtyine varjostimineen ovat putiikin suosituimpia tuotteita. Valikoimaa täydentävät valikoidut vintage-vaatteet.",
+            "Valtaosa tavarasta löytyy ostomatkoilta Etelä-Suomesta: kirpputoreilta, osto- ja myyntiliikkeistä ja hyväntekeväisyysjärjestöiltä. Pieni oma maahantuonti täydentää valikoimaa, esimerkiksi lasisilla joulukoristeilla suoraan Euroopasta ja erikoispolttimoilla sisustusvalaisimiin.",
           ],
         },
         {
-          title: "Pientä kotiin ja lahjaksi",
+          title: "Vuorikosken omaa tuotantoa",
           text: [
-            "Second hand -löytöjen rinnalla on tilan omia artesaaniherkkuja ja paikallisten kädentaitajien töitä, kuten Timo Laurilan käsintehtyjä puukkoja. Hyllyistä löytyy myös esimerkiksi rouheita pellavaisia Sammatti-tyynyjä, luomulaventeli-tuoksupusseja, raparperin tuoksuisia siivoussuihkeita ja ranskalaisia oliiviöljypohjaisia saippuoita.",
+            "Sammatti-tekstiilit, makeat ja suolaiset herkkusäilykkeet, glögit ja tuoksuvat kodintuotteet ovat Vuorikosken omaa tuotantoa. Luonnonkosmetiikkaa, käsin tehtyjä postikortteja ja puukkoja, kuten Timo Laurilan puukot, valmistavat lähialueen artesaanit.",
             "Löytölän pöydässä aarteita on ollut tarjolla eurolla kappale.",
           ],
         },
+        { id: "myy-meille", title: "Lahjoita tai myy meille", text: ["Otamme vastaan isompaa ja pienempää kodintavaraa lahjoituksina, ja ostamme jonkin verran tuotteita myös yksityishenkilöiltä. Kysy tekstiviestillä tai WhatsAppilla 044 016 5047."] },
         { id: "joulupuoti", title: "Joulupuoti adventtiviikonloppuina", text: ["Joulun alla mylly avautuu joulupuodiksi adventtiviikonloppuina. Ajantasaiset päivät ja kellonajat ovat sivun ylälaidassa.", "Heinäkuussa Christmas in July -tapahtumassa koko joulumallisto on ollut ennakkomyynnissä myllyn antiikkikabinetissa."] },
       ],
-      photos: [photos.lamps, photos.shelves, photos.pillow, photos.shopEvening, photos.homeGoods, photos.knives, photos.jars, photos.soaps, photos.cabinet, photos.shop],
+      photos: [photos.lamps, photos.shopShelves, photos.sammattiPillows, photos.ownJams, photos.glogi, photos.shelves, photos.shopEvening, photos.homeGoods, photos.knives, photos.soaps, photos.cabinet, photos.shop],
       faq: [
-        { q: "Mitä putiikista löytyy?", a: "Second hand -sisustustavaraa, valikoituja vintage-vaatteita, tilan omia artesaaniherkkuja ja paikallisten kädentaitajien töitä." },
+        { q: "Mitä putiikista löytyy?", a: "Kunnostettua second hand -sisustustavaraa, valaisimia käsintehdyin varjostimin, vintage-vaatteita, Vuorikosken omia hilloja, glögejä ja Sammatti-tekstiilejä sekä lähialueen artesaanien töitä." },
+        { q: "Ostatteko tavaraa?", a: "Otamme vastaan kodintavaraa lahjoituksina ja ostamme jonkin verran tuotteita myös yksityishenkilöiltä." },
+        { q: "Miten voi maksaa?", a: "Kortilla, käteisellä tai MobilePaylla." },
         { q: "Onko putiikki auki jouluna?", a: "Joulupuoti on avoinna adventtiviikonloppuina. Katso päivät sivun ylälaidasta." },
       ],
-      ask: ["Muutama esimerkki tuotteista ja hintahaarukka", "Otatteko vastaan tavaraa myyntiin tai ostatteko vintagea?", "Instagram-tili, jos sellainen on", "Lisää kuvia putiikista ja vaatteista", "Maksutavat"],
+      ask: ["Muutama esimerkki tuotteista ja hintahaarukka", "Kuvia vintage-vaatteista"],
       cta: "Tule tekemään löytöjä",
     },
     en: {
       title: "Vintage and interior shop in Sammatti, Lohja | Vuorikosken Mylly",
       description:
-        "A second-hand interior shop in an old water mill in Sammatti, Lohja, Finland: one-of-a-kind finds, vintage clothing, the farm's own artisan treats and local crafts. Christmas shop on Advent weekends.",
+        "A second-hand interior shop in an old water mill in Sammatti, Lohja, Finland: restored finds, lamps with handmade shades, vintage clothing, Vuorikoski's own jams, glögi and Sammatti textiles. Christmas shop on Advent weekends.",
       kicker: "Interior shop · Sammatti",
       h1: "A vintage and interior shop in the mill",
       lead: "A second-hand interior shop full of one-of-a-kind finds for yourself or as gifts. All under one roof at fair prices.",
       hero: photos.lamps,
-      facts: ["lamp|Second-hand interiors", "shirt|Vintage clothing", "jar|The farm's own artisan treats", "hand|Local crafts"],
+      facts: ["lamp|Lamps with handmade shades", "shirt|Vintage clothing", "jar|Own jams, preserves and glögi", "hand|Work by local artisans"],
       sections: [
         {
           title: "Finds for yourself or as gifts",
           text: [
-            "The mill's interior shop is full of one-of-a-kind second-hand finds. Most pieces are found locally. Every item is checked and thoroughly cleaned, and some get a whole new look or use.",
-            "The popular lace lamps are updated to LED, with their shades reworked in Vuorikoski's own workshop. Selected vintage clothing completes the range.",
+            "The shop's range is carefully chosen second-hand interior pieces, each one thoroughly cleaned and restored where needed. Sometimes a piece gets a new coat of paint, and sometimes the material becomes something completely new.",
+            "Lamps with handmade shades are among the shop's most popular items. Selected vintage clothing completes the range.",
+            "Most pieces are found on buying trips around southern Finland: at flea markets, second-hand dealers and charity shops. A small import of our own adds to the range, such as glass Christmas ornaments straight from Europe and special bulbs for decorative lamps.",
           ],
         },
         {
-          title: "Small things for home and gifts",
+          title: "Made at Vuorikoski",
           text: [
-            "Alongside the second-hand finds are the farm's own artisan treats and local crafts, such as handmade knives by Timo Laurila. The shelves also hold things like rough linen Sammatti cushions, organic lavender sachets, rhubarb-scented cleaning sprays and French olive oil soaps.",
+            "Sammatti textiles, sweet and savoury preserves, glögi and scented home products are made by Vuorikoski. Natural cosmetics, handmade postcards and knives, such as Timo Laurila's knives, come from local artisans.",
             "The Löytölä table has offered treasures at one euro each.",
           ],
         },
+        { id: "myy-meille", title: "Donate or sell to us", text: ["We take larger and smaller household items as donations, and we also buy some items from private sellers. Ask by text message or WhatsApp, +358 44 016 5047."] },
         { id: "joulupuoti", title: "Christmas shop on Advent weekends", text: ["Before Christmas the mill opens as a Christmas shop on Advent weekends. Current days and times are at the top of the page.", "In July, at the Christmas in July event, the whole Christmas range has been on early sale in the mill's antique room."] },
       ],
-      photos: [photos.lamps, photos.shelves, photos.pillow, photos.shopEvening, photos.homeGoods, photos.knives, photos.jars, photos.soaps, photos.cabinet, photos.shop],
+      photos: [photos.lamps, photos.shopShelves, photos.sammattiPillows, photos.ownJams, photos.glogi, photos.shelves, photos.shopEvening, photos.homeGoods, photos.knives, photos.soaps, photos.cabinet, photos.shop],
       faq: [
-        { q: "What does the shop sell?", a: "Second-hand interior pieces, selected vintage clothing, the farm's own artisan treats and local crafts." },
+        { q: "What does the shop sell?", a: "Restored second-hand interior pieces, lamps with handmade shades, vintage clothing, Vuorikoski's own jams, glögi and Sammatti textiles, and work by local artisans." },
+        { q: "Do you buy items?", a: "We take household items as donations and also buy some items from private sellers." },
+        { q: "How can I pay?", a: "By card, cash or MobilePay." },
         { q: "Is the shop open at Christmas?", a: "The Christmas shop is open on Advent weekends. See the days at the top of the page." },
       ],
-      ask: ["A few example items and a price range", "Do you take items on consignment or buy vintage?", "Instagram account, if any", "More photos of the shop and clothing", "Payment methods"],
+      ask: ["A few example items and a price range", "Photos of the vintage clothing"],
       cta: "Come and find something",
     },
   },
@@ -918,6 +930,6 @@ export const contactPage = {
 };
 
 export const homeAsk = {
-  fi: ["Kuva teistä kahdesta ja pari lausetta: keitä olette ja miksi mylly (vieraat tulevat mielellään ihmisten luo)", "Google-yritysprofiili ja lupa näyttää arvioita lähteineen (Facebookissa on paljon lämpimiä kommentteja)", "Instagram, jos sellainen on", "Alkuperäiset kuvat täysikokoisina (Facebook pienentää niitä) ja tieto, saako Satu Postin kuvaa käyttää"],
-  en: ["A photo of the two of you and a couple of sentences about who you are", "Google Business Profile, and OK to show reviews with the source", "Instagram, if any", "Original full-size photos, and whether Satu Posti's photo may be used"],
+  fi: ["Kuva teistä kahdesta ja pari lausetta: keitä olette ja miksi mylly (vieraat tulevat mielellään ihmisten luo)", "Saako Google-profiilin arvosanan ja arvostelumäärän (160 arvostelua) näyttää sivuilla lähteineen?", "Instagram- ja TikTok-tilien nimet (lisätään sivujen alalaitaan)", "Alkuperäiset kuvat täysikokoisina (Facebook pienentää niitä) ja tieto, saako Satu Postin kuvaa käyttää"],
+  en: ["A photo of the two of you and a couple of sentences about who you are", "OK to show the Google rating and review count (160 reviews) with the source?", "Instagram and TikTok account names (for the footer)", "Original full-size photos, and whether Satu Posti's photo may be used"],
 };
