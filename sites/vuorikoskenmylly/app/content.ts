@@ -98,7 +98,7 @@ export const photos = {
 export type OpenDay = { from: string; to: string; open: string; close: string; label: Text };
 
 export const live = {
-  updated: "2026-10-28",
+  updated: "2026-10-29",
   // Shown in the black bar on every page. Empty string hides it.
   notice: {
     fi: "Avoinna pyhäinpäivänä la–su 31.10.–1.11. klo 11–16 · Joulupuoti adventtiviikonloppuina",
@@ -106,6 +106,7 @@ export const live = {
   },
   openDays: [
     { from: "2026-10-31", to: "2026-11-01", open: "11:00", close: "16:00", label: { fi: "Pyhäinpäivä", en: "All Saints' weekend" } },
+    { from: "2026-11-07", to: "2026-11-08", open: "11:00", close: "16:00", label: { fi: "Isänpäivä", en: "Father's Day weekend" } },
     { from: "2026-11-28", to: "2026-11-29", open: "11:00", close: "16:00", label: { fi: "Joulupuoti", en: "Christmas shop" } },
     { from: "2026-12-05", to: "2026-12-06", open: "11:00", close: "16:00", label: { fi: "Joulupuoti", en: "Christmas shop" } },
     { from: "2026-12-12", to: "2026-12-13", open: "11:00", close: "16:00", label: { fi: "Joulupuoti", en: "Christmas shop" } },
@@ -230,7 +231,7 @@ export const home = {
     wordClass: "subst.",
     word: [
       { id: "kahvila", title: "Kahvila", text: "Tuoretta kahvia, teetä, gluteeniton herkkupöytä ja päivän puustit. Lemmikit ovat tervetulleita." },
-      { id: "putiikki", title: "Sisustusputiikki", text: "Second hand -löytöjä itselle tai lahjaksi, tilan omia artesaaniherkkuja, paikallisten kädentaitajien töitä sekä vintage-vaatteita ja koruja." },
+      { id: "putiikki", title: "Sisustusputiikki", text: "Second hand -löytöjä itselle tai lahjaksi, tilan omia artesaaniherkkuja, paikallisten kädentaitajien töitä sekä vintage-vaatteita." },
       { id: "galleria", title: "Galleria", text: "Kesäisin neljä erilaista taiteentekijää omissa näyttelyissään myllyn galleriassa." },
       { id: "juhlatila", title: "Juhlatila", text: "Pitkä pöytä kokouksille ja pienille perhejuhlille kesäkauden ajan." },
     ] satisfies { id: PageId; title: string; text: string }[],
@@ -242,7 +243,7 @@ export const home = {
     shopKicker: "Sisustusputiikki",
     shopTitle: "Persoonallisia löytöjä järkevään hintaan",
     shopText:
-      "Second hand -sisustusputiikki on täynnä löytöjä itselle tai lahjaksi. Valtaosa tavarasta on poimittu lähialueelta, ja jokainen esine tarkastetaan ja puhdistetaan. Tilan omat artesaaniherkut ja paikallisten kädentaitajien taidonnäytteet täydentävät valikoimaa, ja uutuutena ovat valikoidut vintage-vaatteet ja korut.",
+      "Second hand -sisustusputiikki on täynnä löytöjä itselle tai lahjaksi. Valtaosa tavarasta on poimittu lähialueelta, ja jokainen esine tarkastetaan ja puhdistetaan. Tilan omat artesaaniherkut ja paikallisten kädentaitajien taidonnäytteet täydentävät valikoimaa, ja valikoidut vintage-vaatteet täydentävät valikoimaa.",
     splitTitle: "Muutakin myllyllä",
     splitEvents: { kicker: "Juhlat ja kokoukset", title: "Pitkän pöydän juhlatila", text: "Kokouksiin ja pieniin perhejuhliin kesäkaudella, 50 € tunnilta." },
     splitStay: { kicker: "Yöksi myllylle", title: "Kaksi pientä mökkiä lammen rannalla", text: "Sähköttömät kesämökit, rantasauna ja lautasaamiainen kahvilassa." },
@@ -280,7 +281,7 @@ export const home = {
     wordClass: "noun, Finnish for mill",
     word: [
       { id: "kahvila", title: "Café", text: "Fresh coffee, tea, a gluten-free spread of bakes and the day's cinnamon buns. Pets are welcome." },
-      { id: "putiikki", title: "Interior shop", text: "Second-hand finds for yourself or as gifts, the farm's own artisan treats, local crafts, and vintage clothing and jewellery." },
+      { id: "putiikki", title: "Interior shop", text: "Second-hand finds for yourself or as gifts, the farm's own artisan treats, local crafts and vintage clothing." },
       { id: "galleria", title: "Gallery", text: "Every summer, four different artists show their work in the mill gallery." },
       { id: "juhlatila", title: "Event room", text: "A long table for meetings and small family parties in the summer season." },
     ] satisfies { id: PageId; title: string; text: string }[],
@@ -292,7 +293,7 @@ export const home = {
     shopKicker: "Interior shop",
     shopTitle: "One-of-a-kind finds at fair prices",
     shopText:
-      "The second-hand interior shop is full of finds for yourself or as gifts. Most pieces are found locally, and every one is checked and cleaned. The farm's own artisan treats and work by local craftspeople complete the range, and new in the shop are selected vintage clothes and jewellery.",
+      "The second-hand interior shop is full of finds for yourself or as gifts. Most pieces are found locally, and every one is checked and cleaned. The farm's own artisan treats and work by local craftspeople complete the range, and selected vintage clothing completes the range.",
     splitTitle: "More at the mill",
     splitEvents: { kicker: "Parties and meetings", title: "The long-table event room", text: "For meetings and small family parties in the summer season, €50 per hour." },
     splitStay: { kicker: "Stay the night", title: "Two small cabins by the pond", text: "Off-grid summer cabins, a shore sauna and plated breakfast in the café." },
@@ -436,18 +437,18 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
     fi: {
       title: "Vintage- ja sisustusputiikki Sammatissa, Lohja | Vuorikosken Mylly",
       description:
-        "Second hand -sisustusputiikki vanhassa myllyssä Sammatissa, Lohjalla: persoonallisia löytöjä, vintage-vaatteita ja koruja, tilan omia artesaaniherkkuja ja paikallista käsityötä. Joulupuoti adventtiviikonloppuina.",
+        "Second hand -sisustusputiikki vanhassa myllyssä Sammatissa, Lohjalla: persoonallisia löytöjä, vintage-vaatteita, tilan omia artesaaniherkkuja ja paikallista käsityötä. Joulupuoti adventtiviikonloppuina.",
       kicker: "Sisustusputiikki · Sammatti",
       h1: "Vintage- ja sisustusputiikki myllyssä",
       lead: "Second hand -sisustusputiikki täynnä persoonallisia löytöjä itselle tai lahjaksi. Kaikki saman katon alta järkevään hintaan.",
       hero: photos.lamps,
-      facts: ["lamp|Second hand -sisustus", "shirt|Vintage-vaatteet ja korut", "jar|Tilan omat artesaaniherkut", "hand|Paikallisten kädentaitajien työt"],
+      facts: ["lamp|Second hand -sisustus", "shirt|Vintage-vaatteet", "jar|Tilan omat artesaaniherkut", "hand|Paikallisten kädentaitajien työt"],
       sections: [
         {
           title: "Löytöjä itselle tai lahjaksi",
           text: [
             "Myllyn sisustusputiikki on täynnä persoonallisia second hand -löytöjä. Valtaosa tuotteista on poimittu lähialueelta. Jokainen esine käy läpi kuntotarkastuksen ja perusteellisen puhdistuksen, ja osa saa kokonaan uuden ilmeen tai käyttötarkoituksen.",
-            "Suositut pitsivalaisimet on päivitetty led-tekniikkaan, ja niiden persoonalliset varjostimet on muokattu Vuorikosken omassa pajassa. Uutuutena putiikissa ovat valikoidut vintage-vaatteet ja korut.",
+            "Suositut pitsivalaisimet on päivitetty led-tekniikkaan, ja niiden persoonalliset varjostimet on muokattu Vuorikosken omassa pajassa. Valikoimaa täydentävät valikoidut vintage-vaatteet.",
           ],
         },
         {
@@ -461,27 +462,27 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       ],
       photos: [photos.lamps, photos.shelves, photos.pillow, photos.shopEvening, photos.homeGoods, photos.knives, photos.jars, photos.soaps, photos.cabinet, photos.shop],
       faq: [
-        { q: "Mitä putiikista löytyy?", a: "Second hand -sisustustavaraa, valikoituja vintage-vaatteita ja koruja, tilan omia artesaaniherkkuja ja paikallisten kädentaitajien töitä." },
+        { q: "Mitä putiikista löytyy?", a: "Second hand -sisustustavaraa, valikoituja vintage-vaatteita, tilan omia artesaaniherkkuja ja paikallisten kädentaitajien töitä." },
         { q: "Onko putiikki auki jouluna?", a: "Joulupuoti on avoinna adventtiviikonloppuina. Katso päivät sivun ylälaidasta." },
       ],
-      ask: ["Muutama esimerkki tuotteista ja hintahaarukka", "Otatteko vastaan tavaraa myyntiin tai ostatteko vintagea?", "Instagram-tili, jos sellainen on", "Lisää kuvia putiikista, vaatteista ja koruista", "Maksutavat"],
+      ask: ["Muutama esimerkki tuotteista ja hintahaarukka", "Otatteko vastaan tavaraa myyntiin tai ostatteko vintagea?", "Instagram-tili, jos sellainen on", "Lisää kuvia putiikista ja vaatteista", "Maksutavat"],
       cta: "Tule tekemään löytöjä",
     },
     en: {
       title: "Vintage and interior shop in Sammatti, Lohja | Vuorikosken Mylly",
       description:
-        "A second-hand interior shop in an old water mill in Sammatti, Lohja, Finland: one-of-a-kind finds, vintage clothing and jewellery, the farm's own artisan treats and local crafts. Christmas shop on Advent weekends.",
+        "A second-hand interior shop in an old water mill in Sammatti, Lohja, Finland: one-of-a-kind finds, vintage clothing, the farm's own artisan treats and local crafts. Christmas shop on Advent weekends.",
       kicker: "Interior shop · Sammatti",
       h1: "A vintage and interior shop in the mill",
       lead: "A second-hand interior shop full of one-of-a-kind finds for yourself or as gifts. All under one roof at fair prices.",
       hero: photos.lamps,
-      facts: ["lamp|Second-hand interiors", "shirt|Vintage clothing and jewellery", "jar|The farm's own artisan treats", "hand|Local crafts"],
+      facts: ["lamp|Second-hand interiors", "shirt|Vintage clothing", "jar|The farm's own artisan treats", "hand|Local crafts"],
       sections: [
         {
           title: "Finds for yourself or as gifts",
           text: [
             "The mill's interior shop is full of one-of-a-kind second-hand finds. Most pieces are found locally. Every item is checked and thoroughly cleaned, and some get a whole new look or use.",
-            "The popular lace lamps are updated to LED, with their shades reworked in Vuorikoski's own workshop. New in the shop: selected vintage clothes and jewellery.",
+            "The popular lace lamps are updated to LED, with their shades reworked in Vuorikoski's own workshop. Selected vintage clothing completes the range.",
           ],
         },
         {
@@ -495,10 +496,10 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       ],
       photos: [photos.lamps, photos.shelves, photos.pillow, photos.shopEvening, photos.homeGoods, photos.knives, photos.jars, photos.soaps, photos.cabinet, photos.shop],
       faq: [
-        { q: "What does the shop sell?", a: "Second-hand interior pieces, selected vintage clothing and jewellery, the farm's own artisan treats and local crafts." },
+        { q: "What does the shop sell?", a: "Second-hand interior pieces, selected vintage clothing, the farm's own artisan treats and local crafts." },
         { q: "Is the shop open at Christmas?", a: "The Christmas shop is open on Advent weekends. See the days at the top of the page." },
       ],
-      ask: ["A few example items and a price range", "Do you take items on consignment or buy vintage?", "Instagram account, if any", "More photos of the shop, clothes and jewellery", "Payment methods"],
+      ask: ["A few example items and a price range", "Do you take items on consignment or buy vintage?", "Instagram account, if any", "More photos of the shop and clothing", "Payment methods"],
       cta: "Come and find something",
     },
   },
@@ -511,7 +512,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       h1: "Kesän taidenäyttelyt myllyn galleriassa",
       lead: "Joka kesä myllyn galleriassa esittäytyy neljä erilaista taiteentekijää. Galleriakesä 2026 on päättynyt, ja kesän 2027 näyttelyjaksot ovat nyt haettavana.",
       hero: photos.galleryRoom,
-      facts: ["frame|Neljä näyttelyä kesässä", "calendar|10 päivän näyttelyjaksot", "euro|Tilavuokra 100 €", "percent|Myyntiprovisio 25 %"],
+      facts: ["frame|Neljä näyttelyä kesässä", "calendar|8 päivän näyttelyjaksot", "euro|Tilavuokra 100 €", "percent|Myyntiprovisio 25 %"],
       sections: [
         { title: "Galleriakesä", text: ["Galleriakesä 2026 on päättynyt. Ensi vuonna esittelemme jälleen neljä erilaista taiteentekijää."] },
         {
@@ -535,7 +536,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       prices: {
         title: "Näyttelyn hinnat",
         rows: [
-          { item: "Tilavuokra, 10 näyttelypäivää", price: "100 €" },
+          { item: "Tilavuokra, 8 näyttelypäivää", price: "100 €" },
           { item: "Varausmaksu näyttelyn varmistuessa (osa tilavuokraa)", price: "50 €" },
           { item: "Loppuosa pystytyksen yhteydessä", price: "50 €" },
           { item: "Myyntiprovisio", price: "25 %" },
@@ -546,7 +547,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       photos: [photos.galleryRoom, photos.galleryArtist, photos.oldTools, photos.porch],
       faq: [
         { q: "Miten näyttelypaikkaa haetaan?", a: "Vapaamuotoisella viestillä ja muutamalla havainnekuvalla sähköpostiin antti.jakola@hotmail.com tai WhatsAppiin 044 016 5047." },
-        { q: "Paljonko näyttely maksaa?", a: "Tilavuokra on 100 € kymmeneltä näyttelypäivältä ja myyntiprovisio 25 %." },
+        { q: "Paljonko näyttely maksaa?", a: "Tilavuokra on 100 € kahdeksalta näyttelypäivältä ja myyntiprovisio 25 %." },
         { q: "Pitääkö taiteilijan olla paikalla?", a: "Ei ole pakko, mutta paikalla olo osan näyttelypäivistä on suotavaa." },
       ],
       ask: ["Vuodet aiemmille näyttelyille ja lupa mainita taiteilijat nimeltä", "Kesän 2026 taiteilijat ja kuva jokaisen näyttelystä (arkisto)", "Kesän 2027 näyttelijät, kun ne ovat selvillä", "Kuvia galleriatilasta sisältä", "Hakuaika kesälle 2027 (päättymispäivä)", "Järjestetäänkö kursseja, esim. keramiikkaa?"],
@@ -555,12 +556,12 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
     en: {
       title: "Art exhibitions in Sammatti – the mill gallery, Lohja | Vuorikosken Mylly",
       description:
-        "Summer art exhibitions in an old water mill in Sammatti, Lohja, Finland. Four artists every summer. Exhibition slots for summer 2027 open now: €100 for 10 days, 25% sales commission.",
+        "Summer art exhibitions in an old water mill in Sammatti, Lohja, Finland. Four artists every summer. Exhibition slots for summer 2027 open now: €100 for 8 days, 25% sales commission.",
       kicker: "Gallery · Sammatti",
       h1: "Summer art exhibitions in the mill gallery",
       lead: "Every summer, four different artists show their work in the mill gallery. The 2026 gallery summer is over, and slots for summer 2027 are open for applications.",
       hero: photos.galleryRoom,
-      facts: ["frame|Four shows a summer", "calendar|10-day exhibition periods", "euro|Room hire €100", "percent|25% sales commission"],
+      facts: ["frame|Four shows a summer", "calendar|8-day exhibition periods", "euro|Room hire €100", "percent|25% sales commission"],
       sections: [
         { title: "Gallery summer", text: ["The 2026 gallery summer is over. Next year we will again present four different artists."] },
         {
@@ -584,7 +585,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       prices: {
         title: "Exhibition prices",
         rows: [
-          { item: "Room hire, 10 exhibition days", price: "€100" },
+          { item: "Room hire, 8 exhibition days", price: "€100" },
           { item: "Booking deposit when the show is confirmed (part of the hire)", price: "€50" },
           { item: "Balance when hanging", price: "€50" },
           { item: "Sales commission", price: "25%" },
@@ -595,7 +596,7 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       photos: [photos.galleryRoom, photos.galleryArtist, photos.oldTools, photos.porch],
       faq: [
         { q: "How do I apply?", a: "Send a free-form message with a few sample images to antti.jakola@hotmail.com or WhatsApp +358 44 016 5047." },
-        { q: "What does a show cost?", a: "Room hire is €100 for ten exhibition days, and the sales commission is 25%." },
+        { q: "What does a show cost?", a: "Room hire is €100 for eight exhibition days, and the sales commission is 25%." },
         { q: "Do I need to be there?", a: "It is not required, but being present on some of the days is recommended." },
       ],
       ask: ["The 2026 artists with a photo of each show (archive)", "The 2027 artists once confirmed", "Photos of the gallery room", "Application deadline for 2027", "Do you run workshops, such as ceramics?"],
