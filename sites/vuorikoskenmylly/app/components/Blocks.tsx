@@ -193,7 +193,7 @@ export function millJsonLd(locale: Locale) {
     address,
     geo: { "@type": "GeoCoordinates", latitude: business.lat, longitude: business.lng },
     areaServed: ["Sammatti", "Lohja", "Länsi-Uusimaa", "Uusimaa"],
-    sameAs: [business.facebook, ...hutsLinks.map((l) => `${HUTS}${l[locale]}`)],
+    sameAs: [business.facebook, business.instagram, ...hutsLinks.map((l) => `${HUTS}${l[locale]}`)],
     openingHoursSpecification: openingHours(live.openDays),
     department: (Object.keys(types) as PageId[]).map((id) => ({ "@id": `${SITE_URL}${paths[id].fi}#${id}` })),
     event: live.events.map((e) => ({

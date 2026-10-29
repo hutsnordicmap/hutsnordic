@@ -119,6 +119,7 @@ export function Footer({ locale }: { locale: Locale }) {
             <li><a href={business.whatsapp} rel="noopener" className="hover:text-white">WhatsApp</a></li>
             <li><a href={`mailto:${business.email}`} className="break-all hover:text-white">{business.email}</a></li>
             <li><a href={business.facebook} rel="noopener" className="hover:text-white">Facebook</a></li>
+            <li><a href={business.instagram} rel="noopener" className="hover:text-white">Instagram</a></li>
           </ul>
         </div>
       </div>

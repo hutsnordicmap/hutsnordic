@@ -41,6 +41,7 @@ export const business = {
   whatsapp: "https://wa.me/358440165047",
   email: "antti.jakola@hotmail.com",
   facebook: "https://www.facebook.com/vuorikoskenmylly",
+  instagram: "https://www.instagram.com/vuorikoskenmylly",
   lat: 60.320835,
   lng: 23.8757639,
   mapEmbed: `${HUTS}/embed/suomi/org/vuorikosken-mylly?address=1`,
@@ -960,6 +961,6 @@ export const contactPage = {
 };
 
 export const homeAsk = {
-  fi: ["Kuva teistä kahdesta ja pari lausetta: keitä olette ja miksi mylly (vieraat tulevat mielellään ihmisten luo)", "Instagram- ja TikTok-tilien nimet (lisätään sivujen alalaitaan)", "Isompi kuvasatsi OneDriven kautta, kun ehdit (alkuperäiset täysikokoiset kuvat)"],
-  en: ["A photo of the two of you and a couple of sentences about who you are", "Instagram and TikTok account names (for the footer)", "The bigger photo batch via OneDrive when you have time (original full-size photos)"],
+  fi: ["Kuva teistä kahdesta ja pari lausetta: keitä olette ja miksi mylly (vieraat tulevat mielellään ihmisten luo)", "TikTok-tilin nimi (Instagram on jo sivujen alalaidassa)", "Isompi kuvasatsi OneDriven kautta, kun ehdit (alkuperäiset täysikokoiset kuvat)"],
+  en: ["A photo of the two of you and a couple of sentences about who you are", "TikTok account name (Instagram is already in the footer)", "The bigger photo batch via OneDrive when you have time (original full-size photos)"],
 };
