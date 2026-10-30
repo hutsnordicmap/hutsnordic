@@ -6,7 +6,7 @@
 export type Locale = "fi" | "en";
 export type PageId = "kahvila" | "putiikki" | "galleria" | "juhlatila" | "majoitus";
 
-export const SITE_URL = "https://www.vuorikoskenmylly.com";
+export const SITE_URL = "https://vuorikoskenmylly.com";
 export const HUTS = "https://www.huts.fi";
 export const isPreview = process.env.PREVIEW_EXPORT === "1";
 
