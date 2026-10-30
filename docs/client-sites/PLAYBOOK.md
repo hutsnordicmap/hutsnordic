@@ -159,6 +159,11 @@ tar czf <site>-<date>.tar.gz <dir>  →  /mnt/project-files/websites/<site>-old-
    Vercel, then put Vercel's records in Cloudflare (grey cloud).
 4. We make the real build (no preview noindex, no ribbon, no ask boxes, root path) in its own repo, and Jeff
    creates the Vercel project. Then the owner switches the nameservers. It's live within about 24 hours.
+   Cloudflare import: set every imported record to **grey** (orange breaks Webnode email autoconfig and the old
+   site's https). Edit the existing apex/www rows to Vercel's values rather than adding new ones (Cloudflare
+   refuses a duplicate name). The live repo is a plain copy of `sites/<site>/` (Vercel builds it with no env vars,
+   so preview-only parts vanish), and `SITE_URL` must match the primary domain Vercel uses. Redirect the
+   `*.vercel.app` address to the real domain once it's green.
 5. After the switch: zone active, domain valid, https on both names, old URLs 301, email still arrives,
    sitemap in Search Console.
 6. Hosting terms: **3 years free**, then "katsotaan". The lowest package is currently €35/month, and we find a

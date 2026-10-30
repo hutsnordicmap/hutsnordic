@@ -34,4 +34,4 @@ Jeff's verdict (2026-10-30): "it worked out really well". This is the model for 
 
 Shop price examples and vintage clothing photos; 2027 gallery artists (chosen around new year); photos of the
 gallery room, past shows, the fire place and the sauna inside; the TikTok name; and the bigger OneDrive photo
-batch. Go-live waits on the owner's reply about domain email and the Webnode nameserver change.
+batch. Live since 30.10.2026 at https://vuorikoskenmylly.com. Live source: repo `hutsnordicmap/nextjs-boilerplate` (copy of `sites/vuorikoskenmylly/`; push both when content changes). Webnode email records are kept until Antti says whether he uses the address.
