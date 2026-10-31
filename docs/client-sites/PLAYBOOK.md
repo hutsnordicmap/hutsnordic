@@ -88,6 +88,11 @@ it answers "why black?" before they ask.
 - **Photos:** the owner's own photos are fine. Customers' photos need the photographer's OK, or an official
   Instagram embed of hand-picked posts. Leave AI-generated or AI-edited scenes out and explain why.
 - Old site URLs 301 to the new pages (`next.config.ts` redirects).
+- **YouTube videos can't be downloaded** from the cloud (bot check) or from the Mac's Cowork shell (proxy blocks
+  YouTube). Embed the owner's own video muted and looping (youtube-nocookie, photo on top for the first seconds) and
+  ask for the original file. Example: `sites/mokkiloma/app/components/VideoHero.tsx`.
+- **Many similar units** (Mökkiloma, 6 cottages): give each a one-line tagline, "best for", location and "from"
+  price, plus a group-size filter and a compare table. Ask the owner what really separates look-alike units.
 
 ## 6. Technical recipe (what is in `sites/vuorikoskenmylly/`)
 
