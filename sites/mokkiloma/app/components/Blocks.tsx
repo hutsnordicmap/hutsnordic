@@ -83,7 +83,11 @@ export function Ask({ locale, items }: { locale: Locale; items: string[] }) {
   );
 }
 
-/** Huts.fi map. The visible Huts.fi link sits outside the iframe on purpose. */
+/**
+ * Huts.fi map. The embed's own credit bar is hidden (hideAttr=1) so there is exactly one Huts.fi link:
+ * this plain, followed link on the client's page (a link inside the iframe counts for huts.fi, not here).
+ * The NLS credit moves out with it, because the map tiles' licence requires it.
+ */
 export function MapEmbed({ locale, src, title }: { locale: Locale; src: string; title: string }) {
   return (
     <div>
@@ -93,6 +97,12 @@ export function MapEmbed({ locale, src, title }: { locale: Locale; src: string; 
         <a href={HUTS} className="font-bold text-[#FF6B00]">
           Huts.fi
         </a>
+        <span className="text-ink/50">
+          {" · "}
+          <a href={locale === "fi" ? "https://www.maanmittauslaitos.fi" : "https://www.maanmittauslaitos.fi/en"} rel="nofollow noopener" className="hover:underline">
+            © {locale === "fi" ? "Maanmittauslaitos" : "NLS Finland"}
+          </a>
+        </span>
       </p>
     </div>
   );

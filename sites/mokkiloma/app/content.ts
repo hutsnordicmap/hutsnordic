@@ -529,11 +529,11 @@ export const hutsCottageUrl = (c: Cottage, locale: Locale) =>
 
 export const cottageEmbed = (c: Cottage, locale: Locale) =>
   locale === "fi"
-    ? `${HUTS}/embed/suomi/varsinais-suomi/poytya/lomamokit/${c.hutsSlug}?address=1`
-    : `${HUTS}/embed/finland/varsinais-suomi/poytya/holiday-cabins/${c.hutsSlug}?address=1`;
+    ? `${HUTS}/embed/suomi/varsinais-suomi/poytya/lomamokit/${c.hutsSlug}?address=1&trails=1&hideAttr=1`
+    : `${HUTS}/embed/finland/varsinais-suomi/poytya/holiday-cabins/${c.hutsSlug}?address=1&trails=1&hideAttr=1`;
 
 export const orgEmbed = (locale: Locale) =>
-  `${HUTS}/embed/${locale === "fi" ? "suomi" : "finland"}/org/${business.orgId}?address=1`;
+  `${HUTS}/embed/${locale === "fi" ? "suomi" : "finland"}/org/${business.orgId}?address=1&trails=1&hideAttr=1`;
 
 export const lowestWeek = (c: Cottage) => Math.min(...c.weeks.map((w) => w.price));
 export const highestWeek = (c: Cottage) => Math.max(...c.weeks.map((w) => w.price));
@@ -558,8 +558,8 @@ export const sauna = {
     en: `${HUTS}/finland/southwest-finland/poytya/saunas/smoke-sauna-elijarven-mokkilomat-poytya`,
   },
   embed: {
-    fi: `${HUTS}/embed/suomi/varsinais-suomi/poytya/saunat/savusauna-elijarven-mokkilomat-poytya?address=1`,
-    en: `${HUTS}/embed/finland/varsinais-suomi/poytya/saunas/smoke-sauna-elijarven-mokkilomat-poytya?address=1`,
+    fi: `${HUTS}/embed/suomi/varsinais-suomi/poytya/saunat/savusauna-elijarven-mokkilomat-poytya?address=1&trails=1&hideAttr=1`,
+    en: `${HUTS}/embed/finland/varsinais-suomi/poytya/saunas/smoke-sauna-elijarven-mokkilomat-poytya?address=1&trails=1&hideAttr=1`,
   },
   lat: 60.880817,
   lng: 22.254731,
