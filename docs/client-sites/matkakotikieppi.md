@@ -14,6 +14,7 @@ Preview: https://hutsnordic.fi/preview/matkakotikieppi. Source: `sites/matkakoti
 |---|---|
 | 29.10. | Mikko OK'd photos for huts.fi, got the partner map, and asked Jeff to call him about a new website. |
 | 31.10. | Preview built from the old WordPress pages (FI + EN), his 10 usable photos and Huts.fi nearby places. Offer: 1 year free, then 20 €/month. |
+| 31.10. | Jeff (via the Mökkiloma thread): link lists to nearby places are spammy, keep visitors on the site. Nearby list trimmed to 5 plain-text rows, no outbound links; maps get `trails=1&hideAttr=1`, one followed Huts.fi link under each map plus the NLS credit. Row-hover highlighting on the map needs a huts.fi embed feature (pending Jeff). |
 
 ## Design
 
