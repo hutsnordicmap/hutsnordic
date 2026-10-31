@@ -10,6 +10,14 @@ const nextConfig: NextConfig = {
         source: "/preview/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
       },
+      {
+        // Private client drop boxes: the link itself is the key, so never index it or leak it as a referrer.
+        source: "/drop/:path*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+          { key: "Referrer-Policy", value: "no-referrer" },
+        ],
+      },
     ];
   },
   async rewrites() {

@@ -24,3 +24,16 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Client drop box (/drop) */
+.drop-root {
+  --d-bg: #f5f2ec;
+  --d-ink: #1b1d1a;
+  --d-ink2: #5b5f58;
+  --d-ink3: #8b8e86;
+  --d-accent: #24513f;
+  --d-accent-soft: #dfeae3;
+  --d-go: #c8f169;
+  --d-warn: #b4471f;
+  color-scheme: light;
+}
