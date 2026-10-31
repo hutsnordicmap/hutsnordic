@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest: #23382e;
+  --color-forest-deep: #121c16;
+  --color-sand: #f5f1e8;
+  --color-moss: #e6eadf;
+  --color-copper: #b0623a;
+  --color-copper-light: #e9a37a;
+  --color-ink: #1b221e;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-sand);
+  color: var(--color-ink);
+}
+
+.label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

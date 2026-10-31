@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url>
+<loc>https://www.mokkiloma.fi</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.mokkiloma.fi" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.mokkiloma.fi/en" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.mokkiloma.fi/mokit</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.mokkiloma.fi/mokit" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.mokkiloma.fi/en/cottages" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.mokkiloma.fi/mokit/elimaki</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.mokkiloma.fi/mokit/elimaki" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.mokkiloma.fi/en/cottages/elimaki" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.mokkiloma.fi/mokit/meritahti</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.mokkiloma.fi/mokit/meritahti" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.mokkiloma.fi/en/cottages/meritahti" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.mokkiloma.fi/mokit/merenneito</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.mokkiloma.fi/mokit/merenneito" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.mokkiloma.fi/en/cottages/merenneito" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.mokkiloma.fi/mokit/meripoika</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.mokkiloma.fi/mokit/meripoika" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.mokkiloma.fi/en/cottages/meripoika" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.mokkiloma.fi/mokit/poytakallio</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.mokkiloma.fi/mokit/poytakallio" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.mokkiloma.fi/en/cottages/poytakallio" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.mokkiloma.fi/mokit/fransula</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.mokkiloma.fi/mokit/fransula" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.mokkiloma.fi/en/cottages/fransula" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.mokkiloma.fi/aktiviteetit/savusauna</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.mokkiloma.fi/aktiviteetit/savusauna" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.mokkiloma.fi/en/activities/smoke-sauna" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.mokkiloma.fi/aktiviteetit</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.mokkiloma.fi/aktiviteetit" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.mokkiloma.fi/en/activities" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.mokkiloma.fi/varaus</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.mokkiloma.fi/varaus" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.mokkiloma.fi/en/booking" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+</urlset>
