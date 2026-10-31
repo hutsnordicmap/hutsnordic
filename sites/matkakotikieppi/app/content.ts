@@ -201,40 +201,28 @@ export const rooms: Room[] = [
 
 export const commonPhotos: Photo[] = [photos.dining, photos.kitchen, photos.breakfast, photos.hall, photos.showers, photos.outside];
 
-/** The main places near the guesthouse, as plain text: no outbound links (Jeff 2026-10-31: visitors should stay on the site). Straight lines from Vienantie 3, measured on Huts.fi 2026-10-31. */
-export type Nearby = { name: string; km: number; icon: string; text: Text };
+/**
+ * The main places and routes near the guesthouse, picked by hand from huts.fi (ids are huts.fi place / route ids).
+ * They show on the map next to the list; hovering or tapping a row highlights it on the map. No outbound links
+ * (Jeff 2026-10-31: visitors should stay on the site). Straight lines from Vienantie 3, measured on huts.fi 2026-10-31.
+ */
+export type Nearby = { id: string; kind: "place" | "route"; name: Text; km: number; icon: string; text: Text; length?: number };
 export const nearby: Nearby[] = [
-  {
-    name: "Juminkeko",
-    km: 0.2,
-    icon: "book",
-    text: { fi: "Kalevala-tietokeskus ja museo", en: "Kalevala information centre and museum" },
-  },
-  {
-    name: "Eskobar · Neljä Kaesaa",
-    km: 0.5,
-    icon: "utensils",
-    text: { fi: "Keskustan ravintolat", en: "Restaurants in the town centre" },
-  },
-  {
-    name: "Ruukinrannan uimaranta",
-    km: 0.8,
-    icon: "waves",
-    text: { fi: "Uimaranta keskustassa", en: "Swimming beach in town" },
-  },
-  {
-    name: "Luontokeskus Petola",
-    km: 3.3,
-    icon: "paw",
-    text: { fi: "Suurpedot ja luontopolku", en: "Large carnivores and a nature trail" },
-  },
-  {
-    name: "Kalevalan liikuntakeskus",
-    km: 3.4,
-    icon: "snow",
-    text: { fi: "Valaistut ladut ja yhteys 80 km latuverkostoon", en: "Lit ski loops linked to an 80 km trail network" },
-  },
+  { id: "6e7cf632-c430-4583-a701-ed6b3b123438", kind: "route", km: 0.2, length: 4.8, icon: "footprints", name: { fi: "Kuhmon rantaraitti", en: "Kuhmo shore path" }, text: { fi: "Rantareitti keskustassa", en: "Lakeside path in town" } },
+  { id: "7c9f7f41-2c69-4226-afe8-5e5cfc94810a", kind: "route", km: 0.6, length: 2.2, icon: "footprints", name: { fi: "Koskipolku", en: "Koskipolku rapids path" }, text: { fi: "Polku Pajakkakosken varrella", en: "Path along Pajakkakoski rapids" } },
+  { id: "31283536-64b7-49ea-bc42-3aa3eabaf28a", kind: "route", km: 0.5, length: 11.8, icon: "waves", name: { fi: "Jämäksen melontareitti", en: "Jämäski canoe route" }, text: { fi: "Melontareitti", en: "Paddling route" } },
+  { id: "b2c28514-b27a-4b23-9a08-cf6aecc7dc15", kind: "route", km: 0.5, length: 5.4, icon: "snow", name: { fi: "Unskin uran valaistu latu", en: "Unskin ura lit ski track" }, text: { fi: "Valaistu hiihtolatu", en: "Lit ski track" } },
+  { id: "566623b0-c292-4168-b7f3-3774e6143d88", kind: "place", km: 0.2, icon: "book", name: { fi: "Juminkeko", en: "Juminkeko" }, text: { fi: "Kalevala-tietokeskus ja museo", en: "Kalevala information centre and museum" } },
+  { id: "dbc89590-c2f0-4844-ab58-284c0ef3cba2", kind: "place", km: 0.5, icon: "utensils", name: { fi: "Eskobar", en: "Eskobar" }, text: { fi: "Ravintola keskustassa", en: "Restaurant in town" } },
+  { id: "167783d7-6842-4dcd-90f6-6093efce5c39", kind: "place", km: 0.8, icon: "waves", name: { fi: "Ruukinrannan uimaranta", en: "Ruukinranta beach" }, text: { fi: "Uimaranta keskustassa", en: "Swimming beach in town" } },
+  { id: "e4eefac4-20d0-41d1-94ce-5cb2fa0b296d", kind: "place", km: 0.8, icon: "waves", name: { fi: "Kuhmon uimahalli", en: "Kuhmo swimming hall" }, text: { fi: "Uimahalli", en: "Indoor swimming hall" } },
+  { id: "6677498a-7a7a-4b43-897a-f7d58642ff78", kind: "place", km: 3.3, icon: "paw", name: { fi: "Luontokeskus Petola", en: "Petola nature centre" }, text: { fi: "Suurpedot ja luontopolku", en: "Large carnivores and a nature trail" } },
+  { id: "ba20d635-7d1a-4962-aadf-6050681f3e72", kind: "place", km: 3.4, icon: "snow", name: { fi: "Kalevalan liikuntakeskus", en: "Kalevala sports centre" }, text: { fi: "Valaistut ladut, yhteys 80 km latuverkostoon", en: "Lit ski loops linked to an 80 km network" } },
 ];
+
+/** The guesthouse map plus the hand-picked places and routes above (huts.fi embed params places= and routes=). */
+export const nearbyEmbed = (locale: Locale) =>
+  `${mapEmbed(locale)}&places=${nearby.filter((n) => n.kind === "place").map((n) => n.id).join(",")}&routes=${nearby.filter((n) => n.kind === "route").map((n) => n.id).join(",")}`;
 
 /** Guest reviews go here once Jeff pastes them in: exact quote, first name, source and date read. Never as review schema. */
 export type Review = { text: Text; name: string; source: "Booking.com" | "Google" | "Facebook"; date: string };
@@ -274,7 +262,7 @@ export const home = {
     reviewsKicker: "Vieraat sanovat",
     reviewsTitle: "Kodikas, siisti ja keskellä kaupunkia",
     nearbyKicker: "Lähellä",
-    nearbyTitle: "Kaikki Kuhmon keskustan palvelut kävelymatkan päässä",
+    nearbyTitle: "Reitit ja paikat lähellä",
     hostKicker: "Isäntä",
     hostTitle: "Tervetuloa Kieppiin",
     hostPlaceholder: "Tähän tulee lyhyt esittely Mikosta ja kuva. Vieraat varaavat mieluummin, kun he tietävät kenen luo ovat tulossa.",
@@ -312,7 +300,7 @@ export const home = {
     reviewsKicker: "Guests say",
     reviewsTitle: "Cosy, clean and right in town",
     nearbyKicker: "Nearby",
-    nearbyTitle: "Everything in Kuhmo town centre within walking distance",
+    nearbyTitle: "Trails and places nearby",
     hostKicker: "Your host",
     hostTitle: "Welcome to Kieppi",
     hostPlaceholder: "A short introduction and a photo of Mikko goes here. Guests book more readily when they know who they are visiting.",

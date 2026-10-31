@@ -6,11 +6,11 @@ import { Ask, Faq, faqJsonLd, GettingHere, Included, JsonLd, lodgingJsonLd, MapE
 import { PhotoStrip } from "@/app/components/Gallery";
 import { Glyph, IconText } from "@/app/components/Icon";
 import { Inquiry } from "@/app/components/Inquiry";
+import { NearbyMap } from "@/app/components/NearbyMap";
 import {
   business,
   commonPhotos,
   contactPage,
-  distance,
   home,
   homeAsk,
   homeFaq,
@@ -18,7 +18,6 @@ import {
   hutsPlace,
   isPreview,
   navOrder,
-  nearby,
   pages,
   paths,
   photos,
@@ -109,36 +108,6 @@ function RoomCards({ locale }: { locale: Locale }) {
           </span>
         </Link>
       ))}
-    </div>
-  );
-}
-
-function NearbyList({ locale }: { locale: Locale }) {
-  const t = ui[locale];
-  return (
-    <div>
-      <ul className="divide-y divide-ink/10 border-y border-ink/10">
-        {nearby.map((n) => {
-          const inner = (
-            <>
-              <span className="grid size-10 shrink-0 place-items-center rounded-full bg-birch text-lingon">
-                <Glyph name={n.icon} />
-              </span>
-              <span className="min-w-0 flex-1">
-                <span className="block font-semibold">{n.name}</span>
-                <span className="block text-sm text-ink/60">{n.text[locale]}</span>
-              </span>
-              <span className="shrink-0 font-display text-xl tabular-nums">{distance(n.km, locale)}</span>
-            </>
-          );
-          return (
-            <li key={n.name} className="flex items-center gap-4 py-3.5">
-              {inner}
-            </li>
-          );
-        })}
-      </ul>
-      <p className="mt-3 text-xs text-ink/55">{t.crow}</p>
     </div>
   );
 }
@@ -302,18 +271,15 @@ export function HomeView({ locale }: { locale: Locale }) {
       <Reviews locale={locale} />
 
       {/* Nearby and map */}
-      <section className="bg-white">
+      <section className="bg-birch/60">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
           <SectionTitle kicker={h.nearbyKicker} title={h.nearbyTitle} />
-          <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_1.3fr]">
-            <div>
-              <NearbyList locale={locale} />
-              <Link href={paths.kuhmo[locale]} className="mt-6 inline-flex items-center gap-2 font-semibold text-lingon hover:underline">
-                {t.nav.kuhmo} <ArrowRight className="size-4" aria-hidden />
-              </Link>
-            </div>
-            <MapEmbed locale={locale} />
+          <div className="mt-10">
+            <NearbyMap locale={locale} />
           </div>
+          <Link href={paths.kuhmo[locale]} className="mt-8 inline-flex items-center gap-2 font-semibold text-lingon hover:underline">
+            {t.nav.kuhmo} <ArrowRight className="size-4" aria-hidden />
+          </Link>
         </div>
       </section>
 
@@ -415,7 +381,6 @@ export function ContentView({ id, locale }: { id: PageId; locale: Locale }) {
               ))}
             </div>
           ))}
-          {id === "kuhmo" ? <NearbyList locale={locale} /> : null}
         </div>
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="rounded-3xl border border-ink/10 bg-white p-6 shadow-sm sm:p-8">
@@ -433,7 +398,16 @@ export function ContentView({ id, locale }: { id: PageId; locale: Locale }) {
         </div>
       </section>
 
-      <section className="bg-white">
+      {id === "kuhmo" ? (
+        <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6">
+          <SectionTitle kicker={home[locale].nearbyKicker} title={home[locale].nearbyTitle} />
+          <div className="mt-10">
+            <NearbyMap locale={locale} />
+          </div>
+        </section>
+      ) : null}
+
+      <section className="bg-birch/60">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
           <SectionTitle kicker={business.name} title={t.findUs} />
           <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_1.5fr]">

@@ -74,11 +74,21 @@ export function Included({ locale, tone = "light" }: { locale: Locale; tone?: "l
  * so there is exactly one Huts.fi link: this plain, followed link on the client's page. The NLS credit moves out
  * with it, because the map tiles' licence requires it.
  */
-export function MapEmbed({ locale }: { locale: Locale }) {
+export function MapEmbed({
+  locale,
+  src,
+  frameRef,
+  frameClassName = "h-[360px] sm:h-[460px]",
+}: {
+  locale: Locale;
+  src?: string;
+  frameRef?: React.Ref<HTMLIFrameElement>;
+  frameClassName?: string;
+}) {
   const t = ui[locale];
   return (
     <div>
-      <iframe src={mapEmbed(locale)} title={t.mapTitle} loading="lazy" className="block h-[360px] w-full rounded-2xl border-0 bg-birch sm:h-[460px]" allowFullScreen />
+      <iframe ref={frameRef} src={src ?? mapEmbed(locale)} title={t.mapTitle} loading="lazy" className={`block w-full rounded-2xl border-0 bg-birch ${frameClassName}`} allowFullScreen />
       <p className="py-2 text-right text-xs opacity-70">
         {t.mapCredit}{" "}
         <a href={`${HUTS}${hutsPlace[locale]}`} className="font-bold text-[#FF6B00]">

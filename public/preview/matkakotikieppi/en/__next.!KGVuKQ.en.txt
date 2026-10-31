@@ -2,4 +2,4 @@
 2:I[45298,["/preview/matkakotikieppi/_next/static/chunks/15tfcyhe6cegs.js","/preview/matkakotikieppi/_next/static/chunks/0fb7vhc1959ce.js"],"default"]
 3:I[89044,["/preview/matkakotikieppi/_next/static/chunks/15tfcyhe6cegs.js","/preview/matkakotikieppi/_next/static/chunks/0fb7vhc1959ce.js"],"default"]
 4:[]
-0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"900atne7C3vtE7z-Ha_fs"}
+0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"5eQD9NKhiHQ3A1dD0CV21"}

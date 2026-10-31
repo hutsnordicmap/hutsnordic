@@ -14,11 +14,12 @@ Preview: https://hutsnordic.fi/preview/matkakotikieppi. Source: `sites/matkakoti
 |---|---|
 | 29.10. | Mikko OK'd photos for huts.fi, got the partner map, and asked Jeff to call him about a new website. |
 | 31.10. | Preview built from the old WordPress pages (FI + EN), his 10 usable photos and Huts.fi nearby places. Offer: 1 year free, then 20 €/month. |
-| 31.10. | Jeff (via the Mökkiloma thread): link lists to nearby places are spammy, keep visitors on the site. Nearby list trimmed to 5 plain-text rows, no outbound links; maps get `trails=1&hideAttr=1`, one followed Huts.fi link under each map plus the NLS credit. Row-hover highlighting on the map needs a huts.fi embed feature (pending Jeff). |
+| 31.10. | Jeff (via the Mökkiloma thread): link lists to nearby places are spammy, keep visitors on the site. Nearby list trimmed to 5 plain-text rows, no outbound links; maps get `trails=1&hideAttr=1`, one followed Huts.fi link under each map plus the NLS credit. Then wired to the new huts.fi embed params (`places=`, `routes=`, highlight/focus messages; taisto PR #653): NearbyMap with 4 routes + 6 places, hover highlights once #653 is live. |
+| 31.10. | Jeff: the beige looked like a "dirty motel brown". Paper is now snow white #fbfcfb, panels pale spruce grey #e8efec. |
 
 ## Design
 
-Kainuu spruce green + lingonberry red on birch paper, Fraunces + Figtree. The owner's sign logo (Courgette in a
+Kainuu spruce green + lingonberry red on snow white (beige rejected 31.10.), Fraunces + Figtree. The owner's sign logo (Courgette in a
 framed plate) redrawn as SVG. Rooms in round photo frames (Jeff likes arctichomes.rentals listings). Budget guesthouse,
 so the "included in the price" list is the main selling block, high on the page. Mobile hero is photo-first.
 
