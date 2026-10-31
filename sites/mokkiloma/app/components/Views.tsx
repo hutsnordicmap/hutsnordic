@@ -21,6 +21,7 @@ import { CottageCard, CottageFinder } from "@/app/components/CottageFinder";
 import { CottageGallery } from "@/app/components/Gallery";
 import { Icon } from "@/app/components/Icon";
 import { Inquiry } from "@/app/components/Inquiry";
+import { NearbyMap } from "@/app/components/NearbyMap";
 import { VideoHero } from "@/app/components/VideoHero";
 import {
   activities,
@@ -33,7 +34,6 @@ import {
   euro,
   hutsCottageUrl,
   lowestWeek,
-  orgEmbed,
   paths,
   priceNote,
   sauna,
@@ -201,8 +201,9 @@ export function HomeView({ locale }: { locale: Locale }) {
 
         <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
           <h2 className="font-serif text-4xl font-semibold text-forest">{t.mapTitle}</h2>
-          <div className="mt-6">
-            <MapEmbed locale={locale} src={orgEmbed(locale)} title={`${business.name} – ${t.mapTitle}`} />
+          <p className="mt-2 max-w-3xl text-ink/70">{t.mapText}</p>
+          <div className="mt-8">
+            <NearbyMap locale={locale} title={`${business.name} – ${t.mapTitle}`} />
           </div>
         </section>
 
@@ -246,8 +247,8 @@ export function CottagesView({ locale }: { locale: Locale }) {
         <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
           <h2 className="font-serif text-3xl font-semibold text-forest sm:text-4xl">{t.mapTitle}</h2>
           <p className="mt-2 max-w-3xl text-ink/70">{t.mapText}</p>
-          <div className="mt-6">
-            <MapEmbed locale={locale} src={orgEmbed(locale)} title={`${business.name} – ${t.mapTitle}`} />
+          <div className="mt-8">
+            <NearbyMap locale={locale} title={`${business.name} – ${t.mapTitle}`} />
           </div>
         </section>
       </main>
@@ -378,14 +379,13 @@ export function CottageView({ id, locale }: { id: CottageId; locale: Locale }) {
           <h2 className="font-serif text-3xl font-semibold text-forest">{t.cottage.where}</h2>
           <p className="mt-2 text-ink/80">{c.address}</p>
           <div className="mt-6">
-            <MapEmbed locale={locale} src={cottageEmbed(c, locale)} title={`${c.name} – ${t.cottage.where}`} />
+            <MapEmbed locale={locale} src={cottageEmbed(c, locale)} title={`${c.name} – ${t.cottage.where}`} hutsHref={hutsCottageUrl(c, locale)} />
           </div>
-          <p className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          <p className="text-sm">
             <a href={maps} rel="noopener" className="inline-flex items-center gap-1.5 font-semibold text-copper hover:underline">
               <Navigation className="size-4" aria-hidden />
               Google Maps
             </a>
-            <a href={hutsCottageUrl(c, locale)} className="font-semibold text-copper hover:underline">{t.cottage.onHuts} →</a>
           </p>
         </section>
 
@@ -458,10 +458,7 @@ export function SaunaView({ locale }: { locale: Locale }) {
           </aside>
         </section>
         <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
-          <MapEmbed locale={locale} src={sauna.embed[locale]} title={t.saunaH1} />
-          <p className="text-sm">
-            <a href={sauna.hutsUrl[locale]} className="font-semibold text-copper hover:underline">Huts.fi →</a>
-          </p>
+          <MapEmbed locale={locale} src={sauna.embed[locale]} title={t.saunaH1} hutsHref={sauna.hutsUrl[locale]} />
         </section>
       </main>
       <Footer locale={locale} />

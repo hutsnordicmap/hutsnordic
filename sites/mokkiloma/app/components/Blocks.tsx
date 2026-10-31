@@ -88,13 +88,28 @@ export function Ask({ locale, items }: { locale: Locale; items: string[] }) {
  * this plain, followed link on the client's page (a link inside the iframe counts for huts.fi, not here).
  * The NLS credit moves out with it, because the map tiles' licence requires it.
  */
-export function MapEmbed({ locale, src, title }: { locale: Locale; src: string; title: string }) {
+export function MapEmbed({
+  locale,
+  src,
+  title,
+  hutsHref = HUTS,
+  frameRef,
+  frameClassName = "h-[380px] sm:h-[460px]",
+}: {
+  locale: Locale;
+  src: string;
+  title: string;
+  /** Where the one Huts.fi link points: the place's own huts.fi page when there is one. */
+  hutsHref?: string;
+  frameRef?: React.Ref<HTMLIFrameElement>;
+  frameClassName?: string;
+}) {
   return (
     <div>
-      <iframe src={src} title={title} loading="lazy" className="block h-[380px] w-full rounded-3xl border-0 bg-moss sm:h-[460px]" allowFullScreen />
+      <iframe ref={frameRef} src={src} title={title} loading="lazy" className={`block w-full rounded-3xl border-0 bg-moss ${frameClassName}`} allowFullScreen />
       <p className="py-2 text-right text-xs text-ink/70">
         {ui[locale].mapCredit}{" "}
-        <a href={HUTS} className="font-bold text-[#FF6B00]">
+        <a href={hutsHref} className="font-bold text-[#FF6B00]">
           Huts.fi
         </a>
         <span className="text-ink/50">

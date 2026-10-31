@@ -3,8 +3,8 @@
 @theme {
   --color-forest: #23382e;
   --color-forest-deep: #121c16;
-  --color-sand: #f5f1e8;
-  --color-moss: #e6eadf;
+  --color-sand: #f1f5f9; /* cool light grey, after arctichomes.rentals (Jeff 2026-10-31) */
+  --color-moss: #e2e8f0;
   --color-copper: #b0623a;
   --color-copper-light: #e9a37a;
   --color-ink: #1b221e;

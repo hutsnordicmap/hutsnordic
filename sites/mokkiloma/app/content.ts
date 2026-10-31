@@ -529,11 +529,45 @@ export const hutsCottageUrl = (c: Cottage, locale: Locale) =>
 
 export const cottageEmbed = (c: Cottage, locale: Locale) =>
   locale === "fi"
-    ? `${HUTS}/embed/suomi/varsinais-suomi/poytya/lomamokit/${c.hutsSlug}?address=1&trails=1&hideAttr=1`
-    : `${HUTS}/embed/finland/varsinais-suomi/poytya/holiday-cabins/${c.hutsSlug}?address=1&trails=1&hideAttr=1`;
+    ? `${HUTS}/embed/suomi/varsinais-suomi/poytya/lomamokit/${c.hutsSlug}?address=1&trails=1&hideAttr=1&routes=${NEAREST_TRAIL}`
+    : `${HUTS}/embed/finland/varsinais-suomi/poytya/holiday-cabins/${c.hutsSlug}?address=1&trails=1&hideAttr=1&routes=${NEAREST_TRAIL}`;
 
 export const orgEmbed = (locale: Locale) =>
   `${HUTS}/embed/${locale === "fi" ? "suomi" : "finland"}/org/${business.orgId}?address=1&trails=1&hideAttr=1`;
+
+/**
+ * The few nearby places and trails worth a guest's day, picked by hand from huts.fi (ids are huts.fi
+ * place / route UUIDs). They show on the map next to the list; hovering or tapping a row highlights it.
+ * Distances are as the crow flies from the farm, measured from huts.fi coordinates on 2026-10-31.
+ */
+export type NearbyItem = {
+  id: string;
+  kind: "place" | "route";
+  icon: string;
+  name: Record<Locale, string>;
+  what: Record<Locale, string>;
+  km: number;
+  /** Trail length in km (routes only), from huts.fi. */
+  length?: number;
+};
+
+export const nearby: NearbyItem[] = [
+  { id: "55c4d394-a86d-4974-9b69-56cc5c9ccd95", kind: "route", icon: "footprints", km: 2.5, length: 20.1, name: { fi: "Vaskijärven reitti", en: "Vaskijärvi trail" }, what: { fi: "Retkeilyreitti luonnonpuiston läpi", en: "Hiking trail through the nature reserve" } },
+  { id: "a12b80b8-76bc-4165-8efc-dd2d8e1c6be6", kind: "route", icon: "sailboat", km: 6.6, length: 30.1, name: { fi: "Yläneenjoen melontareitti", en: "Yläneenjoki canoe route" }, what: { fi: "Melontareitti Pyhäjärvelle", en: "Paddling route down to Lake Pyhäjärvi" } },
+  { id: "05c5ab5d-7202-4d9e-a5b2-9b0612a90af8", kind: "route", icon: "tree", km: 9.9, length: 6.6, name: { fi: "Koskeljärven vaellusreitti", en: "Koskeljärvi hiking trail" }, what: { fi: "Lyhyempi metsäpolku", en: "A shorter forest trail" } },
+  { id: "603fa53c-1e19-4c6e-9a06-bbdc6fffee45", kind: "place", icon: "flame", km: 2.6, name: { fi: "Valastenmaan tulipaikka", en: "Valastenmaa campfire site" }, what: { fi: "Nuotiopaikka", en: "Campfire site" } },
+  { id: "171ea499-3c25-473f-b63f-41ddb0e72c7a", kind: "place", icon: "waves", km: 5.2, name: { fi: "Valasrannan uimapaikka", en: "Valasranta beach" }, what: { fi: "Uimaranta", en: "Swimming beach" } },
+  { id: "91ad64ec-af33-4365-8db8-451bd11dda55", kind: "place", icon: "bath", km: 6.3, name: { fi: "Kaunisrannan sauna ja uimaranta", en: "Kaunisranta sauna and beach" }, what: { fi: "Sauna ja uimaranta", en: "Sauna and beach" } },
+  { id: "2254020c-86d3-492e-87ab-22d3469e2e87", kind: "place", icon: "tag", km: 8.6, name: { fi: "Yläneen frisbeegolfpuisto", en: "Yläne disc golf park" }, what: { fi: "Frisbeegolf", en: "Disc golf" } },
+  { id: "3e50ed6b-31fa-4bb5-8367-1373cf8b1be7", kind: "place", icon: "sun", km: 9.6, name: { fi: "Latosaaren lintutorni", en: "Latosaari bird tower" }, what: { fi: "Lintutorni", en: "Bird-watching tower" } },
+];
+
+/** Org map + the hand-picked places and trails above. */
+export const nearbyEmbed = (locale: Locale) =>
+  `${orgEmbed(locale)}&places=${nearby.filter((n) => n.kind === "place").map((n) => n.id).join(",")}&routes=${nearby.filter((n) => n.kind === "route").map((n) => n.id).join(",")}`;
+
+/** Single-place maps (cottages, sauna) only add the nearest trail, so they stay zoomed in on the place. */
+export const NEAREST_TRAIL = "55c4d394-a86d-4974-9b69-56cc5c9ccd95";
 
 export const lowestWeek = (c: Cottage) => Math.min(...c.weeks.map((w) => w.price));
 export const highestWeek = (c: Cottage) => Math.max(...c.weeks.map((w) => w.price));
@@ -558,8 +592,8 @@ export const sauna = {
     en: `${HUTS}/finland/southwest-finland/poytya/saunas/smoke-sauna-elijarven-mokkilomat-poytya`,
   },
   embed: {
-    fi: `${HUTS}/embed/suomi/varsinais-suomi/poytya/saunat/savusauna-elijarven-mokkilomat-poytya?address=1&trails=1&hideAttr=1`,
-    en: `${HUTS}/embed/finland/varsinais-suomi/poytya/saunas/smoke-sauna-elijarven-mokkilomat-poytya?address=1&trails=1&hideAttr=1`,
+    fi: `${HUTS}/embed/suomi/varsinais-suomi/poytya/saunat/savusauna-elijarven-mokkilomat-poytya?address=1&trails=1&hideAttr=1&routes=${NEAREST_TRAIL}`,
+    en: `${HUTS}/embed/finland/varsinais-suomi/poytya/saunas/smoke-sauna-elijarven-mokkilomat-poytya?address=1&trails=1&hideAttr=1&routes=${NEAREST_TRAIL}`,
   },
   lat: 60.880817,
   lng: 22.254731,
