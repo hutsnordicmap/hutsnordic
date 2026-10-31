@@ -178,3 +178,9 @@ tar czf <site>-<date>.tar.gz <dir>  →  /mnt/project-files/websites/<site>-old-
 ## 10. Always learn
 
 After each client round, add what was new to the site's case file and, if it's a rule, here. Dated, short.
+
+## Nearby places and trails: on the map, not as link lists (Jeff, 2026-10-31)
+- No long "everything nearby" link lists. Pick the 3 trails and about 5 places a guest would actually use, and put them on the huts.fi map next to a short list.
+- Embed: `…/embed/…/org/<orgId>?address=1&trails=1&hideAttr=1&places=<uuid,…>&routes=<uuid,…>` (huts.fi ids). Row hover → `postMessage({type:"huts-embed-highlight", id})`, row tap → `{type:"huts-embed-focus", id}`. Copy `sites/mokkiloma/app/components/NearbyMap.tsx`.
+- Exactly one Huts.fi link per map: `hideAttr=1` hides the iframe's own credit, and our followed link sits under the map (to the place's huts.fi page when there is one) with "© Maanmittauslaitos" beside it (tile licence).
+- Background colour is chosen per brand, not a default. Mökkiloma uses Arctic Homes' cool grey #f1f5f9.
