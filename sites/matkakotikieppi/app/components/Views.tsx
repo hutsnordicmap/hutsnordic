@@ -132,14 +132,8 @@ function NearbyList({ locale }: { locale: Locale }) {
             </>
           );
           return (
-            <li key={n.name}>
-              {n.huts ? (
-                <a href={`${HUTS}${n.huts[locale]}`} rel="noopener" className="flex items-center gap-4 py-3.5 hover:text-lingon">
-                  {inner}
-                </a>
-              ) : (
-                <span className="flex items-center gap-4 py-3.5">{inner}</span>
-              )}
+            <li key={n.name} className="flex items-center gap-4 py-3.5">
+              {inner}
             </li>
           );
         })}

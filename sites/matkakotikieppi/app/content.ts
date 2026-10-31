@@ -42,7 +42,7 @@ export const hutsPlace = {
   fi: "/suomi/kainuu/kuhmo/majoitus/matkakoti-kieppi-kuhmo",
   en: "/finland/kainuu/kuhmo/accommodation/matkakoti-kieppi-kuhmo",
 };
-export const mapEmbed = (locale: Locale) => `${HUTS}/embed${hutsPlace[locale]}?address=1`;
+export const mapEmbed = (locale: Locale) => `${HUTS}/embed${hutsPlace[locale]}?address=1&trails=1&hideAttr=1`;
 
 export const photos = {
   outside: { src: photo("matkakoti-kieppi-ulkoa.jpg"), fi: "Matkakoti Kieppi ulkoa, Vienantie 3, Kuhmo", en: "Matkakoti Kieppi from outside, Vienantie 3, Kuhmo" },
@@ -201,64 +201,38 @@ export const rooms: Room[] = [
 
 export const commonPhotos: Photo[] = [photos.dining, photos.kitchen, photos.breakfast, photos.hall, photos.showers, photos.outside];
 
-/** Places near the guesthouse on Huts.fi. Distances are straight lines from Vienantie 3, measured 2026-10-31. */
-export type Nearby = { name: string; km: number; icon: string; text: Text; huts?: Text };
+/** The main places near the guesthouse, as plain text: no outbound links (Jeff 2026-10-31: visitors should stay on the site). Straight lines from Vienantie 3, measured on Huts.fi 2026-10-31. */
+export type Nearby = { name: string; km: number; icon: string; text: Text };
 export const nearby: Nearby[] = [
   {
     name: "Juminkeko",
     km: 0.2,
     icon: "book",
     text: { fi: "Kalevala-tietokeskus ja museo", en: "Kalevala information centre and museum" },
-    huts: { fi: "/suomi/kainuu/kuhmo/museot/juminkeko-kuhmo", en: "/finland/kainuu/kuhmo/museums/juminkeko-kuhmo" },
   },
   {
     name: "Eskobar · Neljä Kaesaa",
     km: 0.5,
     icon: "utensils",
     text: { fi: "Keskustan ravintolat", en: "Restaurants in the town centre" },
-    huts: { fi: "/suomi/kainuu/kuhmo/ravintolat/eskobar", en: "/finland/kainuu/kuhmo/restaurants/eskobar" },
-  },
-  {
-    name: "Kirjasto Atalante",
-    km: 0.6,
-    icon: "library",
-    text: { fi: "Kuhmon kirjasto", en: "Kuhmo library" },
-    huts: { fi: "/suomi/kainuu/kuhmo/kirjastot/kuhmon-kirjasto-atalante-kuhmo", en: "/finland/kainuu/kuhmo/libraries/kuhmon-kirjasto-atalante-kuhmo" },
   },
   {
     name: "Ruukinrannan uimaranta",
     km: 0.8,
     icon: "waves",
     text: { fi: "Uimaranta keskustassa", en: "Swimming beach in town" },
-    huts: { fi: "/suomi/kainuu/kuhmo/uimarannat/ruukinrannan-uimaranta", en: "/finland/kainuu/kuhmo/beaches/ruukinrannan-uimaranta" },
-  },
-  {
-    name: "Kuhmon uimahalli",
-    km: 0.8,
-    icon: "waves",
-    text: { fi: "Uimahalli", en: "Indoor swimming hall" },
-    huts: { fi: "/suomi/kainuu/kuhmo/uimahallit/kuhmon-uimahalli", en: "/finland/kainuu/kuhmo/swimming-halls/kuhmon-uimahalli" },
   },
   {
     name: "Luontokeskus Petola",
     km: 3.3,
     icon: "paw",
     text: { fi: "Suurpedot ja luontopolku", en: "Large carnivores and a nature trail" },
-    huts: { fi: "/suomi/kainuu/kuhmo/museot/kuhmon-luontokeskus-petola", en: "/finland/kainuu/kuhmo/museums/kuhmon-luontokeskus-petola" },
   },
   {
     name: "Kalevalan liikuntakeskus",
     km: 3.4,
     icon: "snow",
     text: { fi: "Valaistut ladut ja yhteys 80 km latuverkostoon", en: "Lit ski loops linked to an 80 km trail network" },
-    huts: { fi: "/suomi/kainuu/kuhmo/hiihtokeskukset/kalevalan-liikuntakeskus", en: "/finland/kainuu/kuhmo/xc-centers/kalevalan-liikuntakeskus" },
-  },
-  {
-    name: "Talvisotamuseo",
-    km: 3.8,
-    icon: "landmark",
-    text: { fi: "Kuhmon talvisodan museo", en: "Kuhmo Winter War museum" },
-    huts: { fi: "/suomi/kainuu/kuhmo/museot/talvisotamuseo-kuhmo", en: "/finland/kainuu/kuhmo/museums/talvisotamuseo-kuhmo" },
   },
 ];
 
