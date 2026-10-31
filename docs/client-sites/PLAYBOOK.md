@@ -166,8 +166,8 @@ tar czf <site>-<date>.tar.gz <dir>  →  /mnt/project-files/websites/<site>-old-
    `*.vercel.app` address to the real domain once it's green.
 5. After the switch: zone active, domain valid, https on both names, old URLs 301, email still arrives,
    sitemap in Search Console.
-6. Hosting terms: **3 years free**, then "katsotaan". The lowest package is currently €35/month, and we find a
-   price that works for them then. If the domain was bought through the old builder, move it to Cloudflare
+6. Hosting terms for new clients (Jeff, 2026-10-31): **1 year free, then €20/month**. Vuorikosken Mylly
+   keeps the 3 years free it was promised (then "katsotaan"). If the domain was bought through the old builder, move it to Cloudflare
    before it expires, in the owner's name.
 
 ## 10. Always learn
