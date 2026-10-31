@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f7f2e9;
+  --color-birch: #ede5d6;
+  --color-spruce: #17352f;
+  --color-spruce-soft: #21463e;
+  --color-lingon: #b3282d;
+  --color-lingon-dark: #921f24;
+  --color-lingon-light: #f08a7e;
+  --color-ink: #1c2420;
+  --font-sans: var(--font-figtree), system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-script: var(--font-courgette), cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}

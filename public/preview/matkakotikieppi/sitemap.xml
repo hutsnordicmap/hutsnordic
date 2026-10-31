@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url>
+<loc>https://www.matkakotikieppi.fi</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.matkakotikieppi.fi" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.matkakotikieppi.fi/en" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.matkakotikieppi.fi/majoitus</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.matkakotikieppi.fi/majoitus" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.matkakotikieppi.fi/en/accommodation" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.matkakotikieppi.fi/tyo-ja-ryhmat</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.matkakotikieppi.fi/tyo-ja-ryhmat" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.matkakotikieppi.fi/en/work-and-groups" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.matkakotikieppi.fi/kuhmo</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.matkakotikieppi.fi/kuhmo" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.matkakotikieppi.fi/en/kuhmo" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.matkakotikieppi.fi/yhteystiedot</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.matkakotikieppi.fi/yhteystiedot" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.matkakotikieppi.fi/en/contact-us" />
+<lastmod>2026-10-31T00:00:00.000Z</lastmod>
+</url>
+</urlset>
