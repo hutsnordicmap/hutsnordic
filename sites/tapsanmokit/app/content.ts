@@ -471,7 +471,10 @@ export const ui = {
     homeAsk: [
       "Alkuperäiset kuvat puhelimesta tai kamerasta. Vanhan sivun kuvat ovat pieniä, ja isolla näytöllä ne näyttävät sumeilta.",
       "Ovatko hinnat voimassa vuonna 2027?",
-      "Ohjataanko vieraat myös Booking.comiin, vai pelkkä suora varaus?",
+      "Miten pidät Google-kalenterit ja Booking.comin samassa tahdissa? Kopioitko varaukset käsin?",
+      "Oletko Booking.comin lisäksi Airbnb:ssä tai muualla?",
+      "Lähetä Booking.comin kalenterin vientilinkki (iCal) jokaisesta kohteesta, niin Booking-varaukset näkyvät sivuilla itsestään.",
+      "Haluatko, että vieras voi maksaa varauksen kortilla suoraan sivuilla?",
       "Y-tunnus sivun alalaitaan.",
     ],
     madeBy: "Sivut:",
@@ -552,7 +555,10 @@ export const ui = {
     homeAsk: [
       "Original photos from your phone or camera. The old site's photos are small and look blurry on a big screen.",
       "Are the prices valid in 2027?",
-      "Should guests also be sent to Booking.com, or direct booking only?",
+      "How do you keep your Google calendars in step with Booking.com? Do you copy bookings by hand?",
+      "Besides Booking.com, are you on Airbnb or anywhere else?",
+      "Send us Booking.com's calendar export link (iCal) for each place, and Booking.com bookings will show on the site by themselves.",
+      "Would you like guests to be able to pay for a booking by card right on the site?",
       "Business ID for the footer.",
     ],
     madeBy: "Site by",

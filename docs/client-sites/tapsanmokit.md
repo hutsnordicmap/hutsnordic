@@ -15,6 +15,7 @@ Drop box: https://hutsnordic.fi/drop/<token> (token kept out of git; slug `tapsa
 |---|---|
 | 1.11. | Tapsa accepted the free site. Offer for him: 2 years free. |
 | 3.11. | Preview built from the old site (FI + EN), his photos, his Google calendars and huts.fi nearby places. |
+| 3.11. | Jeff: offer every client calendar sync and online card payments. Asked Tapsa how he keeps Google and Booking.com in step, whether he uses Airbnb, for each Booking.com iCal export link, and about card payments. |
 
 ## Build notes
 

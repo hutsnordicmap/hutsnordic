@@ -201,3 +201,11 @@ After each client round, add what was new to the site's case file and, if it's a
 - Embed: `…/embed/…/org/<orgId>?address=1&trails=1&hideAttr=1&places=<uuid,…>&routes=<uuid,…>` (huts.fi ids). Row hover → `postMessage({type:"huts-embed-highlight", id})`, row tap → `{type:"huts-embed-focus", id}`. Copy `sites/mokkiloma/app/components/NearbyMap.tsx`.
 - Exactly one Huts.fi link per map: `hideAttr=1` hides the iframe's own credit, and our followed link sits under the map (to the place's huts.fi page when there is one) with "© Maanmittauslaitos" beside it (tile licence).
 - Background colour is chosen per brand, not a default. Mökkiloma uses Arctic Homes' cool grey #f1f5f9.
+
+## Bookings, calendars and payments: ask every client (Jeff, 2026-11-03)
+- We offer every client help with taking card payments online and with calendar sync (Airbnb, Booking.com and
+  their own calendar). Ask it in the first round, as homework and in the preview ask box:
+  where do you take bookings, how do you avoid double bookings (copying by hand?), and do you want online card payments.
+- Calendar sync means plain iCal links: each channel's export link goes into the others and into the site's
+  calendar. No live channel manager; that only pays off with hundreds of clients.
+- Example: Tapsan Mökit keeps one public Google Calendar per unit and also lists every unit on Booking.com.
