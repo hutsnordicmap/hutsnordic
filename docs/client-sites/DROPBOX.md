@@ -68,6 +68,9 @@ Then add the first homework with `admin_task`.
 - FI / EN / SV switch. Homework questions and replies carry `i18n {fi, en, sv}`; the client's own answers stay as written.
 - One way to send work: everything saves at once ("Tallenna" on homework), the big button says "start now", and if
   the client forgets, `admin_waiting` starts it after 30 quiet minutes.
+- Language: a client page opens in the client's own language (`client_sites.language`, Finnish by default). A
+  switch choice is remembered per client link (`drop-lang:<token>`), never shared across clients: a shared key
+  made every client page open in English for Jeff (3.11.2026). The admin panel alone defaults to English.
 - Gotcha: copy `input.files` with `Array.from` before resetting `input.value`. The FileList is live, and a
   state updater that reads it later gets an empty list (this silently dropped homework photos).
 

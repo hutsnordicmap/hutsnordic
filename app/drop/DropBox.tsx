@@ -141,9 +141,11 @@ function fileIcon(mime: string | null) {
   return I.file;
 }
 
-function readLang(fallback: Lang): Lang {
+// The choice is remembered per client link, so a language picked on one client's page (or by Jeff while
+// checking pages) never changes another client's page. Default: the client's own language (Finnish).
+function readLang(token: string, fallback: Lang): Lang {
   try {
-    const v = localStorage.getItem("drop-lang");
+    const v = localStorage.getItem(`drop-lang:${token}`);
     if (v === "fi" || v === "en" || v === "sv") return v;
   } catch {}
   return fallback;
@@ -168,7 +170,7 @@ export default function DropBox({ token }: { token: string }) {
     try {
       const d = await api<SiteData>({ action: "get", token });
       setData(d);
-      setLang((cur) => cur ?? readLang(d.site.language));
+      setLang((cur) => cur ?? readLang(token, d.site.language));
     } catch {
       setMissing(true);
     }
@@ -195,7 +197,7 @@ export default function DropBox({ token }: { token: string }) {
 
   const chooseLang = (v: Lang) => {
     setLang(v);
-    try { localStorage.setItem("drop-lang", v); } catch {}
+    try { localStorage.setItem(`drop-lang:${token}`, v); } catch {}
   };
 
   const uploading = ups.some((u) => !u.error && u.progress < 1);
