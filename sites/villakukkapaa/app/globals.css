@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* Colours from the house itself: Saimaa blue, the ochre-yellow boards and the red base. */
+@theme {
+  --color-lake: #24506e;
+  --color-lake-deep: #142a3b;
+  --color-paper: #faf7f0;
+  --color-panel: #efe8d9;
+  --color-ochre: #e0b252;
+  --color-ochre-dark: #b8862a;
+  --color-brick: #8f3424;
+  --color-ink: #1d2730;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-display), Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}

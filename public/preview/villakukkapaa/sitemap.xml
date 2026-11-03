@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url>
+<loc>https://www.villakukkapaa.fi</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.villakukkapaa.fi" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.villakukkapaa.fi/en" />
+<lastmod>2026-11-03T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.villakukkapaa.fi/huvila</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.villakukkapaa.fi/huvila" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.villakukkapaa.fi/en/villa" />
+<lastmod>2026-11-03T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.villakukkapaa.fi/rantasauna</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.villakukkapaa.fi/rantasauna" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.villakukkapaa.fi/en/lakeside-sauna" />
+<lastmod>2026-11-03T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.villakukkapaa.fi/tekemista</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.villakukkapaa.fi/tekemista" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.villakukkapaa.fi/en/things-to-do" />
+<lastmod>2026-11-03T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://www.villakukkapaa.fi/historia</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://www.villakukkapaa.fi/historia" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.villakukkapaa.fi/en/history" />
+<lastmod>2026-11-03T00:00:00.000Z</lastmod>
+</url>
+</urlset>
