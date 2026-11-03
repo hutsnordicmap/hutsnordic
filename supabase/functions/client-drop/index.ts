@@ -229,6 +229,15 @@ Deno.serve(async (req) => {
       return error ? json({ error: error.message }, 500) : json({ ok: true });
     }
 
+    if (action === "admin_update_site") {
+      // Only these fields; null clears preview_url (the drop page then hides the preview button).
+      const patch: Record<string, unknown> = {};
+      for (const k of ["preview_url", "name", "owner_name", "owner_email", "status", "notes"]) if (k in b) patch[k] = b[k];
+      if (!Object.keys(patch).length) return json({ error: "nothing to update" }, 400);
+      const { error } = await db.from("client_sites").update(patch).eq("id", b.site_id);
+      return error ? json({ error: error.message }, 500) : json({ ok: true });
+    }
+
     if (action === "admin_create_site") {
       const { data, error } = await db.from("client_sites").insert({
         slug: b.slug, name: b.name, owner_name: b.owner_name ?? null, owner_email: b.owner_email ?? null,

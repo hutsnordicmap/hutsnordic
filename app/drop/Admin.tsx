@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { ago, api, fmtSize, type SiteData } from "./lib";
 
+type Lang = "en" | "fi";
+type Status = "waiting" | "working" | "done" | "none";
 type Row = {
   id: string; slug: string; name: string; owner_name: string | null; owner_email: string | null; token: string;
   preview_url: string | null; status: string; last_client_activity_at: string | null;
@@ -12,17 +14,55 @@ type Row = {
   last_message: { author: string; body: string; created_at: string } | null;
 };
 
-const badge = {
-  waiting: { label: "Waiting for Claude", cls: "bg-amber-100 text-amber-900 ring-amber-300" },
-  working: { label: "Claude working", cls: "bg-sky-100 text-sky-900 ring-sky-300" },
-  done: { label: "Up to date", cls: "bg-emerald-50 text-emerald-800 ring-emerald-200" },
-  none: { label: "No request yet", cls: "bg-black/5 text-black/60 ring-black/10" },
+const T = {
+  en: {
+    clients: "Clients", waiting: (n: number) => `${n} waiting`, back: "Clients",
+    status: { waiting: "Waiting for Claude", working: "Claude is working", done: "Up to date", none: "Not started" } as Record<Status, string>,
+    newN: (n: number) => `${n} new`, homework: "Homework", files: "Files", texts: "Texts",
+    start: "Start work now", clientPage: "Client page", copy: "Copy link", copied: "Copied", preview: "Preview",
+    paste: "Paste anything…", clientSees: "Client sees it", save: "Save",
+    activity: "Activity", nothing: "Nothing yet.", pick: "Pick a client",
+    who: { client: "Client", jeff: "Jeff", claude: "Claude" } as Record<string, string>,
+    pressed: (n: number) => `Pressed start work · ${n} items`,
+    denied: "Not allowed.", loading: "Loading…",
+  },
+  fi: {
+    clients: "Asiakkaat", waiting: (n: number) => `${n} odottaa`, back: "Asiakkaat",
+    status: { waiting: "Odottaa Claudea", working: "Claude työskentelee", done: "Ajan tasalla", none: "Ei aloitettu" } as Record<Status, string>,
+    newN: (n: number) => `${n} uutta`, homework: "Kotitehtävät", files: "Tiedostot", texts: "Tekstit",
+    start: "Aloita työ nyt", clientPage: "Asiakkaan sivu", copy: "Kopioi linkki", copied: "Kopioitu", preview: "Esikatselu",
+    paste: "Liitä mitä vain…", clientSees: "Asiakas näkee", save: "Tallenna",
+    activity: "Tapahtumat", nothing: "Ei vielä mitään.", pick: "Valitse asiakas",
+    who: { client: "Asiakas", jeff: "Jeff", claude: "Claude" } as Record<string, string>,
+    pressed: (n: number) => `Painoi aloita työ · ${n} kpl`,
+    denied: "Ei pääsyä.", loading: "Ladataan…",
+  },
 };
+
+const tone: Record<Status, { chip: string; dot: string }> = {
+  waiting: { chip: "bg-[#fbe6cf] text-[#8a3f12]", dot: "bg-[#e07a2b]" },
+  working: { chip: "bg-[#dce9f7] text-[#1d4a7a]", dot: "bg-[#3a7bd5] animate-pulse" },
+  done: { chip: "bg-[color:var(--d-accent-soft)] text-[color:var(--d-accent)]", dot: "bg-[color:var(--d-accent)]" },
+  none: { chip: "bg-black/[.05] text-[color:var(--d-ink2)]", dot: "bg-black/20" },
+};
+
+const statusOf = (r: Row): Status => r.last_work?.status ?? "none";
+const order = (r: Row) => ({ waiting: 0, working: 1, none: 3, done: 3 })[statusOf(r)] - (r.unprocessed ? 1 : 0);
+
+function readLang(): Lang {
+  try {
+    const v = localStorage.getItem("admin-lang");
+    if (v === "en" || v === "fi") return v;
+  } catch {}
+  return "en";
+}
 
 export default function Admin({ adminKey }: { adminKey: string }) {
   const [rows, setRows] = useState<Row[] | null>(null);
   const [denied, setDenied] = useState(false);
-  const [open, setOpen] = useState<string | null>(null);
+  const [sel, setSel] = useState<string | null>(null);
+  const [lang, setLang] = useState<Lang>("en");
+  const t = T[lang];
 
   const load = useCallback(async () => {
     try {
@@ -34,74 +74,122 @@ export default function Admin({ adminKey }: { adminKey: string }) {
   }, [adminKey]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async fetch, not a sync update
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reads localStorage once after mount
+    setLang(readLang());
     load();
     const id = setInterval(() => document.visibilityState === "visible" && load(), 30000);
     return () => clearInterval(id);
   }, [load]);
 
-  if (denied) return <Wrap><p className="mt-20 text-center">Not allowed.</p></Wrap>;
-  if (!rows) return <Wrap><p className="mt-20 text-center text-black/50">Loading…</p></Wrap>;
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
-  const order = (r: Row) => (r.last_work?.status === "waiting" ? 0 : r.last_work?.status === "working" ? 1 : r.unprocessed ? 2 : 3);
+  // On a wide screen, open the most urgent client right away so the right side is never empty.
+  const first = rows?.length ? [...rows].sort((a, b) => order(a) - order(b))[0].id : null;
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time default selection on desktop
+    if (first && window.matchMedia("(min-width: 1024px)").matches) setSel((cur) => cur ?? first);
+  }, [first]);
+
+  const chooseLang = (v: Lang) => {
+    setLang(v);
+    try { localStorage.setItem("admin-lang", v); } catch {}
+  };
+
+  if (denied) return <Shell><p className="mt-24 text-center">{t.denied}</p></Shell>;
+  if (!rows) return <Shell><p className="mt-24 text-center text-[color:var(--d-ink3)]">{t.loading}</p></Shell>;
+
   const sorted = [...rows].sort((a, b) => order(a) - order(b) || (b.last_client_activity_at ?? "").localeCompare(a.last_client_activity_at ?? ""));
-  const waiting = rows.filter((r) => r.last_work?.status === "waiting").length;
+  const waiting = rows.filter((r) => statusOf(r) === "waiting").length;
+  const current = rows.find((r) => r.id === sel) ?? null;
+  const open = (id: string | null) => { setSel(id); window.scrollTo({ top: 0 }); };
 
   return (
-    <Wrap>
-      <header className="flex flex-wrap items-end justify-between gap-3 pt-8">
-        <div>
-          <div className="text-[12px] uppercase tracking-[0.18em] text-black/50">Huts Nordic · admin</div>
-          <h1 className="mt-1 text-[30px] font-semibold tracking-tight">Client drop boxes</h1>
+    <Shell>
+      <header className={`items-center justify-between gap-3 pt-6 pb-5 sm:pt-8 ${current ? "hidden lg:flex" : "flex"}`}>
+        <div className="flex items-center gap-3">
+          <h1 className="text-[28px] font-semibold tracking-tight">{t.clients}</h1>
+          {waiting > 0 && <span className={`rounded-full px-2.5 py-1 text-[13px] font-semibold ${tone.waiting.chip}`}>{t.waiting(waiting)}</span>}
         </div>
-        <div className="text-[14px] text-black/60">
-          {rows.length} {rows.length === 1 ? "client" : "clients"} · <span className={waiting ? "font-semibold text-amber-800" : ""}>{waiting} waiting for Claude</span>
+        <div className="flex rounded-full bg-white p-0.5 ring-1 ring-black/10" role="group" aria-label="Language">
+          {(["en", "fi"] as Lang[]).map((v) => (
+            <button key={v} onClick={() => chooseLang(v)} aria-pressed={lang === v}
+              className={`rounded-full px-3 py-1 text-[13px] font-semibold uppercase ${lang === v ? "bg-[color:var(--d-ink)] text-white" : "text-[color:var(--d-ink2)] hover:text-[color:var(--d-ink)]"}`}>
+              {v}
+            </button>
+          ))}
         </div>
       </header>
 
-      <ul className="mt-6 mb-10 space-y-3">
-        {sorted.map((r) => {
-          const b = badge[r.last_work?.status ?? "none"];
-          return (
-            <li key={r.id} className="rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
-              <button onClick={() => setOpen(open === r.id ? null : r.id)} className="w-full p-4 text-left">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="min-w-0">
-                    <div className="text-[17px] font-semibold">{r.name}</div>
-                    <div className="text-[13px] text-black/55">{r.owner_name ?? "?"}{r.owner_email ? ` · ${r.owner_email}` : ""}</div>
-                  </div>
-                  <span className={`rounded-full px-2.5 py-1 text-[12px] font-medium ring-1 ${b.cls}`}>
-                    {b.label}{r.last_work ? ` · ${ago(r.last_work.status === "done" ? r.last_work.done_at : r.last_work.created_at, "en")}` : ""}
-                  </span>
-                </div>
-                <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-[13px] text-black/65 sm:grid-cols-4">
-                  <span>Last activity <b className="font-medium text-black">{ago(r.last_client_activity_at, "en")}</b></span>
-                  <span>{r.files} files · {r.texts} texts · {fmtSize(r.bytes) || "0 MB"}</span>
-                  <span>{r.unprocessed ? <b className="font-medium text-amber-800">{r.unprocessed} not used yet</b> : "All used"}</span>
-                  <span>Homework {r.tasks_done}/{r.tasks_total}{r.tasks_answered ? ` (+${r.tasks_answered} answered)` : ""}</span>
-                </div>
-                {r.last_message && (
-                  <div className="mt-2 truncate text-[13px] text-black/50">
-                    Last reply ({r.last_message.author}, {ago(r.last_message.created_at, "en")}): {r.last_message.body}
-                  </div>
-                )}
-              </button>
-              {open === r.id && <Detail row={r} adminKey={adminKey} onChange={load} />}
+      <div className="grid gap-6 pb-12 lg:grid-cols-[340px_minmax(0,1fr)] lg:items-start">
+        <ul className={`space-y-2 ${current ? "hidden lg:block" : ""}`}>
+          {sorted.map((r) => (
+            <li key={r.id}>
+              <ClientRow r={r} t={t} lang={lang} active={r.id === sel} onClick={() => open(r.id)} />
             </li>
-          );
-        })}
-      </ul>
-    </Wrap>
+          ))}
+        </ul>
+
+        {current ? (
+          <div className="lg:sticky lg:top-6">
+            <button onClick={() => open(null)} className="mt-5 mb-3 flex items-center gap-1 text-[15px] font-medium text-[color:var(--d-accent)] lg:hidden">
+              <span aria-hidden>‹</span> {t.back}
+            </button>
+            <Detail key={current.id} row={current} adminKey={adminKey} t={t} lang={lang} onChange={load} />
+          </div>
+        ) : (
+          <div className="hidden min-h-[320px] items-center justify-center rounded-3xl border-2 border-dashed border-black/10 text-[color:var(--d-ink3)] lg:flex">
+            {t.pick}
+          </div>
+        )}
+      </div>
+    </Shell>
   );
 }
 
-function Detail({ row, adminKey, onChange }: { row: Row; adminKey: string; onChange: () => void }) {
+function ClientRow({ r, t, lang, active, onClick }: { r: Row; t: (typeof T)[Lang]; lang: Lang; active: boolean; onClick: () => void }) {
+  const s = statusOf(r);
+  return (
+    <button onClick={onClick}
+      className={`w-full rounded-2xl p-4 text-left transition ${active ? "bg-[color:var(--d-ink)] text-white shadow-lg" : "bg-white shadow-sm ring-1 ring-black/5 hover:ring-black/15"}`}>
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <div className="flex items-center gap-2">
+            <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${active && s === "none" ? "bg-white/30" : tone[s].dot}`} title={t.status[s]} />
+            <span translate="no" className="truncate text-[17px] font-semibold">{r.name}</span>
+          </div>
+          <div translate="no" className={`mt-0.5 truncate pl-[18px] text-[14px] ${active ? "text-white/65" : "text-[color:var(--d-ink2)]"}`}>{r.owner_name}</div>
+        </div>
+        <span className={`shrink-0 text-[13px] ${active ? "text-white/60" : "text-[color:var(--d-ink3)]"}`}>{ago(r.last_client_activity_at, lang)}</span>
+      </div>
+      <div className="mt-3 flex items-center gap-3 pl-[18px]">
+        <Bar done={r.tasks_done} total={r.tasks_total} dark={active} />
+        {r.unprocessed > 0 && <span className={`shrink-0 rounded-full px-2 py-0.5 text-[12px] font-semibold ${tone.waiting.chip}`}>{t.newN(r.unprocessed)}</span>}
+      </div>
+    </button>
+  );
+}
+
+function Bar({ done, total, dark }: { done: number; total: number; dark?: boolean }) {
+  const pct = total ? Math.round((done / total) * 100) : 0;
+  return (
+    <div className="flex min-w-0 flex-1 items-center gap-2">
+      <div className={`h-1.5 flex-1 overflow-hidden rounded-full ${dark ? "bg-white/15" : "bg-black/[.07]"}`}>
+        <div className={`h-full rounded-full ${dark ? "bg-[color:var(--d-go)]" : "bg-[color:var(--d-accent)]"}`} style={{ width: `${pct}%` }} />
+      </div>
+      <span className={`shrink-0 text-[12px] tabular-nums ${dark ? "text-white/60" : "text-[color:var(--d-ink3)]"}`}>{done}/{total}</span>
+    </div>
+  );
+}
+
+function Detail({ row, adminKey, t, lang, onChange }: { row: Row; adminKey: string; t: (typeof T)[Lang]; lang: Lang; onChange: () => void }) {
   const [d, setD] = useState<SiteData | null>(null);
   const [text, setText] = useState("");
   const [show, setShow] = useState(false);
   const [busy, setBusy] = useState(false);
   const [copied, setCopied] = useState(false);
-  const link = `${typeof window !== "undefined" ? window.location.origin : "https://hutsnordic.fi"}/drop/${row.token}`;
+  const s = statusOf(row);
 
   const load = useCallback(async () => {
     setD(await api<SiteData>({ action: "admin_site", key: adminKey, site_id: row.id }));
@@ -119,56 +207,104 @@ function Detail({ row, adminKey, onChange }: { row: Row; adminKey: string; onCha
     }
   };
 
+  const copy = () => {
+    navigator.clipboard.writeText(`${window.location.origin}/drop/${row.token}`);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
   const recent = d
     ? [
-        ...d.items.map((i) => ({ at: i.created_at, who: i.source, what: i.kind === "file" ? `📎 ${i.filename} (${fmtSize(i.size_bytes)})` : `✏️ ${(i.body ?? "").slice(0, 140)}`, used: !!i.processed_at })),
-        ...d.messages.map((m) => ({ at: m.created_at, who: m.author, what: `💬 ${m.body.slice(0, 140)}`, used: true })),
-        ...d.work.map((w) => ({ at: w.created_at, who: "client", what: `▶︎ Pressed "start work" (${w.item_count} items) → ${w.status}`, used: true })),
-      ].sort((a, b) => b.at.localeCompare(a.at)).slice(0, 15)
+        ...d.items.map((i) => ({ at: i.created_at, who: i.source, thumb: i.thumb_url, icon: i.kind === "file" ? "📎" : "✏️",
+          what: i.kind === "file" ? `${i.filename} · ${fmtSize(i.size_bytes)}` : (i.body ?? ""), fresh: !i.processed_at })),
+        ...d.messages.map((m) => ({ at: m.created_at, who: m.author, thumb: null, icon: "💬", what: m.i18n?.[lang] || m.body, fresh: false })),
+        ...d.work.map((w) => ({ at: w.created_at, who: "client", thumb: null, icon: "▶︎", what: t.pressed(w.item_count), fresh: false })),
+      ].sort((a, b) => b.at.localeCompare(a.at)).slice(0, 25)
     : [];
 
-  return (
-    <div className="border-t border-black/5 p-4">
-      <div className="flex flex-wrap gap-2 text-[13px]">
-        <a href={`/drop/${row.token}`} target="_blank" className="rounded-full px-3 py-1.5 ring-1 ring-black/15 hover:bg-black/5">Open client page</a>
-        <button onClick={() => { navigator.clipboard.writeText(link); setCopied(true); setTimeout(() => setCopied(false), 1500); }}
-          className="rounded-full px-3 py-1.5 ring-1 ring-black/15 hover:bg-black/5">{copied ? "Copied ✓" : "Copy client link"}</button>
-        {row.preview_url && <a href={row.preview_url} target="_blank" className="rounded-full px-3 py-1.5 ring-1 ring-black/15 hover:bg-black/5">Preview</a>}
-        <button disabled={busy} onClick={() => act({ action: "admin_start_work" })}
-          className="rounded-full bg-black px-3 py-1.5 font-medium text-white disabled:opacity-40">Tell Claude to start work</button>
-      </div>
+  const pill = "inline-flex items-center rounded-full bg-white px-3.5 py-2 text-[14px] font-medium ring-1 ring-black/10 hover:ring-black/25";
 
-      <div className="mt-4">
-        <textarea value={text} onChange={(e) => setText(e.target.value)} rows={4}
-          placeholder="Paste anything…"
-          className="w-full rounded-xl border border-black/10 px-3 py-2 text-[15px] outline-none focus:border-black/40" />
-        <div className="mt-2 flex items-center justify-between gap-3">
-          <label className="flex items-center gap-2 text-[13px] text-black/60">
-            <input type="checkbox" checked={show} onChange={(e) => setShow(e.target.checked)} /> Client can see it
+  return (
+    <div className="space-y-4">
+      <section className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5 sm:p-6">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h2 translate="no" className="text-[24px] font-semibold leading-tight tracking-tight">{row.name}</h2>
+            <div translate="no" className="mt-1 text-[15px] text-[color:var(--d-ink2)]">
+              <div>{row.owner_name}</div>
+              {row.owner_email && <a href={`mailto:${row.owner_email}`} className="underline decoration-black/20 underline-offset-2 hover:decoration-black/60">{row.owner_email}</a>}
+            </div>
+          </div>
+          <span className={`rounded-full px-3 py-1 text-[13px] font-semibold ${tone[s].chip}`}>{t.status[s]}</span>
+        </div>
+
+        <div className="mt-5 grid grid-cols-3 gap-2">
+          <Stat label={t.homework} value={`${row.tasks_done}/${row.tasks_total}`} />
+          <Stat label={t.files} value={`${row.files}`} sub={row.bytes ? fmtSize(row.bytes) : undefined} />
+          <Stat label={t.texts} value={`${row.texts}`} />
+        </div>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          <button disabled={busy} onClick={() => act({ action: "admin_start_work" })}
+            className="inline-flex items-center rounded-full bg-[color:var(--d-go)] px-4 py-2 text-[14px] font-semibold text-[color:var(--d-ink)] shadow-sm hover:brightness-105 disabled:opacity-50">
+            {t.start}{row.unprocessed > 0 && <span className="ml-2 rounded-full bg-[color:var(--d-ink)] px-1.5 text-[12px] text-[color:var(--d-go)]">{row.unprocessed}</span>}
+          </button>
+          <a href={`/drop/${row.token}`} target="_blank" rel="noopener noreferrer" className={pill}>{t.clientPage} ↗</a>
+          <button onClick={copy} className={pill}>{copied ? `${t.copied} ✓` : t.copy}</button>
+          {row.preview_url && <a href={row.preview_url} target="_blank" rel="noopener noreferrer" className={pill}>{t.preview} ↗</a>}
+        </div>
+      </section>
+
+      <section className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5 sm:p-6">
+        <textarea value={text} onChange={(e) => setText(e.target.value)} rows={3} placeholder={t.paste}
+          className="w-full resize-y rounded-2xl bg-[color:var(--d-bg)] px-4 py-3 text-[15px] outline-none ring-1 ring-transparent focus:ring-[color:var(--d-accent)]" />
+        <div className="mt-3 flex items-center justify-between gap-3">
+          <label className="flex cursor-pointer items-center gap-2 text-[14px] text-[color:var(--d-ink2)]">
+            <input type="checkbox" checked={show} onChange={(e) => setShow(e.target.checked)} className="h-4 w-4 accent-[color:var(--d-accent)]" /> {t.clientSees}
           </label>
           <button disabled={busy || !text.trim()} onClick={async () => { await act({ action: "admin_add_text", body: text, visible_to_client: show }); setText(""); }}
-            className="rounded-full bg-black px-4 py-1.5 text-[14px] font-medium text-white disabled:opacity-40">Save</button>
+            className="rounded-full bg-[color:var(--d-ink)] px-5 py-2 text-[14px] font-semibold text-white disabled:opacity-30">{t.save}</button>
         </div>
-      </div>
+      </section>
 
-      <ul className="mt-4 space-y-1.5 text-[13px]">
-        {recent.map((x, i) => (
-          <li key={i} className="flex gap-3">
-            <span className="w-16 shrink-0 text-black/40">{ago(x.at, "en")}</span>
-            <span className="w-12 shrink-0 text-black/50">{x.who}</span>
-            <span className={`min-w-0 flex-1 truncate ${x.used ? "text-black/55" : "text-black"}`}>{x.what}</span>
-          </li>
-        ))}
-        {d && recent.length === 0 && <li className="text-black/40">Nothing yet.</li>}
-      </ul>
+      <section className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5 sm:p-6">
+        <h3 className="text-[17px] font-semibold">{t.activity}</h3>
+        <ul className="mt-3 divide-y divide-black/5">
+          {recent.map((x, i) => (
+            <li key={i} className="flex items-center gap-3 py-2.5">
+              {x.thumb ? (
+                // eslint-disable-next-line @next/next/no-img-element -- signed storage URL
+                <img src={x.thumb} alt="" className="h-10 w-10 shrink-0 rounded-lg object-cover" />
+              ) : (
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[color:var(--d-bg)] text-[16px]">{x.icon}</span>
+              )}
+              <div className="min-w-0 flex-1">
+                <div className={`truncate text-[14px] ${x.fresh ? "font-semibold text-[color:var(--d-ink)]" : "text-[color:var(--d-ink2)]"}`}>{x.what}</div>
+                <div className="text-[12px] text-[color:var(--d-ink3)]">{t.who[x.who] ?? x.who} · {ago(x.at, lang)}</div>
+              </div>
+              {x.fresh && <span className={`h-2 w-2 shrink-0 rounded-full ${tone.waiting.dot}`} />}
+            </li>
+          ))}
+          {d && recent.length === 0 && <li className="py-2 text-[14px] text-[color:var(--d-ink3)]">{t.nothing}</li>}
+        </ul>
+      </section>
     </div>
   );
 }
 
-function Wrap({ children }: { children: React.ReactNode }) {
+function Stat({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
-    <div className="min-h-screen bg-[#f5f2ec] text-[#1b1d1a] font-[family-name:var(--font-geist-sans)]">
-      <main className="mx-auto w-full max-w-3xl px-4 sm:px-6">{children}</main>
+    <div className="rounded-2xl bg-[color:var(--d-bg)] px-3 py-3">
+      <div className="text-[22px] font-semibold tabular-nums leading-none">{value}</div>
+      <div className="mt-1.5 text-[12px] text-[color:var(--d-ink2)]">{label}{sub ? ` · ${sub}` : ""}</div>
+    </div>
+  );
+}
+
+function Shell({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-screen bg-[color:var(--d-bg)] text-[color:var(--d-ink)] font-[family-name:var(--font-geist-sans)]">
+      <main className="mx-auto w-full max-w-6xl px-4 sm:px-6">{children}</main>
     </div>
   );
 }

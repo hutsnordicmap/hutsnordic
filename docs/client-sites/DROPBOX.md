@@ -46,6 +46,9 @@ All calls are `POST https://aqyqvkpbznygsbmrzfde.supabase.co/functions/v1/client
 
 Jeff's pasted material (`source: "jeff"`) is hidden from the client unless he ticks "Client can see it".
 
+Change a site: `admin_update_site` `{site_id, preview_url | name | owner_name | owner_email | status | notes}`.
+Leave `preview_url` empty until the preview is really published (the drop page hides the button when it's null),
+then set it. `status: "closed"` hides a client from the admin panel (the test client is closed).
 New client: `admin_create_site` `{slug, name, owner_name, owner_email, language, preview_url}` returns the token.
 Then add the first homework with `admin_task`.
 
