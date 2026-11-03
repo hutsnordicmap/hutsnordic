@@ -12,6 +12,7 @@ Drop box: https://hutsnordic.fi/drop/<token> (token kept out of git; slug `kelom
 | When | What |
 |---|---|
 | 3.11. | Jeff talked with Arvo and promised a start of a redesign. Preview built from the old site + Nettimökki facts. |
+| 3.11. | Jeff: Arvo said we can use his photos. 13 Kelomaja + 12 Kuusisto photos added to huts.fi (photo pins). Kuusisto pin moved to Tunturitie 10 (OSM address point); Kelomaja stays on Revontie (OSM has no house 8), Arvo asked to confirm both. |
 | 3.11. | Jeff: use huts.fi's map to promote *his* site: clicking a place on the map opens his own page about it. Built as the huts.fi embed option `links=` (taisto PR #661, not live until Jeff says go). |
 
 ## Build notes
@@ -29,5 +30,6 @@ Drop box: https://hutsnordic.fi/drop/<token> (token kept out of git; slug `kelom
 - **Fact conflicts (asked in the ask boxes):** Kuusisto 2 bedrooms/6 (old site) vs 1 bedroom + loft, 4+2
   (Nettimökki); Kelomaja parking 5 vs 2; stove induction or ceramic; lit tracks 43 vs 45 km. Vertical drop
   215 m (his counter) vs 230 m (huts.fi).
-- **Huts.fi data issues (map data, Jeff's OK needed):** Kelomaja and Kuusisto pins sit on the same coordinate
-  (Kuusisto's is likely wrong); both link to the old webnode site; no photos on either place.
+- **Huts.fi data:** both places still link to the old webnode site (change when his new site goes live).
+- **Main map** opens on the two cabins (lat/lng/zoom in the embed URL), not fitted to every pick: fitting to the
+  4.7 km tower made his own pin a dot at the edge (Jeff 3.11.).

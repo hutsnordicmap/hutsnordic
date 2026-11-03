@@ -581,8 +581,8 @@ export const nearby: Nearby[] = [
 export const nearbyPath = (n: Nearby, locale: Locale) => `${paths.area[locale]}/${n.slug}`;
 
 /** The huts.fi map: both cabins, the picks, and (?links=) clicks that open this site's own page for each. */
-/** Kelomaja and Kuusisto on huts.fi (both pins share this spot for now). */
-const CABINS = { lat: 66.7575658, lng: 28.7705938 };
+/** Both cabins on huts.fi (Kelomaja on Revontie, Kuusisto on Tunturitie) with the slopes, spa and beach. */
+const CABINS = { lat: 66.7572, lng: 28.7747 };
 
 export function mapEmbed(locale: Locale, only?: Nearby) {
   const picks = only ? [only] : nearby;
@@ -597,7 +597,7 @@ export function mapEmbed(locale: Locale, only?: Nearby) {
   if (!only) {
     q.set("lat", String(CABINS.lat));
     q.set("lng", String(CABINS.lng));
-    q.set("zoom", "14");
+    q.set("zoom", "13.6");
   }
   if (places.length) q.set("places", places.join(","));
   if (routes.length) q.set("routes", routes.join(","));
