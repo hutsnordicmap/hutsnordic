@@ -25,7 +25,9 @@ Never put the admin key or a client token in this repo (it is public). They live
 All calls are `POST https://aqyqvkpbznygsbmrzfde.supabase.co/functions/v1/client-drop` with JSON
 `{"action": ..., "key": "<admin key>", ...}`.
 
-1. `admin_waiting`: lists requests with status `waiting` or `working`. Nothing waiting? Stop.
+1. `admin_waiting`: lists requests with status `waiting` or `working`. It first turns any client who saved things and
+   then went quiet for 30 minutes without pressing the button into a request (note `auto: saved and left`), so
+   nothing a client saves is ever missed. Nothing waiting? Stop.
 2. `admin_work_status` `{site_id, work_id, status: "working"}`: the client sees "Työn alla".
 3. `admin_site` `{site_id}`: texts, homework, messages. `admin_file_urls` `{site_id}`: signed download links
    (3 h) for files not used yet (`ids: [...]` for specific ones, `all: true` for everything).
@@ -33,9 +35,10 @@ All calls are `POST https://aqyqvkpbznygsbmrzfde.supabase.co/functions/v1/client
 4. Do the work the playbook way (`PLAYBOOK.md`): update `sites/<site>/`, rebuild the preview, publish once per
    round (each push to main is one Vercel build, so batch).
 5. `admin_mark_used` `{site_id, ids, note}` for every item used or deliberately left out.
-6. `admin_task` `{site_id, op: "done" | "drop" | "reopen", task_id}` or `{op: "add", question, page, hint, sort}`.
+6. `admin_task` `{site_id, op: "done" | "drop" | "reopen", task_id}` or `{op: "add", question, page, hint, sort, i18n}`.
+   Always pass `i18n: {fi, en, sv}` (the page has a FI/EN/SV switch); `{op: "i18n", task_id, i18n}` fixes an old one.
    Keep each question answerable in one line or one photo.
-7. `admin_reply` `{site_id, body}`: a short reply in the client's language: what changed, what we left out and why
+7. `admin_reply` `{site_id, body, i18n: {fi, en, sv}}`: a short reply in the client's language: what changed, what we left out and why
    ("you're the boss"), and the next question. Write it as from "us"; the page labels it "Tekoälyagentti".
 8. `admin_work_status` `{status: "done"}`.
 9. Anything that is not a simple update (complaints, money, going live, domain or email changes): don't
@@ -55,7 +58,8 @@ Then add the first homework with `admin_task`.
 - Homework first: it is what the client can act on. On desktop the drop + "send to AI" panel sticks on the right
   like a buy box; on phones it follows the homework and a send bar sticks to the bottom while there is something to send.
 - No taglines, helper text or secondary labels. If a screen needs them, fix the layout.
-- FI / EN / SV switch for the page itself. Homework questions and replies show as written, so write them in the
-  client's language (`client_sites.language`).
+- FI / EN / SV switch. Homework questions and replies carry `i18n {fi, en, sv}`; the client's own answers stay as written.
+- One way to send work: everything saves at once ("Tallenna" on homework), the big button says "start now", and if
+  the client forgets, `admin_waiting` starts it after 30 quiet minutes.
 - Gotcha: copy `input.files` with `Array.from` before resetting `input.value`. The FileList is live, and a
   state updater that reads it later gets an empty list (this silently dropped homework photos).

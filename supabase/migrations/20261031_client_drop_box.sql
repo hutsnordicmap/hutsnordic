@@ -72,3 +72,7 @@ grant execute on function public.client_drop_token_ok(text) to anon, authenticat
 create policy "client drop uploads into own token folder"
   on storage.objects for insert to anon, authenticated
   with check (bucket_id = 'client-drops' and public.client_drop_token_ok((storage.foldername(name))[1]));
+
+-- 3.11.2026 (migration client_drop_i18n): optional {fi, en, sv} translations.
+alter table public.client_tasks add column i18n jsonb;
+alter table public.client_messages add column i18n jsonb;

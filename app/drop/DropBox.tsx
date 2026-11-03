@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ago, api, fmtSize, uploadFile, type Item, type SiteData, type Task } from "./lib";
+import { ago, api, fmtSize, uploadFile, type I18n, type Item, type SiteData, type Task } from "./lib";
 
 type Lang = "fi" | "en" | "sv";
 
@@ -14,7 +14,7 @@ const T = {
     more: "Lisää",
     answerPh: "Kirjoita vastaus…",
     photo: "Kuva",
-    send: "Lähetä",
+    save: "Tallenna",
     cancel: "Peru",
     drop: "Pudota tiedostoja tai napauta",
     textPh: "Kirjoita tai liitä mitä vain…",
@@ -23,7 +23,8 @@ const T = {
     status: { waiting: "Vastaanotettu", working: "Työn alla", done: "Valmis" },
     help: [
       "Muuta sivujasi milloin tahansa, 24/7.",
-      "Pudota kuvia tai kirjoita mitä haluat ja paina nappia. Tekoälyagenttimme päivittää esikatselun ja vastaa tälle sivulle.",
+      "Kaikki tallentuu heti. Paina nappia, kun olet valmis, niin työ alkaa. Jos unohdat, aloitamme silti puolen tunnin päästä.",
+      "Tekoälyagenttimme päivittää esikatselun ja vastaa tälle sivulle.",
       "Jeff tarkistaa, että kaikki menee oikein.",
     ],
     messages: "Viestit",
@@ -46,7 +47,7 @@ const T = {
     more: "Add more",
     answerPh: "Type your answer…",
     photo: "Photo",
-    send: "Send",
+    save: "Save",
     cancel: "Cancel",
     drop: "Drop files or tap",
     textPh: "Write or paste anything…",
@@ -55,7 +56,8 @@ const T = {
     status: { waiting: "Received", working: "In progress", done: "Done" },
     help: [
       "Change your site any time, 24/7.",
-      "Drop photos or write what you want, then press the button. Our AI agent updates your preview and replies on this page.",
+      "Everything saves right away. Press the button when you're done and work starts. If you forget, we start anyway after half an hour.",
+      "Our AI agent updates your preview and replies on this page.",
       "Jeff checks that everything is done right.",
     ],
     messages: "Messages",
@@ -78,7 +80,7 @@ const T = {
     more: "Lägg till",
     answerPh: "Skriv ditt svar…",
     photo: "Bild",
-    send: "Skicka",
+    save: "Spara",
     cancel: "Avbryt",
     drop: "Släpp filer eller tryck",
     textPh: "Skriv eller klistra in vad som helst…",
@@ -87,7 +89,8 @@ const T = {
     status: { waiting: "Mottaget", working: "Pågår", done: "Klart" },
     help: [
       "Ändra din webbplats när som helst, dygnet runt.",
-      "Släpp bilder eller skriv vad du vill och tryck på knappen. Vår AI-agent uppdaterar förhandsvisningen och svarar på den här sidan.",
+      "Allt sparas direkt. Tryck på knappen när du är klar så börjar arbetet. Om du glömmer börjar vi ändå efter en halvtimme.",
+      "Vår AI-agent uppdaterar förhandsvisningen och svarar på den här sidan.",
       "Jeff kontrollerar att allt blir rätt.",
     ],
     messages: "Meddelanden",
@@ -104,6 +107,8 @@ const T = {
   },
 };
 type L = (typeof T)["fi"];
+
+const tr = (i18n: I18n, l: Lang, text: string) => i18n?.[l] || text;
 
 type Up = { key: string; name: string; progress: number; error?: boolean; file: File; taskId?: string };
 
@@ -276,7 +281,7 @@ export default function DropBox({ token }: { token: string }) {
   const tasks = data.tasks;
   const doneCount = tasks.filter((x) => x.status === "done").length;
   const convo = [
-    ...data.messages.map((m) => ({ id: m.id, who: m.author, body: m.body, at: m.created_at })),
+    ...data.messages.map((m) => ({ id: m.id, who: m.author, body: tr(m.i18n, l, m.body), at: m.created_at })),
     ...data.items.filter((i) => i.kind === "text" && i.source === "client" && !i.task_id).map((i) => ({ id: i.id, who: "client" as const, body: i.body ?? "", at: i.created_at })),
   ].sort((a, b) => b.at.localeCompare(a.at));
   const canGo = (pending > 0 || text.trim().length > 0) && !busy && !uploading;
@@ -327,7 +332,7 @@ export default function DropBox({ token }: { token: string }) {
             {doneCount === tasks.length && <p className="mt-4 rounded-2xl bg-[color:var(--d-accent-soft)] p-4 font-medium">{t.allDone} 🎉</p>}
             <ul className="mt-4 space-y-2.5">
               {[...tasks].sort((a, b) => rank(a) - rank(b)).map((task) => (
-                <TaskCard key={task.id} task={task} t={t}
+                <TaskCard key={task.id} task={task} t={t} l={l}
                   answers={data.items.filter((i) => i.task_id === task.id)}
                   ups={ups.filter((u) => u.taskId === task.id)}
                   onSend={async (body, picked) => {
@@ -489,8 +494,8 @@ function UpList({ ups, t, onRetry, dark }: { ups: Up[]; t: L; onRetry: (u: Up) =
   );
 }
 
-function TaskCard({ task, t, answers, ups, onSend, onRetry }: {
-  task: Task; t: L; answers: Item[]; ups: Up[];
+function TaskCard({ task, t, l, answers, ups, onSend, onRetry }: {
+  task: Task; t: L; l: Lang; answers: Item[]; ups: Up[];
   onSend: (body: string, files: File[]) => Promise<void>; onRetry: (u: Up) => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -519,7 +524,7 @@ function TaskCard({ task, t, answers, ups, onSend, onRetry }: {
     <li className={`rounded-2xl ring-1 transition ${done ? "bg-white/40 ring-black/5" : "bg-white shadow-sm ring-black/5"}`}>
       <div className="flex items-start gap-3 p-4">
         <div className="min-w-0 flex-1">
-          <div className={`text-[16px] leading-snug ${done ? "text-[color:var(--d-ink3)] line-through decoration-black/20" : "font-medium"}`}>{task.question}</div>
+          <div className={`text-[16px] leading-snug ${done ? "text-[color:var(--d-ink3)] line-through decoration-black/20" : "font-medium"}`}>{tr(task.i18n, l, task.question)}</div>
 
           {answers.length > 0 && !done && (
             <div className="mt-3 space-y-2">
@@ -559,7 +564,7 @@ function TaskCard({ task, t, answers, ups, onSend, onRetry }: {
               )}
               <div className="mt-2 flex flex-wrap items-center gap-2">
                 <button disabled={sending || (!val.trim() && !picked.length)} onClick={send}
-                  className="rounded-full bg-[color:var(--d-accent)] px-4 py-1.5 text-[14px] font-medium text-white disabled:opacity-40">{t.send}</button>
+                  className="rounded-full bg-[color:var(--d-accent)] px-4 py-1.5 text-[14px] font-medium text-white disabled:opacity-40">{t.save}</button>
                 <button onClick={() => photo.current?.click()} className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[14px] font-medium ring-1 ring-black/15 hover:bg-black/5">
                   <Icon d={I.camera} className="w-4 h-4" /> {t.photo}
                 </button>

@@ -58,9 +58,11 @@ async function sitePayload(site: Record<string, unknown>, forAdmin = false) {
       thumb_url: i.thumb_path ? thumbs[i.thumb_path] ?? null : null,
     })),
     tasks: (tasks.data ?? []).map((t) => ({
-      id: t.id, page: t.page, question: t.question, hint: t.hint, status: t.status,
+      id: t.id, page: t.page, question: t.question, hint: t.hint, status: t.status, i18n: t.i18n,
     })),
-    messages: (messages.data ?? []).map((m) => ({ id: m.id, author: m.author, body: m.body, created_at: m.created_at })),
+    messages: (messages.data ?? []).map((m) => ({
+      id: m.id, author: m.author, body: m.body, created_at: m.created_at, i18n: m.i18n,
+    })),
     work: (work.data ?? []).map((w) => ({
       id: w.id, status: w.status, item_count: w.item_count, created_at: w.created_at, done_at: w.done_at,
       requested_at: w.requested_at,
@@ -140,6 +142,26 @@ Deno.serve(async (req) => {
     }
     // The actions below are for the Claude worker: everything it needs, with only curl and the admin key.
     if (action === "admin_waiting") {
+      // A client who saved things and left without pressing the button still gets served:
+      // after 30 quiet minutes their unused items become a work request of their own.
+      const quiet = new Date(Date.now() - 30 * 60 * 1000).toISOString();
+      const { data: idle } = await db.from("client_sites").select("id").eq("status", "active")
+        .lt("last_client_activity_at", quiet);
+      for (const s of idle ?? []) {
+        const { count } = await db.from("client_items").select("id", { count: "exact", head: true })
+          .eq("site_id", s.id).eq("source", "client").is("deleted_at", null).is("processed_at", null);
+        if (!count) continue;
+        const { data: open } = await db.from("client_work_requests").select("id").eq("site_id", s.id)
+          .in("status", ["waiting", "working"]).limit(1);
+        if (open?.length) continue;
+        const { data: last } = await db.from("client_work_requests").select("requested_at").eq("site_id", s.id)
+          .order("requested_at", { ascending: false }).limit(1);
+        const since = last?.[0]?.requested_at ?? "1970-01-01";
+        const { count: fresh } = await db.from("client_items").select("id", { count: "exact", head: true })
+          .eq("site_id", s.id).eq("source", "client").is("deleted_at", null).is("processed_at", null).gt("created_at", since);
+        if (!fresh) continue;
+        await db.from("client_work_requests").insert({ site_id: s.id, item_count: count, note: "auto: saved and left" });
+      }
       const { data } = await db.from("client_work_requests").select("id, site_id, status, item_count, note, created_at, requested_at")
         .in("status", ["waiting", "working"]).order("requested_at");
       return json({ requests: data ?? [] });
@@ -164,7 +186,7 @@ Deno.serve(async (req) => {
       const body = String(b.body ?? "").trim();
       if (!body) return json({ error: "empty" }, 400);
       const author = b.author === "jeff" ? "jeff" : "claude";
-      const { error } = await db.from("client_messages").insert({ site_id: b.site_id, author, body });
+      const { error } = await db.from("client_messages").insert({ site_id: b.site_id, author, body, i18n: b.i18n ?? null });
       return error ? json({ error: error.message }, 500) : json({ ok: true });
     }
 
@@ -181,8 +203,13 @@ Deno.serve(async (req) => {
       if (b.op === "add") {
         const { error } = await db.from("client_tasks").insert({
           site_id: b.site_id, question: String(b.question ?? ""), page: b.page ?? null, hint: b.hint ?? null,
-          sort: Number(b.sort) || 0,
+          sort: Number(b.sort) || 0, i18n: b.i18n ?? null,
         });
+        return error ? json({ error: error.message }, 500) : json({ ok: true });
+      }
+      if (b.op === "i18n") {
+        const { error } = await db.from("client_tasks").update({ i18n: b.i18n ?? null })
+          .eq("site_id", b.site_id).eq("id", b.task_id);
         return error ? json({ error: error.message }, 500) : json({ ok: true });
       }
       const status = b.op === "done" ? "done" : b.op === "drop" ? "dropped" : b.op === "reopen" ? "open" : null;
