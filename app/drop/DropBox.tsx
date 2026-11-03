@@ -143,6 +143,18 @@ function fileIcon(mime: string | null) {
 
 // The choice is remembered per client link, so a language picked on one client's page (or by Jeff while
 // checking pages) never changes another client's page. Default: the client's own language (Finnish).
+// Homework can carry a direct link (e.g. Meta's download page): show it as a tappable button-like link.
+function linkify(text: string) {
+  return text.split(/(https?:\/\/\S+)/g).map((part, i) =>
+    /^https?:\/\//.test(part) ? (
+      <a key={i} href={part} target="_blank" rel="noopener noreferrer"
+        className="break-all text-[color:var(--d-accent)] underline underline-offset-2">{part.replace(/^https?:\/\//, "")}</a>
+    ) : (
+      part
+    ),
+  );
+}
+
 function readLang(token: string, fallback: Lang): Lang {
   try {
     const v = localStorage.getItem(`drop-lang:${token}`);
@@ -530,7 +542,7 @@ function TaskCard({ task, t, l, answers, ups, onSend, onRetry }: {
     <li className={`rounded-2xl ring-1 transition ${done ? "bg-white/40 ring-black/5" : "bg-white shadow-sm ring-black/5"}`}>
       <div className="flex items-start gap-3 p-4">
         <div className="min-w-0 flex-1">
-          <div className={`text-[16px] leading-snug ${done ? "text-[color:var(--d-ink3)] line-through decoration-black/20" : "font-medium"}`}>{tr(task.i18n, l, task.question)}</div>
+          <div className={`text-[16px] leading-snug ${done ? "text-[color:var(--d-ink3)] line-through decoration-black/20" : "font-medium"}`}>{linkify(tr(task.i18n, l, task.question))}</div>
 
           {answers.length > 0 && !done && (
             <div className="mt-3 space-y-2">
