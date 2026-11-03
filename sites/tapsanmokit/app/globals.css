@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-tar: #221c18;
+  --color-tar-deep: #15110e;
+  --color-paper: #fbfbf9;
+  --color-panel: #efeeea;
+  --color-amber: #b86a12;
+  --color-amber-light: #f0b867;
+  --color-ink: #231d19;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-display), Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
