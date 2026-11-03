@@ -1,4 +1,5 @@
-// Every fact here comes from the owner's own site (kelomaja.fi, read 2026-11-03), his own Nettimökki listings
+// Every fact here comes from the owner's own site (kelomaja.fi, read 2026-11-03), his answers in the drop box
+// (3.11.2026: check-in/out, keypad lock, parking, stove, Kuusisto rooms and sauna, lit tracks, payment), his own Nettimökki listings
 // (descriptions, prices and distances he entered there), or huts.fi data for the nearby places (descriptions and
 // coordinates, read 2026-11-03). Guest reviews were read only as private notes: never quote or store them here.
 // Do not add numbers, distances or features that are not in those sources. Open questions live in `ask` (preview only).
@@ -107,6 +108,9 @@ export const units: Record<UnitId, Unit> = {
         "baby|Syöttötuoli ja matkasänky",
         "lock|Lukollinen varasto suksille",
         "sun|Terassi etelä–länteen",
+        "car|Pihassa 1 autopaikka, viereisellä parkkipaikalla tilaa 4 autolle",
+        "clock|Tulo klo 16, lähtö klo 12 mennessä",
+        "key|Itsepalvelu: ovessa näppäinlukko",
         "dog|Lemmikit tervetulleita",
       ],
       en: [
@@ -119,12 +123,15 @@ export const units: Record<UnitId, Unit> = {
         "baby|High chair and travel cot",
         "lock|Lockable storage for skis",
         "sun|Terrace facing south-west",
+        "car|1 parking space in the yard, room for 4 cars in the car park next door",
+        "clock|Check-in 4 pm, check-out by 12 noon",
+        "key|Self check-in with a keypad lock",
         "dog|Pets welcome",
       ],
     },
     kitchen: {
-      fi: ["Liesi ja uuni", "Astianpesukone", "Jääkaappi ja pakastin", "Mikroaaltouuni", "Kahvin- ja vedenkeitin, leivänpaahdin", "Astiasto 8 hengelle"],
-      en: ["Stove and oven", "Dishwasher", "Fridge and freezer", "Microwave", "Coffee maker, kettle and toaster", "Tableware for 8"],
+      fi: ["Liesi (teräksiset keittolevyt) ja uuni", "Astianpesukone", "Jääkaappi ja pakastin", "Mikroaaltouuni", "Kahvin- ja vedenkeitin, leivänpaahdin", "Astiasto 8 hengelle"],
+      en: ["Stove with steel hotplates, and oven", "Dishwasher", "Fridge and freezer", "Microwave", "Coffee maker, kettle and toaster", "Tableware for 8"],
     },
     distances: [
       { icon: "snowflake", what: { fi: "Hiihtolatu", en: "Ski track" }, m: 40 },
@@ -155,13 +162,7 @@ export const units: Record<UnitId, Unit> = {
       photo("kelomaja-wc", "WC", "Toilet"),
       photo("kelomaja-eteinen", "Eteinen", "Hallway"),
     ],
-    ask: [
-      "Kuva Kelomajasta ulkoa, mieluiten talvella ja kesällä.",
-      "Pysäköinti: vanhalla sivulla lukee ”jopa viidelle autolle”, Nettimökissä ”2 autolle”. Kumpi pitää paikkansa?",
-      "Liesi: induktio vai keraaminen?",
-      "Tulo- ja lähtöaika? Kuuluvatko liinavaatteet ja loppusiivous hintaan?",
-      "Onko ovessa koodilukko? Se kannattaa kertoa, vieraat arvostavat sitä.",
-    ],
+    ask: ["Kuuluvatko liinavaatteet ja loppusiivous hintaan?"],
   },
   kuusisto: {
     id: "kuusisto",
@@ -191,7 +192,7 @@ export const units: Record<UnitId, Unit> = {
     highlights: {
       fi: [
         "flame|Varaava takka, polttopuut sisältyvät",
-        "bath|Oma sauna",
+        "bath|Oma pieni sauna neljälle",
         "wifi|Nopea Wi-Fi (5G, 200 Mbit/s)",
         "tv|42” Smart TV (Netflix ym. omilla tunnuksilla)",
         "thermometer|Lattialämmitys ja ilmalämpöpumppu",
@@ -199,11 +200,13 @@ export const units: Record<UnitId, Unit> = {
         "baby|Syöttötuoli ja matkasänky",
         "lock|Lukollinen ulkovarasto suksille",
         "sun|Etelään avautuva kuisti, grillikatos pihassa",
+        "clock|Tulo klo 16, lähtö klo 12 mennessä",
+        "key|Itsepalvelu: ovessa näppäinlukko",
         "dog|Lemmikit tervetulleita",
       ],
       en: [
         "flame|Heat-storing fireplace, firewood included",
-        "bath|Private sauna",
+        "bath|Small private sauna for four",
         "wifi|Fast Wi-Fi (5G, 200 Mbit/s)",
         "tv|42” Smart TV (Netflix etc. with your own login)",
         "thermometer|Underfloor heating and air-source heat pump",
@@ -211,6 +214,8 @@ export const units: Record<UnitId, Unit> = {
         "baby|High chair and travel cot",
         "lock|Lockable outdoor storage for skis",
         "sun|South-facing porch, barbecue shelter in the yard",
+        "clock|Check-in 4 pm, check-out by 12 noon",
+        "key|Self check-in with a keypad lock",
         "dog|Pets welcome",
       ],
     },
@@ -246,11 +251,7 @@ export const units: Record<UnitId, Unit> = {
       photo("kuusisto-suihku", "Suihku", "Shower"),
       photo("kuusisto-wc", "WC", "Toilet"),
     ],
-    ask: [
-      "Vanhalla Kuusisto-sivulla lukee 2 makuuhuonetta ja 6 henkeä, Nettimökissä 1 makuuhuone + parvi, 4 + 2. Käytimme Nettimökin tietoja. Ovatko ne oikein?",
-      "Kuva Kuusistosta talvella ulkoa.",
-      "Tulo- ja lähtöaika? Kuuluvatko liinavaatteet ja loppusiivous hintaan?",
-    ],
+    ask: ["Kuuluvatko liinavaatteet ja loppusiivous hintaan?"],
   },
 };
 
@@ -290,8 +291,8 @@ export const seasons: Season[] = [
       {
         title: { fi: "Hiihto", en: "Cross-country" },
         items: {
-          fi: ["160 km hoidettuja latuja", "43 km valaistuja reittejä", "Lyhyistä lenkeistä koko päivän retkihiihtoon", "Latuverkostosta huolehtii Latupooli"],
-          en: ["160 km of groomed tracks", "43 km lit", "From short loops to all-day ski tours", "Tracks kept in shape by Latupooli"],
+          fi: ["160 km hoidettuja latuja", "45 km valaistuja reittejä", "Lyhyistä lenkeistä koko päivän retkihiihtoon", "Latuverkostosta huolehtii Latupooli"],
+          en: ["160 km of groomed tracks", "45 km lit", "From short loops to all-day ski tours", "Tracks kept in shape by Latupooli"],
         },
       },
       {
@@ -656,23 +657,17 @@ export const ui = {
       { q: "Missä mökit ovat?", a: "Molemmat ovat Sallatunturissa: Kelomaja osoitteessa Revontie 8 B ja Kuusisto osoitteessa Tunturitie 10 A, 98900 Salla. Hiihtokeskus, ladut ja kylpylä ovat kävelymatkan päässä." },
       { q: "Montako henkeä mökkeihin mahtuu?", a: "Kelomajassa on nukkumapaikat kuudelle: kaksi makuuhuonetta ja parvi. Kuusistossa on makuuhuone ja parvi neljälle sekä vuodesohva kahdelle." },
       { q: "Saako lemmikin tuoda?", a: "Saa. Lemmikit ovat tervetulleita molempiin mökkeihin." },
-      { q: "Miten varaan?", a: "Varaa Nettimökistä mökin sivun painikkeella tai soita Arvolle, 050 539 4738." },
+      { q: "Miten varaan?", a: "Soita tai lähetä sähköpostia Arvolle: 050 539 4738, arvo.puhakka@kelomaja.fi. Mökit voi varata myös Nettimökistä." },
+      { q: "Miten maksan?", a: "Tilisiirrolla tai MobilePaylla." },
+      { q: "Milloin saavun ja lähden?", a: "Tulo klo 16 ja lähtö klo 12 mennessä. Molemmissa mökeissä on näppäinlukko, joten saavut omaan tahtiisi." },
     ],
     sticky: { call: "Soita", book: "Varaa" },
     close: "Sulje",
     prev: "Edellinen",
     next: "Seuraava",
     askTitle: "Kysytään Arvolta",
-    homeAsk: [
-      "Missä vieraat yleensä varaavat: Nettimökissä, puhelimella vai muualla? Oletko Booking.comissa tai Airbnb:ssä?",
-      "Miten vältät tuplavaraukset, jos mökit ovat useassa paikassa? Kopioitko varaukset käsin?",
-      "Haluatko, että vieras voi varata ja maksaa kortilla suoraan tällä sivulla?",
-      "Kuva sinusta ja pari lausetta: kuka vieraat ottaa vastaan.",
-      "Y-tunnus sivun alalaitaan.",
-    ],
+    homeAsk: ["Kuva sinusta ja pari lausetta: kuka vieraat ottaa vastaan."],
     areaAsk: [
-      "Ovatko Salla-maisemakuvat omiasi? Jätimme pois kuvat, jotka näyttävät tekoälyllä tehdyiltä tai kuvapankista otetuilta (hiihtäjä, revontulet, patikoija ja pyöräilijä).",
-      "Valaistuja latuja: tekstissä 43 km, laskurissa 45 km. Kumpi on oikein?",
       "Mitkä ovat sinun omat suosikkisi lähellä? Kirjoitamme niille omat sivut.",
     ],
     madeBy: "Sivut:",
@@ -719,23 +714,17 @@ export const ui = {
       { q: "Where are the cabins?", a: "Both are at Sallatunturi: Kelomaja at Revontie 8 B and Kuusisto at Tunturitie 10 A, 98900 Salla. The ski resort, ski tracks and spa are within walking distance." },
       { q: "How many people do they sleep?", a: "Kelomaja sleeps six in two bedrooms and a loft. Kuusisto sleeps four in a bedroom and a loft, plus two on a sofa bed." },
       { q: "Can I bring a pet?", a: "Yes. Pets are welcome in both cabins." },
-      { q: "How do I book?", a: "Book on Nettimökki with the button on the cabin's page, or call Arvo on +358 50 539 4738." },
+      { q: "How do I book?", a: "Call or email Arvo: +358 50 539 4738, arvo.puhakka@kelomaja.fi. You can also book on Nettimökki." },
+      { q: "How do I pay?", a: "By bank transfer or MobilePay." },
+      { q: "When can I arrive and leave?", a: "Check-in is at 4 pm and check-out by 12 noon. Both cabins have a keypad lock, so you can arrive at your own pace." },
     ],
     sticky: { call: "Call", book: "Book" },
     close: "Close",
     prev: "Previous",
     next: "Next",
     askTitle: "Questions for Arvo",
-    homeAsk: [
-      "Where do guests usually book: Nettimökki, by phone or somewhere else? Are you on Booking.com or Airbnb?",
-      "How do you avoid double bookings if the cabins are listed in several places? Do you copy bookings by hand?",
-      "Would you like guests to book and pay by card right on this site?",
-      "A photo of you and a few lines: who welcomes the guests.",
-      "Business ID for the footer.",
-    ],
+    homeAsk: ["A photo of you and a few lines: who welcomes the guests."],
     areaAsk: [
-      "Are the Salla landscape photos your own? We left out the ones that look AI-made or like stock photos (skier, northern lights, hiker and cyclist).",
-      "Lit ski tracks: the text says 43 km, the counter 45 km. Which is right?",
       "What are your own favourite places nearby? We'll write a page for each.",
     ],
     madeBy: "Site by",
