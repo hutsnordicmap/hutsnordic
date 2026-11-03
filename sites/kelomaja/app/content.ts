@@ -581,6 +581,9 @@ export const nearby: Nearby[] = [
 export const nearbyPath = (n: Nearby, locale: Locale) => `${paths.area[locale]}/${n.slug}`;
 
 /** The huts.fi map: both cabins, the picks, and (?links=) clicks that open this site's own page for each. */
+/** Kelomaja and Kuusisto on huts.fi (both pins share this spot for now). */
+const CABINS = { lat: 66.7575658, lng: 28.7705938 };
+
 export function mapEmbed(locale: Locale, only?: Nearby) {
   const picks = only ? [only] : nearby;
   const places = picks.filter((n) => n.kind === "place").map((n) => n.id);
@@ -590,6 +593,12 @@ export function mapEmbed(locale: Locale, only?: Nearby) {
     ...picks.map((n) => `${n.id}:${BASE}${nearbyPath(n, locale)}`),
   ];
   const q = new URLSearchParams({ address: "1", hideAttr: "1" });
+  // The main map opens on the cabins, close enough to see the slopes, spa and beach around them.
+  if (!only) {
+    q.set("lat", String(CABINS.lat));
+    q.set("lng", String(CABINS.lng));
+    q.set("zoom", "14");
+  }
   if (places.length) q.set("places", places.join(","));
   if (routes.length) q.set("routes", routes.join(","));
   q.set("links", links.join(","));
