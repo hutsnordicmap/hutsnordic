@@ -213,3 +213,21 @@ After each client round, add what was new to the site's case file and, if it's a
 - Calendar sync means plain iCal links: each channel's export link goes into the others and into the site's
   calendar. No live channel manager; that only pays off with hundreds of clients.
 - Example: Tapsan Mökit keeps one public Google Calendar per unit and also lists every unit on Booking.com.
+
+## Legal pages, Search Console and analytics: every client (Jeff, 2026-11-03)
+- **Privacy notice (Tietosuojaseloste)** on every site: `/tietosuoja` and `/en/privacy`, linked in the footer's bottom
+  line. Copy `privacyPage` and `PrivacyView` from `sites/vuorikoskenmylly` and fill in the business name, business ID
+  and contact person. Adjust "what we collect" to the client's channels (forms, booking engine, payments). The
+  owner checks it once.
+- **Booking and cancellation terms (Varaus- ja peruutusehdot)** for every client who takes bookings directly. We
+  write a short starter from their answers and they approve it. Ask in the first round's homework: deposit or
+  full payment and when, cancellation (how many days, refund), check-in and check-out times, pets, smoking,
+  cleaning fee, linen, minimum stay. If they only take bookings through Airbnb or Booking.com, those terms apply
+  and we just link to them.
+- **No cookie banner** as long as the site sets no tracking cookies. Our stats and the huts.fi map embed set none.
+- **Google Search Console on every live site**: verify with a DNS TXT record in Cloudflare and submit
+  `sitemap.xml`. It shows the search terms, clicks and rankings, with no cookies and no banner.
+- **Google Analytics: off by default.** Pros: more detail on behaviour. Cons: it needs the big GDPR consent banner,
+  and with "reject" it sees only about half the visits. Nice to have, not needed. Ask the owner later; it's their call.
+- **Visitor stats:** our own cookieless stats via the huts.fi analytics worker (`stats.huts.fi`), one per site in the
+  admin. Details are in taisto `docs/client-site-analytics.md`.
