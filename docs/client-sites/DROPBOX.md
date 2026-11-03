@@ -64,9 +64,6 @@ Then add the first homework with `admin_task`.
 - Gotcha: copy `input.files` with `Array.from` before resetting `input.value`. The FileList is live, and a
   state updater that reads it later gets an empty list (this silently dropped homework photos).
 
-## Preview banner (3.11.2026)
-`proxy.ts` adds a big "this is a draft of your new website, not live yet" banner (FI/EN/SV from `<html lang>`) to every
-`/preview/<site>` page that has the "ei vielä julkaistu / not live yet" ribbon, so owners never think it is their live
-site. It is CSS on `html::before`/`body::before` because React hydration removes extra nodes from `<body>`.
-Photo galleries such as `/preview/lohja-kuvat` have no ribbon and get no banner. On the drop page the preview link is a
-big green "Katso uudet nettisivusi" card at the top.
+## Preview link (3.11.2026)
+On the drop page the preview link is a big green "Katso uudet nettisivusi" card at the top.
+Jeff does not want a "draft, not live yet" banner on the preview pages or in the mail (tried 3.11, removed the same day).
