@@ -673,7 +673,6 @@ export const activities = {
 export const ui = {
   fi: {
     nav: { cottages: "Mökit", sauna: "Savusauna", activities: "Aktiviteetit", booking: "Hinnat ja varaus", book: "Kysy vapaita" },
-    kicker: "Yläne · Pöytyä · Varsinais-Suomi",
     homeTitle: "Mökit Elijärven rannalla, Yläne | Elijärven Mökkilomat",
     homeDescription:
       "Kuusi vuokramökkiä 5–12 hengelle Yläneen Elijärven rannalla Pöytyällä, 65 km Turusta. Savusauna ja rapulampi, vene ja polttopuut hinnassa, Kuhankuonon reitit vieressä.",
@@ -681,9 +680,8 @@ export const ui = {
     lead: "Kuusi tasokasta mökkiä 5–12 hengelle kallioisessa metsämaastossa, 12 km Yläneen keskustasta ja 65 km Turusta. Tule viikonlopuksi, viikoksi tai koko lomaksi.",
     pills: ["Vene ja polttopuut hinnassa", "Oma savusauna ja rapulampi", "Varaa suoraan omistajalta"],
     scroll: "Vieritä alas",
-    finderKicker: "Kuusi mökkiä",
     finderTitle: "Löydä teille sopiva mökki",
-    finderText: "Valitse henkimäärä, niin näet sopivat mökit. Kaikissa on vene ja polttopuut.",
+    finderText: "Kaikissa on vene ja polttopuut.",
     howMany: "Montako teitä on?",
     all: "Kaikki",
     upTo: (n: number) => `${n} hengelle`,
@@ -705,7 +703,6 @@ export const ui = {
     mapText:
       "Elimäki ja Pöytäkallio ovat Elijärven rannalla, Meritähti, Merenneito ja Meripoika Kotolahdella Meriläntien päässä, ja savusauna tilan lammen rannalla. Fransula on vähän pohjoisempana Säkylän puolella.",
     mapCredit: "Kartta:",
-    saunaKicker: "Vuokrattavissa erikseen",
     saunaTitle: "Savusauna, rapulampi ja saari",
     saunaLead: "Lammen rannalla savusauna, saarella grillikatos ja sinne kaarisilta. Lammessa kasvaa rapuja.",
     saunaCta: "Lue savusaunasta",
@@ -714,7 +711,6 @@ export const ui = {
     companiesTitle: "Yrityksille",
     companiesText:
       "Mökit sopivat myös yritysten kokous- ja virkistyskäyttöön. Savusaunan, saaren grillikatoksen ja rapujuhlat voi varata samaan päivään.",
-    directKicker: "Suoraan omistajalta",
     directTitle: "Varaa suoraan Mikalta",
     direct: [
       { icon: "phone", title: "Soita tai kirjoita", text: "Kerromme vapaat päivät ja hinnan saman tien." },
@@ -722,7 +718,6 @@ export const ui = {
       { icon: "sailboat", title: "Vene ja polttopuut", text: "Kuuluvat jokaisen mökin hintaan." },
       { icon: "calendar", title: "Joustavasti", text: "Viikko, viikonloppu tai vuorokausihinta sopimuksen mukaan." },
     ],
-    hostsKicker: "Isäntä",
     hostsTitle: "Tervetuloa Elijärvelle",
     hostsPlaceholder:
       "Tähän tulee kuva ja muutama lause sinusta ja tilan tarinasta. Vieraat varaavat mieluummin, kun he tietävät kenen luo ovat tulossa.",
@@ -806,8 +801,7 @@ export const ui = {
     arrive: "Tulopäivä",
     leave: "Lähtöpäivä",
     guests: "Henkeä",
-    send: "Lähetä kysely",
-    inquiryNote: "Kysely avautuu sähköpostiisi valmiiksi täytettynä. Mika vastaa mahdollisimman pian.",
+    send: "Lähetä sähköpostilla",
     mailSubject: "Varauskysely",
     mailBody: (c: string, a: string, l: string, g: string) =>
       `Hei,\n\nHaluaisin kysyä vapaata ajankohtaa.\n\nMökki: ${c}\nTulopäivä: ${a}\nLähtöpäivä: ${l}\nHenkeä: ${g}\n\nTerveisin,\n`,
@@ -832,7 +826,6 @@ export const ui = {
   },
   en: {
     nav: { cottages: "Cottages", sauna: "Smoke sauna", activities: "Activities", booking: "Prices & booking", book: "Check dates" },
-    kicker: "Yläne · Pöytyä · Southwest Finland",
     homeTitle: "Lakeside cottages on Lake Elijärvi, Yläne, Finland | Elijärven Mökkilomat",
     homeDescription:
       "Six holiday cottages for 5–12 guests on Lake Elijärvi in Yläne, Pöytyä, 65 km from Turku, Finland. Smoke sauna and crayfish pond, boat and firewood included, Kuhankuono trails next door.",
@@ -840,9 +833,8 @@ export const ui = {
     lead: "Six well-equipped cottages for 5–12 guests in rocky forest country, 12 km from Yläne village and 65 km from Turku. Come for a weekend, a week or your whole holiday.",
     pills: ["Boat and firewood included", "Our own smoke sauna and crayfish pond", "Book direct with the owner"],
     scroll: "Scroll down",
-    finderKicker: "Six cottages",
     finderTitle: "Find the right cottage",
-    finderText: "Pick your group size to see the cottages that fit. Every one comes with a boat and firewood.",
+    finderText: "Every one comes with a boat and firewood.",
     howMany: "How many of you?",
     all: "All",
     upTo: (n: number) => `Sleeps ${n}`,
@@ -864,7 +856,6 @@ export const ui = {
     mapText:
       "Elimäki and Pöytäkallio are on the shore of Lake Elijärvi, Meritähti, Merenneito and Meripoika at Kotolahti at the end of Meriläntie, and the smoke sauna by the farm's pond. Fransula is a little further north, on the Säkylä side.",
     mapCredit: "Map powered by",
-    saunaKicker: "Can be rented separately",
     saunaTitle: "Smoke sauna, crayfish pond and island",
     saunaLead: "A smoke sauna on the pond shore, a grill shelter on the island and an arched bridge to reach it. Crayfish live in the pond.",
     saunaCta: "About the smoke sauna",
@@ -873,7 +864,6 @@ export const ui = {
     companiesTitle: "For companies",
     companiesText:
       "The cottages also suit company meetings and recreation days. The smoke sauna, the island grill shelter and a crayfish party can be booked for the same day.",
-    directKicker: "Straight from the owner",
     directTitle: "Book directly with Mika",
     direct: [
       { icon: "phone", title: "Call or write", text: "We tell you the free dates and the price right away." },
@@ -881,7 +871,6 @@ export const ui = {
       { icon: "sailboat", title: "Boat and firewood", text: "Included with every cottage." },
       { icon: "calendar", title: "Flexible", text: "A week, a weekend, or nightly prices by agreement." },
     ],
-    hostsKicker: "Your host",
     hostsTitle: "Welcome to Lake Elijärvi",
     hostsPlaceholder: "A photo and a few lines about you and the farm go here. Guests book more readily when they know who they are visiting.",
     previewTag: "Preview: to be added by you",
@@ -964,8 +953,7 @@ export const ui = {
     arrive: "Arrival",
     leave: "Departure",
     guests: "Guests",
-    send: "Send enquiry",
-    inquiryNote: "Your email app opens with the enquiry filled in. Mika replies as soon as he can.",
+    send: "Send by email",
     mailSubject: "Booking enquiry",
     mailBody: (c: string, a: string, l: string, g: string) =>
       `Hello,\n\nI would like to ask about availability.\n\nCottage: ${c}\nArrival: ${a}\nDeparture: ${l}\nGuests: ${g}\n\nBest regards,\n`,

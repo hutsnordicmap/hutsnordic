@@ -59,7 +59,7 @@ export default function Admin({ adminKey }: { adminKey: string }) {
         </div>
       </header>
 
-      <ul className="mt-6 space-y-3">
+      <ul className="mt-6 mb-10 space-y-3">
         {sorted.map((r) => {
           const b = badge[r.last_work?.status ?? "none"];
           return (
@@ -91,7 +91,6 @@ export default function Admin({ adminKey }: { adminKey: string }) {
           );
         })}
       </ul>
-      <p className="mt-10 mb-10 text-center text-[12px] text-black/40">Refreshes every 30 seconds. New clients are added by Claude.</p>
     </Wrap>
   );
 }
@@ -141,7 +140,7 @@ function Detail({ row, adminKey, onChange }: { row: Row; adminKey: string; onCha
 
       <div className="mt-4">
         <textarea value={text} onChange={(e) => setText(e.target.value)} rows={4}
-          placeholder="Paste anything for this client: Booking or Google reviews, notes, facts…"
+          placeholder="Paste anything…"
           className="w-full rounded-xl border border-black/10 px-3 py-2 text-[15px] outline-none focus:border-black/40" />
         <div className="mt-2 flex items-center justify-between gap-3">
           <label className="flex items-center gap-2 text-[13px] text-black/60">

@@ -86,8 +86,7 @@ export function HomeView({ locale }: { locale: Locale }) {
       <section className="bg-coal text-flour">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 pt-12 pb-16 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-24">
           <div className="lg:col-span-7 lg:pr-8">
-            <p className="label text-rust-light">{h.kicker}</p>
-            <h1 className="mt-5 text-balance font-display text-[2.7rem] leading-[1.02] sm:text-6xl lg:text-[5.2rem]">{h.h1}</h1>
+            <h1 className="text-balance font-display text-[2.7rem] leading-[1.02] sm:text-6xl lg:text-[5.2rem]">{h.h1}</h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-flour/80">{h.lead}</p>
             <GoogleRating locale={locale} />
             <div className="mt-8">
@@ -143,7 +142,7 @@ export function HomeView({ locale }: { locale: Locale }) {
             <Image src={photos.pies.src} alt={photos.pies[locale]} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
           </div>
           <div>
-            <SectionTitle kicker={h.cafeKicker} title={h.cafeTitle} />
+            <SectionTitle title={h.cafeTitle} />
             <p className="mt-6 text-lg leading-relaxed text-ink/80">{h.cafeText}</p>
             <ul className="mt-8 space-y-3">
               {h.cafePills.map((p) => (
@@ -162,7 +161,7 @@ export function HomeView({ locale }: { locale: Locale }) {
             <Image src={photos.lamps.src} alt={photos.lamps[locale]} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
           </div>
           <div>
-            <SectionTitle kicker={h.shopKicker} title={h.shopTitle} />
+            <SectionTitle title={h.shopTitle} />
             <p className="mt-6 text-lg leading-relaxed text-ink/80">{h.shopText}</p>
             <Link href={paths.putiikki[locale]} className="mt-8 inline-flex items-center gap-2 font-semibold text-rust hover:underline">
               {t.nav.putiikki} <ArrowRight className="size-4" aria-hidden />
@@ -184,8 +183,7 @@ export function HomeView({ locale }: { locale: Locale }) {
               <Image src={p.photo.src} alt={p.photo[locale]} fill sizes="(min-width: 768px) 50vw, 100vw" className="-z-10 object-cover opacity-80 transition duration-700 group-hover:scale-[1.04] group-hover:opacity-90" />
               <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
               <div className="p-6 sm:p-10">
-                <p className="label text-rust-light">{p.kicker}</p>
-                <p className="mt-3 font-display text-3xl leading-tight sm:text-4xl">{p.title}</p>
+                <p className="font-display text-3xl leading-tight sm:text-4xl">{p.title}</p>
                 <p className="mt-3 max-w-md text-flour/80">{p.text}</p>
                 {p.id === "majoitus" ? <p className="mt-2 text-sm text-flour/60">{live.lodgingStatus[locale]}</p> : null}
                 <span className="mt-5 inline-flex items-center gap-2 font-semibold">
@@ -200,7 +198,7 @@ export function HomeView({ locale }: { locale: Locale }) {
       {/* Events: what has happened at the mill in past summers */}
       <section className="mx-auto grid max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-28">
         <div>
-          <SectionTitle kicker={h.eventsKicker} title={h.eventsTitle} />
+          <SectionTitle title={h.eventsTitle} />
           <p className="mt-6 text-lg leading-relaxed text-ink/80">{h.eventsText}</p>
           <ul className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
             {live.events.map((e) => (
@@ -244,7 +242,7 @@ export function HomeView({ locale }: { locale: Locale }) {
             </p>
           </div>
           <div className="pt-6 lg:pt-0">
-            <SectionTitle kicker={h.historyKicker} title={h.historyTitle} />
+            <SectionTitle title={h.historyTitle} />
             {h.historyText.map((p) => (
               <p key={p.slice(0, 20)} className="mt-5 text-lg leading-relaxed text-ink/80">
                 {p}
@@ -263,7 +261,7 @@ export function HomeView({ locale }: { locale: Locale }) {
           <Image src={photos.makers.src} alt={photos.makers[locale]} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
         </div>
         <div>
-          <SectionTitle kicker={h.makersKicker} title={h.makersTitle} />
+          <SectionTitle title={h.makersTitle} />
           {h.makersText.map((p) => (
             <p key={p.slice(0, 20)} className="mt-5 text-lg leading-relaxed text-ink/80">
               {p}
@@ -285,7 +283,7 @@ export function HomeView({ locale }: { locale: Locale }) {
 
       {/* Visit */}
       <section id="kaynti" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
-        <SectionTitle kicker={business.name} title={h.visitTitle} />
+        <SectionTitle title={h.visitTitle} />
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_1.5fr]">
           <div className="space-y-10">
             <OpenStatus locale={locale} tone="light" />
@@ -327,8 +325,7 @@ export function ServiceView({ id, locale }: { id: PageId; locale: Locale }) {
               <span className="px-2">/</span>
               <span>{t.nav[id]}</span>
             </nav>
-            <p className="label mt-8 text-rust-light">{p.kicker}</p>
-            <h1 className="mt-4 text-balance font-display text-[2.5rem] leading-[1.04] sm:text-6xl">{p.h1}</h1>
+            <h1 className="mt-8 text-balance font-display text-[2.5rem] leading-[1.04] sm:text-6xl">{p.h1}</h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-flour/80">{p.lead}</p>
             {id === "kahvila" ? <GoogleRating locale={locale} /> : null}
             {id === "majoitus" ? <p className="mt-4 inline-block border border-rust-light/50 px-3 py-1.5 text-sm text-rust-light">{live.lodgingStatus[locale]}</p> : null}
@@ -416,7 +413,7 @@ export function ServiceView({ id, locale }: { id: PageId; locale: Locale }) {
 
       {/* Where this part of the mill is: the matching Huts.fi place on the map */}
       <section className="mx-auto max-w-7xl px-4 pt-20 sm:px-6">
-        <SectionTitle kicker={t.nav[id]} title={t.findUs} />
+        <SectionTitle title={t.findUs} />
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_1.5fr]">
           <GettingHere locale={locale} />
           <MapEmbed locale={locale} src={`${HUTS}/embed${mapPlaces[id][locale]}?address=1`} title={`${business.name} – ${t.nav[id]}`} />

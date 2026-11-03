@@ -11,6 +11,23 @@ projects here in `sites/<site>/`, previewed at `hutsnordic.fi/preview/<site>`.
 
 ---
 
+## 0. Jeff's design rule (2026-11-03, every site and the drop pages)
+
+"Simple purpose, simple architecture, simple design, simple implementation. Cut taglines, helper text and
+secondary labels. If a screen needs them to make sense, fix the layout. Every decision should elevate the user
+experience (UX), developer experience (DX) and agent experience (AX) at once, without breaking anything."
+
+In practice:
+- No small labels above headings ("kickers" like "Yläne · Pöytyä" or "Suoraan omistajalta"). The heading says
+  what the section is. If it doesn't, rewrite the heading, e.g. "Myllyn kahvila", not a slogan.
+- No how-to text ("Hover a row to see it on the map", "Your email app opens…"). Make the control say it:
+  the button reads "Lähetä sähköpostilla / Send by email".
+- No slogan headings or subtitles that repeat what the cards below already say.
+- Facts stay (prices, addresses, what is included). Only the decoration goes.
+- Preview-only parts (orange ribbon, question boxes, hosts placeholder) are fine; they vanish in the real build.
+
+---
+
 ## 1. The idea: head and neck
 
 Jeff's picture: the client (and Jeff) is the **head** and makes the final call. We are the **neck** that turns

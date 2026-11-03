@@ -26,13 +26,8 @@ export function Ask({ locale, items, tone = "light" }: { locale: Locale; items: 
   );
 }
 
-export function SectionTitle({ kicker, title, tone = "light" }: { kicker?: string; title: string; tone?: "light" | "dark" }) {
-  return (
-    <div>
-      {kicker ? <p className={`label ${tone === "dark" ? "text-rust-light" : "text-rust"}`}>{kicker}</p> : null}
-      <h2 className="mt-3 text-balance font-display text-3xl leading-[1.08] sm:text-4xl lg:text-5xl">{title}</h2>
-    </div>
-  );
+export function SectionTitle({ title }: { title: string }) {
+  return <h2 className="text-balance font-display text-3xl leading-[1.08] sm:text-4xl lg:text-5xl">{title}</h2>;
 }
 
 /** "★ 4.9 on Google · 162 reviews", linked to Google Maps. Plain text: no Review or AggregateRating markup. */

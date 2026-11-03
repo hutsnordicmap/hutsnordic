@@ -221,7 +221,7 @@ export const ui = {
     address: "Osoite",
     contactTitle: "Yhteystiedot",
     byCar: "Autolla",
-    byCarText: "Tavolantie 18, 09220 Sammatti (Lohja). Navigaattoriin osoite tai karttalinkki alta.",
+    byCarText: "Tavolantie 18, 09220 Sammatti (Lohja).",
     byBus: "Bussilla",
     byBusText: "Lohjalta Sammattiin, Myllykylän pysäkille. Pysäkiltä on 200 metrin kävely. Katso ajantasaiset aikataulut Matkahuollon sivuilta.",
     mapTitle: "Vuorikosken Mylly kartalla",
@@ -251,7 +251,7 @@ export const ui = {
     address: "Address",
     contactTitle: "Contact",
     byCar: "By car",
-    byCarText: "Tavolantie 18, 09220 Sammatti (Lohja). Use the address or the map link below.",
+    byCarText: "Tavolantie 18, 09220 Sammatti (Lohja).",
     byBus: "By bus",
     byBusText: "From Lohja to Sammatti, Myllykylä stop. It is a 200 metre walk from the stop. Check current timetables on the Matkahuolto site.",
     mapTitle: "Vuorikosken Mylly on the map",
@@ -290,7 +290,6 @@ export const home = {
     title: "Vuorikosken Mylly – kahvila, vintage-putiikki ja galleria Sammatissa, Lohja",
     description:
       "Vuonna 1893 rakennettu mylly Sammatissa, Lohjalla: gluteeniton kahvila, second hand -sisustusputiikki ja vintage-vaatteet, kesän taidenäyttelyt, juhlatila ja pieni aamiaismajoitus myllylammen rannalla.",
-    kicker: "Sammatti · Lohja · Vuodesta 1893",
     h1: "Kahvila, vintage-putiikki ja galleria vanhassa myllyssä",
     lead: "Elämyskohde perinteisessä myllymiljöössä Sammatin Myllykylässä. Gluteenittomat herkut, persoonalliset löydöt ja kesän taidenäyttelyt, kaikki saman katon alla.",
     wordTitle: "mylly",
@@ -301,26 +300,22 @@ export const home = {
       { id: "galleria", title: "Galleria", text: "Kesäisin neljä erilaista taiteentekijää omissa näyttelyissään myllyn galleriassa." },
       { id: "juhlatila", title: "Juhlatila", text: "Pitkä pöytä kokouksille ja pienille perhejuhlille kesäkauden ajan." },
     ] satisfies { id: PageId; title: string; text: string }[],
-    cafeKicker: "Myllyn kahvila",
-    cafeTitle: "Gluteeniton herkkupöytä ja päivän puustit",
+    cafeTitle: "Myllyn kahvila",
     cafeText:
       "Kahvilassa on tarjolla tuoretta kahvia, teetä ja tilalla leivottuja gluteenittomia ja laktoosittomia makeita ja suolaisia herkkuja, päivittäin myös vegaaninen vaihtoehto. Pikkupöydässä odottavat päivän tuoreet vehnäiset puustit. Kuumana kesäpäivänä viilentävät Vuorikosken oma mango-sitrus-jäätee ja icelatte.",
     cafePills: ["wheat|Gluteeniton herkkupöytä", "chef|Leivottu tilalla", "dog|Lemmikit tervetulleita", "cup|Oma jäätee ja icelatte"],
-    shopKicker: "Sisustusputiikki",
-    shopTitle: "Persoonallisia löytöjä järkevään hintaan",
+    shopTitle: "Sisustusputiikki",
     shopText:
       "Second hand -sisustusputiikki on täynnä löytöjä itselle tai lahjaksi. Jokainen esine puhdistetaan huolellisesti ja kunnostetaan tarpeen mukaan, ja valaisimet saavat käsintehdyt varjostimet. Vuorikosken omat hillot, glögit ja Sammatti-tekstiilit, lähialueen artesaanien työt ja vintage-vaatteet täydentävät valikoimaa.",
     splitTitle: "Muutakin myllyllä",
-    splitEvents: { kicker: "Juhlat ja kokoukset", title: "Pitkän pöydän juhlatila", text: "Kokouksiin ja pieniin perhejuhliin kesäkaudella, 50 € tunnilta." },
-    splitStay: { kicker: "Yöksi myllylle", title: "Kaksi pientä mökkiä lammen rannalla", text: "Sähköttömät kesämökit, rantasauna ja lautasaamiainen kahvilassa." },
-    historyKicker: "Historia",
+    splitEvents: { title: "Pitkän pöydän juhlatila", text: "Kokouksiin ja pieniin perhejuhliin kesäkaudella, 50 € tunnilta." },
+    splitStay: { title: "Kaksi pientä mökkiä lammen rannalla", text: "Sähköttömät kesämökit, rantasauna ja lautasaamiainen kahvilassa." },
     historyTitle: "Mylly jauhoi, sahasi ja teki sähköä",
     historyText: [
       "Sammatin maalaisidylliin vuonna 1893 rakennettu mylly jauhoi osuuskuntalaisten viljat, sahasi puutavarat ja tuotti vielä sähköäkin kyläläisten tarpeisiin. Sittemmin yksityisomistukseen siirtynyt tila sai nimekseen Vuorikoski silloisen omistajansa mukaan.",
       "Tänä päivänä tilalla asuu visuaalisilla aloilla toimiva yrittäjäpariskunta. Alkuperäiseen asuunsa palautettu mylly on avoinna kesäkaudella ja joulun alla adventtiviikonloppuina. Vuonna 2023 myllyn rakentamisesta tuli kuluneeksi 130 vuotta, ja kesällä 2026 viisi vuotta siitä, kun kyltti kannettiin tienvarteen ja Vuorikosken nykyinen tarina alkoi.",
     ],
     historyLink: "Lisää Sammatin ja Myllykylän myllyjen historiasta (Kansalliskirjasto)",
-    makersKicker: "Tekijät",
     makersTitle: "Tekijöiden tarina myllyn takana",
     makersText: [
       "Mitä tapahtuu, kun kaksi tekeväistä maalaiskollia sijoitetaan liian pitkäksi aikaa ahtaisiin kerrostalo-olosuhteisiin? Se saattaa herättää hallitsemattoman remontointi- ja maanmuokkausvimman, joka sopivan kohteen kohdalle osuessa roihahtaa kuin elovalkea. Niin he saapuivat Sammatin Myllykylään luonnon valtaamalle tontille, jonka perukalta löytyi romuvarastoksi päätynyt myllyrakennus. Joo, me otetaan tämä!",
@@ -328,7 +323,6 @@ export const home = {
       "Nyt viisi vuotta myöhemmin Vuorikosken Mylly on vakiinnuttanut paikkansa paikallisten ja kesämökkiläisten yhteisenä olohuoneena, joka nykyisellään tavoittaa tuhansia kävijöitä vuosittain. Meille ovat kaikki tervetulleita!",
     ],
     makersSign: "Antti, Juha ja naapurin likat",
-    eventsKicker: "Tapahtumat",
     eventsTitle: "Tapahtumat 2027",
     eventsText: "Pääsiäisestä joulunavaukseen. Aiempina kesinä pihalla on ollut myös sunnuntaisoittoja, pihakirppiksiä ja Löytölän euron pöytä. Uudet tapahtumat ilmoitetaan tällä sivulla ja Facebookissa.",
     seasonsTitle: "Mylly vuoden ympäri",
@@ -340,7 +334,6 @@ export const home = {
     title: "Vuorikosken Mylly – café, vintage shop and art gallery in Sammatti, Lohja, Finland",
     description:
       "A water mill built in 1893 in Sammatti, Lohja: a gluten-free café, second-hand interior and vintage clothing shop, summer art exhibitions, an event room and small B&B cabins by the mill pond.",
-    kicker: "Sammatti · Lohja · Since 1893",
     h1: "A café, vintage shop and gallery in an old water mill",
     lead: "A countryside destination in a traditional mill setting in Myllykylä, Sammatti. Gluten-free bakes, one-of-a-kind finds and summer art shows, all under one roof.",
     wordTitle: "mylly",
@@ -351,26 +344,22 @@ export const home = {
       { id: "galleria", title: "Gallery", text: "Every summer, four different artists show their work in the mill gallery." },
       { id: "juhlatila", title: "Event room", text: "A long table for meetings and small family parties in the summer season." },
     ] satisfies { id: PageId; title: string; text: string }[],
-    cafeKicker: "The mill café",
-    cafeTitle: "A gluten-free spread and fresh cinnamon buns",
+    cafeTitle: "The mill café",
     cafeText:
       "The café serves fresh coffee, tea and gluten-free, lactose-free sweet and savoury bakes made on the farm, with a vegan option every day. A small side table holds the day's fresh wheat cinnamon buns. On hot summer days, Vuorikoski's own mango-citrus iced tea and iced latte cool you down.",
     cafePills: ["wheat|Gluten-free spread", "chef|Baked on the farm", "dog|Pets welcome", "cup|Own iced tea and iced latte"],
-    shopKicker: "Interior shop",
-    shopTitle: "One-of-a-kind finds at fair prices",
+    shopTitle: "Interior shop",
     shopText:
       "The second-hand interior shop is full of finds for yourself or as gifts. Every piece is carefully cleaned and restored where needed, and lamps get handmade shades. Vuorikoski's own jams, glögi and Sammatti textiles, work by local artisans and vintage clothing complete the range.",
     splitTitle: "More at the mill",
-    splitEvents: { kicker: "Parties and meetings", title: "The long-table event room", text: "For meetings and small family parties in the summer season, €50 per hour." },
-    splitStay: { kicker: "Stay the night", title: "Two small cabins by the pond", text: "Off-grid summer cabins, a shore sauna and plated breakfast in the café." },
-    historyKicker: "History",
+    splitEvents: { title: "The long-table event room", text: "For meetings and small family parties in the summer season, €50 per hour." },
+    splitStay: { title: "Two small cabins by the pond", text: "Off-grid summer cabins, a shore sauna and plated breakfast in the café." },
     historyTitle: "The mill ground grain, sawed timber and made electricity",
     historyText: [
       "Built in 1893 in the Sammatti countryside, the mill ground grain for the cooperative's members, sawed timber and even produced electricity for the village. The farm later passed into private hands and took the name Vuorikoski after its owner at the time.",
       "Today the farm is home to an entrepreneur couple working in visual fields. Restored to its original look, the mill is open in the summer season and on Advent weekends before Christmas. In 2023 the mill turned 130, and summer 2026 marked five years since the sign went up by the road and today's Vuorikoski began.",
     ],
     historyLink: "More on the history of Sammatti and the Myllykylä mills (National Library, in Finnish)",
-    makersKicker: "The makers",
     makersTitle: "The story of the makers behind the mill",
     makersText: [
       "What happens when two hands-on country boys are kept too long in a cramped city flat? It can spark an unstoppable urge to renovate and dig, which flares up like a bonfire once the right place comes along. That is how they arrived in Myllykylä, Sammatti, at an overgrown plot with an old mill at the far end that had ended up as a junk store. Yes, we'll take it!",
@@ -378,7 +367,6 @@ export const home = {
       "Now, five years later, Vuorikosken Mylly has become a shared living room for locals and summer cottagers, welcoming thousands of visitors every year. Everyone is welcome here!",
     ],
     makersSign: "Antti, Juha and the neighbour's girls",
-    eventsKicker: "Events",
     eventsTitle: "Events in 2027",
     eventsText: "From Easter to the Christmas opening. Past summers have also brought Sunday music in the yard, yard flea markets and the one-euro Löytölä table. New events are posted on this page and on Facebook.",
     seasonsTitle: "The mill through the year",
@@ -416,7 +404,6 @@ export type Unit = { id: string; name: string; photo: Photo; beds: string; text:
 export type ServicePage = {
   title: string;
   description: string;
-  kicker: string;
   h1: string;
   lead: string;
   hero: Photo;
@@ -436,7 +423,6 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       title: "Gluteeniton kahvila Sammatissa, Lohja | Vuorikosken Myllyn kahvila",
       description:
         "Kahvila vanhassa myllyssä Sammatissa, Lohjalla. Gluteenittomat ja laktoosittomat tilalla leivotut kakut ja piiraat 5,90 €, päivittäin vegaaninen vaihtoehto, puustit, kakkutilaukset ja koskiterassi. Koirat tervetulleita.",
-      kicker: "Myllyn kahvila · Sammatti",
       h1: "Gluteeniton kahvila vanhassa myllyssä",
       lead: "Tuoretta kahvia, teetä ja tilalla leivottuja gluteenittomia ja laktoosittomia makeita ja suolaisia herkkuja perinteisessä myllymiljöössä. Nauti paikan päällä tai ota mukaan.",
       hero: photos.cafeRoom,
@@ -496,7 +482,6 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       title: "Gluten-free café in Sammatti, Lohja | Vuorikosken Mylly café",
       description:
         "A café in an old water mill in Sammatti, Lohja, Finland. Gluten-free and lactose-free cakes and pies baked on the farm, €5.90 a slice, a vegan option every day, cinnamon buns, cake orders and a riverside terrace. Dogs welcome.",
-      kicker: "The mill café · Sammatti",
       h1: "A gluten-free café in an old water mill",
       lead: "Fresh coffee, tea and gluten-free, lactose-free sweet and savoury bakes made on the farm, in a traditional mill setting. Enjoy them here or take them home.",
       hero: photos.cafeRoom,
@@ -552,7 +537,6 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       title: "Vintage- ja sisustusputiikki Sammatissa, Lohja | Vuorikosken Mylly",
       description:
         "Second hand -sisustusputiikki vanhassa myllyssä Sammatissa, Lohjalla: kunnostettuja löytöjä, käsintehdyin varjostimin tehtyjä valaisimia, vintage-vaatteita, Vuorikosken omia hilloja, glögiä ja Sammatti-tekstiilejä. Joulupuoti adventtiviikonloppuina.",
-      kicker: "Sisustusputiikki · Sammatti",
       h1: "Vintage- ja sisustusputiikki myllyssä",
       lead: "Second hand -sisustusputiikki täynnä persoonallisia löytöjä itselle tai lahjaksi. Kaikki saman katon alta järkevään hintaan.",
       hero: photos.lamps,
@@ -590,7 +574,6 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       title: "Vintage and interior shop in Sammatti, Lohja | Vuorikosken Mylly",
       description:
         "A second-hand interior shop in an old water mill in Sammatti, Lohja, Finland: restored finds, lamps with handmade shades, vintage clothing, Vuorikoski's own jams, glögi and Sammatti textiles. Christmas shop on Advent weekends.",
-      kicker: "Interior shop · Sammatti",
       h1: "A vintage and interior shop in the mill",
       lead: "A second-hand interior shop full of one-of-a-kind finds for yourself or as gifts. All under one roof at fair prices.",
       hero: photos.lamps,
@@ -630,7 +613,6 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       title: "Taidenäyttelyt Sammatissa – myllyn galleria, Lohja | Vuorikosken Mylly",
       description:
         "Kesän taidenäyttelyt vanhassa myllyssä Sammatissa, Lohjalla. Galleria auki kesällä to–su. Kesän 2028 näyttelyjaksot haettavana 17.6.–8.8.2027: tilavuokra 100 € / 8 päivää, myyntiprovisio 25 %.",
-      kicker: "Galleria · Sammatti",
       h1: "Kesän taidenäyttelyt myllyn galleriassa",
       lead: "Joka kesä myllyn galleriassa esittäytyy neljä erilaista taiteentekijää. Kesällä 2027 galleria on auki 17.6.–8.8. torstaista sunnuntaihin klo 11–17.",
       hero: photos.galleryRoom,
@@ -684,7 +666,6 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       title: "Art exhibitions in Sammatti – the mill gallery, Lohja | Vuorikosken Mylly",
       description:
         "Summer art exhibitions in an old water mill in Sammatti, Lohja, Finland. Open Thu–Sun in summer. Slots for summer 2028 open 17 June–8 August 2027: €100 for 8 days, 25% sales commission.",
-      kicker: "Gallery · Sammatti",
       h1: "Summer art exhibitions in the mill gallery",
       lead: "Every summer, four different artists show their work in the mill gallery. In summer 2027 the gallery is open from 17 June to 8 August, Thursday to Sunday, 11–17.",
       hero: photos.galleryRoom,
@@ -740,7 +721,6 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       title: "Pieni juhlatila ja kokoustila Sammatissa, Lohja | Vuorikosken Mylly",
       description:
         "Vuokraa vanhan myllyn juhlatila Sammatista, Lohjalta: paikat 25 hengelle pitkässä pöydässä tai noutopöytä ja tanssitilaa, 50 €/h. Omat tarjoilut, pitopalvelu tai myllyn kahvilan herkut.",
-      kicker: "Juhlatila · Sammatti",
       h1: "Pieni juhla- ja kokoustila vanhassa myllyssä",
       lead: "Myllyn alasiiven juhlatilassa on paikat 25 hengelle. Kaikki mahtuvat samaan pitkään pöytään, tai pöytä kääntyy noutopöydäksi ja tilaan tulee puutarhatunnelmaa ja tilaa tanssille.",
       hero: photos.longTable,
@@ -783,7 +763,6 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       title: "Small party and meeting room in Sammatti, Lohja | Vuorikosken Mylly",
       description:
         "Hire the event room in an old water mill in Sammatti, Lohja, Finland: seats 25 at one long table, or a buffet with room to dance, €50 per hour. Bring your own food, use a caterer or order from the mill café.",
-      kicker: "Event room · Sammatti",
       h1: "A small party and meeting room in an old mill",
       lead: "The event room in the mill's lower wing seats 25. Everyone fits at one long table, or the table becomes a buffet and the room gets a garden feel with space to dance.",
       hero: photos.longTable,
@@ -828,7 +807,6 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       title: "Aamiaismajoitus Sammatissa, Lohja – mökit myllylammen rannalla | Vuorikosken Mylly",
       description:
         "Pieni B&B Sammatissa, Lohjalla: kaksi sähkötöntä kesämökkiä 1–2 hengelle myllylammen rannalla, 59 €/yö liinavaatteineen. Puusauna ja lautasaamiainen myllyn kahvilassa.",
-      kicker: "Aamiaismajoitus · Sammatti",
       h1: "Yöksi myllylammen rannalle",
       lead: "Kaksi pientä kesämökkiä rauhallisen myllylammen rannalla. Sähköttömät, kesälämpimät ja tunnelmalliset, ja aamulla aamiainen myllyn kahvilassa.",
       hero: photos.nutHut,
@@ -903,7 +881,6 @@ export const pages: Record<PageId, Record<Locale, ServicePage>> = {
       title: "B&B in Sammatti, Lohja – cabins by the mill pond | Vuorikosken Mylly",
       description:
         "A small B&B in Sammatti, Lohja, Finland: two off-grid summer cabins for 1–2 people by the mill pond, €59 a night with bed linen. Wood-fired sauna and plated breakfast in the mill café.",
-      kicker: "Bed & breakfast · Sammatti",
       h1: "A night by the mill pond",
       lead: "Two small summer cabins on the shore of a quiet mill pond. Off-grid, summer-warm and atmospheric, with breakfast in the mill café in the morning.",
       hero: photos.nutHut,

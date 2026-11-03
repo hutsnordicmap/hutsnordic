@@ -66,13 +66,12 @@ function PhotoTile({ photo, locale, className = "", sizes = "50vw", large = fals
 }
 
 /** Page header for inner pages: a calm photo band with the title below it, not over it. */
-function PageIntro({ kicker, title, lead, photo, locale }: { kicker: string; title: string; lead: string; photo: Photo; locale: Locale }) {
+function PageIntro({ title, lead, photo, locale }: { title: string; lead: string; photo: Photo; locale: Locale }) {
   return (
     <section className="mx-auto max-w-6xl px-4 pt-8 sm:px-6 sm:pt-10">
       <PhotoTile photo={photo} locale={locale} large sizes="100vw" className="aspect-[16/9] sm:aspect-[21/8]" />
       <div className="pt-8">
-        <p className="label text-copper">{kicker}</p>
-        <h1 className="mt-2 text-balance font-serif text-5xl font-semibold leading-[1.02] text-forest sm:text-6xl">{title}</h1>
+        <h1 className="text-balance font-serif text-5xl font-semibold leading-[1.02] text-forest sm:text-6xl">{title}</h1>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink/75">{lead}</p>
       </div>
     </section>
@@ -90,8 +89,7 @@ export function HomeView({ locale }: { locale: Locale }) {
         <VideoHero poster={shared.hero} locale={locale} />
 
         <section className="mx-auto max-w-6xl px-4 pt-14 sm:px-6 sm:pt-20">
-          <p className="label text-copper">{t.kicker}</p>
-          <h1 className="mt-3 max-w-4xl text-balance font-serif text-5xl font-semibold leading-[1.0] text-forest sm:text-7xl">{t.h1}</h1>
+          <h1 className="max-w-4xl text-balance font-serif text-5xl font-semibold leading-[1.0] text-forest sm:text-7xl">{t.h1}</h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/75 sm:text-xl">{t.lead}</p>
           <ul className="mt-6 flex flex-wrap gap-2">
             {t.pills.map((p) => (
@@ -104,7 +102,7 @@ export function HomeView({ locale }: { locale: Locale }) {
         </section>
 
         <section id="mokit" className="mx-auto max-w-6xl scroll-mt-4 px-4 py-16 sm:px-6">
-          <SectionTitle kicker={t.finderKicker} title={t.finderTitle} text={t.finderText} />
+          <SectionTitle title={t.finderTitle} text={t.finderText} />
           <div className="mt-8">
             <CottageFinder locale={locale} />
           </div>
@@ -146,7 +144,7 @@ export function HomeView({ locale }: { locale: Locale }) {
               <PhotoTile photo={sauna.photos[3]} locale={locale} className="aspect-square" sizes="25vw" />
             </div>
             <div>
-              <SectionTitle kicker={t.saunaKicker} title={t.saunaTitle} text={t.saunaLead} tone="dark" />
+              <SectionTitle title={t.saunaTitle} text={t.saunaLead} tone="dark" />
               <p className="mt-6 font-serif text-3xl text-copper-light">
                 {euro(sauna.price, locale)} <span className="font-sans text-base text-white/70">· max {sauna.maxGuests}</span>
               </p>
@@ -232,7 +230,7 @@ export function CottagesView({ locale }: { locale: Locale }) {
       <JsonLd data={ld} />
       <Header locale={locale} otherHref={paths.cottages[other(locale)]} />
       <main>
-        <PageIntro kicker={t.kicker} title={t.cottagesH1} lead={t.cottagesLead} photo={shared.aerialKotolahti} locale={locale} />
+        <PageIntro title={t.cottagesH1} lead={t.cottagesLead} photo={shared.aerialKotolahti} locale={locale} />
         <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
           <CottageFinder locale={locale} />
         </section>
@@ -431,8 +429,7 @@ export function SaunaView({ locale }: { locale: Locale }) {
         </div>
         <section className="mx-auto grid max-w-6xl gap-12 px-4 py-10 sm:px-6 lg:grid-cols-[1.5fr_1fr]">
           <div className="min-w-0">
-            <p className="label text-copper">{t.saunaKicker}</p>
-            <h1 className="mt-2 text-balance font-serif text-5xl font-semibold leading-none text-forest sm:text-6xl">{t.saunaH1}</h1>
+            <h1 className="text-balance font-serif text-5xl font-semibold leading-none text-forest sm:text-6xl">{t.saunaH1}</h1>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {t.saunaFacts.map((f) => (
                 <li key={f} className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-ink/85">
@@ -473,7 +470,7 @@ export function ActivitiesView({ locale }: { locale: Locale }) {
     <>
       <Header locale={locale} otherHref={paths.activities[other(locale)]} />
       <main>
-        <PageIntro kicker={t.kicker} title={t.activitiesH1} lead={activities.intro[locale]} photo={shared.sup} locale={locale} />
+        <PageIntro title={t.activitiesH1} lead={activities.intro[locale]} photo={shared.sup} locale={locale} />
 
         <section id="vaellus" className="mx-auto grid max-w-6xl scroll-mt-6 items-center gap-10 px-4 py-16 sm:px-6 md:grid-cols-2">
           <div>
@@ -491,7 +488,7 @@ export function ActivitiesView({ locale }: { locale: Locale }) {
           <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 md:grid-cols-2">
             <PhotoTile photo={sauna.photos[1]} locale={locale} className="aspect-[4/3]" sizes="(min-width: 768px) 50vw, 100vw" />
             <div>
-              <SectionTitle kicker={t.saunaKicker} title={t.saunaTitle} text={t.saunaLead} tone="dark" />
+              <SectionTitle title={t.saunaTitle} text={t.saunaLead} tone="dark" />
               <div className="mt-6">
                 <Button href={paths.sauna[locale]} variant="light">{t.saunaCta} →</Button>
               </div>
@@ -538,8 +535,7 @@ export function BookingView({ locale }: { locale: Locale }) {
       <Header locale={locale} otherHref={paths.booking[other(locale)]} />
       <main>
         <section className="mx-auto max-w-6xl px-4 pt-12 sm:px-6">
-          <p className="label text-copper">{t.kicker}</p>
-          <h1 className="mt-2 font-serif text-5xl font-semibold leading-none text-forest sm:text-6xl">{t.bookingTitle}</h1>
+          <h1 className="font-serif text-5xl font-semibold leading-none text-forest sm:text-6xl">{t.bookingTitle}</h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink/75">{t.bookingLead}</p>
         </section>
 

@@ -64,8 +64,7 @@ export function Inquiry({ locale, cottage, compact = false }: { locale: Locale; 
           {t.send}
         </button>
       </div>
-      <p className="mt-3 text-xs text-ink/60">{t.inquiryNote}</p>
-      <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+      <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
         {business.phones.map((p, i) => (
           <a key={p} href={tel(i)} className="inline-flex items-center gap-1.5 font-semibold text-forest hover:underline">
             <Phone className="size-4" aria-hidden />

@@ -10,8 +10,8 @@ const HIGHLIGHT = "huts-embed-highlight";
 const FOCUS = "huts-embed-focus";
 
 const copy = {
-  fi: { routes: "Reitit lähellä", places: "Paikat lähellä", away: "km", trail: "km reitti", hint: "Vie hiiri rivin päälle, niin kohde näkyy kartalla." },
-  en: { routes: "Trails nearby", places: "Places nearby", away: "km away", trail: "km trail", hint: "Hover a row to see it on the map." },
+  fi: { routes: "Reitit lähellä", places: "Paikat lähellä", away: "km", trail: "km reitti" },
+  en: { routes: "Trails nearby", places: "Places nearby", away: "km away", trail: "km trail" },
 };
 
 /**
@@ -73,7 +73,6 @@ export function NearbyMap({ locale, title }: { locale: Locale; title: string }) 
         <ul className="mt-1">{routes.map(row)}</ul>
         <p className="label mt-5 px-3 text-ink/50">{t.places}</p>
         <ul className="mt-1">{places.map(row)}</ul>
-        <p className="mt-4 hidden px-3 text-xs text-ink/50 lg:block">{t.hint}</p>
       </div>
     </div>
   );

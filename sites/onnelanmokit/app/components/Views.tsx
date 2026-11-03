@@ -59,7 +59,6 @@ export function HomeView({ locale }: { locale: Locale }) {
         <Hero
           image={heroPhoto.src}
           alt={heroPhoto[locale]}
-          kicker={t.heroKicker}
           title={t.heroTitle}
           text={t.heroText}
           pills={m.pills}
@@ -284,7 +283,6 @@ export function VillaView({ id, locale }: { id: VillaId; locale: Locale }) {
               </span>
               <span>
                 <span className="block font-semibold">{t.villa.tour} →</span>
-                <span className="block text-sm text-white/75">{t.villa.tourText}</span>
               </span>
             </a>
           </div>
@@ -356,7 +354,7 @@ export function ContactView({ locale }: { locale: Locale }) {
       <JsonLd data={lodgingJsonLd(locale)} />
       <Header locale={locale} otherHref={paths.contact[other(locale)]} />
       <main>
-        <Hero image={photo.src} alt={photo[locale]} kicker="Onnelan mökit" title={t.contactTitle} text={t.contactDescription} tall={false} />
+        <Hero image={photo.src} alt={photo[locale]} title={t.contactTitle} text={t.contactDescription} tall={false} />
         <section className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1fr_1.4fr]">
           <div className="space-y-6 text-lg">
             <div>

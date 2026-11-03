@@ -16,7 +16,6 @@ export function JsonLd({ data }: { data: object }) {
 export function Hero({
   image,
   alt,
-  kicker,
   title,
   text,
   pills,
@@ -25,7 +24,6 @@ export function Hero({
 }: {
   image: string;
   alt: string;
-  kicker: string;
   title: string;
   text: string;
   pills?: string[];
@@ -39,8 +37,7 @@ export function Hero({
       <Image src={image} alt={alt} fill priority sizes="100vw" className="-z-10 object-cover" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/75 via-black/30 to-black/45" />
       <div className={`mx-auto w-full max-w-6xl px-4 pt-28 sm:px-6 ${tall ? "pb-28 sm:pb-32" : "pb-12"}`}>
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80 sm:text-sm">{kicker}</p>
-        <h1 className="mt-3 max-w-3xl text-balance font-serif text-[2.6rem] font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
+        <h1 className="max-w-3xl text-balance font-serif text-[2.6rem] font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
           {title}
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/90">{text}</p>
@@ -130,9 +127,7 @@ export function DirectBand({ locale }: { locale: Locale }) {
   return (
     <section className="bg-lake-deep text-white">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#ffb27a]">{t.directKicker}</p>
-        <h2 className="mt-3 max-w-2xl text-balance font-serif text-3xl font-semibold sm:text-5xl">{t.directTitle}</h2>
-        <p className="mt-4 max-w-2xl text-lg text-white/80">{t.directText}</p>
+        <h2 className="max-w-2xl text-balance font-serif text-3xl font-semibold sm:text-5xl">{t.directTitle}</h2>
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {t.direct.map((d) => (
             <li key={d.title} className="rounded-2xl border border-white/10 bg-white/5 p-5">
@@ -156,8 +151,7 @@ export function HostsPlaceholder({ locale }: { locale: Locale }) {
       </div>
       <div>
         <span className="inline-block rounded-full bg-[#ffe3cf] px-3 py-1 text-xs font-semibold text-[#8a4a1c]">{t.previewTag}</span>
-        <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink/50">{t.hostsKicker}</p>
-        <h2 className="mt-1 font-serif text-3xl font-semibold text-lake">{t.hostsTitle}</h2>
+        <h2 className="mt-3 font-serif text-3xl font-semibold text-lake">{t.hostsTitle}</h2>
         <p className="mt-3 max-w-xl leading-relaxed text-ink/75">{t.hostsPlaceholder}</p>
       </div>
     </div>

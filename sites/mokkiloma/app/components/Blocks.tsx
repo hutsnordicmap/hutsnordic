@@ -51,11 +51,10 @@ export function Button({
   );
 }
 
-export function SectionTitle({ kicker, title, text, tone = "light" }: { kicker?: string; title: string; text?: string; tone?: "light" | "dark" }) {
+export function SectionTitle({ title, text, tone = "light" }: { title: string; text?: string; tone?: "light" | "dark" }) {
   return (
     <div className="max-w-2xl">
-      {kicker ? <p className={`label ${tone === "dark" ? "text-copper-light" : "text-copper"}`}>{kicker}</p> : null}
-      <h2 className={`mt-2 text-balance font-serif text-4xl font-semibold leading-[1.05] sm:text-5xl ${tone === "dark" ? "text-white" : "text-forest"}`}>
+      <h2 className={`text-balance font-serif text-4xl font-semibold leading-[1.05] sm:text-5xl ${tone === "dark" ? "text-white" : "text-forest"}`}>
         {title}
       </h2>
       {text ? <p className={`mt-4 text-lg leading-relaxed ${tone === "dark" ? "text-white/80" : "text-ink/75"}`}>{text}</p> : null}
@@ -231,7 +230,7 @@ export function DirectBand({ locale }: { locale: Locale }) {
   return (
     <section className="bg-forest-deep text-white">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <SectionTitle kicker={t.directKicker} title={t.directTitle} tone="dark" />
+        <SectionTitle title={t.directTitle} tone="dark" />
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {t.direct.map((d) => (
             <li key={d.title} className="rounded-3xl border border-white/10 bg-white/5 p-6">
@@ -262,8 +261,7 @@ export function HostsPlaceholder({ locale }: { locale: Locale }) {
       </div>
       <div>
         <span className="inline-block rounded-full bg-[#ffe3cf] px-3 py-1 text-xs font-semibold text-[#8a4a1c]">{t.previewTag}</span>
-        <p className="label mt-3 text-ink/50">{t.hostsKicker}</p>
-        <h2 className="mt-1 font-serif text-4xl font-semibold text-forest">{t.hostsTitle}</h2>
+        <h2 className="mt-3 font-serif text-4xl font-semibold text-forest">{t.hostsTitle}</h2>
         <p className="mt-3 max-w-xl leading-relaxed text-ink/75">{t.hostsPlaceholder}</p>
       </div>
     </div>
