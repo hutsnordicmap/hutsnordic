@@ -42,4 +42,10 @@
 <xhtml:link rel="alternate" hreflang="en" href="https://vuorikoskenmylly.com/en/contact" />
 <lastmod>2026-10-28T00:00:00.000Z</lastmod>
 </url>
+<url>
+<loc>https://vuorikoskenmylly.com/tietosuoja</loc>
+<xhtml:link rel="alternate" hreflang="fi" href="https://vuorikoskenmylly.com/tietosuoja" />
+<xhtml:link rel="alternate" hreflang="en" href="https://vuorikoskenmylly.com/en/privacy" />
+<lastmod>2026-10-28T00:00:00.000Z</lastmod>
+</url>
 </urlset>

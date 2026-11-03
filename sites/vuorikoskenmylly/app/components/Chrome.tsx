@@ -126,6 +126,8 @@ export function Footer({ locale }: { locale: Locale }) {
       <div className="border-t border-white/10">
         <p className="mx-auto max-w-7xl px-4 py-4 text-xs text-flour/45 sm:px-6">
           {t.madeBy} <a href={HUTS} className="hover:underline">Huts.fi</a>
+          {" · "}
+          <Link href={paths.privacy[locale]} className="hover:underline">{t.privacy}</Link>
         </p>
       </div>
     </footer>

@@ -199,6 +199,7 @@ export const paths = {
   juhlatila: { fi: "/juhlatila", en: "/en/event-room" },
   majoitus: { fi: "/majoitus", en: "/en/stay" },
   contact: { fi: "/yhteystiedot", en: "/en/contact" },
+  privacy: { fi: "/tietosuoja", en: "/en/privacy" },
 } satisfies Record<string, Text>;
 
 export const hutsLinks: { label: Text; fi: string; en: string }[] = [
@@ -229,6 +230,7 @@ export const ui = {
     faqTitle: "Usein kysyttyä",
     findUs: "Löydä perille",
     madeBy: "Sivut tehnyt ja ylläpitää",
+    privacy: "Tietosuoja",
     readMore: "Lue lisää",
     backHome: "Etusivulle",
     gallery: "Kuvat",
@@ -259,6 +261,7 @@ export const ui = {
     faqTitle: "Questions",
     findUs: "Find us",
     madeBy: "Site built and maintained by",
+    privacy: "Privacy",
     readMore: "Read more",
     backHome: "Home",
     gallery: "Photos",
@@ -964,4 +967,39 @@ export const contactPage = {
 export const homeAsk = {
   fi: ["TikTok-tilin nimi (Instagram on jo sivujen alalaidassa)", "Isompi kuvasatsi OneDriven kautta, kun ehdit (alkuperäiset täysikokoiset kuvat)"],
   en: ["TikTok account name (Instagram is already in the footer)", "The bigger photo batch via OneDrive when you have time (original full-size photos)"],
+};
+
+// Privacy notice (GDPR art. 13). The site sets no cookies and has no forms; personal data only comes in when
+// someone calls, emails or messages the mill. Same template for every client site (docs/client-sites/PLAYBOOK.md).
+export const privacyPage = {
+  fi: {
+    title: "Tietosuojaseloste | Vuorikosken Mylly",
+    description: "Miten Vuorikosken Mylly käsittelee yhteydenottojen ja varausten tietoja. Sivusto ei käytä evästeitä.",
+    h1: "Tietosuojaseloste",
+    updated: "Päivitetty 3.11.2026",
+    sections: [
+      { h: "Rekisterinpitäjä", p: [`${business.name} (Y-tunnus ${business.businessId}), ${business.street}, ${business.postalCode} ${business.village}, ${business.municipality}. Yhteyshenkilö Antti Jakola, ${business.phoneLocal}, ${business.email}.`] },
+      { h: "Mitä tietoja käsittelemme", p: ["Kun soitat, lähetät sähköpostia tai viestin (WhatsApp, Facebook, Instagram), saamme nimesi, yhteystietosi ja viestisi sisällön. Varauksista ja tilauksista lisäksi päivät, henkilömäärän ja toiveesi."] },
+      { h: "Miksi", p: ["Vastaamme kysymyksiin ja hoidamme majoitus-, juhlatila- ja kakkutilaukset. Peruste on sopimus tai sen valmistelu sekä kirjanpitolain velvoitteet."] },
+      { h: "Kuinka kauan", p: ["Viestit ja varaustiedot poistetaan, kun niitä ei enää tarvita. Kirjanpitoon kuuluvat tositteet säilytetään lain vaatiman ajan."] },
+      { h: "Sivuston kävijät", p: ["Sivusto ei käytä evästeitä eikä seuraa kävijöitä. Sivuston palvelimet (Vercel ja Cloudflare) tallentavat tietoturvan vuoksi lyhytaikaisesti teknisiä lokitietoja, kuten IP-osoitteen. Sivujen kartta tulee Huts.fi-palvelusta, eikä se aseta evästeitä."] },
+      { h: "Tietojen luovutus", p: ["Emme myy emmekä luovuta tietojasi eteenpäin. Viestit kulkevat käyttämiesi sähköposti- ja viestipalveluiden kautta."] },
+      { h: "Oikeutesi", p: ["Voit pyytää nähdä, korjata tai poistaa tietosi ottamalla yhteyttä yllä oleviin yhteystietoihin. Voit myös tehdä valituksen tietosuojavaltuutetun toimistoon (tietosuoja.fi)."] },
+    ],
+  },
+  en: {
+    title: "Privacy notice | Vuorikosken Mylly",
+    description: "How Vuorikosken Mylly handles contact and booking details. The site uses no cookies.",
+    h1: "Privacy notice",
+    updated: "Updated 3 November 2026",
+    sections: [
+      { h: "Who we are", p: [`${business.name} (business ID ${business.businessId}), ${business.street}, ${business.postalCode} ${business.village}, ${business.municipality}, Finland. Contact person Antti Jakola, ${business.phone}, ${business.email}.`] },
+      { h: "What we collect", p: ["When you call, email or message us (WhatsApp, Facebook, Instagram), we get your name, contact details and your message. For bookings and orders also the dates, number of people and your wishes."] },
+      { h: "Why", p: ["To answer your questions and handle stays, event room bookings and cake orders. The legal basis is the contract or preparing it, and Finnish accounting law."] },
+      { h: "How long", p: ["Messages and booking details are deleted when no longer needed. Accounting records are kept for the time the law requires."] },
+      { h: "Website visitors", p: ["This website uses no cookies and does not track visitors. Its servers (Vercel and Cloudflare) briefly keep technical logs, such as IP addresses, for security. The map on the pages comes from Huts.fi and sets no cookies."] },
+      { h: "Sharing", p: ["We never sell or pass on your details. Messages travel through the email and messaging services you use."] },
+      { h: "Your rights", p: ["You can ask to see, correct or delete your details using the contact details above. You can also complain to the Finnish Data Protection Ombudsman (tietosuoja.fi)."] },
+    ],
+  },
 };

@@ -20,6 +20,7 @@ import {
   pages,
   paths,
   photos,
+  privacyPage,
   route,
   tel,
   ui,
@@ -499,6 +500,28 @@ export function ContactView({ locale }: { locale: Locale }) {
           <Ask locale={locale} items={c.ask} />
         </div>
         <MapEmbed locale={locale} />
+      </section>
+    </Shell>
+  );
+}
+
+export function PrivacyView({ locale }: { locale: Locale }) {
+  const c = privacyPage[locale];
+  return (
+    <Shell locale={locale} otherHref={paths.privacy[other(locale)]}>
+      <section className="bg-coal text-flour">
+        <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:py-20">
+          <h1 className="font-display text-5xl leading-[1.04] sm:text-6xl">{c.h1}</h1>
+          <p className="mt-4 text-sm text-flour/60">{c.updated}</p>
+          <div className="mt-10 space-y-8">
+            {c.sections.map((s) => (
+              <div key={s.h}>
+                <h2 className="font-display text-2xl">{s.h}</h2>
+                {s.p.map((t) => <p key={t} className="mt-2 leading-relaxed text-flour/80">{t}</p>)}
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
     </Shell>
   );
