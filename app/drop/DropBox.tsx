@@ -7,7 +7,7 @@ type Lang = "fi" | "en" | "sv";
 
 const T = {
   fi: {
-    preview: "Esikatselu",
+    preview: "Katso uudet nettisivusi",
     homework: "Kotitehtävät",
     allDone: "Kaikki tehty – kiitos!",
     answer: "Vastaa",
@@ -40,7 +40,7 @@ const T = {
     loading: "Ladataan…",
   },
   en: {
-    preview: "Preview",
+    preview: "See your new website",
     homework: "Homework",
     allDone: "All done – thank you!",
     answer: "Answer",
@@ -73,7 +73,7 @@ const T = {
     loading: "Loading…",
   },
   sv: {
-    preview: "Förhandsvisning",
+    preview: "Se din nya webbplats",
     homework: "Hemuppgifter",
     allDone: "Allt klart – tack!",
     answer: "Svara",
@@ -301,12 +301,6 @@ export default function DropBox({ token }: { token: string }) {
       <header className="flex flex-wrap items-center justify-between gap-3 pt-6 sm:pt-10">
         <h1 className="text-[26px] sm:text-[32px] font-semibold tracking-tight">{data.site.name}</h1>
         <div className="flex items-center gap-2">
-          {data.site.preview_url && (
-            <a href={data.site.preview_url} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-[14px] font-medium ring-1 ring-black/10 hover:ring-black/25">
-              {t.preview} <Icon d={I.ext} className="w-3.5 h-3.5" />
-            </a>
-          )}
           <div className="flex rounded-full bg-white p-0.5 ring-1 ring-black/10" role="group" aria-label="Language">
             {(["fi", "en", "sv"] as Lang[]).map((v) => (
               <button key={v} onClick={() => chooseLang(v)} aria-pressed={l === v}
@@ -317,6 +311,16 @@ export default function DropBox({ token }: { token: string }) {
           </div>
         </div>
       </header>
+
+      {data.site.preview_url && (
+        <a href={data.site.preview_url} target="_blank" rel="noopener noreferrer"
+          className="group mt-5 flex items-center justify-between gap-4 rounded-3xl bg-[color:var(--d-accent)] px-5 py-5 text-white shadow-lg transition hover:brightness-110 sm:px-7 sm:py-6">
+          <span className="text-[19px] font-semibold sm:text-[22px]">{t.preview}</span>
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[color:var(--d-go)] text-[color:var(--d-ink)] transition group-hover:translate-x-1">
+            <Icon d={I.ext} className="w-5 h-5" />
+          </span>
+        </a>
+      )}
 
       <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-10 pb-28 lg:pb-12">
         {/* Homework: the first thing to act on */}
