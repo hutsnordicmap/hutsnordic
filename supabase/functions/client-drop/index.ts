@@ -15,6 +15,43 @@ const cors = {
 const json = (data: unknown, status = 200) =>
   new Response(JSON.stringify(data), { status, headers: { ...cors, "Content-Type": "application/json" } });
 
+// Every client gets these "Varaukset ja maksut" homework questions (Jeff 3.11.2026): where guests book,
+// double bookings, iCal links for a basic calendar sync, online card payments.
+const DEFAULT_PAGE = "Varaukset ja maksut";
+const DEFAULT_TASKS = [
+  {
+    fi: "Missä mökkejäsi voi varata nyt? Esim. Airbnb, Booking.com, puhelin tai sähköposti.",
+    en: "Where can guests book you today? For example Airbnb, Booking.com, phone or email.",
+    sv: "Var kan gäster boka er i dag? Till exempel Airbnb, Booking.com, telefon eller e-post.",
+  },
+  {
+    fi: "Miten vältät tuplavaraukset? Kopioitko varaukset käsin kalenterista toiseen?",
+    en: "How do you avoid double bookings? Do you copy bookings by hand from one calendar to another?",
+    sv: "Hur undviker ni dubbelbokningar? Kopierar ni bokningar för hand mellan kalendrar?",
+  },
+  {
+    fi: "Liitä Airbnb- tai Booking.com-kalenterisi vientilinkki (iCal), niin kalenterit pysyvät samassa tahdissa.",
+    en: "Paste your Airbnb or Booking.com calendar export link (iCal) so your calendars stay in step.",
+    sv: "Klistra in exportlänken (iCal) till er Airbnb- eller Booking.com-kalender så att kalendrarna hålls i takt.",
+  },
+  {
+    fi: "Haluatko ottaa korttimaksut vastaan suoraan omilla sivuillasi?",
+    en: "Would you like to take card payments directly on your own website?",
+    sv: "Vill ni ta emot kortbetalningar direkt på er egen webbplats?",
+  },
+];
+
+async function addDefaultTasks(siteId: unknown) {
+  const { count } = await db.from("client_tasks").select("id", { count: "exact", head: true })
+    .eq("site_id", siteId).eq("page", DEFAULT_PAGE);
+  if (count) return 0;
+  const { error } = await db.from("client_tasks").insert(DEFAULT_TASKS.map((q, i) => ({
+    site_id: siteId, page: DEFAULT_PAGE, question: q.fi, sort: 900 + i, i18n: q,
+  })));
+  if (error) throw error;
+  return DEFAULT_TASKS.length;
+}
+
 async function siteByToken(token: unknown) {
   if (typeof token !== "string" || token.length < 16) return null;
   const { data } = await db.from("client_sites").select("*").eq("token", token).eq("status", "active").maybeSingle();
@@ -243,7 +280,17 @@ Deno.serve(async (req) => {
         slug: b.slug, name: b.name, owner_name: b.owner_name ?? null, owner_email: b.owner_email ?? null,
         language: b.language === "en" ? "en" : "fi", preview_url: b.preview_url ?? null, notes: b.notes ?? null,
       }).select("id, token").single();
-      return error ? json({ error: error.message }, 500) : json(data);
+      if (error) return json({ error: error.message }, 500);
+      await addDefaultTasks(data.id);
+      return json(data);
+    }
+
+    if (action === "admin_default_tasks") {
+      try {
+        return json({ added: await addDefaultTasks(b.site_id) });
+      } catch (e) {
+        return json({ error: String((e as Error).message ?? e) }, 500);
+      }
     }
 
     return json({ error: "unknown action" }, 400);
