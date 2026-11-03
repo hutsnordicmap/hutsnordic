@@ -95,17 +95,14 @@ export const ui = {
     madeBy: "Sivut tehnyt ja ylläpitää",
     readMore: "Lue lisää",
     gallery: "Kuvat",
-    allPhotos: "Kaikki kuvat",
     close: "Sulje",
     prev: "Edellinen",
     next: "Seuraava",
     askTitle: "Kysytään Mikolta",
-    askNote: "Näkyy vain esikatselussa. Tähän tulee:",
     included: "Hintaan sisältyy",
     rooms: "huonetta",
     km: "km",
     m: "m",
-    crow: "Etäisyydet linnuntietä Huts.fi-kartalta.",
     onHuts: "Huts.fi",
     alsoBooking: "Löydät meidät myös Booking.comista",
   },
@@ -128,17 +125,14 @@ export const ui = {
     madeBy: "Site built and maintained by",
     readMore: "Read more",
     gallery: "Photos",
-    allPhotos: "All photos",
     close: "Close",
     prev: "Previous",
     next: "Next",
     askTitle: "To ask Mikko",
-    askNote: "Only shown in the preview. This will hold:",
     included: "Included in the price",
     rooms: "rooms",
     km: "km",
     m: "m",
-    crow: "Straight-line distances from the Huts.fi map.",
     onHuts: "Huts.fi",
     alsoBooking: "You can also find us on Booking.com",
   },
@@ -206,23 +200,23 @@ export const commonPhotos: Photo[] = [photos.dining, photos.kitchen, photos.brea
  * They show on the map next to the list; hovering or tapping a row highlights it on the map. No outbound links
  * (Jeff 2026-10-31: visitors should stay on the site). Straight lines from Vienantie 3, measured on huts.fi 2026-10-31.
  */
-export type Nearby = { id: string; kind: "place" | "route"; name: Text; km: number; icon: string; text: Text; length?: number };
+export type Nearby = { id: string; kind: "place" | "route"; name: Text; km: number; icon: string };
 export const nearby: Nearby[] = [
-  { id: "6e7cf632-c430-4583-a701-ed6b3b123438", kind: "route", km: 0.2, length: 4.8, icon: "footprints", name: { fi: "Kuhmon rantaraitti", en: "Kuhmo shore path" }, text: { fi: "Rantareitti keskustassa", en: "Lakeside path in town" } },
-  { id: "7c9f7f41-2c69-4226-afe8-5e5cfc94810a", kind: "route", km: 0.6, length: 2.2, icon: "footprints", name: { fi: "Koskipolku", en: "Koskipolku rapids path" }, text: { fi: "Polku Pajakkakosken varrella", en: "Path along Pajakkakoski rapids" } },
-  { id: "31283536-64b7-49ea-bc42-3aa3eabaf28a", kind: "route", km: 0.5, length: 11.8, icon: "waves", name: { fi: "Jämäksen melontareitti", en: "Jämäski canoe route" }, text: { fi: "Melontareitti", en: "Paddling route" } },
-  { id: "b2c28514-b27a-4b23-9a08-cf6aecc7dc15", kind: "route", km: 0.5, length: 5.4, icon: "snow", name: { fi: "Unskin uran valaistu latu", en: "Unskin ura lit ski track" }, text: { fi: "Valaistu hiihtolatu", en: "Lit ski track" } },
-  { id: "566623b0-c292-4168-b7f3-3774e6143d88", kind: "place", km: 0.2, icon: "book", name: { fi: "Juminkeko", en: "Juminkeko" }, text: { fi: "Kalevala-tietokeskus ja museo", en: "Kalevala information centre and museum" } },
-  { id: "dbc89590-c2f0-4844-ab58-284c0ef3cba2", kind: "place", km: 0.5, icon: "utensils", name: { fi: "Eskobar", en: "Eskobar" }, text: { fi: "Ravintola keskustassa", en: "Restaurant in town" } },
-  { id: "167783d7-6842-4dcd-90f6-6093efce5c39", kind: "place", km: 0.8, icon: "waves", name: { fi: "Ruukinrannan uimaranta", en: "Ruukinranta beach" }, text: { fi: "Uimaranta keskustassa", en: "Swimming beach in town" } },
-  { id: "e4eefac4-20d0-41d1-94ce-5cb2fa0b296d", kind: "place", km: 0.8, icon: "waves", name: { fi: "Kuhmon uimahalli", en: "Kuhmo swimming hall" }, text: { fi: "Uimahalli", en: "Indoor swimming hall" } },
-  { id: "6677498a-7a7a-4b43-897a-f7d58642ff78", kind: "place", km: 3.3, icon: "paw", name: { fi: "Luontokeskus Petola", en: "Petola nature centre" }, text: { fi: "Suurpedot ja luontopolku", en: "Large carnivores and a nature trail" } },
-  { id: "ba20d635-7d1a-4962-aadf-6050681f3e72", kind: "place", km: 3.4, icon: "snow", name: { fi: "Kalevalan liikuntakeskus", en: "Kalevala sports centre" }, text: { fi: "Valaistut ladut, yhteys 80 km latuverkostoon", en: "Lit ski loops linked to an 80 km network" } },
+  { id: "6e7cf632-c430-4583-a701-ed6b3b123438", kind: "route", km: 0.2, icon: "footprints", name: { fi: "Kuhmon rantaraitti", en: "Kuhmo shore path" } },
+  { id: "7c9f7f41-2c69-4226-afe8-5e5cfc94810a", kind: "route", km: 0.6, icon: "footprints", name: { fi: "Koskipolku", en: "Koskipolku rapids path" } },
+  { id: "31283536-64b7-49ea-bc42-3aa3eabaf28a", kind: "route", km: 0.5, icon: "waves", name: { fi: "Jämäksen melontareitti", en: "Jämäski canoe route" } },
+  { id: "b2c28514-b27a-4b23-9a08-cf6aecc7dc15", kind: "route", km: 0.5, icon: "snow", name: { fi: "Unskin uran valaistu latu", en: "Unskin ura lit ski track" } },
+  { id: "566623b0-c292-4168-b7f3-3774e6143d88", kind: "place", km: 0.2, icon: "book", name: { fi: "Juminkeko", en: "Juminkeko" } },
+  { id: "dbc89590-c2f0-4844-ab58-284c0ef3cba2", kind: "place", km: 0.5, icon: "utensils", name: { fi: "Eskobar", en: "Eskobar" } },
+  { id: "167783d7-6842-4dcd-90f6-6093efce5c39", kind: "place", km: 0.8, icon: "waves", name: { fi: "Ruukinrannan uimaranta", en: "Ruukinranta beach" } },
+  { id: "e4eefac4-20d0-41d1-94ce-5cb2fa0b296d", kind: "place", km: 0.8, icon: "waves", name: { fi: "Kuhmon uimahalli", en: "Kuhmo swimming hall" } },
+  { id: "6677498a-7a7a-4b43-897a-f7d58642ff78", kind: "place", km: 3.3, icon: "paw", name: { fi: "Luontokeskus Petola", en: "Petola nature centre" } },
+  { id: "ba20d635-7d1a-4962-aadf-6050681f3e72", kind: "place", km: 3.4, icon: "snow", name: { fi: "Kalevalan liikuntakeskus", en: "Kalevala sports centre" } },
 ];
 
 /** The guesthouse map plus the hand-picked places and routes above (huts.fi embed params places= and routes=). */
 export const nearbyEmbed = (locale: Locale) =>
-  `${mapEmbed(locale)}&places=${nearby.filter((n) => n.kind === "place").map((n) => n.id).join(",")}&routes=${nearby.filter((n) => n.kind === "route").map((n) => n.id).join(",")}`;
+  `${HUTS}/embed${hutsPlace[locale]}?address=1&hideAttr=1&places=${nearby.filter((n) => n.kind === "place").map((n) => n.id).join(",")}&routes=${nearby.filter((n) => n.kind === "route").map((n) => n.id).join(",")}`;
 
 /** Guest reviews go here once Jeff pastes them in: exact quote, first name, source and date read. Never as review schema. */
 export type Review = { text: Text; name: string; source: "Booking.com" | "Google" | "Facebook"; date: string };
@@ -235,7 +229,6 @@ export const home = {
     title: "Matkakoti Kieppi – edullinen majoitus Kuhmon keskustassa",
     description:
       "Kodikasta ja edullista majoitusta Kuhmon keskustassa: 14 huonetta yhdelle tai kahdelle, liinavaatteet, WiFi, asiakaskeittiö ja auton lämmityspaikka. Yritys-, ryhmä- ja pitkäaikaismajoitus.",
-    kicker: "Kuhmon keskusta · Kainuu",
     h1: "Kodikasta majoitusta Kuhmon keskustassa",
     lead: "Meillä on 14 kodikasta huonetta yhdelle tai kahdelle hengelle, ja lisävuode on mahdollinen. Liinavaatteet, WiFi ja asiakaskeittiö kuuluvat aina hintaan.",
     stats: [
@@ -245,9 +238,7 @@ export const home = {
     ],
     includedTitle: "Kaikki tarpeellinen, ei mitään turhaa",
     includedText: "Sama hinta kattaa nämä jokaisessa huoneessa. Kysy edullisia pakettejamme!",
-    roomsKicker: "Huoneet",
     roomsTitle: "Kaksi huonetyyppiä, sama kodikas talo",
-    whoKicker: "Kenelle",
     whoTitle: "Kuhmoon töihin, konserttiin tai luontoon",
     who: [
       { icon: "music", title: "Kamarimusiikin vieraat", text: "Heinäkuussa Kuhmo täyttyy musiikista. Kesällä tarjolla myös aamiainen.", to: "kuhmo" },
@@ -255,15 +246,11 @@ export const home = {
       { icon: "users", title: "Ryhmät", text: "Joukkueet, kuorot ja retkiryhmät. Aamiaisen voi tilata yli viidelle.", to: "tyo" },
       { icon: "calendar", title: "Pitkäaikainen majoitus", text: "Mahdollisuus myös pitkäaikaiseen majoittumiseen, keittiö käytössä.", to: "tyo" },
     ],
-    commonKicker: "Yhteiset tilat",
     commonTitle: "Keittiö, ruokailutila ja aamupala",
     commonText:
       "Täysin varusteltu asiakaskeittiö ja avara ruokailutila ovat kaikkien vieraiden käytössä. Aamiainen on saatavilla pääsääntöisesti sesonkiaikaan eli juhannuksesta heinäkuun loppuun. Muina aikoina sen voi tilata erikseen yli viidelle hengelle.",
-    reviewsKicker: "Vieraat sanovat",
     reviewsTitle: "Kodikas, siisti ja keskellä kaupunkia",
-    nearbyKicker: "Lähellä",
     nearbyTitle: "Reitit ja paikat lähellä",
-    hostKicker: "Isäntä",
     hostTitle: "Tervetuloa Kieppiin",
     hostPlaceholder: "Tähän tulee lyhyt esittely Mikosta ja kuva. Vieraat varaavat mieluummin, kun he tietävät kenen luo ovat tulossa.",
     ctaTitle: "Kysy vapaita huoneita",
@@ -273,7 +260,6 @@ export const home = {
     title: "Matkakoti Kieppi – affordable rooms in the centre of Kuhmo, Finland",
     description:
       "Cosy, affordable private rooms in the heart of Kuhmo, Kainuu: 14 rooms for one or two, bed linen, WiFi, a guest kitchen and free parking with car heater. Company, group and long-term stays.",
-    kicker: "Kuhmo town centre · Kainuu · Finland",
     h1: "Cosy private rooms in the heart of Kuhmo",
     lead: "We have 14 cosy rooms for one or two people, with an extra bed available. Towels and bed linen, WiFi and the guest kitchen are always included.",
     stats: [
@@ -283,9 +269,7 @@ export const home = {
     ],
     includedTitle: "Everything you need, nothing you don't",
     includedText: "The same price covers all of this in every room. Ask about our special offers and packages!",
-    roomsKicker: "Rooms",
     roomsTitle: "Two room types, one cosy house",
-    whoKicker: "Who stays here",
     whoTitle: "In Kuhmo for work, music or nature",
     who: [
       { icon: "music", title: "Chamber music guests", text: "Every July Kuhmo fills with music. Breakfast is served in summer.", to: "kuhmo" },
@@ -293,15 +277,11 @@ export const home = {
       { icon: "users", title: "Groups", text: "Teams, choirs and outdoor groups. Breakfast on order for more than five.", to: "tyo" },
       { icon: "calendar", title: "Long-term stays", text: "Long-term accommodation is possible, with the kitchen to use.", to: "tyo" },
     ],
-    commonKicker: "Shared spaces",
     commonTitle: "Kitchen, dining room and breakfast",
     commonText:
       "The fully fitted guest kitchen and the spacious dining area are open to all guests. Breakfast is mainly available in high season, from Midsummer to the end of July. At other times it can be ordered separately for more than five people.",
-    reviewsKicker: "Guests say",
     reviewsTitle: "Cosy, clean and right in town",
-    nearbyKicker: "Nearby",
     nearbyTitle: "Trails and places nearby",
-    hostKicker: "Your host",
     hostTitle: "Welcome to Kieppi",
     hostPlaceholder: "A short introduction and a photo of Mikko goes here. Guests book more readily when they know who they are visiting.",
     ctaTitle: "Ask for a room",
@@ -351,7 +331,6 @@ export type Section = { id?: string; title: string; text: string[] };
 export type ContentPage = {
   title: string;
   description: string;
-  kicker: string;
   h1: string;
   lead: string;
   hero: Photo;
@@ -369,7 +348,6 @@ export const pages: Record<PageId, Record<Locale, ContentPage>> = {
       title: "Huoneet – yhden ja kahden hengen huoneet Kuhmossa | Matkakoti Kieppi",
       description:
         "Matkakoti Kiepin yhden ja kahden hengen huoneet Kuhmon keskustassa. Parivuoteellinen huone ja lisävuode mahdollisia. Liinavaatteet, WiFi, asiakaskeittiö ja iltasauna tilauksesta.",
-      kicker: "Huoneet",
       h1: "Yhden ja kahden hengen huoneet Kuhmon keskustassa",
       lead: "Huoneita yhdelle tai kahdelle hengelle, ja lisävuode on mahdollinen. Nyt saatavilla myös parivuoteellinen huone.",
       hero: photos.twin,
@@ -413,7 +391,6 @@ export const pages: Record<PageId, Record<Locale, ContentPage>> = {
       title: "Rooms – single and twin rooms in Kuhmo, Finland | Matkakoti Kieppi",
       description:
         "Single and twin rooms at Matkakoti Kieppi in the centre of Kuhmo, Finland. Double bed and extra bed available. Bed linen, WiFi, guest kitchen and evening sauna on request.",
-      kicker: "Rooms",
       h1: "Single and twin rooms in the centre of Kuhmo",
       lead: "Rooms for one or two people, with an extra bed available. A room with a double bed is now also available.",
       hero: photos.twin,
@@ -459,7 +436,6 @@ export const pages: Record<PageId, Record<Locale, ContentPage>> = {
       title: "Työmatka-, ryhmä- ja pitkäaikainen majoitus Kuhmossa | Matkakoti Kieppi",
       description:
         "Edullinen majoitus työmatkalaisille, yrityksille ja ryhmille Kuhmon keskustassa. Asiakaskeittiö, WiFi, auton lämmityspaikka ja mahdollisuus pitkäaikaiseen majoitukseen. Kysy tarjous.",
-      kicker: "Työ ja ryhmät",
       h1: "Majoitus työmatkalaisille, yrityksille ja ryhmille",
       lead: "Majoitustarjouksia yritysten ja ryhmien tarpeisiin. Mahdollisuus myös pitkäaikaiseen majoittumiseen. Kysy: 040 199 8190!",
       hero: photos.dining,
@@ -503,7 +479,6 @@ export const pages: Record<PageId, Record<Locale, ContentPage>> = {
       title: "Work, group and long-term accommodation in Kuhmo | Matkakoti Kieppi",
       description:
         "Affordable rooms for work trips, companies and groups in the centre of Kuhmo, Finland. Guest kitchen, WiFi, car heater spot and long-term stays possible. Ask for an offer.",
-      kicker: "Work & groups",
       h1: "Rooms for work trips, companies and groups",
       lead: "Accommodation offers for companies and groups. Long-term stays are possible as well. Call us: +358 40 199 8190!",
       hero: photos.dining,
@@ -547,7 +522,6 @@ export const pages: Record<PageId, Record<Locale, ContentPage>> = {
       title: "Majoitus Kuhmon Kamarimusiikin ajaksi ja Kuhmon nähtävyydet | Matkakoti Kieppi",
       description:
         "Majoitu Kuhmon keskustassa Kamarimusiikin, Juminkekon ja Kainuun luonnon äärellä. Juminkeko 200 m, uimaranta ja uimahalli alle kilometrin, luontokeskus Petola ja ladut noin 3 km.",
-      kicker: "Kuhmo",
       h1: "Kuhmon Kamarimusiikki, Kalevala ja Kainuun luonto",
       lead: "Matkakoti Kieppi on Kuhmon keskustassa. Kesällä tullaan musiikin, talvella latujen ja ympäri vuoden Kainuun luonnon takia.",
       hero: photos.outside,
@@ -592,7 +566,6 @@ export const pages: Record<PageId, Record<Locale, ContentPage>> = {
       title: "Where to stay for Kuhmo Chamber Music, and things to do in Kuhmo | Matkakoti Kieppi",
       description:
         "Stay in the centre of Kuhmo, Finland, for the Chamber Music Festival, Juminkeko and Kainuu nature. Juminkeko 200 m, beach and swimming hall under 1 km, Petola nature centre and ski trails about 3 km.",
-      kicker: "Kuhmo",
       h1: "Kuhmo Chamber Music, the Kalevala and Kainuu nature",
       lead: "Matkakoti Kieppi is in the centre of Kuhmo. People come for the music in summer, the ski trails in winter and the Kainuu wilderness all year.",
       hero: photos.outside,
@@ -671,7 +644,6 @@ export const enquiry = {
     leave: "Lähtöpäivä",
     guests: "Henkeä",
     send: "Lähetä kysely",
-    note: "Kysely avautuu sähköpostiisi valmiiksi täytettynä.",
     subject: "Huonekysely",
     body: (room: string, a: string, l: string, g: string) =>
       `Hei,\n\nHaluaisin kysyä vapaata huonetta.\n\nHuone: ${room}\nTulopäivä: ${a}\nLähtöpäivä: ${l}\nHenkeä: ${g}\n\nTerveisin,\n`,
@@ -684,7 +656,6 @@ export const enquiry = {
     leave: "Departure",
     guests: "Guests",
     send: "Send enquiry",
-    note: "Your email app opens with the enquiry filled in.",
     subject: "Room enquiry",
     body: (room: string, a: string, l: string, g: string) =>
       `Hello,\n\nI would like to ask about a free room.\n\nRoom: ${room}\nArrival: ${a}\nDeparture: ${l}\nGuests: ${g}\n\nBest regards,\n`,

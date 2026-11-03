@@ -35,3 +35,4 @@ Nearby distances are straight lines from Huts.fi coordinates (measured 31.10.202
 Prices, check-in/out, room counts per type, pets, breakfast and sauna prices, invoicing and long-term prices, host
 photo and story, more photos (summer/winter outside, sauna, double room), guest reviews (Jeff to paste from Booking.com
 and Google), business ID, whether bookings should keep going to Booking.com.
+- 2026-11-03: Jeff's rule for all sites: simple purpose, architecture, design, implementation; no taglines, helper text or secondary labels. Cut every kicker above headings, the photo-strip labels, the map hint and distance note, the form note, and the second line under nearby rows. Nearby is now one list sorted by distance (icon + name + km). The nearby map drops trails=1, so it shows only the chosen trails, the chosen places and the guesthouse. Highlight works since taisto #653 deployed (3.11. ~08:45 UTC); Jeff looked just before the deploy.

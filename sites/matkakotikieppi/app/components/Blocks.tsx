@@ -31,7 +31,6 @@ export function Ask({ locale, items, tone = "light" }: { locale: Locale; items: 
         <ClipboardList className="size-5" aria-hidden />
         {t.askTitle}
       </p>
-      <p className="mt-1 text-xs opacity-70">{t.askNote}</p>
       <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
         {items.map((i) => (
           <li key={i}>{i}</li>
@@ -41,11 +40,10 @@ export function Ask({ locale, items, tone = "light" }: { locale: Locale; items: 
   );
 }
 
-export function SectionTitle({ kicker, title, tone = "light" }: { kicker?: string; title: string; tone?: "light" | "dark" }) {
+export function SectionTitle({ title }: { title: string }) {
   return (
     <div>
-      {kicker ? <p className={`label ${tone === "dark" ? "text-lingon-light" : "text-lingon"}`}>{kicker}</p> : null}
-      <h2 className="mt-3 text-balance font-display text-3xl leading-[1.1] sm:text-4xl lg:text-5xl">{title}</h2>
+      <h2 className="text-balance font-display text-3xl leading-[1.1] sm:text-4xl lg:text-5xl">{title}</h2>
     </div>
   );
 }

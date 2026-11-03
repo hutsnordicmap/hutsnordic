@@ -72,8 +72,7 @@ function EnquiryBand({ locale }: { locale: Locale }) {
     <section id="kysy" className="scroll-mt-20 bg-spruce text-paper">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.2fr_1fr] lg:items-center lg:py-28">
         <div>
-          <p className="label text-lingon-light">{business.name}</p>
-          <h2 className="mt-4 font-display text-4xl leading-[1.05] sm:text-6xl">{h.ctaTitle}</h2>
+          <h2 className="font-display text-4xl leading-[1.05] sm:text-6xl">{h.ctaTitle}</h2>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-paper/75">{h.ctaText}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <CallButton locale={locale} />
@@ -118,7 +117,7 @@ function Reviews({ locale }: { locale: Locale }) {
     if (!isPreview) return null;
     return (
       <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6">
-        <SectionTitle kicker={h.reviewsKicker} title={h.reviewsTitle} />
+        <SectionTitle title={h.reviewsTitle} />
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {[0, 1, 2].map((i) => (
             <div key={i} className="rounded-3xl border-2 border-dashed border-[#d9772f]/50 bg-[#fff6ee] p-6 text-sm text-ink/70">
@@ -136,7 +135,7 @@ function Reviews({ locale }: { locale: Locale }) {
   }
   return (
     <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6">
-      <SectionTitle kicker={h.reviewsKicker} title={h.reviewsTitle} />
+      <SectionTitle title={h.reviewsTitle} />
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         {reviews.map((r) => (
           <figure key={r.text.fi.slice(0, 30)} className="rounded-3xl bg-white p-6 shadow-sm">
@@ -166,8 +165,7 @@ export function HomeView({ locale }: { locale: Locale }) {
       <section className="overflow-hidden">
         <div className="mx-auto grid max-w-7xl gap-14 px-4 pt-0 pb-20 sm:px-6 sm:pt-10 lg:grid-cols-12 lg:gap-10 lg:pt-16 lg:pb-28">
           <div className="lg:col-span-6 lg:self-center">
-            <p className="label text-lingon">{h.kicker}</p>
-            <h1 className="mt-5 text-balance font-display text-[2.6rem] leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.6rem]">{h.h1}</h1>
+            <h1 className="text-balance font-display text-[2.6rem] leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.6rem]">{h.h1}</h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75">{h.lead}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <CallButton locale={locale} />
@@ -198,7 +196,7 @@ export function HomeView({ locale }: { locale: Locale }) {
       <section className="bg-spruce text-paper">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_1.4fr] lg:py-24">
           <div>
-            <SectionTitle kicker={t.included} title={h.includedTitle} tone="dark" />
+            <SectionTitle title={h.includedTitle} />
             <p className="mt-5 max-w-md text-lg leading-relaxed text-paper/75">{h.includedText}</p>
           </div>
           <Included locale={locale} tone="dark" />
@@ -208,8 +206,7 @@ export function HomeView({ locale }: { locale: Locale }) {
       {/* Rooms */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="label text-lingon">{h.roomsKicker}</p>
-          <h2 className="mt-3 text-balance font-display text-3xl leading-[1.1] sm:text-4xl lg:text-5xl">{h.roomsTitle}</h2>
+          <h2 className="text-balance font-display text-3xl leading-[1.1] sm:text-4xl lg:text-5xl">{h.roomsTitle}</h2>
         </div>
         <div className="mt-14">
           <RoomCards locale={locale} />
@@ -219,7 +216,7 @@ export function HomeView({ locale }: { locale: Locale }) {
       {/* Who stays here */}
       <section className="bg-birch">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
-          <SectionTitle kicker={h.whoKicker} title={h.whoTitle} />
+          <SectionTitle title={h.whoTitle} />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {h.who.map((w) => (
               <Link key={w.title} href={paths[w.to as PageId][locale]} className="group flex flex-col rounded-3xl bg-paper p-6 transition hover:-translate-y-1 hover:shadow-lg">
@@ -250,7 +247,7 @@ export function HomeView({ locale }: { locale: Locale }) {
             </div>
           </div>
           <div>
-            <SectionTitle kicker={h.commonKicker} title={h.commonTitle} />
+            <SectionTitle title={h.commonTitle} />
             <p className="mt-6 text-lg leading-relaxed text-ink/75">{h.commonText}</p>
             <Link href={paths.majoitus[locale]} className="mt-8 inline-flex items-center gap-2 font-semibold text-lingon hover:underline">
               {t.nav.majoitus} <ArrowRight className="size-4" aria-hidden />
@@ -260,10 +257,7 @@ export function HomeView({ locale }: { locale: Locale }) {
       </section>
 
       <section className="pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <p className="label text-lingon">{t.allPhotos}</p>
-        </div>
-        <div className="mx-auto mt-6 max-w-7xl">
+        <div className="mx-auto max-w-7xl">
           <PhotoStrip photos={[photos.single, photos.singleWindow, photos.twin, ...commonPhotos]} locale={locale} />
         </div>
       </section>
@@ -273,7 +267,7 @@ export function HomeView({ locale }: { locale: Locale }) {
       {/* Nearby and map */}
       <section className="bg-birch/60">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
-          <SectionTitle kicker={h.nearbyKicker} title={h.nearbyTitle} />
+          <SectionTitle title={h.nearbyTitle} />
           <div className="mt-10">
             <NearbyMap locale={locale} />
           </div>
@@ -291,8 +285,7 @@ export function HomeView({ locale }: { locale: Locale }) {
               {locale === "fi" ? "Kuva Mikosta" : "Photo of Mikko"}
             </div>
             <div>
-              <p className="label text-lingon">{h.hostKicker}</p>
-              <p className="mt-2 font-display text-3xl">{h.hostTitle}</p>
+              <p className="font-display text-3xl">{h.hostTitle}</p>
               <p className="mt-3 max-w-xl leading-relaxed text-ink/70">{h.hostPlaceholder}</p>
             </div>
           </div>
@@ -332,8 +325,7 @@ export function ContentView({ id, locale }: { id: PageId; locale: Locale }) {
               <span className="px-2">/</span>
               <span>{t.nav[id]}</span>
             </nav>
-            <p className="label mt-8 text-lingon">{p.kicker}</p>
-            <h1 className="mt-4 text-balance font-display text-[2.4rem] leading-[1.05] tracking-tight sm:text-6xl">{p.h1}</h1>
+            <h1 className="mt-8 text-balance font-display text-[2.4rem] leading-[1.05] tracking-tight sm:text-6xl">{p.h1}</h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75">{p.lead}</p>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {p.facts.map((f) => (
@@ -362,7 +354,7 @@ export function ContentView({ id, locale }: { id: PageId; locale: Locale }) {
           </section>
           <section className="bg-spruce text-paper">
             <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_1.4fr]">
-              <SectionTitle kicker={business.name} title={t.included} tone="dark" />
+              <SectionTitle title={t.included} />
               <Included locale={locale} tone="dark" />
             </div>
           </section>
@@ -390,17 +382,14 @@ export function ContentView({ id, locale }: { id: PageId; locale: Locale }) {
       </section>
 
       <section className="pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <p className="label text-lingon">{t.gallery}</p>
-        </div>
-        <div className="mx-auto mt-6 max-w-7xl">
+        <div className="mx-auto max-w-7xl">
           <PhotoStrip photos={p.photos} locale={locale} />
         </div>
       </section>
 
       {id === "kuhmo" ? (
         <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6">
-          <SectionTitle kicker={home[locale].nearbyKicker} title={home[locale].nearbyTitle} />
+          <SectionTitle title={home[locale].nearbyTitle} />
           <div className="mt-10">
             <NearbyMap locale={locale} />
           </div>
@@ -409,7 +398,7 @@ export function ContentView({ id, locale }: { id: PageId; locale: Locale }) {
 
       <section className="bg-birch/60">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-          <SectionTitle kicker={business.name} title={t.findUs} />
+          <SectionTitle title={t.findUs} />
           <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_1.5fr]">
             <GettingHere locale={locale} />
             <MapEmbed locale={locale} />

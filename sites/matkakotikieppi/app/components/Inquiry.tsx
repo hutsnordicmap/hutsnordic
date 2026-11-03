@@ -60,8 +60,7 @@ export function Inquiry({ locale, tone = "light" }: { locale: Locale; tone?: "li
           {t.send}
         </button>
       </div>
-      <p className={`mt-3 text-xs ${dark ? "text-paper/60" : "text-ink/60"}`}>{t.note}</p>
-      <a href={tel(business.phone)} className={`mt-2 inline-flex items-center gap-1.5 text-sm font-semibold hover:underline ${dark ? "text-lingon-light" : "text-lingon"}`}>
+      <a href={tel(business.phone)} className={`mt-4 inline-flex items-center gap-1.5 text-sm font-semibold hover:underline ${dark ? "text-lingon-light" : "text-lingon"}`}>
         <Phone className="size-4" aria-hidden />
         {business.phoneLocal}
       </a>
