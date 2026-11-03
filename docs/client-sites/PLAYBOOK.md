@@ -201,6 +201,10 @@ After each client round, add what was new to the site's case file and, if it's a
 - Embed: `…/embed/…/org/<orgId>?address=1&trails=1&hideAttr=1&places=<uuid,…>&routes=<uuid,…>` (huts.fi ids). Row hover → `postMessage({type:"huts-embed-highlight", id})`, row tap → `{type:"huts-embed-focus", id}`. Copy `sites/mokkiloma/app/components/NearbyMap.tsx`.
 - Exactly one Huts.fi link per map: `hideAttr=1` hides the iframe's own credit, and our followed link sits under the map (to the place's huts.fi page when there is one) with "© Maanmittauslaitos" beside it (tile licence).
 - Background colour is chosen per brand, not a default. Mökkiloma uses Arctic Homes' cool grey #f1f5f9.
+- **Map clicks to the client's own pages (Jeff, 2026-11-03):** when a client has (or we write) a page per nearby place,
+  add `links=<hutsId>:/path,…` to the embed (same-site paths only). Hover card and pin click then open the client's page,
+  so the SEO stays with them; the Huts.fi credit under the map stays. First used on Kelomaja (`sites/kelomaja`,
+  `mapEmbed()` in content.ts). Needs taisto PR #661 live on huts.fi; until then production ignores it.
 
 ## Bookings, calendars and payments: ask every client (Jeff, 2026-11-03)
 - We offer every client help with taking card payments online and with calendar sync (Airbnb, Booking.com and

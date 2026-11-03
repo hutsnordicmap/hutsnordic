@@ -1,0 +1,55 @@
+import {
+  Baby,
+  Bath,
+  Bike,
+  Binoculars,
+  Bus,
+  CableCar,
+  Check,
+  Dog,
+  Flame,
+  Footprints,
+  Lock,
+  MountainSnow,
+  Shirt,
+  ShoppingBasket,
+  Snowflake,
+  Store,
+  Sun,
+  Tent,
+  Thermometer,
+  Tv,
+  Waves,
+  Wifi,
+  type LucideIcon,
+} from "lucide-react";
+
+const icons: Record<string, LucideIcon> = {
+  baby: Baby,
+  bath: Bath,
+  bike: Bike,
+  binoculars: Binoculars,
+  bus: Bus,
+  "cable-car": CableCar,
+  check: Check,
+  dog: Dog,
+  flame: Flame,
+  footprints: Footprints,
+  lock: Lock,
+  "mountain-snow": MountainSnow,
+  shirt: Shirt,
+  "shopping-basket": ShoppingBasket,
+  snowflake: Snowflake,
+  store: Store,
+  sun: Sun,
+  tent: Tent,
+  thermometer: Thermometer,
+  tv: Tv,
+  waves: Waves,
+  wifi: Wifi,
+};
+
+export function Icon({ name, className = "size-5" }: { name: string; className?: string }) {
+  const C = icons[name] ?? Check;
+  return <C className={className} strokeWidth={1.6} aria-hidden />;
+}
