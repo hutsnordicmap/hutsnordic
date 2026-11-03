@@ -57,8 +57,8 @@ New client: `admin_create_site` `{slug, name, owner_name, owner_email, language,
 Then add the first homework with `admin_task`.
 
 ## Known limits
-- The project's global upload limit is set in the Supabase dashboard (Storage → Settings). On 31.10.2026 it was
-  50 MB; it must be raised for videos.
+- The project's global upload limit is set in the Supabase dashboard (Storage → Settings). Jeff raised it to
+  10 GB (early November 2026); the `client-drops` bucket has no limit of its own.
 - HEIC photos from iPhones upload fine but get no thumbnail in Chrome (an icon shows instead).
 
 ## Page layout (Jeff, 3.11.2026)
