@@ -50,3 +50,12 @@ Then add the first homework with `admin_task`.
 - The project's global upload limit is set in the Supabase dashboard (Storage → Settings). On 31.10.2026 it was
   50 MB; it must be raised for videos.
 - HEIC photos from iPhones upload fine but get no thumbnail in Chrome (an icon shows instead).
+
+## Page layout (Jeff, 3.11.2026)
+- Homework first: it is what the client can act on. On desktop the drop + "send to AI" panel sticks on the right
+  like a buy box; on phones it follows the homework and a send bar sticks to the bottom while there is something to send.
+- No taglines, helper text or secondary labels. If a screen needs them, fix the layout.
+- FI / EN / SV switch for the page itself. Homework questions and replies show as written, so write them in the
+  client's language (`client_sites.language`).
+- Gotcha: copy `input.files` with `Array.from` before resetting `input.value`. The FileList is live, and a
+  state updater that reads it later gets an empty list (this silently dropped homework photos).

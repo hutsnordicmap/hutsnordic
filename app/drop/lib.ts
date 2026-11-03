@@ -134,13 +134,16 @@ export function fmtSize(n: number | null) {
   return `${(n / 1024 ** 3).toFixed(1)} GB`;
 }
 
-export function ago(iso: string | null, lang: "fi" | "en") {
-  if (!iso) return lang === "fi" ? "ei vielä" : "never";
+export function ago(iso: string | null, lang: "fi" | "en" | "sv") {
+  const w = {
+    fi: { never: "ei vielä", now: "juuri nyt", m: "min sitten", h: "t sitten", d: "pv sitten" },
+    en: { never: "never", now: "just now", m: "min ago", h: "h ago", d: "d ago" },
+    sv: { never: "aldrig", now: "nyss", m: "min sedan", h: "h sedan", d: "d sedan" },
+  }[lang];
+  if (!iso) return w.never;
   const s = (Date.now() - new Date(iso).getTime()) / 1000;
-  const fi = lang === "fi";
-  if (s < 60) return fi ? "juuri nyt" : "just now";
-  if (s < 3600) return fi ? `${Math.floor(s / 60)} min sitten` : `${Math.floor(s / 60)} min ago`;
-  if (s < 86400) return fi ? `${Math.floor(s / 3600)} t sitten` : `${Math.floor(s / 3600)} h ago`;
-  const d = Math.floor(s / 86400);
-  return fi ? `${d} pv sitten` : `${d} d ago`;
+  if (s < 60) return w.now;
+  if (s < 3600) return `${Math.floor(s / 60)} ${w.m}`;
+  if (s < 86400) return `${Math.floor(s / 3600)} ${w.h}`;
+  return `${Math.floor(s / 86400)} ${w.d}`;
 }
