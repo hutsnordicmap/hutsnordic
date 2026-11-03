@@ -19,7 +19,7 @@ const T = {
     clients: "Clients", waiting: (n: number) => `${n} waiting`, back: "Clients",
     status: { waiting: "Waiting for Claude", working: "Claude is working", done: "Up to date", none: "Not started" } as Record<Status, string>,
     newN: (n: number) => `${n} new`, homework: "Homework", files: "Files", texts: "Texts",
-    start: "Start work now", clientPage: "Client page", copy: "Copy link", copied: "Copied", preview: "Preview",
+    start: "Start work now", clientPage: "Client page", copy: "Copy link", copied: "Copied", preview: "Preview", live: "Live",
     paste: "Paste anything…", clientSees: "Client sees it", save: "Save",
     activity: "Activity", nothing: "Nothing yet.", pick: "Pick a client",
     who: { client: "Client", jeff: "Jeff", claude: "Claude" } as Record<string, string>,
@@ -30,7 +30,7 @@ const T = {
     clients: "Asiakkaat", waiting: (n: number) => `${n} odottaa`, back: "Asiakkaat",
     status: { waiting: "Odottaa Claudea", working: "Claude työskentelee", done: "Ajan tasalla", none: "Ei aloitettu" } as Record<Status, string>,
     newN: (n: number) => `${n} uutta`, homework: "Kotitehtävät", files: "Tiedostot", texts: "Tekstit",
-    start: "Aloita työ nyt", clientPage: "Asiakkaan sivu", copy: "Kopioi linkki", copied: "Kopioitu", preview: "Esikatselu",
+    start: "Aloita työ nyt", clientPage: "Asiakkaan sivu", copy: "Kopioi linkki", copied: "Kopioitu", preview: "Esikatselu", live: "Julkaistu",
     paste: "Liitä mitä vain…", clientSees: "Asiakas näkee", save: "Tallenna",
     activity: "Tapahtumat", nothing: "Ei vielä mitään.", pick: "Valitse asiakas",
     who: { client: "Asiakas", jeff: "Jeff", claude: "Claude" } as Record<string, string>,
@@ -158,6 +158,7 @@ function ClientRow({ r, t, lang, active, onClick }: { r: Row; t: (typeof T)[Lang
           <div className="flex items-center gap-2">
             <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${active && s === "none" ? "bg-white/30" : tone[s].dot}`} title={t.status[s]} />
             <span translate="no" className="truncate text-[17px] font-semibold">{r.name}</span>
+            {r.status === "live" && <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-semibold ${active ? "bg-white/15 text-white" : tone.done.chip}`}>{t.live}</span>}
           </div>
           <div translate="no" className={`mt-0.5 truncate pl-[18px] text-[14px] ${active ? "text-white/65" : "text-[color:var(--d-ink2)]"}`}>{r.owner_name}</div>
         </div>
@@ -251,7 +252,7 @@ function Detail({ row, adminKey, t, lang, onChange }: { row: Row; adminKey: stri
           </button>
           <a href={`/drop/${row.token}`} target="_blank" rel="noopener noreferrer" className={pill}>{t.clientPage} ↗</a>
           <button onClick={copy} className={pill}>{copied ? `${t.copied} ✓` : t.copy}</button>
-          {row.preview_url && <a href={row.preview_url} target="_blank" rel="noopener noreferrer" className={pill}>{t.preview} ↗</a>}
+          {row.preview_url && <a href={row.preview_url} target="_blank" rel="noopener noreferrer" className={pill}>{row.status === "live" ? t.live : t.preview} ↗</a>}
         </div>
       </section>
 
