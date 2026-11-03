@@ -1,6 +1,7 @@
 import { Bodoni_Moda, Hanken_Grotesk } from "next/font/google";
 import { PreviewRibbon } from "@/app/components/PreviewRibbon";
-import type { Locale } from "@/app/content";
+import { Stats } from "@/app/components/Stats";
+import { isPreview, type Locale } from "@/app/content";
 import "@/app/globals.css";
 
 const hanken = Hanken_Grotesk({ subsets: ["latin", "latin-ext"], variable: "--font-hanken" });
@@ -12,6 +13,7 @@ export function RootHtml({ lang, children }: { lang: Locale; children: React.Rea
       <body className="min-h-screen font-sans">
         <PreviewRibbon lang={lang} />
         <div className="relative">{children}</div>
+        <Stats enabled={!isPreview} />
       </body>
     </html>
   );
