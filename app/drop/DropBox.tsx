@@ -28,6 +28,7 @@ const T = {
       "Jeff tarkistaa, että kaikki menee oikein.",
     ],
     messages: "Viestit",
+    newReply: "Uusi vastaus",
     you: "Sinä",
     claude: "Tekoälyagentti",
     jeff: "Jeff",
@@ -61,6 +62,7 @@ const T = {
       "Jeff checks that everything is done right.",
     ],
     messages: "Messages",
+    newReply: "New reply",
     you: "You",
     claude: "AI agent",
     jeff: "Jeff",
@@ -94,6 +96,7 @@ const T = {
       "Jeff kontrollerar att allt blir rätt.",
     ],
     messages: "Meddelanden",
+    newReply: "Nytt svar",
     you: "Du",
     claude: "AI-agent",
     jeff: "Jeff",
@@ -172,6 +175,7 @@ export default function DropBox({ token }: { token: string }) {
   const [busy, setBusy] = useState(false);
   const [drag, setDrag] = useState(false);
   const [help, setHelp] = useState(false);
+  const [seen, setSeen] = useState<string | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
   const panelGo = useRef<HTMLDivElement>(null);
   const [panelGoVisible, setPanelGoVisible] = useState(false);
@@ -183,6 +187,10 @@ export default function DropBox({ token }: { token: string }) {
       const d = await api<SiteData>({ action: "get", token });
       setData(d);
       setLang((cur) => cur ?? readLang(token, d.site.language));
+      setSeen((cur) => {
+        if (cur) return cur;
+        try { return localStorage.getItem(`drop-seen:${token}`); } catch { return null; }
+      });
     } catch {
       setMissing(true);
     }
@@ -282,6 +290,10 @@ export default function DropBox({ token }: { token: string }) {
   };
 
   const lastWork = data?.work[0];
+  const closeReply = (id: string) => {
+    setSeen(id);
+    try { localStorage.setItem(`drop-seen:${token}`, id); } catch {}
+  };
   const pending = useMemo(() => {
     if (!data) return 0;
     const since = lastWork ? new Date(lastWork.requested_at ?? lastWork.created_at).getTime() : 0;
@@ -300,6 +312,9 @@ export default function DropBox({ token }: { token: string }) {
   ].sort((a, b) => b.at.localeCompare(a.at));
   const canGo = (pending > 0 || text.trim().length > 0) && !busy && !uploading;
   const status = lastWork && pending === 0 && !text.trim() ? lastWork : null;
+  // The newest reply to the client sits at the top until they close it, so nobody has to scroll to find it.
+  const reply = data.messages.find((m) => m.author !== "client");
+  const showReply = reply && reply.id !== seen && Date.now() - new Date(reply.created_at).getTime() < 30 * 86400000;
   const looseUps = ups.filter((u) => !u.taskId);
 
   const goButton = (
@@ -325,6 +340,20 @@ export default function DropBox({ token }: { token: string }) {
           </div>
         </div>
       </header>
+
+      {showReply && reply && (
+        <section className="relative mt-5 rounded-3xl bg-[color:var(--d-ink)] px-5 py-5 text-white shadow-lg sm:px-7 sm:py-6" aria-live="polite">
+          <button onClick={() => closeReply(reply.id)} aria-label="✕"
+            className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full text-white/60 hover:bg-white/10 hover:text-white">
+            <Icon d={I.x} className="w-4 h-4" />
+          </button>
+          <div className="flex items-center gap-2 pr-10 text-[13px] font-semibold text-[color:var(--d-go)]">
+            <span className="h-2 w-2 rounded-full bg-[color:var(--d-go)]" />
+            {t.newReply} · <span className="font-normal text-white/60">{reply.author === "jeff" ? t.jeff : t.claude}, {ago(reply.created_at, l)}</span>
+          </div>
+          <p className="mt-2 whitespace-pre-wrap break-words text-[16px] leading-relaxed">{tr(reply.i18n, l, reply.body)}</p>
+        </section>
+      )}
 
       {data.site.preview_url && (
         <a href={data.site.preview_url} target="_blank" rel="noopener noreferrer"
@@ -522,7 +551,8 @@ function TaskCard({ task, t, l, answers, ups, onSend, onRetry }: {
   const [sending, setSending] = useState(false);
   const photo = useRef<HTMLInputElement>(null);
   const done = task.status === "done";
-  const answered = task.status === "answered" || answers.length > 0;
+  // A task we reopened stays open even if it has an earlier answer, so the client sees it still needs one.
+  const answered = task.status === "answered";
   const previews = useMemo(() => picked.map((f) => (f.type.startsWith("image/") ? URL.createObjectURL(f) : null)), [picked]);
   useEffect(() => () => previews.forEach((p) => p && URL.revokeObjectURL(p)), [previews]);
 
