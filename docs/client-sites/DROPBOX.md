@@ -6,7 +6,7 @@ homework, read our replies, and press **"Lähetä tekoälylle – aloita työ"**
 | Piece | Where |
 |---|---|
 | Client page | `hutsnordic.fi/drop/<token>` (`app/drop/DropBox.tsx`). No login: the link is the key. Finnish or English per client. |
-| Jeff's admin panel | `hutsnordic.fi/drop/admin/<admin key>` (`app/drop/Admin.tsx`). Who is waiting, last activity, files, homework, paste box. |
+| Jeff's admin panel | `hutsnordic.fi/drop/admin/<admin key>` (`app/drop/Admin.tsx`). Who is waiting, last activity, files, homework, paste box. Tap any activity line for the full text (translated, original one tap away), the question it answers, or the file at full size (photos and videos play in place). |
 | API | Supabase edge function `client-drop` in the Huts-fi project (`supabase/functions/client-drop/index.ts`). Deploy with the Supabase MCP `deploy_edge_function`, `verify_jwt: false`. |
 | Data | Tables `client_sites`, `client_items`, `client_tasks`, `client_messages`, `client_work_requests`, `client_admin_keys` (RLS on, no policies: only the edge function reads them). |
 | Files | Private bucket `client-drops`, folder per client token. Browsers upload with resumable (TUS) uploads; the storage policy only lets them write into an active client's folder. Thumbnails are made in the browser. |
@@ -35,6 +35,9 @@ All calls are `POST https://aqyqvkpbznygsbmrzfde.supabase.co/functions/v1/client
 4. Do the work the playbook way (`PLAYBOOK.md`): update `sites/<site>/`, rebuild the preview, publish once per
    round (each push to main is one Vercel build, so batch).
 5. `admin_mark_used` `{site_id, ids, note}` for every item used or deliberately left out.
+5b. `admin_item_i18n` `{site_id, items: [{id, i18n: {fi, en, sv}}]}` for every new client text: Jeff reads the
+   admin panel in English, and each line shows the translation with the original one tap away. Translate it
+   yourself (no paid translation API).
 6. `admin_task` `{site_id, op: "done" | "drop" | "reopen", task_id}` or `{op: "add", question, page, hint, sort, i18n}`.
    Always pass `i18n: {fi, en, sv}` (the page has a FI/EN/SV switch); `{op: "i18n", task_id, i18n}` fixes an old one.
    Keep each question answerable in one line or one photo.

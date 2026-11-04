@@ -24,7 +24,9 @@ const T = {
     activity: "Activity", nothing: "Nothing yet.", pick: "Pick a client",
     who: { client: "Client", jeff: "Jeff", claude: "Claude" } as Record<string, string>,
     pressed: (n: number) => `Pressed start work · ${n} items`,
+    auto: (n: number) => `Saved ${n} items and left · started automatically`,
     denied: "Not allowed.", loading: "Loading…",
+    open: "Open", original: "Original", translated: "English", showAll: (n: number) => `Show all ${n}`,
   },
   fi: {
     clients: "Asiakkaat", waiting: (n: number) => `${n} odottaa`, back: "Asiakkaat",
@@ -35,7 +37,9 @@ const T = {
     activity: "Tapahtumat", nothing: "Ei vielä mitään.", pick: "Valitse asiakas",
     who: { client: "Asiakas", jeff: "Jeff", claude: "Claude" } as Record<string, string>,
     pressed: (n: number) => `Painoi aloita työ · ${n} kpl`,
+    auto: (n: number) => `Tallensi ${n} kpl ja lähti · aloitettiin automaattisesti`,
     denied: "Ei pääsyä.", loading: "Ladataan…",
+    open: "Avaa", original: "Alkuperäinen", translated: "Suomeksi", showAll: (n: number) => `Näytä kaikki ${n}`,
   },
 };
 
@@ -122,7 +126,7 @@ export default function Admin({ adminKey }: { adminKey: string }) {
         </div>
       </header>
 
-      <div className="grid gap-6 pb-12 lg:grid-cols-[340px_minmax(0,1fr)] lg:items-start">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-6 pb-12 lg:grid-cols-[340px_minmax(0,1fr)] lg:items-start">
         <ul className={`space-y-2 ${current ? "hidden lg:block" : ""}`}>
           {sorted.map((r) => (
             <li key={r.id}>
@@ -214,13 +218,28 @@ function Detail({ row, adminKey, t, lang, onChange }: { row: Row; adminKey: stri
     setTimeout(() => setCopied(false), 1500);
   };
 
-  const recent = d
+  const recent: Entry[] = d
     ? [
-        ...d.items.map((i) => ({ at: i.created_at, who: i.source, thumb: i.thumb_url, icon: i.kind === "file" ? "📎" : "✏️",
-          what: i.kind === "file" ? `${i.filename} · ${fmtSize(i.size_bytes)}` : (i.body ?? ""), fresh: !i.processed_at })),
-        ...d.messages.map((m) => ({ at: m.created_at, who: m.author, thumb: null, icon: "💬", what: m.i18n?.[lang] || m.body, fresh: false })),
-        ...d.work.map((w) => ({ at: w.created_at, who: "client", thumb: null, icon: "▶︎", what: t.pressed(w.item_count), fresh: false })),
-      ].sort((a, b) => b.at.localeCompare(a.at)).slice(0, 25)
+        ...d.items.map((i): Entry => {
+          const task = i.task_id ? d.tasks.find((q) => q.id === i.task_id) : undefined;
+          const text = i.kind === "text" ? i.i18n?.[lang] || i.body || "" : "";
+          return {
+            key: `i${i.id}`, at: i.created_at, who: i.source, icon: i.kind === "file" ? "📎" : "✏️", thumb: i.thumb_url,
+            text: i.kind === "file" ? `${i.filename} · ${fmtSize(i.size_bytes)}` : text,
+            original: i.kind === "text" && i.body && i.body !== text ? i.body : null,
+            question: task ? task.i18n?.[lang] || task.question : null,
+            file: i.kind === "file" ? { id: i.id, mime: i.mime ?? "" } : null,
+            note: i.agent_note, fresh: !i.processed_at,
+          };
+        }),
+        ...d.messages.map((m): Entry => {
+          const text = m.i18n?.[lang] || m.body;
+          return { key: `m${m.id}`, at: m.created_at, who: m.author, icon: "💬", thumb: null, text,
+            original: m.body !== text ? m.body : null, question: null, file: null, note: null, fresh: false };
+        }),
+        ...d.work.map((w): Entry => ({ key: `w${w.id}`, at: w.created_at, who: "client", icon: "▶︎", thumb: null,
+          text: w.auto ? t.auto(w.item_count) : t.pressed(w.item_count), original: null, question: null, file: null, note: null, fresh: false })),
+      ].sort((a, b) => b.at.localeCompare(a.at))
     : [];
 
   const pill = "inline-flex items-center rounded-full bg-white px-3.5 py-2 text-[14px] font-medium ring-1 ring-black/10 hover:ring-black/25";
@@ -270,25 +289,114 @@ function Detail({ row, adminKey, t, lang, onChange }: { row: Row; adminKey: stri
 
       <section className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5 sm:p-6">
         <h3 className="text-[17px] font-semibold">{t.activity}</h3>
-        <ul className="mt-3 divide-y divide-black/5">
-          {recent.map((x, i) => (
-            <li key={i} className="flex items-center gap-3 py-2.5">
-              {x.thumb ? (
-                // eslint-disable-next-line @next/next/no-img-element -- signed storage URL
-                <img src={x.thumb} alt="" className="h-10 w-10 shrink-0 rounded-lg object-cover" />
-              ) : (
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[color:var(--d-bg)] text-[16px]">{x.icon}</span>
-              )}
-              <div className="min-w-0 flex-1">
-                <div className={`truncate text-[14px] ${x.fresh ? "font-semibold text-[color:var(--d-ink)]" : "text-[color:var(--d-ink2)]"}`}>{x.what}</div>
-                <div className="text-[12px] text-[color:var(--d-ink3)]">{t.who[x.who] ?? x.who} · {ago(x.at, lang)}</div>
-              </div>
-              {x.fresh && <span className={`h-2 w-2 shrink-0 rounded-full ${tone.waiting.dot}`} />}
-            </li>
-          ))}
-          {d && recent.length === 0 && <li className="py-2 text-[14px] text-[color:var(--d-ink3)]">{t.nothing}</li>}
-        </ul>
+        <Activity entries={recent} loaded={!!d} siteId={row.id} adminKey={adminKey} t={t} lang={lang} />
       </section>
+    </div>
+  );
+}
+
+type Entry = {
+  key: string; at: string; who: string; icon: string; thumb: string | null;
+  text: string; original: string | null; question: string | null;
+  file: { id: string; mime: string } | null; note: string | null; fresh: boolean;
+};
+
+// Every line opens in place: full text (in the panel's language, original one tap away), the homework
+// question it answers, and files at full size (photos and videos play right here, anything else opens).
+function Activity({ entries, loaded, siteId, adminKey, t, lang }: {
+  entries: Entry[]; loaded: boolean; siteId: string; adminKey: string; t: (typeof T)[Lang]; lang: Lang;
+}) {
+  const [openKey, setOpenKey] = useState<string | null>(null);
+  const [all, setAll] = useState(false);
+  const [urls, setUrls] = useState<Record<string, string | null>>({});
+  const [orig, setOrig] = useState<Record<string, boolean>>({});
+  const shown = all ? entries : entries.slice(0, 25);
+
+  const toggle = async (x: Entry) => {
+    const next = openKey === x.key ? null : x.key;
+    setOpenKey(next);
+    if (next && x.file && !(x.file.id in urls)) {
+      const r = await api<{ files: { id: string; url: string | null }[] }>({
+        action: "admin_file_urls", key: adminKey, site_id: siteId, ids: [x.file.id],
+      }).catch(() => ({ files: [] }));
+      setUrls((u) => ({ ...u, [x.file!.id]: r.files[0]?.url ?? null }));
+    }
+  };
+
+  return (
+    <>
+      <ul className="mt-3 divide-y divide-black/5">
+        {shown.map((x) => {
+          const isOpen = openKey === x.key;
+          const url = x.file ? urls[x.file.id] : undefined;
+          const showOrig = !!orig[x.key] && !!x.original;
+          return (
+            <li key={x.key}>
+              <button onClick={() => toggle(x)} aria-expanded={isOpen}
+                className="flex w-full items-center gap-3 py-2.5 text-left hover:bg-black/[.02]">
+                {x.thumb ? (
+                  // eslint-disable-next-line @next/next/no-img-element -- signed storage URL
+                  <img src={x.thumb} alt="" className="h-10 w-10 shrink-0 rounded-lg object-cover" />
+                ) : (
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[color:var(--d-bg)] text-[16px]">{x.icon}</span>
+                )}
+                <div className="min-w-0 flex-1">
+                  <div className={`truncate text-[14px] ${x.fresh ? "font-semibold text-[color:var(--d-ink)]" : "text-[color:var(--d-ink2)]"}`}>{x.text}</div>
+                  <div className="text-[12px] text-[color:var(--d-ink3)]">{t.who[x.who] ?? x.who} · {ago(x.at, lang)}</div>
+                </div>
+                {x.fresh && <span className={`h-2 w-2 shrink-0 rounded-full ${tone.waiting.dot}`} />}
+              </button>
+              {isOpen && (
+                <div className="mb-3 space-y-3 rounded-2xl bg-[color:var(--d-bg)] p-4 text-[15px] leading-relaxed">
+                  {x.question && <p className="text-[14px] text-[color:var(--d-ink2)]">{x.question}</p>}
+                  {x.file ? (
+                    <FileView url={url} mime={x.file.mime} thumb={x.thumb} name={x.text} t={t} />
+                  ) : (
+                    <p className="whitespace-pre-wrap break-words">{showOrig ? x.original : x.text}</p>
+                  )}
+                  {x.original && (
+                    <button onClick={() => setOrig((o) => ({ ...o, [x.key]: !o[x.key] }))}
+                      className="text-[13px] font-medium text-[color:var(--d-accent)]">
+                      {showOrig ? t.translated : t.original}
+                    </button>
+                  )}
+                  {x.note && <p className="text-[13px] text-[color:var(--d-ink3)]">Claude: {x.note}</p>}
+                </div>
+              )}
+            </li>
+          );
+        })}
+        {loaded && entries.length === 0 && <li className="py-2 text-[14px] text-[color:var(--d-ink3)]">{t.nothing}</li>}
+      </ul>
+      {!all && entries.length > 25 && (
+        <button onClick={() => setAll(true)} className="mt-2 text-[14px] font-medium text-[color:var(--d-accent)]">{t.showAll(entries.length)}</button>
+      )}
+    </>
+  );
+}
+
+function FileView({ url, mime, thumb, name, t }: { url: string | null | undefined; mime: string; thumb: string | null; name: string; t: (typeof T)[Lang] }) {
+  if (url === undefined) return <p className="text-[14px] text-[color:var(--d-ink3)]">{t.loading}</p>;
+  // Chrome can't show HEIC, so iPhone photos fall back to the thumbnail plus the Open link.
+  const img = mime.startsWith("image/") && !/hei[cf]/i.test(mime);
+  return (
+    <div className="space-y-3">
+      {url && img ? (
+        // eslint-disable-next-line @next/next/no-img-element -- signed storage URL
+        <img src={url} alt="" className="max-h-[70vh] w-auto max-w-full rounded-xl" />
+      ) : url && mime.startsWith("video/") ? (
+        <video src={url} controls preload="metadata" className="max-h-[70vh] w-full rounded-xl bg-black" />
+      ) : thumb ? (
+        // eslint-disable-next-line @next/next/no-img-element -- signed storage URL
+        <img src={thumb} alt="" className="max-h-[50vh] w-auto max-w-full rounded-xl" />
+      ) : null}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <span className="min-w-0 break-all text-[13px] text-[color:var(--d-ink2)]">{name}</span>
+        {url && (
+          <a href={url} target="_blank" rel="noopener noreferrer"
+            className="shrink-0 rounded-full bg-[color:var(--d-ink)] px-4 py-1.5 text-[14px] font-semibold text-white">{t.open} ↗</a>
+        )}
+      </div>
     </div>
   );
 }

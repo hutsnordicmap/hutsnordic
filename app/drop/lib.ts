@@ -21,11 +21,12 @@ export type Item = {
   agent_note: string | null;
   visible_to_client: boolean;
   thumb_url: string | null;
+  i18n: I18n;
 };
 export type I18n = Partial<Record<"fi" | "en" | "sv", string>> | null;
 export type Task = { id: string; page: string | null; question: string; hint: string | null; status: "open" | "answered" | "done"; i18n: I18n };
 export type Message = { id: string; author: "claude" | "jeff" | "client"; body: string; created_at: string; i18n: I18n };
-export type Work = { id: string; status: "waiting" | "working" | "done"; item_count: number; created_at: string; requested_at: string; done_at: string | null };
+export type Work = { id: string; status: "waiting" | "working" | "done"; item_count: number; created_at: string; requested_at: string; done_at: string | null; auto?: boolean };
 export type SiteData = {
   site: { name: string; owner_name: string | null; language: "fi" | "en"; preview_url: string | null; slug: string };
   items: Item[];

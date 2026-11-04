@@ -91,7 +91,7 @@ async function sitePayload(site: Record<string, unknown>, forAdmin = false) {
     items: visible.map((i) => ({
       id: i.id, kind: i.kind, source: i.source, filename: i.filename, mime: i.mime, size_bytes: i.size_bytes,
       body: i.body, created_at: i.created_at, processed_at: i.processed_at, task_id: i.task_id,
-      agent_note: i.agent_note, visible_to_client: i.visible_to_client,
+      agent_note: i.agent_note, visible_to_client: i.visible_to_client, i18n: i.i18n ?? null,
       thumb_url: i.thumb_path ? thumbs[i.thumb_path] ?? null : null,
     })),
     tasks: (tasks.data ?? []).map((t) => ({
@@ -102,7 +102,7 @@ async function sitePayload(site: Record<string, unknown>, forAdmin = false) {
     })),
     work: (work.data ?? []).map((w) => ({
       id: w.id, status: w.status, item_count: w.item_count, created_at: w.created_at, done_at: w.done_at,
-      requested_at: w.requested_at,
+      requested_at: w.requested_at, auto: typeof w.note === "string" && w.note.startsWith("auto:"),
     })),
   };
 }
@@ -225,6 +225,16 @@ Deno.serve(async (req) => {
       const author = b.author === "jeff" ? "jeff" : "claude";
       const { error } = await db.from("client_messages").insert({ site_id: b.site_id, author, body, i18n: b.i18n ?? null });
       return error ? json({ error: error.message }, 500) : json({ ok: true });
+    }
+
+    if (action === "admin_item_i18n") {
+      // Translations of client texts for the admin panel: {site_id, items: [{id, i18n: {fi, en, sv}}]}.
+      if (!Array.isArray(b.items)) return json({ error: "items required" }, 400);
+      for (const it of b.items as { id: string; i18n: unknown }[]) {
+        const { error } = await db.from("client_items").update({ i18n: it.i18n ?? null }).eq("site_id", b.site_id).eq("id", it.id);
+        if (error) return json({ error: error.message }, 500);
+      }
+      return json({ ok: true });
     }
 
     if (action === "admin_mark_used") {
