@@ -54,7 +54,7 @@ async function addDefaultTasks(siteId: unknown) {
 
 async function siteByToken(token: unknown) {
   if (typeof token !== "string" || token.length < 16) return null;
-  const { data } = await db.from("client_sites").select("*").eq("token", token).eq("status", "active").maybeSingle();
+  const { data } = await db.from("client_sites").select("*").eq("token", token).in("status", ["active", "live"]).maybeSingle();
   return data;
 }
 
@@ -182,7 +182,7 @@ Deno.serve(async (req) => {
       // A client who saved things and left without pressing the button still gets served:
       // after 30 quiet minutes their unused items become a work request of their own.
       const quiet = new Date(Date.now() - 30 * 60 * 1000).toISOString();
-      const { data: idle } = await db.from("client_sites").select("id").eq("status", "active")
+      const { data: idle } = await db.from("client_sites").select("id").in("status", ["active", "live"])
         .lt("last_client_activity_at", quiet);
       for (const s of idle ?? []) {
         const { count } = await db.from("client_items").select("id", { count: "exact", head: true })
