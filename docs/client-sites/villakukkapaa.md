@@ -14,6 +14,7 @@ Drop box: slug `villakukkapaa` (token kept out of git). Offer: 2 years free.
 |---|---|
 | 2.11. | Pentti asked for a preview. Drop page created 3.11. |
 | 3.11. | Preview built from the old site (FI + EN), his photos, a home video cut from his own drone shots, and huts.fi nearby places. |
+| 4.11. | Added the "Mitä teimme" page (`/mita-teimme`), the orange ribbon linking to it, and `public/llms.txt`, which the first build had missed. |
 
 ## Build notes
 
