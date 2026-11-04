@@ -275,7 +275,7 @@ export const seasons: Season[] = [
   {
     id: "talvi",
     title: { fi: "Talvi", en: "Winter" },
-    photo: photo("salla-1", "Valaistu latu Sallatunturilla", "Lit ski track at Sallatunturi"),
+    photo: photo("salla-laskija", "Laskettelija puuterilumessa Sallatunturilla", "Skier in powder snow at Sallatunturi"),
     lead: {
       fi: "Talvella Salla tunnetaan erityisesti hiihdosta ja laskettelusta, mutta tarjolla on myös paljon muuta tekemistä.",
       en: "In winter Salla is best known for skiing, both downhill and cross-country, but there is plenty more to do.",
@@ -307,7 +307,7 @@ export const seasons: Season[] = [
   {
     id: "kesa",
     title: { fi: "Kesä ja syksy", en: "Summer and autumn" },
-    photo: photo("salla-4", "Kota tunturin laella kesällä", "Hut on the fell top in summer"),
+    photo: photo("salla-patikka", "Patikoija ja maastopyöräilijä tunturipolulla", "Hiker and mountain biker on a fell path"),
     lead: {
       fi: "Kesällä Salla muuttuu retkeilijän ja luonnossa liikkujan paratiisiksi. Yöttömän yön valo ja hiljaisuus tekevät kokemuksesta ainutlaatuisen, ja syksyllä ruska maalaa tunturit.",
       en: "In summer Salla turns into a paradise for hikers and anyone who loves the outdoors. The midnight sun and the silence make it special, and in autumn the ruska colours the fells.",
@@ -340,7 +340,10 @@ export const seasons: Season[] = [
 
 export const gallery: Photo[] = [
   photo("salla-tunturi", "Lumiset puut Sallatunturilla", "Snowy trees at Sallatunturi"),
+  photo("salla-revontulet", "Revontulet lumisten kuusten yllä", "Northern lights over snowy spruces"),
   photo("salla-2", "Tykkylumiset kuuset", "Snow-laden spruces"),
+  photo("salla-1", "Valaistu latu Sallatunturilla", "Lit ski track at Sallatunturi"),
+  photo("salla-4", "Kota tunturin laella kesällä", "Hut on the fell top in summer"),
   photo("salla-latu", "Ulkoilureittien kota ja latu", "Hut and ski track on the outdoor trails"),
   photo("salla-7", "Viitta Sallatunturilla", "Signpost at Sallatunturi"),
   photo("salla-6", "Hillat", "Cloudberries"),
@@ -661,7 +664,7 @@ export const ui = {
       { q: "Miten maksan?", a: "Tilisiirrolla tai MobilePaylla." },
       { q: "Milloin saavun ja lähden?", a: "Tulo klo 16 ja lähtö klo 12 mennessä. Molemmissa mökeissä on näppäinlukko, joten saavut omaan tahtiisi." },
     ],
-    sticky: { call: "Soita", book: "Varaa" },
+    sticky: { call: "Soita", email: "Sähköposti", nettimokki: "Nettimökki" },
     close: "Sulje",
     prev: "Edellinen",
     next: "Seuraava",
@@ -718,7 +721,7 @@ export const ui = {
       { q: "How do I pay?", a: "By bank transfer or MobilePay." },
       { q: "When can I arrive and leave?", a: "Check-in is at 4 pm and check-out by 12 noon. Both cabins have a keypad lock, so you can arrive at your own pace." },
     ],
-    sticky: { call: "Call", book: "Book" },
+    sticky: { call: "Call", email: "Email", nettimokki: "Nettimökki" },
     close: "Close",
     prev: "Previous",
     next: "Next",

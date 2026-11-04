@@ -49,17 +49,20 @@ export function Header({ locale, otherHref }: { locale: Locale; otherHref: strin
 }
 
 /** Phones only: call and book always one thumb away. */
-export function StickyBar({ locale, bookHref }: { locale: Locale; bookHref: string }) {
+/** Arvo books by phone first (drop box 3.11.2026), so Call is the main button; a cabin page adds its
+ *  Nettimökki listing, every other page email. */
+export function StickyBar({ locale, nettimokki }: { locale: Locale; nettimokki?: string }) {
   const t = ui[locale].sticky;
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink/10 bg-white/95 px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))] backdrop-blur md:hidden">
       <div className="grid grid-cols-2 gap-3">
-        <a href={tel} className="inline-flex items-center justify-center gap-2 rounded-full border border-night/30 py-3 font-semibold text-night">
+        <a href={tel} className="inline-flex items-center justify-center gap-2 rounded-full bg-kelo py-3 font-semibold text-white">
           <Phone className="size-4" aria-hidden />
           {t.call}
         </a>
-        <a href={bookHref} rel="noopener" className="inline-flex items-center justify-center rounded-full bg-kelo py-3 font-semibold text-white">
-          {t.book}
+        <a href={nettimokki ?? `mailto:${business.email}`} rel={nettimokki ? "noopener" : undefined}
+          className="inline-flex items-center justify-center rounded-full border border-night/30 py-3 font-semibold text-night">
+          {nettimokki ? t.nettimokki : t.email}
         </a>
       </div>
     </div>

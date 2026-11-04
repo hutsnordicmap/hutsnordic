@@ -209,7 +209,7 @@ export function HomeView({ locale }: { locale: Locale }) {
         </section>
       </main>
       <Footer locale={locale} />
-      <StickyBar locale={locale} bookHref={tel} />
+      <StickyBar locale={locale} />
     </>
   );
 }
@@ -337,13 +337,16 @@ export function UnitView({ id, locale }: { id: UnitId; locale: Locale }) {
                   ))}
                 </tbody>
               </table>
-              <a href={u.booking} rel="noopener" className="mt-5 flex items-center justify-center gap-2 rounded-full bg-kelo px-6 py-3 font-semibold text-white hover:bg-[#8a5e2c]">
-                {t.book}
-                <ExternalLink className="size-4" aria-hidden />
-              </a>
-              <a href={tel} className="mt-3 flex items-center justify-center gap-1.5 text-sm font-semibold text-night hover:underline">
+              <a href={tel} className="mt-5 flex items-center justify-center gap-2 rounded-full bg-kelo px-6 py-3 font-semibold text-white hover:bg-[#8a5e2c]">
                 <Phone className="size-4" aria-hidden />
                 {business.phone}
+              </a>
+              <a href={`mailto:${business.email}`} className="mt-3 block break-all text-center text-sm font-semibold text-night hover:underline">
+                {business.email}
+              </a>
+              <a href={u.booking} rel="noopener" className="mt-2 flex items-center justify-center gap-1.5 text-sm text-ink/70 hover:underline">
+                {t.book}
+                <ExternalLink className="size-3.5" aria-hidden />
               </a>
             </div>
             <p className="mt-3 text-center text-xs text-ink/50">
@@ -371,7 +374,7 @@ export function UnitView({ id, locale }: { id: UnitId; locale: Locale }) {
         </section>
       </main>
       <Footer locale={locale} />
-      <StickyBar locale={locale} bookHref={u.booking} />
+      <StickyBar locale={locale} nettimokki={u.booking} />
     </>
   );
 }
@@ -448,7 +451,7 @@ export function AreaView({ locale }: { locale: Locale }) {
         </section>
       </main>
       <Footer locale={locale} />
-      <StickyBar locale={locale} bookHref={tel} />
+      <StickyBar locale={locale} />
     </>
   );
 }
@@ -564,7 +567,7 @@ export function NearbyView({ item: n, locale }: { item: Nearby; locale: Locale }
         </section>
       </main>
       <Footer locale={locale} />
-      <StickyBar locale={locale} bookHref={tel} />
+      <StickyBar locale={locale} />
     </>
   );
 }
