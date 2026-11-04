@@ -41,6 +41,11 @@ All calls are `POST https://aqyqvkpbznygsbmrzfde.supabase.co/functions/v1/client
 7. `admin_reply` `{site_id, body, i18n: {fi, en, sv}}`: a short reply in the client's language: what changed, what we left out and why
    ("you're the boss"), and the next question. Write it as from "us"; the page labels it "Tekoälyagentti".
 8. `admin_work_status` `{status: "done"}`.
+8b. Tell the client by email, Jeff's choice (4.11.2026): create a **Gmail draft** (never send) to the site's
+   `owner_email`, in the client's language, from Jeff. Subject "<Site> – sivut päivitetty". Body: one thank-you
+   line, "Päivitimme ne uusille sivuillesi ja jätimme sinulle viestin tänne: <drop link>", one line on what is still
+   open, then Jeff's signature (Jeff Foster / 045 661 7229 / https://www.huts.fi/). Jeff presses Send. The drop page
+   also shows the newest reply at the top until the client closes it.
 9. Anything that is not a simple update (complaints, money, going live, domain or email changes): don't
    answer, tell Jeff in the project chat.
 
