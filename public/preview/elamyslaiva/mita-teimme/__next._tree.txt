@@ -1,0 +1,6 @@
+:HL["/preview/elamyslaiva/_next/static/chunks/12mja0a4q1hgo.css","style"]
+:HL["/preview/elamyslaiva/_next/static/media/017d9bea37084d9b-s.p.179.vsfvxa6t5.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/preview/elamyslaiva/_next/static/media/26daee0352f50a5f-s.p.0rqws-.h91di~.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/preview/elamyslaiva/_next/static/media/400bf8aa837fcb7e-s.p.0end3qt1tw3rz.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/preview/elamyslaiva/_next/static/media/f7aa21714c1c53f8-s.p.0bhxxck2.9j91.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"mita-teimme","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"z36U6VWOTp7aM9mgeRTc_"}

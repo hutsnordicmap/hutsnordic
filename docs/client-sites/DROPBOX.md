@@ -6,7 +6,7 @@ homework, read our replies, and press **"Lähetä tekoälylle – aloita työ"**
 | Piece | Where |
 |---|---|
 | Client page | `hutsnordic.fi/drop/<token>` (`app/drop/DropBox.tsx`). No login: the link is the key. Finnish or English per client. |
-| Jeff's admin panel | `hutsnordic.fi/drop/admin/<admin key>` (`app/drop/Admin.tsx`). Who is waiting, last activity, files, homework, paste box. Tap any activity line for the full text (translated, original one tap away), the question it answers, or the file at full size (photos and videos play in place). |
+| Jeff's admin panel | **`hutsnordic.fi/admin`** (Jeff 10.11.2026: one short address). Type the admin key once; the browser saves it like a password and this browser remembers it, so it opens straight in. The long `hutsnordic.fi/drop/admin/<admin key>` still works (`app/drop/Admin.tsx`). Who is waiting, last activity, files, homework, paste box. Tap any activity line for the full text (translated, original one tap away), the question it answers, or the file at full size (photos and videos play in place). |
 | API | Supabase edge function `client-drop` in the Huts-fi project (`supabase/functions/client-drop/index.ts`). Deploy with the Supabase MCP `deploy_edge_function`, `verify_jwt: false`. |
 | Data | Tables `client_sites`, `client_items`, `client_tasks`, `client_messages`, `client_work_requests`, `client_admin_keys` (RLS on, no policies: only the edge function reads them). |
 | Files | Private bucket `client-drops`, folder per client token. Browsers upload with resumable (TUS) uploads; the storage policy only lets them write into an active client's folder. Thumbnails are made in the browser. |
