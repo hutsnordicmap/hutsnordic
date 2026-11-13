@@ -64,6 +64,37 @@ async function isAdmin(key: unknown) {
   return !!data;
 }
 
+// The send button emails Jeff (13.11.2026, replaces the 2-hour Claude check): he tells a Claude thread when to do it.
+const esc = (t: unknown) => String(t ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]!));
+async function emailJeff(site: Record<string, unknown>, note: string | null) {
+  const key = Deno.env.get("RESEND_API_KEY");
+  if (!key) return;
+  const { data: items } = await db.from("client_items").select("kind, body, filename, task_id, created_at")
+    .eq("site_id", site.id).eq("source", "client").is("deleted_at", null).is("processed_at", null)
+    .order("created_at").limit(50);
+  const { data: tasks } = await db.from("client_tasks").select("id, question").eq("site_id", site.id);
+  const q = new Map((tasks ?? []).map((t) => [t.id, t.question]));
+  const lines = (items ?? []).map((i) => {
+    const what = i.kind === "file" ? `File: ${esc(i.filename)}` : esc(i.body).replace(/\n/g, "<br>");
+    const asked = i.task_id && q.get(i.task_id) ? `<div style="color:#666">${esc(q.get(i.task_id))}</div>` : "";
+    return `<li style="margin-bottom:10px">${asked}${what}</li>`;
+  }).join("");
+  const html = `<p><b>${esc(site.name)}</b> (${esc(site.owner_name ?? site.owner_email ?? "")}) pressed send.</p>` +
+    (note ? `<p>${esc(note)}</p>` : "") +
+    (lines ? `<ol>${lines}</ol>` : "<p>No new texts or files.</p>") +
+    `<p><a href="https://hutsnordic.fi/admin">Open the admin panel</a></p>`;
+  try {
+    await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: "Huts drop box <jeff@huts.fi>", to: ["jeff@huts.fi"],
+        subject: `${site.name}: new request (${items?.length ?? 0})`, html,
+      }),
+    });
+  } catch (_) { /* the request is saved either way */ }
+}
+
 async function touch(siteId: string) {
   await db.from("client_sites").update({ last_client_activity_at: new Date().toISOString() }).eq("id", siteId);
 }
@@ -377,6 +408,7 @@ Deno.serve(async (req) => {
       if (error) return json({ error: error.message }, 500);
     }
     await touch(site.id);
+    await emailJeff(site, typeof b.note === "string" ? b.note.slice(0, 2000) : null);
     return json({ ok: true });
   }
 

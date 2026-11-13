@@ -20,6 +20,13 @@ Never put the admin key or a client token in this repo (it is public). They live
 - Edge function calls: Pro includes 2 million a month. We use a few hundred.
 - Claude: runs on Jeff's plan. No API key, no live AI chat.
 
+## When a client presses send (Jeff, 13.11.2026)
+The button emails Jeff at once ("<Site>: new request (n)", with the client's new texts and file names and a link
+to the admin panel), sent through Resend from the edge function (`RESEND_API_KEY` secret). There is no scheduled
+Claude check any more: the 2-hour check was switched off on 13.11.2026 because it used plan allowance all day for one
+client. Jeff tells a Claude thread when to do the request, and the thread follows the steps below. Nothing starts by
+itself after 30 quiet minutes any more (the drop page no longer promises that).
+
 ## Handling a work request (the Claude worker)
 
 All calls are `POST https://aqyqvkpbznygsbmrzfde.supabase.co/functions/v1/client-drop` with JSON

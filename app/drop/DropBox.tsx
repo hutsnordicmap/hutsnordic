@@ -23,7 +23,7 @@ const T = {
     status: { waiting: "Vastaanotettu", working: "Työn alla", done: "Valmis" },
     help: [
       "Muuta sivujasi milloin tahansa, 24/7.",
-      "Kaikki tallentuu heti. Paina nappia, kun olet valmis, niin työ alkaa. Jos unohdat, aloitamme silti puolen tunnin päästä.",
+      "Kaikki tallentuu heti. Paina nappia, kun olet valmis, niin työ alkaa.",
       "Tekoälyagenttimme päivittää esikatselun ja vastaa tälle sivulle.",
       "Jeff tarkistaa, että kaikki menee oikein.",
     ],
@@ -57,7 +57,7 @@ const T = {
     status: { waiting: "Received", working: "In progress", done: "Done" },
     help: [
       "Change your site any time, 24/7.",
-      "Everything saves right away. Press the button when you're done and work starts. If you forget, we start anyway after half an hour.",
+      "Everything saves right away. Press the button when you're done and work starts.",
       "Our AI agent updates your preview and replies on this page.",
       "Jeff checks that everything is done right.",
     ],
@@ -91,7 +91,7 @@ const T = {
     status: { waiting: "Mottaget", working: "Pågår", done: "Klart" },
     help: [
       "Ändra din webbplats när som helst, dygnet runt.",
-      "Allt sparas direkt. Tryck på knappen när du är klar så börjar arbetet. Om du glömmer börjar vi ändå efter en halvtimme.",
+      "Allt sparas direkt. Tryck på knappen när du är klar så börjar arbetet.",
       "Vår AI-agent uppdaterar förhandsvisningen och svarar på den här sidan.",
       "Jeff kontrollerar att allt blir rätt.",
     ],
