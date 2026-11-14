@@ -584,6 +584,80 @@ export const nearby: Nearby[] = [
       en: "An easy first-day ride to get to know Sallatunturi. For longer rides there are hundreds of kilometres of routes in the area.",
     },
   },
+  {
+    key: "kaunisharju",
+    id: "38a5fdca-cf94-4911-bcce-95b9eb85a63c",
+    kind: "route",
+    icon: "footprints",
+    slug: "kaunisharjun-reitti",
+    name: { fi: "Kaunisharjun reitti", en: "Kaunisharju trail" },
+    what: { fi: "Retkeily- ja pyöräilyreitti, talvella latu", en: "Hiking and bike trail, a ski track in winter" },
+    km: 0.1,
+    lengthKm: 11,
+    hutsPath: "/suomi/lappi/salla/routes/pyorailyreitit/kaunisharjun-kierros",
+    official: { label: "luontoon.fi", href: "https://www.luontoon.fi/fi/kohteet/sallan-kansallispuisto" },
+    lead: {
+      fi: "Kaunisharjun reitti on Arvon suosikki. Noin 11 kilometrin päivälenkki kiertää Kauniinhaudanharjun ja Hanhiharjun harjuja, enimmäkseen Sallan kansallispuistossa, ja lähtee aivan mökkien läheltä.",
+      en: "The Kaunisharju trail is one of Arvo's favourites. This day loop of about 11 km circles the Kauniinhaudanharju and Hanhiharju eskers, mostly inside Salla National Park, and starts right by the cabins.",
+    },
+    facts: {
+      fi: ["Noin 11 km ympyrälenkki", "Harjuja, mäntykangasta ja kansallispuiston metsää", "Talvella Kaunisharjun latu, noin 12–13 km, valaistu klo 7.30–20", "Ladulla saa hiihtää koiran kanssa", "Laavut Kaunisharjulla ja Tunturilammella"],
+      en: ["A loop of about 11 km", "Eskers, pine heath and national park forest", "In winter the Kaunisharju ski track, about 12–13 km, lit 7.30–20", "Skiing with your dog is allowed on this track", "Lean-tos at Kaunisharju and Tunturilampi"],
+    },
+    tip: {
+      fi: "Sama maisema toimii kesällä kävellen tai pyörällä ja talvella suksilla. Ota eväät laavulle. Kansallispuiston ohjeet löytyvät Luontoon.fi-sivustolta.",
+      en: "The same landscape works on foot or by bike in summer and on skis in winter. Take a packed lunch to a lean-to. National park advice is on Luontoon.fi.",
+    },
+  },
+  {
+    key: "hangasharju",
+    id: "019491f7-c312-4b97-af8c-6e1c49aad755",
+    kind: "route",
+    icon: "bike",
+    slug: "hangasharjun-reitti",
+    name: { fi: "Hangasharjun reitti", en: "Hangasharju trail" },
+    what: { fi: "Retkeily- ja pyöräilyreitti", en: "Hiking and bike trail" },
+    km: 0.4,
+    lengthKm: 13,
+    hutsPath: "/suomi/lappi/salla/routes/pyorailyreitit/hangasharjun-reitti",
+    official: { label: "visitsalla.fi", href: "https://www.visitsalla.fi/" },
+    lead: {
+      fi: "Hangasharjun reitti on toinen Arvon suosikeista. Noin 13 kilometrin lenkki kulkee soiden, harjujen ja erämaajärven rannan kautta, ja sen alkuun on mökeiltä alle puoli kilometriä.",
+      en: "The Hangasharju trail is another of Arvo's favourites. A loop of about 13 km takes you over bogs and eskers and along a wilderness lake, and it starts less than half a kilometre from the cabins.",
+    },
+    facts: {
+      fi: ["Noin 13 km", "Nousua noin 80 m", "Pyörällä noin tunti ja vartti", "Hangasharjun näköalapaikka", "Laavu Hangasjärven rannalla"],
+      en: ["About 13 km", "About 80 m of climbing", "Roughly an hour and a quarter by bike", "Hangasharju viewpoint", "Lean-to on the shore of Hangasjärvi"],
+    },
+    tip: {
+      fi: "Hangasjärven laavu on hyvä taukopaikka puolivälissä. Lenkin jälkeen kylpylä on mökkien vieressä, kuten Arvokin suosittelee.",
+      en: "The Hangasjärvi lean-to makes a good halfway stop. Afterwards the spa is next to the cabins, which Arvo recommends too.",
+    },
+  },
+  {
+    key: "poropuisto",
+    id: "e9b7b134-f5f6-4ea1-9269-610629475397",
+    kind: "place",
+    icon: "binoculars",
+    slug: "salla-wilderness-park",
+    name: { fi: "Salla Wilderness Park (Poropuisto)", en: "Salla Wilderness Park (reindeer park)" },
+    what: { fi: "Poropuisto ja eläinretket", en: "Reindeer park and animal trips" },
+    km: 3.0,
+    hutsPath: "/suomi/lappi/salla/kotielainpihat/salla-wilderness-park",
+    official: { label: "sallawildernesspark.fi", href: "https://sallawildernesspark.fi/" },
+    lead: {
+      fi: "Salla Wilderness Park, entinen Sallan Poropuisto, on noin kolmen kilometrin päässä mökeiltä. Arvo suosittelee erityisesti Poropuiston näyttelyä.",
+      en: "Salla Wilderness Park, the former Salla reindeer park, is about three kilometres from the cabins. Arvo especially recommends the park's exhibition.",
+    },
+    facts: {
+      fi: ["Porot laiduntavat kesällä vapaina noin 200 hehtaarin alueella", "Porojen ruokintaretkiä", "Talvella poro- ja huskysafareita", "Ruokaa ja majoitusta puistossa"],
+      en: ["In summer the reindeer roam free over about 200 hectares", "Reindeer feeding trips", "Reindeer and husky safaris in winter", "Food and lodging at the park"],
+    },
+    tip: {
+      fi: "Hyvä kohde lasten kanssa. Aukioloajat ja retket kannattaa katsoa puiston omilta sivuilta ennen lähtöä.",
+      en: "A good outing with children. Check opening hours and trips on the park's own site before you go.",
+    },
+  },
 ];
 
 export const nearbyPath = (n: Nearby, locale: Locale) => `${paths.area[locale]}/${n.slug}`;
@@ -675,9 +749,7 @@ export const ui = {
     next: "Seuraava",
     askTitle: "Kysytään Arvolta",
     homeAsk: [],
-    areaAsk: [
-      "Mitkä ovat sinun omat suosikkisi lähellä? Kirjoitamme niille omat sivut.",
-    ],
+    areaAsk: [],
     madeBy: "Sivut:",
     home: "Etusivu",
   },
@@ -733,9 +805,7 @@ export const ui = {
     next: "Next",
     askTitle: "Questions for Arvo",
     homeAsk: [],
-    areaAsk: [
-      "What are your own favourite places nearby? We'll write a page for each.",
-    ],
+    areaAsk: [],
     madeBy: "Site by",
     home: "Home",
   },
