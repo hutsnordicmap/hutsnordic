@@ -44,7 +44,7 @@ export const paths = {
   area: { fi: "/sallatunturi", en: "/en/sallatunturi" },
 } as const;
 
-export type PriceRow = { when: Text; price: number };
+export type PriceRow = { when: Text; price: number; extra?: boolean };
 export type Distance = { icon: string; what: Text; m: number };
 
 export type Unit = {
@@ -145,6 +145,8 @@ export const units: Record<UnitId, Unit> = {
       { when: { fi: "Vuorokausi", en: "Night" }, price: 90 },
       { when: { fi: "Viikko (7 vrk)", en: "Week (7 nights)" }, price: 490 },
       { when: { fi: "Viikko 3.10.–19.12.2026", en: "Week 3 Oct – 19 Dec 2026" }, price: 450 },
+      { when: { fi: "Loppusiivous (lisäpalvelu)", en: "Final cleaning (optional extra)" }, price: 85, extra: true },
+      { when: { fi: "Liinavaatteet / setti (lisäpalvelu)", en: "Bed linen per set (optional extra)" }, price: 25, extra: true },
     ],
     booking: nettimokki("kelomaja/52377"),
     photos: [
@@ -162,7 +164,7 @@ export const units: Record<UnitId, Unit> = {
       photo("kelomaja-wc", "WC", "Toilet"),
       photo("kelomaja-eteinen", "Eteinen", "Hallway"),
     ],
-    ask: ["Kuuluvatko liinavaatteet ja loppusiivous hintaan?"],
+    ask: [],
   },
   kuusisto: {
     id: "kuusisto",
@@ -235,6 +237,8 @@ export const units: Record<UnitId, Unit> = {
       { when: { fi: "Vuorokausi", en: "Night" }, price: 90 },
       { when: { fi: "Viikko (7 vrk)", en: "Week (7 nights)" }, price: 480 },
       { when: { fi: "Viikko 3.10.–19.12.2026", en: "Week 3 Oct – 19 Dec 2026" }, price: 400 },
+      { when: { fi: "Loppusiivous (lisäpalvelu)", en: "Final cleaning (optional extra)" }, price: 85, extra: true },
+      { when: { fi: "Liinavaatteet / setti (lisäpalvelu)", en: "Bed linen per set (optional extra)" }, price: 25, extra: true },
     ],
     booking: nettimokki("kuusisto/51299"),
     photos: [
@@ -251,13 +255,13 @@ export const units: Record<UnitId, Unit> = {
       photo("kuusisto-suihku", "Suihku", "Shower"),
       photo("kuusisto-wc", "WC", "Toilet"),
     ],
-    ask: ["Kuuluvatko liinavaatteet ja loppusiivous hintaan?"],
+    ask: [],
   },
 };
 
 export const unitList: Unit[] = [units.kelomaja, units.kuusisto];
 export const unitPath = (u: Unit, locale: Locale) => (locale === "fi" ? `/${u.slug}` : `/en/${u.slug}`);
-export const fromPrice = (u: Unit) => Math.min(...u.prices.map((p) => p.price));
+export const fromPrice = (u: Unit) => Math.min(...u.prices.filter((p) => !p.extra).map((p) => p.price));
 
 // ── Sallatunturi: the owner's activity content, organised ──────────────────────────────────────────
 
@@ -662,14 +666,15 @@ export const ui = {
       { q: "Saako lemmikin tuoda?", a: "Saa. Lemmikit ovat tervetulleita molempiin mökkeihin." },
       { q: "Miten varaan?", a: "Soita tai lähetä sähköpostia Arvolle: 050 539 4738, arvo.puhakka@kelomaja.fi. Mökit voi varata myös Nettimökistä." },
       { q: "Miten maksan?", a: "Tilisiirrolla tai MobilePaylla." },
-      { q: "Milloin saavun ja lähden?", a: "Tulo klo 16 ja lähtö klo 12 mennessä. Molemmissa mökeissä on näppäinlukko, joten saavut omaan tahtiisi." },
+      { q: "Milloin saavun ja lähden?", a: "Tulo klo 16 ja lähtö klo 12 mennessä. Molemmissa mökeissä on näppäinlukko ja itsepalvelu: tervetuloa aivan omaan tahtiin." },
+      { q: "Kuuluvatko liinavaatteet ja loppusiivous hintaan?", a: "Eivät, mutta ne voi ostaa lisäpalveluna: loppusiivous 85 € ja liinavaatteet 25 € / setti." },
     ],
     sticky: { call: "Soita", email: "Sähköposti", nettimokki: "Nettimökki" },
     close: "Sulje",
     prev: "Edellinen",
     next: "Seuraava",
     askTitle: "Kysytään Arvolta",
-    homeAsk: ["Kuva sinusta ja pari lausetta: kuka vieraat ottaa vastaan."],
+    homeAsk: [],
     areaAsk: [
       "Mitkä ovat sinun omat suosikkisi lähellä? Kirjoitamme niille omat sivut.",
     ],
@@ -719,14 +724,15 @@ export const ui = {
       { q: "Can I bring a pet?", a: "Yes. Pets are welcome in both cabins." },
       { q: "How do I book?", a: "Call or email Arvo: +358 50 539 4738, arvo.puhakka@kelomaja.fi. You can also book on Nettimökki." },
       { q: "How do I pay?", a: "By bank transfer or MobilePay." },
-      { q: "When can I arrive and leave?", a: "Check-in is at 4 pm and check-out by 12 noon. Both cabins have a keypad lock, so you can arrive at your own pace." },
+      { q: "When can I arrive and leave?", a: "Check-in is at 4 pm and check-out by 12 noon. Both cabins are self-service with a keypad lock: arrive entirely at your own pace." },
+      { q: "Are bed linen and final cleaning included?", a: "No, but you can add them as extras: final cleaning €85 and bed linen €25 per set." },
     ],
     sticky: { call: "Call", email: "Email", nettimokki: "Nettimökki" },
     close: "Close",
     prev: "Previous",
     next: "Next",
     askTitle: "Questions for Arvo",
-    homeAsk: ["A photo of you and a few lines: who welcomes the guests."],
+    homeAsk: [],
     areaAsk: [
       "What are your own favourite places nearby? We'll write a page for each.",
     ],
