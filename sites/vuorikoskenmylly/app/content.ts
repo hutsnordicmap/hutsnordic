@@ -131,12 +131,12 @@ const d = (from: string, to: string, close: string, fi: string, en: string, days
 });
 
 export const live = {
-  updated: "2026-11-13",
+  updated: "2026-11-24",
   // Shown in the black bar on every page. Empty string hides it.
-  // Antti's text from the drop box, 9.11.2026.
+  // Antti's text from the drop box, 23.11.2026.
   notice: {
-    fi: "Olemme suljettuna, rakennamme joulupuotia. Palvelemme jälleen viikonloppuisin 28.11. alkaen.",
-    en: "We're closed while we build the Christmas shop. Open again at weekends from 28 Nov.",
+    fi: "Joulupuoti avautuu la 28.11. klo 11.00!",
+    en: "The Christmas shop opens on Sat 28 Nov at 11:00!",
   },
   // Café and vintage shop opening days. Antti's 2027 list, 29.10.2026.
   openDays: [
