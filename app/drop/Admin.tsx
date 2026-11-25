@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { ago, api, fmtSize, type SiteData } from "./lib";
+import Sites from "./Sites";
 
 type Lang = "en" | "fi";
 type Status = "waiting" | "working" | "done" | "none";
@@ -16,7 +17,7 @@ type Row = {
 
 const T = {
   en: {
-    clients: "Clients", waiting: (n: number) => `${n} waiting`, back: "Clients",
+    clients: "Clients", sites: "Sites", waiting: (n: number) => `${n} waiting`, back: "Clients",
     status: { waiting: "Waiting for Claude", working: "Claude is working", done: "Up to date", none: "Not started" } as Record<Status, string>,
     newN: (n: number) => `${n} new`, homework: "Homework", files: "Files", texts: "Texts",
     start: "Start work now", clientPage: "Client page", copy: "Copy link", copied: "Copied", preview: "Preview", live: "Live",
@@ -29,7 +30,7 @@ const T = {
     open: "Open", original: "Original", translated: "English", showAll: (n: number) => `Show all ${n}`,
   },
   fi: {
-    clients: "Asiakkaat", waiting: (n: number) => `${n} odottaa`, back: "Asiakkaat",
+    clients: "Asiakkaat", sites: "Sivustot", waiting: (n: number) => `${n} odottaa`, back: "Asiakkaat",
     status: { waiting: "Odottaa Claudea", working: "Claude työskentelee", done: "Ajan tasalla", none: "Ei aloitettu" } as Record<Status, string>,
     newN: (n: number) => `${n} uutta`, homework: "Kotitehtävät", files: "Tiedostot", texts: "Tekstit",
     start: "Aloita työ nyt", clientPage: "Asiakkaan sivu", copy: "Kopioi linkki", copied: "Kopioitu", preview: "Esikatselu", live: "Julkaistu",
@@ -127,13 +128,16 @@ export default function Admin({ adminKey }: { adminKey: string }) {
       </header>
 
       <div className="grid grid-cols-[minmax(0,1fr)] gap-6 pb-12 lg:grid-cols-[340px_minmax(0,1fr)] lg:items-start">
-        <ul className={`space-y-2 ${current ? "hidden lg:block" : ""}`}>
-          {sorted.map((r) => (
-            <li key={r.id}>
-              <ClientRow r={r} t={t} lang={lang} active={r.id === sel} onClick={() => open(r.id)} />
-            </li>
-          ))}
-        </ul>
+        <div className={current ? "hidden lg:block" : ""}>
+          <ul className="space-y-2">
+            {sorted.map((r) => (
+              <li key={r.id}>
+                <ClientRow r={r} t={t} lang={lang} active={r.id === sel} onClick={() => open(r.id)} />
+              </li>
+            ))}
+          </ul>
+          <Sites title={t.sites} />
+        </div>
 
         {current ? (
           <div className="lg:sticky lg:top-6">
