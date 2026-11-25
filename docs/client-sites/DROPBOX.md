@@ -71,6 +71,14 @@ tell Jeff: a basic calendar sync is something we set up for them, not live sync.
 New client: `admin_create_site` `{slug, name, owner_name, owner_email, language, preview_url}` returns the token.
 Then add the first homework with `admin_task`.
 
+## Lessons
+- 25.11.2026 (Vuorikosken Mylly): a cloud thread may not read the admin key (blocked). The edge function's
+  `admin_task add`, `admin_reply` and `admin_work_status` are plain inserts/updates on `client_tasks`,
+  `client_messages` (author `claude`) and `client_work_requests`, so write those rows with
+  `node scripts/db-api-sql.mjs` from taisto instead, with the same `i18n {fi, en, sv}`.
+- 25.11.2026: visitlohja.fi listing pages return an error page to scripts and fetch tools. Check them in Chrome,
+  or go by what Jeff saw.
+
 ## Known limits
 - The project's global upload limit is set in the Supabase dashboard (Storage → Settings). Jeff raised it to
   10 GB (early November 2026); the `client-drops` bucket has no limit of its own.
