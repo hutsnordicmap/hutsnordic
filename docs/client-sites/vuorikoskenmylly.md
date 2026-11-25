@@ -23,6 +23,7 @@ Jeff's verdict (2026-10-30): "it worked out really well". This is the model for 
 | 29.10. 15:31 | "Tekijöiden tarina myllyn takana": his story and a photo of him and Juha, as a home section word for word. 7 mood photos went to the event room, stay page and seasons strip. |
 | 30.10. | **Live.** Antti switched the nameservers to Cloudflare himself. Jeff imported the Webnode records (all grey, email records kept). The live build is in repo `hutsnordicmap/nextjs-boilerplate` (Vercel project `vuorikoskenmylly`). Apex and www are CNAMEs to Vercel, and the bare domain is the main address. |
 | 23.11. | Drop box: top bar text changed to "Joulupuoti avautuu la 28.11. klo 11.00!" (both repos, one PR each). |
+| 25.11. | Three drop box tasks under "Näkyvyys": ask Lohja tourism (Jenna Harma) to link Visit Lohja to vuorikoskenmylly.com (now blog / TikTok), ask Sammattiseura to fix the "la–su 11–17" hours on sammatti.fi, and which free listings he has (Google, Apple, Bing, Tripadvisor, DataHub). Gmail draft in the "Jeff - huts.fi" thread. |
 
 ## What made it work
 
